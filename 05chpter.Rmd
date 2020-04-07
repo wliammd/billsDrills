@@ -1,0 +1,39 @@
+# By Any Other Name
+
+This deceptively simple-seeming idea gets complex quickly. The following YouTube was a nice description of the process: <https://www.youtube.com/watch?v=Okc0IL5uTnA>
+
+```{r}
+my.data <- data.frame(colOne=1:3, column2=4:6, column_3=7:9)
+rownames(my.data) <- c("ant", "bee", "cat")
+names(my.data)
+colnames(my.data)
+
+#make some changes
+names(my.data) <- c("col_1", "col_2", "col_3")
+my.data
+names(my.data)[3] <- "col.3"
+my.data
+
+names(my.data)[names(my.data)=="col_2"]
+my.data["col_2"]
+my.data$col_2
+my.data[,2]
+
+names(my.data)[names(my.data)=="col_2"] <- "col.2"
+my.data
+
+names(my.data) <- gsub("_", ".", names(my.data))
+my.data
+
+rownames(my.data)
+my.data$species <- rownames(my.data)
+my.data
+rownames(my.data) <- NULL
+my.data
+colnames(my.data) <- c("good", "better", "best", "species")
+my.data
+
+keep <- 2:ncol(my.data)
+my.data[,keep]
+```
+

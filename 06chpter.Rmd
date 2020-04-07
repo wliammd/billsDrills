@@ -1,0 +1,22 @@
+# Correlation Plots
+
+```{r}
+iris
+iris %>% select(-Species) %>% cor()
+
+M <- iris %>% select(-Species) %>% cor(method = "kendall")
+```
+
+```{r}
+corrplot::corrplot(M)
+corrplot::corrplot(M, method = "color")
+corrplot::corrplot(M, method = "color", type = "upper")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black", tl.srt = 45)
+```
+
+
+
+

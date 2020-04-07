@@ -1,0 +1,26 @@
+# Sampling
+
+## Think about throwing a bunch of dice.
+
+```{r}
+sample(1:6, size=100, replace=TRUE) 
+sample(1:6, size=100, replace=TRUE) %>% table()
+sample(1:6, size=100, replace=TRUE) %>% table() %>% prop.table()
+```
+
+## A keen way to divide up a dataset into testing and training components. 
+```{r}
+x <- 1:50
+y <- 51:100
+
+df <- data.frame(x,y)
+df
+
+set.seed(0)
+train_indexes = sample(1:nrow(df), .7 * nrow(df))
+
+train_set <- df[train_indexes,]
+test_set <- df[-train_indexes,]
+```
+
+

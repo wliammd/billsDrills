@@ -1,0 +1,22 @@
+---
+title: "Bill's Drills Book"
+author: "William McDonald"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
+# Drills: Part of Every Healthy Intellectual Diet {#intro}
+
+The goal of this book is to organize my R drills into reasonable chunks, the better to understand my strengths and weaknesses, and to plan new forays into data science.
+
+Notes on **bookdown**: 
+
+  * the `_bookdown.yml` file contains a snippet that is important to inserting the word "Chapter" before the chapter number in each of the Rmd files. 
+  * packages are indicated in bold, like **dplyr**
+  * inline code and filenames are indicated in typerwriter face, like `_bookdown.yml`
+  * `_output.yml` is modified from that used by Xie in his `bookdown-demo` [@R-bookdown]; it evokes `style.css`, `toc.css`, `preamble.tex`, which are also borrowed from Xie. 

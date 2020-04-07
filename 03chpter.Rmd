@@ -1,0 +1,8 @@
+# Factor Practice
+
+```{r}
+cups <- c("small", "medium", "large")
+manyCups <- sample(cups, size = 100, replace = TRUE)
+sizesCups <- factor(manyCups, levels = c("small", "medium", "large"))
+sizesCups
+```

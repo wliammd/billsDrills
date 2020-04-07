@@ -1,0 +1,9 @@
+{
+    "path" : "~/Desktop/test-book",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
