@@ -8,6 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
+github-repo: https://github.com/wliammd/billsDrills
 ---
 
 # Drills: Part of Every Healthy Intellectual Diet {#intro}
