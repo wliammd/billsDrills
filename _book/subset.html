@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-04-07" />
+<meta name="date" content="2020-04-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,25 +187,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb72-3" data-line-number="3"><span class="kw">colnames</span>(education) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Region&quot;</span>,<span class="st">&quot;Urban.Population&quot;</span>,<span class="st">&quot;Per.Capita.Income&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)</a>
 <a class="sourceLine" id="cb72-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb72-5" data-line-number="5"><span class="kw">glimpse</span>(education)</a></code></pre></div>
+<pre><code>## Rows: 50
+## Columns: 7
+## $ X                      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
+## $ State                  &lt;chr&gt; &quot;ME&quot;, &quot;NH&quot;, &quot;VT&quot;, &quot;MA&quot;, &quot;RI&quot;, &quot;CT&quot;, &quot;NY&quot;, &quot;NJ&quot;…
+## $ Region                 &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2…
+## $ Urban.Population       &lt;int&gt; 508, 564, 322, 846, 871, 774, 856, 889, 715, 7…
+## $ Per.Capita.Income      &lt;int&gt; 3944, 4578, 4011, 5233, 4780, 5889, 5663, 5759…
+## $ Minor.Population       &lt;int&gt; 325, 323, 328, 305, 303, 307, 301, 310, 300, 3…
+## $ Education.Expenditures &lt;int&gt; 235, 231, 270, 261, 300, 317, 387, 285, 300, 2…</code></pre>
 <div id="subsetting-using-brackets" class="section level2">
 <h2><span class="header-section-number">9.1</span> Subsetting using brackets</h2>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">ed_exp1 &lt;-<span class="st"> </span>education[<span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>),<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="op">:</span><span class="dv">7</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">education[<span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>),<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="op">:</span><span class="dv">7</span>)]</a></code></pre></div>
+<pre><code>##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337</code></pre>
 </div>
 <div id="subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want" class="section level2">
 <h2><span class="header-section-number">9.2</span> Subset using brackets by omitting the rows and columns we don’t want</h2>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">ed_exp2 &lt;-<span class="st"> </span>education[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="op">:</span><span class="dv">50</span>),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">education[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="op">:</span><span class="dv">50</span>),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)]</a></code></pre></div>
+<pre><code>##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337</code></pre>
 </div>
 <div id="subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator" class="section level2">
 <h2><span class="header-section-number">9.3</span> Subset using brackets in combination with the which() function and the %in% operator</h2>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">ed_exp3 &lt;-<span class="st"> </span>education[<span class="kw">which</span>(education<span class="op">$</span>Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">names</span>(education) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">education[<span class="kw">which</span>(education<span class="op">$</span>Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">names</span>(education) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</a></code></pre></div>
+<pre><code>##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337</code></pre>
 </div>
 <div id="subset-using-the-subset-function" class="section level2">
 <h2><span class="header-section-number">9.4</span> Subset using the subset() function</h2>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">ed_exp4 &lt;-<span class="st"> </span><span class="kw">subset</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw">subset</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</a></code></pre></div>
+<pre><code>##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337</code></pre>
 </div>
 <div id="subset-using-dyplyrs-filter-and-select" class="section level2">
 <h2><span class="header-section-number">9.5</span> Subset using dyplyr’s filter() and select()</h2>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">ed_exp5 &lt;-<span class="st"> </span><span class="kw">select</span>(<span class="kw">filter</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">c</span>(State,Minor.Population<span class="op">:</span>Education.Expenditures))</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">select</span>(<span class="kw">filter</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">c</span>(State,Minor.Population<span class="op">:</span>Education.Expenditures))</a></code></pre></div>
+<pre><code>##    State Minor.Population Education.Expenditures
+## 1     OH              324                    221
+## 2     IN              329                    264
+## 3     IL              320                    308
+## 4     MI              337                    379
+## 5     WI              328                    342
+## 6     MN              330                    378
+## 7     IA              318                    232
+## 8     MO              309                    231
+## 9     ND              333                    246
+## 10    SD              330                    230
+## 11    NB              318                    268
+## 12    KS              304                    337</code></pre>
 
 </div>
 </div>
