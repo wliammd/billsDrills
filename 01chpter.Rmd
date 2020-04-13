@@ -45,6 +45,22 @@ starwars %>%
   geom_col() + coord_flip()
 ```
 
+The trick here is to use `group_by()` and `ungroup()` wisely. 
+
+```{r}
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5)) %>% 
+  group_by(species) %>% 
+  mutate(typeCount = n()) %>% 
+  ungroup() %>% 
+  mutate(species = fct_reorder(species, typeCount)) %>% 
+  ggplot()+
+  geom_bar(aes(species, fill = gender))+
+  coord_flip()
+```
+
+As opposed to using `count()`, which progressively narrows the information available to be used, by using `group_by()`/`mutate()`/`ungroup()` with `geom_bar()` we have all of the variables still available for plotting. 
+
 ## Summarize is another very useful function:
 
 ```{r}

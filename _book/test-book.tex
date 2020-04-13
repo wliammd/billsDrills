@@ -118,7 +118,7 @@
 
 \title{Bill's Drills Book}
 \author{William McDonald}
-\date{2020-04-07}
+\date{2020-04-12}
 
 \begin{document}
 \maketitle
@@ -141,9 +141,9 @@ Notes on \textbf{bookdown}:
 \item
   packages are indicated in bold, like \textbf{dplyr}
 \item
-  inline code and filenames are indicated in typerwriter face, like \texttt{\_bookdown.yml}
+  inline code and filenames are indicated in typerwriter face using backticks, like \texttt{\_bookdown.yml}
 \item
-  \texttt{\_output.yml} is modified from that used by Xie in his \texttt{bookdown-demo} \citep{R-bookdown}
+  \texttt{\_output.yml} is modified from that used by Xie in his \texttt{bookdown-demo} \citep{R-bookdown}; it evokes \texttt{style.css}, \texttt{toc.css}, \texttt{preamble.tex}, which are also borrowed from Xie.
 \end{itemize}
 
 \hypertarget{dataexploration}{%
@@ -158,10 +158,6 @@ I like Hadely Wickham's writing and find his approach exceptionally clear. There
 \KeywordTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'tibble' was built under R version 3.6.2
-\end{verbatim}
 
 \hypertarget{counting-things.-the-naming-of-parts.}{%
 \section{Counting things. The naming of parts.}\label{counting-things.-the-naming-of-parts.}}
@@ -225,6 +221,26 @@ Exploring this, I see that I'm getting warning messages about the implicit NA's 
 \end{verbatim}
 
 \includegraphics{test-book_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+The trick here is to use \texttt{group\_by()} and \texttt{ungroup()} wisely.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(species)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{species =} \KeywordTok{fct_lump}\NormalTok{(species, }\DecValTok{5}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(species) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{typeCount =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{species =} \KeywordTok{fct_reorder}\NormalTok{(species, typeCount)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(species, }\DataTypeTok{fill =}\NormalTok{ gender))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{coord_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+As opposed to using \texttt{count()}, which progressively narrows the information available to be used, by using \texttt{group\_by()}/\texttt{mutate()}/\texttt{ungroup()} with \texttt{geom\_bar()} we have all of the variables still available for plotting.
 
 \hypertarget{summarize-is-another-very-useful-function}{%
 \section{Summarize is another very useful function:}\label{summarize-is-another-very-useful-function}}
@@ -301,9 +317,9 @@ References appear automatically at the end of a chapter.
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 4 6 6 5 6 2 1 3 3 3 2 5 6 1 4 6 5 5 3 4 1 5 5 1 1 1 6 6 6 6 5 4 2 2 5 6 3
-##  [38] 6 6 5 1 5 3 3 5 6 4 6 3 3 2 5 1 3 3 5 1 1 2 3 5 5 2 3 2 3 6 3 1 1 3 6 1 3
-##  [75] 4 3 1 2 4 6 2 1 6 4 3 3 6 4 4 1 1 1 6 2 4 3 4 6 5 5
+##   [1] 1 5 5 2 4 1 3 4 1 2 3 3 6 6 1 1 5 3 3 2 3 4 2 2 3 3 3 4 6 5 4 6 5 1 3 6 5
+##  [38] 2 2 1 5 5 5 1 1 2 3 2 3 2 3 1 2 3 1 1 5 2 6 4 2 4 4 4 6 6 6 2 2 5 1 2 3 1
+##  [75] 5 5 3 3 2 4 3 6 1 6 1 6 5 5 6 5 3 4 4 5 3 1 3 4 5 2
 \end{verbatim}
 
 \begin{Shaded}
@@ -315,7 +331,7 @@ References appear automatically at the end of a chapter.
 \begin{verbatim}
 ## .
 ##  1  2  3  4  5  6 
-## 18 18 14 15 16 19
+## 18 20 20  7 14 21
 \end{verbatim}
 
 \begin{Shaded}
@@ -327,7 +343,7 @@ References appear automatically at the end of a chapter.
 \begin{verbatim}
 ## .
 ##    1    2    3    4    5    6 
-## 0.17 0.19 0.15 0.13 0.14 0.22
+## 0.18 0.20 0.20 0.16 0.12 0.14
 \end{verbatim}
 
 \hypertarget{a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components.}{%
@@ -454,7 +470,7 @@ From David Robinson birthday paradox Rblogger at \url{https://www.r-bloggers.com
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -469,7 +485,7 @@ From David Robinson birthday paradox Rblogger at \url{https://www.r-bloggers.com
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-9-2.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-10-2.pdf}
 
 \hypertarget{by-any-other-name}{%
 \chapter{By Any Other Name}\label{by-any-other-name}}
@@ -853,7 +869,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-1.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -861,7 +877,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-2.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -869,7 +885,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-3.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -877,7 +893,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-4.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-4.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -885,7 +901,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-5.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-5.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -893,7 +909,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-6.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-6.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -901,7 +917,7 @@ This deceptively simple-seeming idea gets complex quickly. The following YouTube
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{test-book_files/figure-latex/unnamed-chunk-12-7.pdf}
+\includegraphics{test-book_files/figure-latex/unnamed-chunk-13-7.pdf}
 
 \hypertarget{if_else-and-case_when-comparison}{%
 \chapter{if\_else() and case\_when(): Comparison}\label{if_else-and-case_when-comparison}}
@@ -1032,50 +1048,142 @@ Note: since this is down for maintenance, I will turn off evaluation on these ch
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Rows: 50
+## Columns: 7
+## $ X                      <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1...
+## $ State                  <chr> "ME", "NH", "VT", "MA", "RI", "CT", "NY", "N...
+## $ Region                 <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2,...
+## $ Urban.Population       <int> 508, 564, 322, 846, 871, 774, 856, 889, 715,...
+## $ Per.Capita.Income      <int> 3944, 4578, 4011, 5233, 4780, 5889, 5663, 57...
+## $ Minor.Population       <int> 325, 323, 328, 305, 303, 307, 301, 310, 300,...
+## $ Education.Expenditures <int> 235, 231, 270, 261, 300, 317, 387, 285, 300,...
+\end{verbatim}
+
 \hypertarget{subsetting-using-brackets}{%
 \section{Subsetting using brackets}\label{subsetting-using-brackets}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ed_exp1 <-}\StringTok{ }\NormalTok{education[}\KeywordTok{c}\NormalTok{(}\DecValTok{10}\OperatorTok{:}\DecValTok{21}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{6}\OperatorTok{:}\DecValTok{7}\NormalTok{)]}
+\NormalTok{education[}\KeywordTok{c}\NormalTok{(}\DecValTok{10}\OperatorTok{:}\DecValTok{21}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{6}\OperatorTok{:}\DecValTok{7}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337
+\end{verbatim}
 
 \hypertarget{subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want}{%
 \section{Subset using brackets by omitting the rows and columns we don't want}\label{subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ed_exp2 <-}\StringTok{ }\NormalTok{education[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{,}\DecValTok{22}\OperatorTok{:}\DecValTok{50}\NormalTok{),}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{)]}
+\NormalTok{education[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{,}\DecValTok{22}\OperatorTok{:}\DecValTok{50}\NormalTok{),}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337
+\end{verbatim}
 
 \hypertarget{subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator}{%
 \section{Subset using brackets in combination with the which() function and the \%in\% operator}\label{subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ed_exp3 <-}\StringTok{ }\NormalTok{education[}\KeywordTok{which}\NormalTok{(education}\OperatorTok{$}\NormalTok{Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{),}\KeywordTok{names}\NormalTok{(education) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"State"}\NormalTok{,}\StringTok{"Minor.Population"}\NormalTok{,}\StringTok{"Education.Expenditures"}\NormalTok{)]}
+\NormalTok{education[}\KeywordTok{which}\NormalTok{(education}\OperatorTok{$}\NormalTok{Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{),}\KeywordTok{names}\NormalTok{(education) }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"State"}\NormalTok{,}\StringTok{"Minor.Population"}\NormalTok{,}\StringTok{"Education.Expenditures"}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337
+\end{verbatim}
 
 \hypertarget{subset-using-the-subset-function}{%
 \section{Subset using the subset() function}\label{subset-using-the-subset-function}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ed_exp4 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(education, Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{, }\DataTypeTok{select =} \KeywordTok{c}\NormalTok{(}\StringTok{"State"}\NormalTok{,}\StringTok{"Minor.Population"}\NormalTok{,}\StringTok{"Education.Expenditures"}\NormalTok{))}
+\KeywordTok{subset}\NormalTok{(education, Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{, }\DataTypeTok{select =} \KeywordTok{c}\NormalTok{(}\StringTok{"State"}\NormalTok{,}\StringTok{"Minor.Population"}\NormalTok{,}\StringTok{"Education.Expenditures"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##    State Minor.Population Education.Expenditures
+## 10    OH              324                    221
+## 11    IN              329                    264
+## 12    IL              320                    308
+## 13    MI              337                    379
+## 14    WI              328                    342
+## 15    MN              330                    378
+## 16    IA              318                    232
+## 17    MO              309                    231
+## 18    ND              333                    246
+## 19    SD              330                    230
+## 20    NB              318                    268
+## 21    KS              304                    337
+\end{verbatim}
 
 \hypertarget{subset-using-dyplyrs-filter-and-select}{%
 \section{Subset using dyplyr's filter() and select()}\label{subset-using-dyplyrs-filter-and-select}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ed_exp5 <-}\StringTok{ }\KeywordTok{select}\NormalTok{(}\KeywordTok{filter}\NormalTok{(education, Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{),}\KeywordTok{c}\NormalTok{(State,Minor.Population}\OperatorTok{:}\NormalTok{Education.Expenditures))}
+\KeywordTok{select}\NormalTok{(}\KeywordTok{filter}\NormalTok{(education, Region }\OperatorTok{==}\StringTok{ }\DecValTok{2}\NormalTok{),}\KeywordTok{c}\NormalTok{(State,Minor.Population}\OperatorTok{:}\NormalTok{Education.Expenditures))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##    State Minor.Population Education.Expenditures
+## 1     OH              324                    221
+## 2     IN              329                    264
+## 3     IL              320                    308
+## 4     MI              337                    379
+## 5     WI              328                    342
+## 6     MN              330                    378
+## 7     IA              318                    232
+## 8     MO              309                    231
+## 9     ND              333                    246
+## 10    SD              330                    230
+## 11    NB              318                    268
+## 12    KS              304                    337
+\end{verbatim}
 
 \bibliography{book.bib,packages.bib}
 
