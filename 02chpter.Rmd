@@ -21,6 +21,10 @@ train_indexes = sample(1:nrow(df), .7 * nrow(df))
 
 train_set <- df[train_indexes,]
 test_set <- df[-train_indexes,]
+
+train_set
+
+test_set
 ```
 
 

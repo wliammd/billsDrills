@@ -2,7 +2,7 @@
 
 Data exploration is one of the most important aspects of data science and forms the cornerstone of my drills. Nonetheless, I have lots of room for improvement.
 
-I like Hadely Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the *tidyverse*. 
+I like Hadely Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the **tidyverse**. 
 
 ```{r, message=FALSE}
 library(tidyverse)

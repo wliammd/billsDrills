@@ -1,7 +1,7 @@
 # Correlation Plots
 
 ```{r}
-iris
+head(iris)
 iris %>% select(-Species) %>% cor()
 
 M <- iris %>% select(-Species) %>% cor(method = "kendall")

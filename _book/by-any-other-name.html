@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-04-12" />
+<meta name="date" content="2020-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,70 +181,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="by-any-other-name" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> By Any Other Name</h1>
 <p>This deceptively simple-seeming idea gets complex quickly. The following YouTube was a nice description of the process: <a href="https://www.youtube.com/watch?v=Okc0IL5uTnA" class="uri">https://www.youtube.com/watch?v=Okc0IL5uTnA</a></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">my.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colOne=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">column2=</span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">column_3=</span><span class="dv">7</span><span class="op">:</span><span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw">rownames</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ant&quot;</span>, <span class="st">&quot;bee&quot;</span>, <span class="st">&quot;cat&quot;</span>)</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="kw">names</span>(my.data)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">my.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colOne=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">column2=</span><span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">column_3=</span><span class="dv">7</span><span class="op">:</span><span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">rownames</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ant&quot;</span>, <span class="st">&quot;bee&quot;</span>, <span class="st">&quot;cat&quot;</span>)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">names</span>(my.data)</a></code></pre></div>
 <pre><code>## [1] &quot;colOne&quot;   &quot;column2&quot;  &quot;column_3&quot;</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">colnames</span>(my.data)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">colnames</span>(my.data)</a></code></pre></div>
 <pre><code>## [1] &quot;colOne&quot;   &quot;column2&quot;  &quot;column_3&quot;</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co">#make some changes</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">names</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;col_1&quot;</span>, <span class="st">&quot;col_2&quot;</span>, <span class="st">&quot;col_3&quot;</span>)</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co">#make some changes</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">names</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;col_1&quot;</span>, <span class="st">&quot;col_2&quot;</span>, <span class="st">&quot;col_3&quot;</span>)</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">my.data</a></code></pre></div>
 <pre><code>##     col_1 col_2 col_3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="dv">3</span>] &lt;-<span class="st"> &quot;col.3&quot;</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="dv">3</span>] &lt;-<span class="st"> &quot;col.3&quot;</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##     col_1 col_2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="kw">names</span>(my.data)<span class="op">==</span><span class="st">&quot;col_2&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="kw">names</span>(my.data)<span class="op">==</span><span class="st">&quot;col_2&quot;</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;col_2&quot;</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">my.data[<span class="st">&quot;col_2&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">my.data[<span class="st">&quot;col_2&quot;</span>]</a></code></pre></div>
 <pre><code>##     col_2
 ## ant     4
 ## bee     5
 ## cat     6</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">my.data<span class="op">$</span>col_<span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">my.data<span class="op">$</span>col_<span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 4 5 6</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">my.data[,<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">my.data[,<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 4 5 6</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="kw">names</span>(my.data)<span class="op">==</span><span class="st">&quot;col_2&quot;</span>] &lt;-<span class="st"> &quot;col.2&quot;</span></a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">names</span>(my.data)[<span class="kw">names</span>(my.data)<span class="op">==</span><span class="st">&quot;col_2&quot;</span>] &lt;-<span class="st"> &quot;col.2&quot;</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##     col_1 col.2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">names</span>(my.data) &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="kw">names</span>(my.data))</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">names</span>(my.data) &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="kw">names</span>(my.data))</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##     col.1 col.2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">rownames</span>(my.data)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">rownames</span>(my.data)</a></code></pre></div>
 <pre><code>## [1] &quot;ant&quot; &quot;bee&quot; &quot;cat&quot;</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">my.data<span class="op">$</span>species &lt;-<span class="st"> </span><span class="kw">rownames</span>(my.data)</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">my.data<span class="op">$</span>species &lt;-<span class="st"> </span><span class="kw">rownames</span>(my.data)</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##     col.1 col.2 col.3 species
 ## ant     1     4     7     ant
 ## bee     2     5     8     bee
 ## cat     3     6     9     cat</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">rownames</span>(my.data) &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">rownames</span>(my.data) &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##   col.1 col.2 col.3 species
 ## 1     1     4     7     ant
 ## 2     2     5     8     bee
 ## 3     3     6     9     cat</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">colnames</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;best&quot;</span>, <span class="st">&quot;species&quot;</span>)</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">my.data</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">colnames</span>(my.data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;best&quot;</span>, <span class="st">&quot;species&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">my.data</a></code></pre></div>
 <pre><code>##   good better best species
 ## 1    1      4    7     ant
 ## 2    2      5    8     bee
 ## 3    3      6    9     cat</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">keep &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(my.data)</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2">my.data[,keep]</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">keep &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(my.data)</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">my.data[,keep]</a></code></pre></div>
 <pre><code>##   better best species
 ## 1      4    7     ant
 ## 2      5    8     bee
