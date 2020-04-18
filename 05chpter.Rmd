@@ -1,39 +1,27 @@
-# By Any Other Name {#changenames}
+# Crossing Trial {#crossingtrial}
 
-This deceptively simple-seeming idea gets complex quickly. The following YouTube was a nice description of the process: <https://www.youtube.com/watch?v=Okc0IL5uTnA>
+From David Robinson birthday paradox Rblogger at <https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/>
 
 ```{r}
-my.data <- data.frame(colOne=1:3, column2=4:6, column_3=7:9)
-rownames(my.data) <- c("ant", "bee", "cat")
-names(my.data)
-colnames(my.data)
+summarized <- crossing(people = seq(2, 50, 2),
+                       trial = 1:100) %>%
+  mutate(birthday = map(people, ~ sample(365, .x, replace = TRUE)),
+         multiple = map_lgl(birthday, ~ any(duplicated(.x)))) %>%
+  group_by(people) %>%
+  summarize(chance = mean(multiple))
 
-#make some changes
-names(my.data) <- c("col_1", "col_2", "col_3")
-my.data
-names(my.data)[3] <- "col.3"
-my.data
+ggplot(summarized, aes(people, chance)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(y = "Probability two have the same birthday")
 
-names(my.data)[names(my.data)=="col_2"]
-my.data["col_2"]
-my.data$col_2
-my.data[,2]
-
-names(my.data)[names(my.data)=="col_2"] <- "col.2"
-my.data
-
-names(my.data) <- gsub("_", ".", names(my.data))
-my.data
-
-rownames(my.data)
-my.data$species <- rownames(my.data)
-my.data
-rownames(my.data) <- NULL
-my.data
-colnames(my.data) <- c("good", "better", "best", "species")
-my.data
-
-keep <- 2:ncol(my.data)
-my.data[,keep]
+# Checking the work with pbirthday function
+summarized %>% 
+  mutate(exact = map_dbl(people, pbirthday)) %>% 
+  ggplot(aes(people, chance)) +
+  geom_line() +
+  geom_line(aes(y = exact), lty = 2, color = "blue") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(y = "Probability two have the same birthday")
 ```
 

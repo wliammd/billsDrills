@@ -1,30 +1,72 @@
-# Sampling {#sampling}
+# Data Exploration {#dataexploration}
 
-## Think about throwing a bunch of dice.
+Data exploration is one of the most important aspects of data science and forms the cornerstone of my drills. Nonetheless, I have lots of room for improvement.
 
-```{r}
-sample(1:6, size=100, replace=TRUE) 
-sample(1:6, size=100, replace=TRUE) %>% table()
-sample(1:6, size=100, replace=TRUE) %>% table() %>% prop.table()
+I like Hadely Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the **tidyverse**. 
+
+```{r, message=FALSE}
+library(tidyverse)
 ```
 
-## A keen way to divide up a dataset into testing and training components. 
-```{r}
-x <- 1:50
-y <- 51:100
+## Counting things. The naming of parts. 
 
-df <- data.frame(x,y)
-df
-
-set.seed(0)
-train_indexes = sample(1:nrow(df), .7 * nrow(df))
-
-train_set <- df[train_indexes,]
-test_set <- df[-train_indexes,]
-
-train_set
-
-test_set
+```{r starfig-1, fig.cap='Starwars Figure 1'}
+starwars %>% 
+  filter(!is.na(species)) %>% 
+  count(species = fct_lump(species, 5), sort = TRUE) %>% 
+  mutate(species = fct_reorder(species, n)) %>% 
+  ggplot(aes(species, n)) + 
+  geom_col() + coord_flip()
 ```
 
+I like stacked bars for their economy, but it's easy to over do it. Supperimposing gender onto the columns seems easy...
 
+```{r starfig-2, fig.cap='Starwars Figure 2'}
+starwars %>% 
+  filter(!is.na(species)) %>% 
+  count(species = fct_lump(species, 5), gender = fct_lump(gender, 2), sort = TRUE) %>% 
+  mutate(species = fct_reorder(species, n)) %>% 
+  ggplot(aes(species, n, fill = gender)) + 
+  geom_col() + coord_flip()
+```
+
+But note that I've got a problem: the Droids, which outnumber the Gungans, are now reordered to _after_ the Gungans. This happens because the $n$ that we're counting comprises subcategories of species _and_ gender.  Only three Gungan males exist (and no females), but that is enough to tie the Droid NA category. The Droid NA category come after the Gungan category, presumably because _male_ comes before _NA_, or because NA comes last (more likely). 
+
+Exploring this, I see that I'm getting warning messages about the implicit NA's in gender. Note that the following renders a slightly different plot. I _still_ have not fixed the order of the species. 
+
+
+```{r starfig-3, fig.cap='Starwars Figure 3'}
+starwars %>% 
+  filter(!is.na(species)) %>% 
+  count(species = fct_lump(species, 5), gender = fct_lump(gender, 2), sort = TRUE) %>% 
+  mutate(gender = fct_explicit_na(gender),
+         species = fct_reorder(species, n)) %>% 
+  ggplot(aes(species, n, fill = gender)) + 
+  geom_col() + coord_flip()
+```
+
+The trick here is to use `group_by()` and `ungroup()` wisely. 
+
+```{r starfig-4, fig.cap='Starwars Figure 4'}
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5)) %>% 
+  group_by(species) %>% 
+  mutate(typeCount = n()) %>% 
+  ungroup() %>% 
+  mutate(species = fct_reorder(species, typeCount)) %>% 
+  ggplot()+
+  geom_bar(aes(species, fill = gender))+
+  coord_flip()
+```
+
+As opposed to using `count()`, which progressively narrows the information available to be used, by using `group_by()`/`mutate()`/`ungroup()` with `geom_bar()` we have all of the variables still available for plotting. 
+
+## Summarize is another very useful function:
+
+```{r}
+starwars %>% 
+  filter(!(is.na(species))) %>% 
+  group_by(species) %>% 
+  summarize(n=n(), mean = mean(height, na.rm = TRUE)) %>% 
+  arrange(desc(n))
+```

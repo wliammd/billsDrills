@@ -1,29 +1,22 @@
-# if_else() and case_when(): Comparison {#ifelsecasewhen}
-
-## case_when()
-
-case_when() from <https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when>
+# Correlation Plots {#correlation}
 
 ```{r}
-x <- 1:50
-y <- 51:100
+head(iris)
+iris %>% select(-Species) %>% cor()
 
-df <- data.frame(x,y)
-df
-
-case_when(
-  x %% 35 == 0 ~ "fizz buzz",
-  x %% 5 == 0 ~ "fizz",
-  x %% 7 == 0 ~ "buzz",
-  TRUE ~ as.character(x)
-)
+M <- iris %>% select(-Species) %>% cor(method = "kendall")
 ```
 
-
-## Compare this with if_else()
 ```{r}
-if_else(x %% 2 == 0, "even", "odd")
+corrplot::corrplot(M)
+corrplot::corrplot(M, method = "color")
+corrplot::corrplot(M, method = "color", type = "upper")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black", tl.srt = 45)
 ```
+
 
 
 

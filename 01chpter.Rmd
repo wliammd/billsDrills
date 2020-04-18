@@ -1,75 +1,10 @@
-# Data Exploration {#dataexploration}
+# bookdown Tips for This Document {#bookdownplan}
 
-Data exploration is one of the most important aspects of data science and forms the cornerstone of my drills. Nonetheless, I have lots of room for improvement.
-
-I like Hadely Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the **tidyverse**. 
-
-```{r, message=FALSE}
-library(tidyverse)
-```
-
-## Counting things. The naming of parts. 
-
-```{r starfig-1, fig.cap='Starwars Figure 1'}
-starwars %>% 
-  filter(!is.na(species)) %>% 
-  count(species = fct_lump(species, 5), sort = TRUE) %>% 
-  mutate(species = fct_reorder(species, n)) %>% 
-  ggplot(aes(species, n)) + 
-  geom_col() + coord_flip()
-```
-
-I like stacked bars for their economy, but it's easy to over do it. Supperimposing gender onto the columns seems easy...
-
-```{r}
-starwars %>% 
-  filter(!is.na(species)) %>% 
-  count(species = fct_lump(species, 5), gender = fct_lump(gender, 2), sort = TRUE) %>% 
-  mutate(species = fct_reorder(species, n)) %>% 
-  ggplot(aes(species, n, fill = gender)) + 
-  geom_col() + coord_flip()
-```
-
-But note that I've got a problem: the Droids, which outnumber the Gungans, are now reordered to _after_ the Gungans. This happens because the $n$ that we're counting comprises subcategories of species _and_ gender.  Only three Gungan males exist (and no females), but that is enough to tie the Droid NA category. The Droid NA category come after the Gungan category, presumably because _male_ comes before _NA_, or because NA comes last (more likely). 
-
-Exploring this, I see that I'm getting warning messages about the implicit NA's in gender. Note that the following renders a slightly different plot. I _still_ have not fixed the order of the species. 
-
-
-```{r}
-starwars %>% 
-  filter(!is.na(species)) %>% 
-  count(species = fct_lump(species, 5), gender = fct_lump(gender, 2), sort = TRUE) %>% 
-  mutate(gender = fct_explicit_na(gender),
-         species = fct_reorder(species, n)) %>% 
-  ggplot(aes(species, n, fill = gender)) + 
-  geom_col() + coord_flip()
-```
-
-The trick here is to use `group_by()` and `ungroup()` wisely. 
-
-```{r}
-starwars %>% filter(!is.na(species)) %>% 
-  mutate(species = fct_lump(species, 5)) %>% 
-  group_by(species) %>% 
-  mutate(typeCount = n()) %>% 
-  ungroup() %>% 
-  mutate(species = fct_reorder(species, typeCount)) %>% 
-  ggplot()+
-  geom_bar(aes(species, fill = gender))+
-  coord_flip()
-```
-
-As opposed to using `count()`, which progressively narrows the information available to be used, by using `group_by()`/`mutate()`/`ungroup()` with `geom_bar()` we have all of the variables still available for plotting. 
-
-## Summarize is another very useful function:
-
-```{r}
-starwars %>% 
-  filter(!(is.na(species))) %>% 
-  group_by(species) %>% 
-  summarize(n=n(), mean = mean(height, na.rm = TRUE)) %>% 
-  arrange(desc(n))
-```
+## Basic conventions 
+  * the `_bookdown.yml` file contains a snippet that is important to inserting the word "Chapter" before the chapter number in each of the Rmd files. 
+  * packages are indicated in bold, like **dplyr**
+  * inline code and filenames are indicated in typerwriter face using backticks, like `_bookdown.yml`
+  * `_output.yml` is modified from that used by Xie in his `bookdown-demo` [@R-bookdown]; it evokes `style.css`, `toc.css`, `preamble.tex`, which are also borrowed from Xie. 
 
 ## Referencing other parts of the document
 
@@ -83,19 +18,32 @@ See Chapter \@ref(dataexploration)
 
 Note that the {#label} uses a single run-together word. It does not tolerate spaces and this cannot be overcome by 'quoting' it. 
 
+## Inserting pictures
+
+Pictures can be included in the `test-book_files` subdirectories and referenced like this: 
+
+![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](_bookdown_files/pathologyImages/TpitIHC.jpg)
+
+Some of the subdirectories throw an error in building the book, so I settled on `_bookdown_files/pathologyImages` as the location.
+
+Also, I note that the build does not generate the caption unless the reference is on it's own line. 
+
+Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size:
+
+![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](_bookdown_files/pathologyImages/TpitIHC.jpg){#id .class width=50% height=50%}
+
 ## Referencing citations:
 
-In order to insert citations, one needs a .bib file in the project. I've included one in this project as *book.bib*. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
+In order to insert citations, one needs a .bib file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
 
 To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly [@R-bookdown]. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the book.bib and packages.bib files carefully, with .txt files generated in Endnote, I should be OK.
 
-For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from bookFromEndnot.text to book.bib. 
+For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from bookFromEndnot.text to book.bib.
 
 Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for R packages:
 
 ```{r}
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ComplexHeatmap'), 'packages.bib')
 ```
-
 
 References appear automatically at the end of a chapter. 

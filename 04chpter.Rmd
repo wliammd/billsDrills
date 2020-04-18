@@ -1,27 +1,8 @@
-# Crossing Trial {#crossingtrial}
-
-From David Robinson birthday paradox Rblogger at <https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/>
+# Factor Practice {#factorpractice}
 
 ```{r}
-summarized <- crossing(people = seq(2, 50, 2),
-                       trial = 1:100) %>%
-  mutate(birthday = map(people, ~ sample(365, .x, replace = TRUE)),
-         multiple = map_lgl(birthday, ~ any(duplicated(.x)))) %>%
-  group_by(people) %>%
-  summarize(chance = mean(multiple))
-
-ggplot(summarized, aes(people, chance)) +
-  geom_line() +
-  scale_y_continuous(labels = scales::percent_format()) +
-  labs(y = "Probability two have the same birthday")
-
-# Checking the work with pbirthday function
-summarized %>% 
-  mutate(exact = map_dbl(people, pbirthday)) %>% 
-  ggplot(aes(people, chance)) +
-  geom_line() +
-  geom_line(aes(y = exact), lty = 2, color = "blue") +
-  scale_y_continuous(labels = scales::percent_format()) +
-  labs(y = "Probability two have the same birthday")
+cups <- c("small", "medium", "large")
+manyCups <- sample(cups, size = 100, replace = TRUE)
+sizesCups <- factor(manyCups, levels = c("small", "medium", "large"))
+sizesCups
 ```
-
