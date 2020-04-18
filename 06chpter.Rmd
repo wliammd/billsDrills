@@ -1,4 +1,4 @@
-# Correlation Plots
+# Correlation Plots {#correlation}
 
 ```{r}
 head(iris)

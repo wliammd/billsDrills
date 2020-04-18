@@ -1,4 +1,4 @@
-# Crossing Trial
+# Crossing Trial {#crossingtrial}
 
 From David Robinson birthday paradox Rblogger at <https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/>
 

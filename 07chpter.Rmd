@@ -1,4 +1,4 @@
-# if_else() and case_when(): Comparison
+# if_else() and case_when(): Comparison {#ifelsecasewhen}
 
 ## case_when()
 

@@ -1,4 +1,4 @@
-# Factor Practice
+# Factor Practice {#factorpractice}
 
 ```{r}
 cups <- c("small", "medium", "large")
