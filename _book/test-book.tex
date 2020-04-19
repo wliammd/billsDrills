@@ -118,7 +118,7 @@
 
 \title{Bill's Drills Book}
 \author{William McDonald}
-\date{2020-04-18}
+\date{2020-04-19}
 
 \begin{document}
 \maketitle
@@ -148,6 +148,8 @@ The goal of this book is to organize my R drills into reasonable chunks, the bet
   inline code and filenames are indicated in typerwriter face using backticks, like \texttt{\_bookdown.yml}
 \item
   \texttt{\_output.yml} is modified from that used by Xie in his \texttt{bookdown-demo} \citep{R-bookdown}; it evokes \texttt{style.css}, \texttt{toc.css}, \texttt{preamble.tex}, which are also borrowed from Xie.
+\item
+  chapters are set in order by using adding 01, 02, 03, \ldots{} before the name of their Rmd, like \texttt{01chpter.Rmd}. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag.
 \end{itemize}
 
 \hypertarget{referencing-other-parts-of-the-document}{%
@@ -358,9 +360,9 @@ As opposed to using \texttt{count()}, which progressively narrows the informatio
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 4 3 1 2 3 1 6 6 4 3 6 6 4 4 6 4 5 5 1 6 4 2 4 2 5 6 2 2 4 2 3 1 5 5 3 5 1
-##  [38] 6 3 6 4 3 2 6 3 1 1 4 5 2 3 2 1 3 5 1 6 4 3 4 3 6 4 4 3 4 4 6 6 3 1 2 4 5
-##  [75] 2 5 3 2 5 2 2 6 5 2 3 1 2 2 6 3 3 5 3 4 1 5 3 4 3 4
+##   [1] 4 3 6 3 4 2 1 4 1 4 4 3 4 2 2 1 3 3 3 2 6 4 4 3 3 4 1 5 3 6 3 1 1 2 2 5 2
+##  [38] 2 6 3 5 3 5 3 4 6 4 3 2 3 2 6 1 5 6 1 4 4 4 2 1 5 1 6 3 1 5 2 6 1 2 3 6 3
+##  [75] 1 4 5 5 4 6 6 4 5 2 6 2 6 6 1 6 2 2 3 6 4 2 6 4 6 6
 \end{verbatim}
 
 \begin{Shaded}
@@ -372,7 +374,7 @@ As opposed to using \texttt{count()}, which progressively narrows the informatio
 \begin{verbatim}
 ## .
 ##  1  2  3  4  5  6 
-## 16 12 22 13 20 17
+## 22 18 17 14 18 11
 \end{verbatim}
 
 \begin{Shaded}
@@ -384,7 +386,7 @@ As opposed to using \texttt{count()}, which progressively narrows the informatio
 \begin{verbatim}
 ## .
 ##    1    2    3    4    5    6 
-## 0.16 0.19 0.16 0.13 0.12 0.24
+## 0.23 0.15 0.12 0.18 0.21 0.11
 \end{verbatim}
 
 \hypertarget{a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components.}{%

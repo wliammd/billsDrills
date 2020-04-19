@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  18 APR 2020 11:07
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  19 APR 2020 12:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1282,16 +1282,16 @@ LLECTUAL DIET
 
 ]
 Chapter 2.
-File: _bookdown_files/pathologyImages/TpitIHC.jpg Graphic file (type bmp)
-<_bookdown_files/pathologyImages/TpitIHC.jpg>
-
-LaTeX Warning: Float too large for page by 3.52321pt on input line 175.
-
 [7]
 File: _bookdown_files/pathologyImages/TpitIHC.jpg Graphic file (type bmp)
 <_bookdown_files/pathologyImages/TpitIHC.jpg>
+
+LaTeX Warning: Float too large for page by 3.52321pt on input line 177.
+
+File: _bookdown_files/pathologyImages/TpitIHC.jpg Graphic file (type bmp)
+<_bookdown_files/pathologyImages/TpitIHC.jpg>
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 204.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 206.
 [8] [9] [10]
 Chapter 3.
 File: test-book_files/figure-latex/starfig-1-1.pdf Graphic file (type pdf)
@@ -1311,15 +1311,15 @@ File: test-book_files/figure-latex/starfig-4-1.pdf Graphic file (type pdf)
 ]
 Chapter 4.
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 364--364
-[]\TU/lmtt/m/n/10 ##   [1] 4 3 1 2 3 1 6 6 4 3 6 6 4 4 6 4 5 5 1 6 4 2 4 2 5 6 
-2 2 4 2 3 1 5 5 3 5 1[] 
+Overfull \hbox (85.5pt too wide) in paragraph at lines 366--366
+[]\TU/lmtt/m/n/10 ##   [1] 4 3 6 3 4 2 1 4 1 4 4 3 4 2 2 1 3 3 3 2 6 4 4 3 3 4 
+1 5 3 6 3 1 1 2 2 5 2[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 364--364
-[]\TU/lmtt/m/n/10 ##  [38] 6 3 6 4 3 2 6 3 1 1 4 5 2 3 2 1 3 5 1 6 4 3 4 3 6 4 
-4 3 4 4 6 6 3 1 2 4 5[] 
+Overfull \hbox (85.5pt too wide) in paragraph at lines 366--366
+[]\TU/lmtt/m/n/10 ##  [38] 2 6 3 5 3 5 3 4 6 4 3 2 3 2 6 1 5 6 1 4 4 4 2 1 5 1 
+6 3 1 5 2 6 1 2 3 6 3[] 
  []
 
 [17] [18]
@@ -1333,61 +1333,61 @@ NG COMPONENTS. \TU/lmr/m/n/10 19
 ]
 Chapter 5.
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##   [1] medium medium medium medium large  small  large  sma
 ll  small  small[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [11] small  medium small  small  medium medium medium sma
 ll  large  small[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 497--497
+Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [21] large  medium medium medium medium large  medium sma
 ll  large  medium[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 497--497
+Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [31] small  small  large  medium medium large  large  med
 ium medium medium[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 497--497
+Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [41] medium small  medium medium medium medium small  lar
 ge  large  medium[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [51] large  large  medium large  large  small  small  sma
 ll  small  large[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [61] medium large  small  small  medium small  small  sma
 ll  small  large[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [71] medium small  small  large  large  large  medium med
 ium medium large[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [81] medium medium large  large  large  small  medium med
 ium small  large[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 497--497
+Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
 []\TU/lmtt/m/n/10 ##  [91] large  medium large  medium small  medium small  lar
 ge  large  small[] 
  []
@@ -1470,25 +1470,25 @@ Chapter 9.
 [39
 
 ]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 918--918
+Overfull \hbox (27.75pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ##  [1] "1"         "2"         "3"         "4"         "fizz
 "      "6"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
+Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ##  [7] "buzz"      "8"         "9"         "fizz"      "11" 
        "12"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
+Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [13] "13"        "buzz"      "fizz"      "16"        "17" 
        "18"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
+Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [19] "19"        "fizz"      "buzz"      "22"        "23" 
        "24"[] 
  []
@@ -1497,55 +1497,55 @@ Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [40]
-Overfull \hbox (43.5pt too wide) in paragraph at lines 918--918
+Overfull \hbox (43.5pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [25] "fizz"      "26"        "27"        "buzz"      "29" 
        "fizz"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
+Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [31] "31"        "32"        "33"        "34"        "fizz
  buzz" "36"[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 918--918
+Overfull \hbox (43.5pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [37] "37"        "38"        "39"        "fizz"      "41" 
        "buzz"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 918--918
+Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
 []\TU/lmtt/m/n/10 ## [43] "43"        "44"        "fizz"      "46"        "47" 
        "48"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 935--935
+Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
 []\TU/lmtt/m/n/10 ##  [1] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
 n" "odd"  "even"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 935--935
+Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
 []\TU/lmtt/m/n/10 ## [11] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
 n" "odd"  "even"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 935--935
+Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
 []\TU/lmtt/m/n/10 ## [21] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
 n" "odd"  "even"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 935--935
+Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
 []\TU/lmtt/m/n/10 ## [31] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
 n" "odd"  "even"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 935--935
+Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
 []\TU/lmtt/m/n/10 ## [41] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
 n" "odd"  "even"[] 
  []
@@ -1555,60 +1555,60 @@ n" "odd"  "even"[]
 ]
 Chapter 10.
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ X                      <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 
 10, 11, 12, 13, 1...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ State                  <chr> "ME", "NH", "VT", "MA", "RI
 ", "CT", "NY", "N...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ Region                 <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 2, 2, 2, 2, 2, 2,...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ Urban.Population       <int> 508, 564, 322, 846, 871, 77
 4, 856, 889, 715,...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ Per.Capita.Income      <int> 3944, 4578, 4011, 5233, 478
 0, 5889, 5663, 57...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ Minor.Population       <int> 325, 323, 328, 305, 303, 30
 7, 301, 310, 300,...[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 964--964
+Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
 []\TU/lmtt/m/n/10 ## $ Education.Expenditures <int> 235, 231, 270, 261, 300, 31
 7, 387, 285, 300,...[] 
  []
 
 [43] [44] [45] (./test-book.bbl [46])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1093.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1095.
 [47
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1093.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1095.
 (./test-book.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1093.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1093.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1095.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1095.
 
 Package rerunfilecheck Info: File `test-book.out' has not changed.
 (rerunfilecheck)             Checksum: BD2EDC1FE095F0FCD08F93987089B623.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1093.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1095.
  ) 
 Here is how much of TeX's memory you used:
  25473 strings out of 492970
