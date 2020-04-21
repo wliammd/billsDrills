@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  19 APR 2020 12:04
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  19 APR 2020 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -894,7 +894,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip62
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count288
-) (./test-book.aux)
+)
+No file test-book.aux.
 \openout1 = `test-book.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 123.
@@ -1204,9 +1205,11 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 123.
 LaTeX Info: Redefining \pageref on input line 123.
 LaTeX Info: Redefining \nameref on input line 123.
-(./test-book.out) (./test-book.out)
 \@outlinefile=\write4
 \openout4 = `test-book.out'.
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 125.
@@ -1247,32 +1250,15 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ] [2
 
-] (./test-book.toc
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.01236pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.98074pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00015pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.01247pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.9808pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99985pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.01224pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.98067pt on input line 3.
-[3])
+]
 \tf@toc=\write5
 \openout5 = `test-book.toc'.
 
-[4]
-Chapter 1.
-[5
+[3] [4
 
 ]
+Chapter 1.
+[5]
 Overfull \hbox (11.03452pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 6 \TU/lmr/m/sl/10 CHAPTER 1.  DRILLS: PART OF EVERY HEALTHY INTE
 LLECTUAL DIET
@@ -1282,341 +1268,42 @@ LLECTUAL DIET
 
 ]
 Chapter 2.
+
+Package natbib Warning: Citation `R-bookdown' on page 7 undefined on input line
+ 150.
+
+
+LaTeX Warning: Reference `fig:starfig-1' on page 7 undefined on input line 158.
+
+
+
+LaTeX Warning: Reference `subset' on page 7 undefined on input line 160.
+
+
+LaTeX Warning: Reference `intro' on page 7 undefined on input line 162.
+
+
+LaTeX Warning: Reference `dataexploration' on page 7 undefined on input line 16
+4.
+
 [7]
-File: _bookdown_files/pathologyImages/TpitIHC.jpg Graphic file (type bmp)
-<_bookdown_files/pathologyImages/TpitIHC.jpg>
 
-LaTeX Warning: Float too large for page by 3.52321pt on input line 177.
-
-File: _bookdown_files/pathologyImages/TpitIHC.jpg Graphic file (type bmp)
-<_bookdown_files/pathologyImages/TpitIHC.jpg>
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 206.
-[8] [9] [10]
-Chapter 3.
-File: test-book_files/figure-latex/starfig-1-1.pdf Graphic file (type pdf)
-<use test-book_files/figure-latex/starfig-1-1.pdf>
-File: test-book_files/figure-latex/starfig-2-1.pdf Graphic file (type pdf)
-<use test-book_files/figure-latex/starfig-2-1.pdf>
-[11
-
-] [12]
-File: test-book_files/figure-latex/starfig-3-1.pdf Graphic file (type pdf)
-<use test-book_files/figure-latex/starfig-3-1.pdf>
-[13]
-File: test-book_files/figure-latex/starfig-4-1.pdf Graphic file (type pdf)
-<use test-book_files/figure-latex/starfig-4-1.pdf>
-[14] [15] [16
-
-]
-Chapter 4.
-
-Overfull \hbox (85.5pt too wide) in paragraph at lines 366--366
-[]\TU/lmtt/m/n/10 ##   [1] 4 3 6 3 4 2 1 4 1 4 4 3 4 2 2 1 3 3 3 2 6 4 4 3 3 4 
-1 5 3 6 3 1 1 2 2 5 2[] 
- []
-
-
-Overfull \hbox (85.5pt too wide) in paragraph at lines 366--366
-[]\TU/lmtt/m/n/10 ##  [38] 2 6 3 5 3 5 3 4 6 4 3 2 3 2 6 1 5 6 1 4 4 4 2 1 5 1 
-6 3 1 5 2 6 1 2 3 6 3[] 
- []
-
-[17] [18]
-Overfull \hbox (117.14684pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.2.  A KEEN WAY TO DIVIDE UP A DATASET INTO TESTING AND TRAINI
-NG COMPONENTS. \TU/lmr/m/n/10 19
- []
-
-[19] [20
-
-]
-Chapter 5.
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##   [1] medium medium medium medium large  small  large  sma
-ll  small  small[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [11] small  medium small  small  medium medium medium sma
-ll  large  small[] 
- []
-
-
-Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [21] large  medium medium medium medium large  medium sma
-ll  large  medium[] 
- []
-
-
-Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [31] small  small  large  medium medium large  large  med
-ium medium medium[] 
- []
-
-
-Overfull \hbox (64.5pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [41] medium small  medium medium medium medium small  lar
-ge  large  medium[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [51] large  large  medium large  large  small  small  sma
-ll  small  large[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [61] medium large  small  small  medium small  small  sma
-ll  small  large[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [71] medium small  small  large  large  large  medium med
-ium medium large[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [81] medium medium large  large  large  small  medium med
-ium small  large[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 499--499
-[]\TU/lmtt/m/n/10 ##  [91] large  medium large  medium small  medium small  lar
-ge  large  small[] 
- []
-
-[21] [22
-
-]
-Chapter 6.
-File: test-book_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf
-)
-<use test-book_files/figure-latex/unnamed-chunk-7-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[23]
-File: test-book_files/figure-latex/unnamed-chunk-7-2.pdf Graphic file (type pdf
-)
-<use test-book_files/figure-latex/unnamed-chunk-7-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[24] [25] [26
-
-]
-Chapter 7.
-[27] [28] [29] [30
-
-]
-Chapter 8.
-File: test-book_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[31]
-File: test-book_files/figure-latex/unnamed-chunk-10-2.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[32]
-File: test-book_files/figure-latex/unnamed-chunk-10-3.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-3.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[33]
-File: test-book_files/figure-latex/unnamed-chunk-10-4.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-4.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[34]
-File: test-book_files/figure-latex/unnamed-chunk-10-5.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-5.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[35]
-File: test-book_files/figure-latex/unnamed-chunk-10-6.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-6.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[36]
-File: test-book_files/figure-latex/unnamed-chunk-10-7.pdf Graphic file (type pd
-f)
-<use test-book_files/figure-latex/unnamed-chunk-10-7.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[37] [38]
-Chapter 9.
-[39
-
-]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ##  [1] "1"         "2"         "3"         "4"         "fizz
-"      "6"[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ##  [7] "buzz"      "8"         "9"         "fizz"      "11" 
-       "12"[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [13] "13"        "buzz"      "fizz"      "16"        "17" 
-       "18"[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [19] "19"        "fizz"      "buzz"      "22"        "23" 
-       "24"[] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[40]
-Overfull \hbox (43.5pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [25] "fizz"      "26"        "27"        "buzz"      "29" 
-       "fizz"[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [31] "31"        "32"        "33"        "34"        "fizz
- buzz" "36"[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [37] "37"        "38"        "39"        "fizz"      "41" 
-       "buzz"[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 920--920
-[]\TU/lmtt/m/n/10 ## [43] "43"        "44"        "fizz"      "46"        "47" 
-       "48"[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
-[]\TU/lmtt/m/n/10 ##  [1] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
-n" "odd"  "even"[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
-[]\TU/lmtt/m/n/10 ## [11] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
-n" "odd"  "even"[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
-[]\TU/lmtt/m/n/10 ## [21] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
-n" "odd"  "even"[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
-[]\TU/lmtt/m/n/10 ## [31] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
-n" "odd"  "even"[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 937--937
-[]\TU/lmtt/m/n/10 ## [41] "odd"  "even" "odd"  "even" "odd"  "even" "odd"  "eve
-n" "odd"  "even"[] 
- []
-
-[41] [42
-
-]
-Chapter 10.
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ X                      <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 
-10, 11, 12, 13, 1...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ State                  <chr> "ME", "NH", "VT", "MA", "RI
-", "CT", "NY", "N...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ Region                 <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-2, 2, 2, 2, 2, 2,...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ Urban.Population       <int> 508, 564, 322, 846, 871, 77
-4, 856, 889, 715,...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ Per.Capita.Income      <int> 3944, 4578, 4011, 5233, 478
-0, 5889, 5663, 57...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ Minor.Population       <int> 325, 323, 328, 305, 303, 30
-7, 301, 310, 300,...[] 
- []
-
-
-Overfull \hbox (80.25pt too wide) in paragraph at lines 966--966
-[]\TU/lmtt/m/n/10 ## $ Education.Expenditures <int> 235, 231, 270, 261, 300, 31
-7, 387, 285, 300,...[] 
- []
-
-[43] [44] [45] (./test-book.bbl [46])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1095.
-[47
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1095.
-(./test-book.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1095.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1095.
-
-Package rerunfilecheck Info: File `test-book.out' has not changed.
-(rerunfilecheck)             Checksum: BD2EDC1FE095F0FCD08F93987089B623.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1095.
- ) 
+LaTeX Warning: File `_bookdown_files/pathologyImages/TpitIHC.jpg' not found on 
+input line 175.
+
+! Unable to load picture or PDF file '_bookdown_files/pathologyImages/TpitIHC.j
+pg'.
+<to be read again> 
+                   }
+l.175 ...okdown_files/pathologyImages/TpitIHC.jpg}
+                                                   
 Here is how much of TeX's memory you used:
- 25473 strings out of 492970
- 469849 string characters out of 6133938
- 683880 words of memory out of 5000000
- 29226 multiletter control sequences out of 15000+600000
- 536609 words of font info for 75 fonts, out of 8000000 for 9000
+ 25330 strings out of 492970
+ 464221 string characters out of 6133938
+ 673771 words of memory out of 5000000
+ 29102 multiletter control sequences out of 15000+600000
+ 533756 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,6n,117p,10418b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,6n,117p,10418b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on test-book.pdf (47 pages).
+Output written on test-book.pdf (7 pages).

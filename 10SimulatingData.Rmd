@@ -1,0 +1,495 @@
+# Simulating data
+
+I've just begun to explore R, and I realize that many of my questions could be improved with example data. Generating this kind of data takes practice, though.
+
+Some good websites:
+<https://clayford.github.io/dwir/dwr_12_generating_data.html>
+
+<https://cran.r-project.org/web/packages/simstudy/vignettes/simstudy.html>
+
+<https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/>
+
+Also, remember that R packages have a lot of great data.
+
+```{r}
+data()
+```
+
+## Sample() 
+
+Starting with Clayford's nice (and long page):
+
+```{r}
+sample(5) #sample without replacement
+
+# or generate a random permutation of a vector:
+dat <- c(10,12,18,16,18,9)
+sample(dat)
+
+# bootstrap resampling: sampling the same number of items WITH replacement. The bootstrap method is a resampling technique used to estimate statistics on a population by sampling a dataset with replacement. 
+sample(dat, replace = TRUE) 
+
+rm(dat)
+
+sample(state.abb, size = 10)
+
+# Using 1:6 and size=1, we can simulate the roll of a die:
+sample(1:6, size=1)
+
+# We can simulate the roll of a die 100 times by setting size=100 and
+# replace=TRUE
+sample(1:6, size=100, replace=TRUE)
+
+# sample produces a vector, so we can manipulate it as we would any other 
+# vector. For example, simulate a 100 die rolls and tally up the totals using
+# table() and prop.table():
+table(sample(1:6, size=100, replace=TRUE))
+prop.table(table(sample(1:6, size=100, replace=TRUE)))
+
+table(sample(state.abb, size = 1000, replace = TRUE))
+prop.table(table(sample(state.abb, size = 1000, replace = TRUE)))
+
+# using the forward-pipe operator: %>% 
+library(magrittr)
+sample(1:6, size=100, replace=TRUE) %>% table() %>% prop.table()
+
+# Or simulate rolling two dice and summing the total:
+sum(sample(1:6, size=2, replace=TRUE))
+
+# same thing with %>% 
+sample(6, size=2, replace=TRUE) %>% sum()
+
+# simulate rolling two dice 100 times by updating the sample "space"
+sample(2:12, size=100, replace=TRUE)
+
+# proportion of "snake-eyes" in 1000 rolls
+mean(sample(2:12, size = 1000, replace = TRUE) == 2)
+```
+
+## replicate()
+
+We can use the replicate() function to replicate samples. The replicate()
+function allows you to replicate an expression as many times as you specify.
+The basix syntax is replicate(n, expr) where n is the number of replications
+and expr is the expression you want to replicate.
+
+```{r}
+# Roll 2 dice and keep the largest number, 10,000 times:
+rolls <- replicate(n=1e5, expr = max(sample(1:6, size=2, replace=TRUE)))
+# calculate proportions:
+prop.table(table(rolls))
+
+barplot(table(rolls))
+
+rm(rolls)
+```
+
+## sample() revisited
+
+The sample function also has a prob argument that allows you to assign
+probabilities to your items. For example to simulate the flip of a loaded
+coin, with Tails having probability 0.65:
+
+```{r}
+flips <- sample(c("H","T"), 1000, replace=TRUE, prob = c(0.35,0.65))
+prop.table(table(flips))
+
+rm(flips)
+
+```
+
+Coins are nice, but we can also use sample to generate practical data, for
+example males and females. A web site says UVa has 11,632 female
+students and 10,353 male students as of Fall 2015.
+
+```{r}
+uva <- c(11632, 10353) # female, male
+round(uva/sum(uva),2)
+```
+
+Note how elegantly this answers a basic question. Nice!
+
+We can generate a fake random sample of 500 UVa students with a weighted sampling scheme like so:
+
+```{r}
+students <- sample(c("female","male"), 500, replace=TRUE, prob = c(0.53, 0.47))
+prop.table(table(students))
+
+rm(students, uva)
+```
+
+When used with subsetting brackets, sample() can be used to create training
+and test sets. For example, say we want to build some sort of predictive model using our training data. We may want to use half our data to build the model and then use the other half to evaluate its performance.
+
+```{r}
+train <- sample(nrow(iris), size= nrow(iris)/2)
+
+# train is a random sample of numbers from 1 - 365. We can treat these like row numbers.
+
+irisTrain <- iris[train,]
+irisTest <- iris[-train,]
+# confirm no intersection
+dplyr::intersect(irisTrain, irisTest) 
+
+rm(train, irisTest, irisTrain)
+```
+
+## generating fixed levels -------------------------------------------------
+
+Often generating data means creating a series of fixed levels, such as 10
+males and 10 females. The rep() function can be useful for this. Below we
+replicate 10 each of "M" and "F":
+
+```{r}
+rep(c("M","F"), each=10)
+rep(c("M","F"), times=10)
+rep(c("M","F"), length.out = 15)
+# or just length, for short
+rep(c("M","F"), length = 15)
+# Notice that all these generated a character vector. To use as a "factor", we would need to wrap it in the factor() function.
+factor(rep(c("M","F"), each=10))
+
+# A function specifically for creating factors is the gl() function. gl = 
+# "generate levels". Below we generate a factor with 2 levels of 10 each and 
+# labels of "M" and "F". Notice the result is a factor.
+gl(n = 2, k = 10, labels = c("M","F"))
+
+# A more common occurence is combinations of fixed levels, say gender, 
+# education, and status. A function that helps create every combination of 
+# levels is expand.grid(). Below we generate every combination of the levels 
+# provided for gender, education, and status. Notice the first factors vary
+# fastest.
+expand.grid(gender=c("M","F"), 
+            education=c("HS","College","Advanced"), 
+            status=c("Single","Married","Divorced","Widowed"))
+
+# Notice that creates a data frame that we can save:
+DF <- expand.grid(gender=c("M","F"), 
+            education=c("HS","College","Advanced"), 
+            status=c("Single","Married","Divorced","Widowed"))
+class(DF)
+
+rm(DF)
+```
+
+Or imagine an experiment where 3 people throw 3 different kinds of paper airplanes, made of 3 paper types (3x3 = 9 planes), throwing each plane 8 times.
+
+```{r}
+schedule <- expand.grid(thrower=c("Clay","Rod","Kevin"),
+            paper=c("18", "20", "24"),
+            design=c("a","b","c"),
+            rep=1:8)
+
+# Randomize and drop the rep column. The sample(nrow(schedule)) code scrambles the numbers 1 through 216, which I then use to randomly shuffle the schedule of throws.
+k <- sample(nrow(schedule))
+schedule <- schedule[k,1:3]
+head(schedule, n = 10)
+
+# output to csv file for logging "distance flown" data
+write.csv(schedule, file="throwLog.csv", row.names=FALSE)
+
+rm(k, schedule)
+```
+
+This is a great way to set up an experiment, but I'd like to **also** add data for the throw, based on interesting distributions (normal, etc.). How would I generate samples for each contestant that was based on slightly different distributions?
+
+What sort of distribution? See this page to get a quick refresher on common distributions: <https://www.analyticsvidhya.com/blog/2017/09/6-probability-distributions-data-science/>.
+
+Note also that ?distributions gives you the distributions in {stats}. Persevere for a time.
+
+## generating numerical sequences
+
+```{r}
+# The seq() function allows you to generate sequences of numbers:
+seq(from = 0, to = 10, by = 2)
+
+seq(0, 10, 0.2)
+
+# Go backwards
+seq(1000, 0, -100)
+
+# The seq() function has a length.out argument that allows you to specify the
+# size of the vector you want to create. It automatically calculates the
+# increment. We usually just abbreviate to length
+seq(1, 10, length = 30)
+
+# The colon operator(:) also allows you to generate regular sequences in steps
+# of 1.
+1:10
+
+10:-10 # reverse direction
+
+# When used with factors, the colon operator generates an interaction factor:
+f1 <- gl(n = 2, k = 3); f1
+
+f2 <- gl(n = 3, k = 2, labels = c("a","b","c")); f2
+
+f1:f2
+
+rm(f1,f2)
+```
+
+The last step seems akin to perfectly shuffling two decks of cards (the decks must be of equal length). 
+
+## seq_along() and seq_len(). 
+
+seq_along() returns the indices of a vector while seq_len(n) returns an integer vector of 1:n.
+
+```{r}
+seq_along(100:120)
+seq_along(state.abb)
+
+seq_len(12)
+```
+
+## generating random data from a probability distribution 
+
+A central idea in inferential statistics is that the distribution of data can often be approximated by a theoretical distribution. R provides functions for working with several well-known theoretical distributions, including the 
+ability to generate data from those distributions. A common one is the rnorm() function which generates data from a Normal distribution.
+
+In R, the functions for theoretical distributions take the form of dxxx, pxxx, qxxx and rxxx. 
+
+- dxxx is for the probability density/mass function (dnorm)
+- pxxx is for the cumulative distribution function (pnorm)
+- qxxx is for the quantile function (qnorm)
+- rxxx is for random variate generation (rnorm)
+
+For random variate generation we're interested in the rxxx variety. 
+
+## Normal distribution:
+
+```{r}
+# 10 random draws from N(100,5)
+rnorm(n = 10, mean = 100, sd = 5)
+```
+
+## Binomial distribution:
+
+```{r}
+# 10 random draws from b(1,0.5)
+# AKA, 10 coin flips (size is the number of trials)
+rbinom(n = 10, size = 1, prob = 0.5)
+
+# 10 random draws from b(1,0.8)
+# AKA, 10 coin flips with a coin loaded Heads (or Tails) 80% of time
+rbinom(n = 10, size = 1, prob = 0.8)
+
+# 10 random draws from b(10,0.5)
+# AKA, 10 results of 10 coin flips
+rbinom(n = 10, size = 10, prob = 0.5)
+
+# We can use a binomial distribution to simulate dichotmous answers such as 
+# Yes/No or success/fail. Simulate a vector of responses where respondents are 65% likely to say Yes (1) versus No (0)
+rbinom(n = 10, size = 1, prob = 0.65)
+
+# could also just use sample
+sample(c("Y","N"), size = 10, replace = TRUE, prob = c(.65, .35))
+```
+
+## Uniform distribution
+
+```{r}
+# 10 random draws from a uniform distribution u(0,100)
+runif(10,0,100)
+
+# A uniform distribution can be good for random sampling. Let's say we want to sample about 10% of iris data:
+k <- runif(nrow(iris),0,1) # [0,1] interval is default
+sbSamp <- iris[k < 0.1, ] # sample about 10% of rows
+dim(sbSamp)
+
+# dplyr does this as well without the need for runif; and it's precise in its
+# sampling fraction.
+sbSamp <- dplyr::sample_frac(iris, 0.1) # sample exactly 10% of rows
+dim(sbSamp)
+
+rm(sbSamp, k)
+```
+
+## Sampling from multiple distributions (building in a "difference")
+
+The arguments to rxxx functions can take vectors! This means we can use one
+function call to generate draws from multiple distributions.
+
+```{r}
+# alternating random values from N(10,4) and N(100,40)
+rnorm(10, mean = c(2,100),sd = c(2,40))
+
+# 30 random draws, 10 each from N(10,4), N(90,4) and N(400,4)
+rnorm(30, mean = rep(c(10,90,400),each=10), sd = 4)
+
+# 100 random draws, 50 each from b(5,0.5) and b(50,0.5)
+rbinom(n = 100, size = rep(c(5,50),each=50), prob = 0.5)
+
+# Combined with matrix(), one can generate "multiple" random samples from a 
+# distribution. For example, draw 5 random samples of size 10 from a N(10,1):
+matrix(rnorm(10*5,10,1),ncol=5)
+```
+
+Note that in the last example, we technically drew one sample of size 50 and then laid it out in a 10x5 matrix.
+
+## The good stuff: building in a difference based on a categorical variable
+
+Using ifelse() we can generate different data based on a TRUE/FALSE condition. Let's say we have treated and untreated subjects. I'd like to generate Normal data that differs based on the treatment.
+
+```{r}
+trtmt <- sample(c("Treated","Untreated"), size = 20, replace = TRUE)
+ifelse(trtmt=="Treated", yes = rnorm(20, 10, 1), no = rnorm(20, 20, 1))
+```
+
+Notice we have to make the length of the yes/no arguments the SAME LENGTH as
+the trtmt=="Treated" logical vector! What happens if we use rnorm(n=1,...)?
+
+```{r}
+# What about more than two groups?
+n <- 200
+trtmt <- sample(LETTERS[1:6], size = n, replace = TRUE)
+
+# Say we want to generate differnt Normal data for each group. One way is to do a for-loop with multiple if statements:
+
+val <- numeric(n) # empty vector
+for(i in seq_along(trtmt)){
+  if(trtmt[i]=="A") val[i] <- rnorm(1, 10, 2)
+  else if(trtmt[i]=="B") val[i] <- rnorm(1, 20, 4) 
+  else if(trtmt[i]=="C") val[i] <- rnorm(1, 30, 6) 
+  else if(trtmt[i]=="D") val[i] <- rnorm(1, 40, 8) 
+  else if(trtmt[i]=="E") val[i] <- rnorm(1, 50, 10) 
+  else val[i] <- rnorm(1, 60, 12) 
+}
+val
+```
+
+A more R-like way would be to take advantage of vectorized functions. First
+create a data frame with one row for each group and the mean and standard
+deviations we want to use to generate the data for that group.
+
+```{r}
+dat <- data.frame(g=LETTERS[1:6],mean=seq(10,60,10),sd=seq(2,12,2))
+
+dat
+```
+dat is currently a petite little dataframe of 6 rows.
+
+Now sample the row numbers (1 - 6) WITH replacement. We can use these to
+randomly sample the data frame rows. 
+
+ASIDE: Recall that we can repeatedly call a row or element using subsetting brackets. For example, call the first row of iris 5 times:
+
+```{r}
+iris[c(1,1,1,1,1),]
+```
+
+Let's exploit that to randomly sample with replacement our data frame of
+groups:
+
+```{r}
+n <- 200
+k <- sample(1:6, n, replace = TRUE)
+dat <- dat[k,]
+
+str(dat)
+
+# Now generate our data for each group using ONE call to rnorm.
+dat$vals <- rnorm(n, mean=dat$mean, sd=dat$sd)
+head(dat)
+```
+
+This is pretty neat. We go from one little dataframe to a larger one in a few lines of code. Mean and SD can be varied by the class, "g" in this case. 
+
+## A demonstration of the Central Limit Theorem
+
+The Central Limit Theorem states that the sum of a large number of independent random variables will be approximately normally distributed almost regardless of their individual distributions. We can demonstrate this using various rxxx functions.
+
+```{r}
+# sum 6 values from 6 different distributions (sample size = 6)
+n <- 1e4 # simulate 1000 times
+clt  <- rexp(n, rate = 1) + rbinom(n,10,0.4) + rchisq(n,df = 6) + 
+  rnorm(n, 12, 12) + rpois(n, lambda = 3) + rt(n, df = 7)
+hist(clt, freq=FALSE)
+
+# overlay a normal density curve
+X <- seq(min(clt),max(clt),length = 500)       # x
+Y <- dnorm(X, mean = mean(clt), sd = sd(clt))  # f(x) = dnorm
+lines(X,Y,type = "l", col="blue") # plot (x,y) coordinates as a "blue" line ("l")
+
+rm(X, Y, clt)
+```
+
+Let's unpack some of this:
+
+```{r}
+clt1  <- rexp(n, rate = 1)
+hist(clt1, freq=FALSE)
+
+clt2  <- rbinom(n,10,0.4)
+hist(clt2, freq=FALSE)
+
+clt3  <- rchisq(n,df = 6)
+hist(clt3, freq=FALSE)
+
+clt4  <-rnorm(n, 12, 12) 
+hist(clt4, freq=FALSE)
+
+clt5  <- rpois(n, lambda = 3)
+hist(clt5, freq=FALSE)
+
+clt6  <- rt(n, df = 7)
+hist(clt6, freq=FALSE)
+
+# All of this base R graphing is clunky and doesn't lend itself to modification as well as ggplot() figures.
+
+library(tidyverse)
+df <- data.frame(clt1, clt2, clt3, clt4, clt5, clt6)
+
+df %>% ggplot(aes(clt3)) +
+  geom_histogram(bins = 30)
+
+df %>% 
+  ggplot(aes(clt3)) +
+  geom_density()
+```
+
+## Overlaying normal curve on histogram
+
+The following solution was on StackOverflow at <https://stackoverflow.com/questions/6967664/ggplot2-histogram-with-normal-curve>
+
+```{r}
+set.seed(1)
+df1 <- data.frame(PF = 10*rnorm(1000))
+ggplot(df1, aes(x = PF)) + 
+    geom_histogram(aes(y =..density..),
+                   breaks = seq(-40, 40, by = 5), 
+                   colour = "black", 
+                   fill = "white") +
+stat_function(fun = dnorm, args = list(mean = mean(df1$PF), sd = sd(df1$PF)), color = "blue") 
+```
+
+From the {ggplot2} help: "This stat makes it easy to superimpose a function on top of an existing plot. The function is called with a grid of evenly spaced values along the x axis, and the results are drawn (by default) with a line."
+
+Note how stat_function() lends itself to quick addition: simply feed the correct fun and args to the function. 
+
+Now accomplish this for clt3
+
+```{r}
+ggplot(df, aes(x = clt3)) + 
+    geom_histogram(aes(y =..density..),
+                   breaks = seq(0, 30, by = 1), 
+                   colour = "black", 
+                   fill = "white") +
+stat_function(fun = dchisq, args = list(df = 6), color = "blue") + 
+  labs(title = "chi-squared distribution")
+```
+
+Note how the args in dchisq includes only the df = 6. No mean needs to be calculated (as in dnorm). 
+
+Now accomplish this for clt1
+
+```{r}
+ggplot(df, aes(x = clt1)) + 
+    geom_histogram(aes(y =..density..),
+                   breaks = seq(0, 8, by = .5), 
+                   colour = "black", 
+                   fill = "white") +
+stat_function(fun = dexp, args = list(rate = 1), color = "blue") + 
+  labs(title = "exponential distribution")
+```
+

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Class Composition | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 11 Class Composition | Bill’s Drills Book" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Class Composition | Bill’s Drills Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Class Composition | Bill’s Drills Book" />
+  
+  
+  
+
+<meta name="author" content="William McDonald" />
+
+
+<meta name="date" content="2020-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bill's Drills Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a><ul>
+<li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
+<li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
+<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.2</b> Summarize is another very useful function:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4</b> Sampling</a><ul>
+<li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
+<li class="chapter" data-level="4.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>4.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
+<li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
+<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a></li>
+<li class="chapter" data-level="8" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>8</b> Correlation Plots</a></li>
+<li class="chapter" data-level="9" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html"><i class="fa fa-check"></i><b>9</b> if_else() and case_when(): Comparison</a><ul>
+<li class="chapter" data-level="9.1" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#case_when"><i class="fa fa-check"></i><b>9.1</b> case_when()</a></li>
+<li class="chapter" data-level="9.2" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>9.2</b> Compare this with if_else()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>10</b> Subsetting</a><ul>
+<li class="chapter" data-level="10.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>10.1</b> Subsetting using brackets</a></li>
+<li class="chapter" data-level="10.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>10.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
+<li class="chapter" data-level="10.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>10.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
+<li class="chapter" data-level="10.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>10.4</b> Subset using the subset() function</a></li>
+<li class="chapter" data-level="10.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>10.5</b> Subset using dyplyr’s filter() and select()</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="11" data-path="class-composition.html"><a href="class-composition.html"><i class="fa fa-check"></i><b>11</b> Class Composition</a><ul>
+<li class="chapter" data-level="11.1" data-path="class-composition.html"><a href="class-composition.html#plot-the-managerial-categories.-as-a-proportion"><i class="fa fa-check"></i><b>11.1</b> Plot the managerial categories. As a proportion:</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bill’s Drills Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="class-composition" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Class Composition</h1>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb87-3" data-line-number="3"><span class="kw">theme_set</span>(<span class="kw">theme_light</span>())</a>
+<a class="sourceLine" id="cb87-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb87-5" data-line-number="5">patma &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</a></code></pre></div>
+<p>The goal of the following code is to assign a screen diagnosis based on the pituitary adenoma screen when it includes SF-1, Pit-1, and ACTH (screenDxACTH) and also the screen diagnosis when it is based upon SF-1, Pit-1, and Tpit (screenDxTpit).</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">Pitable1 &lt;-<span class="st"> </span>patma <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(TPITMedian)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="st">  </span><span class="kw">transmute</span>(<span class="dt">CaseID =</span> CaseID,</a>
+<a class="sourceLine" id="cb88-4" data-line-number="4">            <span class="dt">finDx =</span> finDx,</a>
+<a class="sourceLine" id="cb88-5" data-line-number="5">            <span class="dt">manDx =</span> manDx,</a>
+<a class="sourceLine" id="cb88-6" data-line-number="6">            <span class="dt">screenDxACTH =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb88-7" data-line-number="7">              SF1Median <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>ACTHMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;GON&quot;</span>,</a>
+<a class="sourceLine" id="cb88-8" data-line-number="8">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>ACTHMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;Pit1&quot;</span>, </a>
+<a class="sourceLine" id="cb88-9" data-line-number="9">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>ACTHMedian <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;ACTH&quot;</span>, </a>
+<a class="sourceLine" id="cb88-10" data-line-number="10">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>ACTHMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;NULL&quot;</span>, </a>
+<a class="sourceLine" id="cb88-11" data-line-number="11">              <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span></a>
+<a class="sourceLine" id="cb88-12" data-line-number="12">            ),</a>
+<a class="sourceLine" id="cb88-13" data-line-number="13">            <span class="dt">screenDxTpit =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb88-14" data-line-number="14">              SF1Median <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>TPITMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;GON&quot;</span>,</a>
+<a class="sourceLine" id="cb88-15" data-line-number="15">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>TPITMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;Pit1&quot;</span>, </a>
+<a class="sourceLine" id="cb88-16" data-line-number="16">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>TPITMedian <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;ACTH&quot;</span>, </a>
+<a class="sourceLine" id="cb88-17" data-line-number="17">              SF1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>Pit1Median <span class="op">&lt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span>TPITMedian <span class="op">&lt;=</span><span class="dv">4</span> <span class="op">~</span><span class="st"> &quot;NULL&quot;</span>, </a>
+<a class="sourceLine" id="cb88-18" data-line-number="18">              <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span></a>
+<a class="sourceLine" id="cb88-19" data-line-number="19">            )) </a></code></pre></div>
+<div id="plot-the-managerial-categories.-as-a-proportion" class="section level2">
+<h2><span class="header-section-number">11.1</span> Plot the managerial categories. As a proportion:</h2>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">Pitable1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(<span class="dt">manDx=</span><span class="kw">fct_lump</span>(manDx, <span class="dv">7</span>), <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manDx=</span><span class="kw">fct_reorder</span>(manDx,n),</a>
+<a class="sourceLine" id="cb89-4" data-line-number="4">         <span class="dt">proportion=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(manDx, proportion)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>(<span class="dt">accuracy =</span> <span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Managerial Categories&quot;</span>, </a>
+<a class="sourceLine" id="cb89-10" data-line-number="10">       <span class="dt">y =</span> <span class="st">&quot;Proportion of Cases&quot;</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># Now without proportion:</span></a>
+<a class="sourceLine" id="cb90-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb90-3" data-line-number="3">p1 &lt;-<span class="st"> </span>Pitable1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(<span class="dt">manDx=</span><span class="kw">fct_lump</span>(manDx, <span class="dv">7</span>), <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;GON&quot;</span>, <span class="st">&quot;Gonadotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb90-6" data-line-number="6">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;ACTH&quot;</span>, <span class="st">&quot;Corticotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb90-7" data-line-number="7">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;GH&quot;</span>, <span class="st">&quot;Somatotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb90-8" data-line-number="8">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PRL&quot;</span>, <span class="st">&quot;Lactotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb90-9" data-line-number="9">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;NULL&quot;</span>, <span class="st">&quot;Null Cell&quot;</span>),</a>
+<a class="sourceLine" id="cb90-10" data-line-number="10">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PIT1&quot;</span>, <span class="st">&quot;Pit-1 Family NOS&quot;</span>),</a>
+<a class="sourceLine" id="cb90-11" data-line-number="11">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;UNK&quot;</span>, <span class="st">&quot;Unknown&quot;</span>),</a>
+<a class="sourceLine" id="cb90-12" data-line-number="12">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PLUR&quot;</span>, <span class="st">&quot;Plurihormonal NOS&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-13" data-line-number="13"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manDx=</span><span class="kw">fct_reorder</span>(manDx,n)) <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb90-14" data-line-number="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(manDx, n)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-15" data-line-number="15"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-16" data-line-number="16"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-17" data-line-number="17"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Managerial Categories&quot;</span>, </a>
+<a class="sourceLine" id="cb90-18" data-line-number="18">       <span class="dt">y =</span> <span class="st">&quot;Number of Cases&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb90-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb90-20" data-line-number="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb90-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb90-22" data-line-number="22"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">15</span>))</a>
+<a class="sourceLine" id="cb90-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb90-24" data-line-number="24">p1</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<p>A slightly different strategy is useful if I want to display small values (everything not GON), keep the columns ordered by manDx, and use finDx to provide fill. Failing to fct_reorder() the manDx in the x coordinate, I used fct_relevel() on the fly to compel the correct order.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">p2 &lt;-<span class="st"> </span>Pitable1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(manDx <span class="op">==</span><span class="st"> &quot;GON&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(manDx, finDx, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;GON&quot;</span>, <span class="st">&quot;Gonadotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb91-5" data-line-number="5">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;ACTH&quot;</span>, <span class="st">&quot;Corticotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb91-6" data-line-number="6">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;GH&quot;</span>, <span class="st">&quot;Somatotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb91-7" data-line-number="7">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PRL&quot;</span>, <span class="st">&quot;Lactotroph&quot;</span>),</a>
+<a class="sourceLine" id="cb91-8" data-line-number="8">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;NULL&quot;</span>, <span class="st">&quot;Null Cell&quot;</span>),</a>
+<a class="sourceLine" id="cb91-9" data-line-number="9">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PIT1&quot;</span>, <span class="st">&quot;Pit-1 Family NOS&quot;</span>),</a>
+<a class="sourceLine" id="cb91-10" data-line-number="10">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;UNK&quot;</span>, <span class="st">&quot;Unknown&quot;</span>),</a>
+<a class="sourceLine" id="cb91-11" data-line-number="11">         <span class="dt">manDx=</span><span class="kw">str_replace</span>(manDx, <span class="st">&quot;PLUR&quot;</span>, <span class="st">&quot;Plurihormonal NOS&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-12" data-line-number="12"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> manDx <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_relevel</span>(<span class="st">&quot;Plurihormonal NOS&quot;</span>, <span class="st">&quot;Unknown&quot;</span>, <span class="st">&quot;Pit-1 Family NOS&quot;</span>, <span class="st">&quot;Null Cell&quot;</span>, <span class="st">&quot;Lactotroph&quot;</span>, <span class="st">&quot;Somatotroph&quot;</span>, <span class="st">&quot;Corticotroph&quot;</span>), <span class="dt">y =</span> n, <span class="dt">fill =</span> finDx)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-14" data-line-number="14"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-15" data-line-number="15"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Non-gonadotroph Managerial Categories&quot;</span>, </a>
+<a class="sourceLine" id="cb91-16" data-line-number="16">       <span class="dt">y =</span> <span class="st">&quot;Number of Cases&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Final Diagnoses&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-18" data-line-number="18"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-19" data-line-number="19"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-20" data-line-number="20"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-21" data-line-number="21"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">15</span>))</a>
+<a class="sourceLine" id="cb91-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb91-23" data-line-number="23">p2</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Note that particularly difficult cases are easier to see: for instance, the only “GH” in this material might be termed GH(SG) or PIT1(s)–from ClinNotes: “Patient was pregnant at the time of presentation. Growth hormone elevated, but pregnancy can cause this. No endocrinopathy clinically. Villa et al. Silent PIT1+.” Check out her consolidated clinical and pathological notes as follows:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">x &lt;-<span class="st"> </span>patma <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(finDx<span class="op">==</span><span class="st">&quot;GH&quot;</span>)</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">x<span class="op">$</span>ClinNotes</a></code></pre></div>
+<pre><code>## [1] &quot;Patient was pregnant at the time of presentation. Growth hormone elevated, but pregnancy can cause this. No endocrinopathy clinically. \v\vGH Villa et al. Silent PIT1+&quot;</code></pre>
+<p>Also note that the colorful graph above is still hard to read. A table would work too. This winds up being pretty ugly as a table, even if I took the time to clean it up and sort by manDx and then finDx, which would pull like manDx together and show of the numbers in a more sensible way.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">Pitable1 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(manDx <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GON&quot;</span>,<span class="st">&quot;NULL&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(<span class="dt">manDx=</span><span class="kw">fct_lump</span>(manDx, <span class="dv">5</span>), finDx, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(manDx, finDx) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-5" data-line-number="5"><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="center">manDx</th>
+<th align="center">finDx</th>
+<th align="center">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">ACTH</td>
+<td align="center">ACTH(DG)</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">ACTH</td>
+<td align="center">ACTH(s)</td>
+<td align="center">18</td>
+</tr>
+<tr class="odd">
+<td align="center">GH</td>
+<td align="center">GH</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">GH</td>
+<td align="center">GH(SG)</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">GH</td>
+<td align="center">GH+(DG)</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">GH</td>
+<td align="center">GH+(SG)</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">GH</td>
+<td align="center">PlurGH</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">PIT1</td>
+<td align="center">GH/PRL</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">PIT1</td>
+<td align="center">PIT1(s)</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">PIT1</td>
+<td align="center">TSH(s)</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">PIT1</td>
+<td align="center">TSH+</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">PLUR</td>
+<td align="center">PLUR</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">PRL</td>
+<td align="center">PRL</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
+<td align="center">PRL</td>
+<td align="center">PRL+</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">UNK</td>
+<td align="center">UNK</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>Hadley Wickham has commented on the problem of “breaks” in axes, which are difficult to interpret or even deceiving. He supports a 2 plot solution: one for all the data, and one for just the small values. See this illustrated by another author here <a href="https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis" class="uri">https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis</a>.
+To put both plots in the same figure, the gridExtra and grid packages are helpful.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">library</span>(gridExtra)</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="kw">library</span>(grid)</a></code></pre></div>
+<p>After experimenting with simple versions generated by grid.arrange(p1,p2, nrow=1) I used the following to generate horizontal plots p1 and p2.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">lay =<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="kw">grid.arrange</span>(<span class="kw">arrangeGrob</span>(p1, <span class="dt">left =</span> <span class="kw">textGrob</span>(<span class="st">&quot;A)&quot;</span>, <span class="dt">x =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;npc&quot;</span>), </a>
+<a class="sourceLine" id="cb96-3" data-line-number="3">                               <span class="dt">y =</span> <span class="kw">unit</span>(<span class="fl">0.05</span>, <span class="st">&quot;npc&quot;</span>))), </a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">                   <span class="kw">arrangeGrob</span>(p2, <span class="dt">left =</span><span class="kw">textGrob</span>(<span class="st">&quot;B)&quot;</span>, <span class="dt">x =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;npc&quot;</span>), </a>
+<a class="sourceLine" id="cb96-5" data-line-number="5">                               <span class="dt">y =</span> <span class="kw">unit</span>(<span class="fl">0.05</span>, <span class="st">&quot;npc&quot;</span>))),</a>
+<a class="sourceLine" id="cb96-6" data-line-number="6">                   <span class="dt">layout_matrix =</span> lay)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Now it’s time to generate a TIFF. Note how I change the orientation of the figure from horizontal (above) by switching from rbind() to cbind(). This produces a better figure.</p>
+<p>Hint: I wasted a lot of time messing with this figure, mostly because I didn’t start by modifying the width or height of the output in the tiff() function. <em>DO THIS FIRST!</em></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">lay =<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="kw">tiff</span>(<span class="dt">filename =</span> <span class="st">&quot;Figure2ARPA.tiff&quot;</span>, <span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">height =</span> <span class="dv">10</span>, <span class="dt">units =</span> <span class="st">&quot;in&quot;</span>, <span class="dt">res =</span> <span class="dv">600</span>)</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">grid.arrange</span>(<span class="kw">arrangeGrob</span>(p1, <span class="dt">left =</span> <span class="kw">textGrob</span>(<span class="st">&quot;A)&quot;</span>, <span class="dt">x =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;npc&quot;</span>), </a>
+<a class="sourceLine" id="cb97-4" data-line-number="4">                               <span class="dt">y =</span> <span class="kw">unit</span>(<span class="fl">0.05</span>, <span class="st">&quot;npc&quot;</span>))), </a>
+<a class="sourceLine" id="cb97-5" data-line-number="5">                   <span class="kw">arrangeGrob</span>(p2, <span class="dt">left =</span><span class="kw">textGrob</span>(<span class="st">&quot;B)&quot;</span>, <span class="dt">x =</span> <span class="kw">unit</span>(<span class="dv">2</span>, <span class="st">&quot;npc&quot;</span>), </a>
+<a class="sourceLine" id="cb97-6" data-line-number="6">                               <span class="dt">y =</span> <span class="kw">unit</span>(<span class="fl">0.05</span>, <span class="st">&quot;npc&quot;</span>))),</a>
+<a class="sourceLine" id="cb97-7" data-line-number="7">                   <span class="dt">layout_matrix =</span> lay))</a></code></pre></div>
+<pre><code>## TableGrob (2 x 1) &quot;arrange&quot;: 2 grobs
+##   z     cells    name            grob
+## 1 1 (1-1,1-1) arrange gtable[arrange]
+## 2 2 (2-2,1-1) arrange gtable[arrange]</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">dev.off</span>()</a></code></pre></div>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
+<p>Packages other than gridExtra can apparently accomplish similar things. Tim Johnson put me onto patchwork. See <a href="https://www.datanovia.com/en/blog/ggplot-multiple-plots-made-ridiculuous-simple-using-patchwork-r-package/" class="uri">https://www.datanovia.com/en/blog/ggplot-multiple-plots-made-ridiculuous-simple-using-patchwork-r-package/</a> for some beautiful examples.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(patchwork)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Which works pretty well, even without a ton of modification.</p>
+<p>This is scrap work.</p>
+
+<div id="refs" class="references">
+<div>
+<p>Stevens, T. M., and V. Parekh. 2016. “Mammary Analogue Secretory Carcinoma.” Journal Article. <em>Arch Pathol Lab Med.</em> 140 (9): 997–1001. doi: 10.5858/arpa.2015–0075–RS.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/caseComposition.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["test-book.pdf", "test-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

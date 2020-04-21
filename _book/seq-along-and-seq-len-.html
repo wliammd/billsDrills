@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 seq_along() and seq_len(). | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 13 seq_along() and seq_len(). | Bill’s Drills Book" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 seq_along() and seq_len(). | Bill’s Drills Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 seq_along() and seq_len(). | Bill’s Drills Book" />
+  
+  
+  
+
+<meta name="author" content="William McDonald" />
+
+
+<meta name="date" content="2020-04-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="generating-numerical-sequences.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bill's Drills Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a><ul>
+<li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
+<li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
+<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.2</b> Summarize is another very useful function:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4</b> Sampling</a><ul>
+<li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
+<li class="chapter" data-level="4.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>4.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
+<li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
+<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a></li>
+<li class="chapter" data-level="8" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>8</b> Correlation Plots</a></li>
+<li class="chapter" data-level="9" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html"><i class="fa fa-check"></i><b>9</b> if_else() and case_when(): Comparison</a><ul>
+<li class="chapter" data-level="9.1" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#case_when"><i class="fa fa-check"></i><b>9.1</b> case_when()</a></li>
+<li class="chapter" data-level="9.2" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>9.2</b> Compare this with if_else()</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>10</b> Subsetting</a><ul>
+<li class="chapter" data-level="10.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>10.1</b> Subsetting using brackets</a></li>
+<li class="chapter" data-level="10.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>10.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
+<li class="chapter" data-level="10.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>10.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
+<li class="chapter" data-level="10.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>10.4</b> Subset using the subset() function</a></li>
+<li class="chapter" data-level="10.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>10.5</b> Subset using dyplyr’s filter() and select()</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>11</b> Simulating data</a><ul>
+<li class="chapter" data-level="11.1" data-path="simulating-data.html"><a href="simulating-data.html#sample"><i class="fa fa-check"></i><b>11.1</b> Sample()</a></li>
+<li class="chapter" data-level="11.2" data-path="simulating-data.html"><a href="simulating-data.html#replicate"><i class="fa fa-check"></i><b>11.2</b> replicate()</a></li>
+<li class="chapter" data-level="11.3" data-path="simulating-data.html"><a href="simulating-data.html#sample-revisited"><i class="fa fa-check"></i><b>11.3</b> sample() revisited</a></li>
+<li class="chapter" data-level="11.4" data-path="simulating-data.html"><a href="simulating-data.html#generating-fixed-levels--"><i class="fa fa-check"></i><b>11.4</b> generating fixed levels ————————————————-</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="generating-numerical-sequences.html"><a href="generating-numerical-sequences.html"><i class="fa fa-check"></i><b>12</b> generating numerical sequences</a></li>
+<li class="chapter" data-level="13" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html"><i class="fa fa-check"></i><b>13</b> seq_along() and seq_len().</a><ul>
+<li class="chapter" data-level="13.1" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#generating-random-data-from-a-probability-distribution"><i class="fa fa-check"></i><b>13.1</b> generating random data from a probability distribution</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#normal-distribution"><i class="fa fa-check"></i><b>13.1.1</b> Normal distribution:</a></li>
+<li class="chapter" data-level="13.1.2" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#binomial-distribution"><i class="fa fa-check"></i><b>13.1.2</b> Binomial distribution:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#uniform-distribution"><i class="fa fa-check"></i><b>13.2</b> Uniform distribution</a></li>
+<li class="chapter" data-level="13.3" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#sampling-from-multiple-distributions-building-in-a-difference"><i class="fa fa-check"></i><b>13.3</b> Sampling from multiple distributions (building in a “difference”)</a></li>
+<li class="chapter" data-level="13.4" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#the-good-stuff-building-in-a-difference-based-on-a-categorical-variable"><i class="fa fa-check"></i><b>13.4</b> The good stuff: building in a difference based on a categorical variable</a></li>
+<li class="chapter" data-level="13.5" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#a-demonstration-of-the-central-limit-theorem"><i class="fa fa-check"></i><b>13.5</b> A demonstration of the Central Limit Theorem</a></li>
+<li class="chapter" data-level="13.6" data-path="seq-along-and-seq-len-.html"><a href="seq-along-and-seq-len-.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>13.6</b> Overlaying normal curve on histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bill’s Drills Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="seq_along-and-seq_len." class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> seq_along() and seq_len().</h1>
+<p>seq_along() returns the indices of a vector while seq_len(n) returns an integer vector of 1:n.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">seq_along</span>(<span class="dv">100</span><span class="op">:</span><span class="dv">120</span>)</a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">seq_along</span>(state.abb)</a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">seq_len</span>(<span class="dv">12</span>)</a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div id="generating-random-data-from-a-probability-distribution" class="section level2">
+<h2><span class="header-section-number">13.1</span> generating random data from a probability distribution</h2>
+<p>A central idea in inferential statistics is that the distribution of data can often be approximated by a theoretical distribution. R provides functions for working with several well-known theoretical distributions, including the
+ability to generate data from those distributions. A common one is the rnorm() function which generates data from a Normal distribution.</p>
+<p>In R, the functions for theoretical distributions take the form of dxxx, pxxx, qxxx and rxxx.</p>
+<ul>
+<li>dxxx is for the probability density/mass function (dnorm)</li>
+<li>pxxx is for the cumulative distribution function (pnorm)</li>
+<li>qxxx is for the quantile function (qnorm)</li>
+<li>rxxx is for random variate generation (rnorm)</li>
+</ul>
+<p>For random variate generation we’re interested in the rxxx variety.</p>
+<div id="normal-distribution" class="section level3">
+<h3><span class="header-section-number">13.1.1</span> Normal distribution:</h3>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="co"># 10 random draws from N(100,5)</span></a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>##  [1]  95.66993  96.93959  93.87119  98.15503 108.59453  99.28320  94.30730
+##  [8] 102.50581  93.27080  98.65353</code></pre>
+</div>
+<div id="binomial-distribution" class="section level3">
+<h3><span class="header-section-number">13.1.2</span> Binomial distribution:</h3>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="co"># 10 random draws from b(1,0.5)</span></a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="co"># AKA, 10 coin flips (size is the number of trials)</span></a>
+<a class="sourceLine" id="cb184-3" data-line-number="3"><span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 1 1 0 1 1 1 0 1 0</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="co"># 10 random draws from b(1,0.8)</span></a>
+<a class="sourceLine" id="cb186-2" data-line-number="2"><span class="co"># AKA, 10 coin flips with a coin loaded Heads (or Tails) 80% of time</span></a>
+<a class="sourceLine" id="cb186-3" data-line-number="3"><span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> <span class="fl">0.8</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 1 1 1 1 0 1 1 1 0</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="co"># 10 random draws from b(10,0.5)</span></a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="co"># AKA, 10 results of 10 coin flips</span></a>
+<a class="sourceLine" id="cb188-3" data-line-number="3"><span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>##  [1] 5 6 4 2 5 3 5 7 6 3</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="co"># We can use a binomial distribution to simulate dichotmous answers such as </span></a>
+<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="co"># Yes/No or success/fail. Simulate a vector of responses where respondents are 65% likely to say Yes (1) versus No (0)</span></a>
+<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> <span class="fl">0.65</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 1 0 1 1 1 1 0 1 0</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="co"># could also just use sample</span></a>
+<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">65</span>, <span class="fl">.35</span>))</a></code></pre></div>
+<pre><code>##  [1] &quot;Y&quot; &quot;Y&quot; &quot;Y&quot; &quot;N&quot; &quot;Y&quot; &quot;Y&quot; &quot;Y&quot; &quot;Y&quot; &quot;Y&quot; &quot;Y&quot;</code></pre>
+</div>
+</div>
+<div id="uniform-distribution" class="section level2">
+<h2><span class="header-section-number">13.2</span> Uniform distribution</h2>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="co"># 10 random draws from a uniform distribution u(0,100)</span></a>
+<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">100</span>)</a></code></pre></div>
+<pre><code>##  [1] 60.326980 73.283454 10.113435 61.390940 25.128734 59.507974 92.516590
+##  [8]  1.090762  1.082432 26.157247</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="co"># A uniform distribution can be good for random sampling. Let&#39;s say we want to sample about 10% of iris data:</span></a>
+<a class="sourceLine" id="cb196-2" data-line-number="2">k &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="kw">nrow</span>(iris),<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># [0,1] interval is default</span></a>
+<a class="sourceLine" id="cb196-3" data-line-number="3">sbSamp &lt;-<span class="st"> </span>iris[k <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.1</span>, ] <span class="co"># sample about 10% of rows</span></a>
+<a class="sourceLine" id="cb196-4" data-line-number="4"><span class="kw">dim</span>(sbSamp)</a></code></pre></div>
+<pre><code>## [1] 17  5</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="co"># dplyr does this as well without the need for runif; and it&#39;s precise in its</span></a>
+<a class="sourceLine" id="cb198-2" data-line-number="2"><span class="co"># sampling fraction.</span></a>
+<a class="sourceLine" id="cb198-3" data-line-number="3">sbSamp &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">sample_frac</span>(iris, <span class="fl">0.1</span>) <span class="co"># sample exactly 10% of rows</span></a>
+<a class="sourceLine" id="cb198-4" data-line-number="4"><span class="kw">dim</span>(sbSamp)</a></code></pre></div>
+<pre><code>## [1] 15  5</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">rm</span>(sbSamp, k)</a></code></pre></div>
+</div>
+<div id="sampling-from-multiple-distributions-building-in-a-difference" class="section level2">
+<h2><span class="header-section-number">13.3</span> Sampling from multiple distributions (building in a “difference”)</h2>
+<p>The arguments to rxxx functions can take vectors! This means we can use one
+function call to generate draws from multiple distributions.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="co"># alternating random values from N(10,4) and N(100,40)</span></a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">100</span>),<span class="dt">sd =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">40</span>))</a></code></pre></div>
+<pre><code>##  [1]   3.4780530 100.0473848  -0.9160729 126.5839546   2.2481878  31.5422218
+##  [7]   4.2862139 124.8887630   0.5034521  86.9648960</code></pre>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="co"># 30 random draws, 10 each from N(10,4), N(90,4) and N(400,4)</span></a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="kw">rnorm</span>(<span class="dv">30</span>, <span class="dt">mean =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">90</span>,<span class="dv">400</span>),<span class="dt">each=</span><span class="dv">10</span>), <span class="dt">sd =</span> <span class="dv">4</span>)</a></code></pre></div>
+<pre><code>##  [1]   7.293508  19.639453   3.924593   8.225864   7.175903   7.391683
+##  [7]   6.591222   8.746446  12.196931  13.198499  99.520178  86.514731
+## [13]  90.376221  93.506773  90.063370  87.698771  91.558452  81.415876
+## [19]  83.241770  84.475469 395.164557 403.326198 402.503808 397.540535
+## [25] 406.222133 399.418309 396.399917 400.717691 394.538219 399.473333</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="co"># 100 random draws, 50 each from b(5,0.5) and b(50,0.5)</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">size =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">50</span>),<span class="dt">each=</span><span class="dv">50</span>), <span class="dt">prob =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>##   [1]  3  3  1  1  1  2  1  2  3  2  1  2  5  4  2  3  2  4  3  3  1  4  4  4  4
+##  [26]  2  3  2  3  1  1  1  1  4  2  3  3  3  4  2  3  4  2  3  3  1  0  2  2  5
+##  [51] 26 19 22 29 23 29 23 22 26 35 26 23 27 28 24 27 27 26 26 24 27 24 28 16 21
+##  [76] 23 28 20 22 25 28 22 25 30 27 25 29 29 24 28 25 22 25 21 30 28 31 28 25 20</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="co"># Combined with matrix(), one can generate &quot;multiple&quot; random samples from a </span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="co"># distribution. For example, draw 5 random samples of size 10 from a N(10,1):</span></a>
+<a class="sourceLine" id="cb207-3" data-line-number="3"><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">*</span><span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">1</span>),<span class="dt">ncol=</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>##            [,1]      [,2]      [,3]      [,4]      [,5]
+##  [1,] 11.332861 11.400865  8.769827  8.810924  9.029461
+##  [2,] 10.035283  8.433844  9.381177  9.525557  9.398117
+##  [3,] 10.496715 11.290449  8.971141  9.706275 10.434732
+##  [4,]  9.517007  9.185832 12.107094  9.597588  9.597808
+##  [5,] 10.247553  9.482852  9.743374  9.241108  9.847012
+##  [6,] 11.858210 10.849336  9.445144  8.948363  9.505161
+##  [7,]  9.546841 10.345423  9.039206  9.142356 10.760739
+##  [8,]  9.039082  8.674918 11.558537 10.425124  9.811335
+##  [9,]  9.518707  9.591150 10.619315 11.824144  9.667609
+## [10,]  9.207467  8.949413  9.771530  9.659081 11.109012</code></pre>
+<p>Note that in the last example, we technically drew one sample of size 50 and then laid it out in a 10x5 matrix.</p>
+</div>
+<div id="the-good-stuff-building-in-a-difference-based-on-a-categorical-variable" class="section level2">
+<h2><span class="header-section-number">13.4</span> The good stuff: building in a difference based on a categorical variable</h2>
+<p>Using ifelse() we can generate different data based on a TRUE/FALSE condition. Let’s say we have treated and untreated subjects. I’d like to generate Normal data that differs based on the treatment.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">trtmt &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Treated&quot;</span>,<span class="st">&quot;Untreated&quot;</span>), <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="kw">ifelse</span>(trtmt<span class="op">==</span><span class="st">&quot;Treated&quot;</span>, <span class="dt">yes =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="dt">no =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">1</span>))</a></code></pre></div>
+<pre><code>##  [1] 21.015208 10.902627  9.142717  9.696938  9.683289 20.463172 20.236671
+##  [8] 19.549284 19.558152 20.102505  7.803139  8.879669  9.410191 10.798966
+## [15]  9.068286 10.657873 20.217372 11.767911  9.931248 11.132092</code></pre>
+<p>Notice we have to make the length of the yes/no arguments the SAME LENGTH as
+the trtmt==“Treated” logical vector! What happens if we use rnorm(n=1,…)?</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="co"># What about more than two groups?</span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">trtmt &lt;-<span class="st"> </span><span class="kw">sample</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">size =</span> n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb211-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb211-5" data-line-number="5"><span class="co"># Say we want to generate differnt Normal data for each group. One way is to do a for-loop with multiple if statements:</span></a>
+<a class="sourceLine" id="cb211-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb211-7" data-line-number="7">val &lt;-<span class="st"> </span><span class="kw">numeric</span>(n) <span class="co"># empty vector</span></a>
+<a class="sourceLine" id="cb211-8" data-line-number="8"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(trtmt)){</a>
+<a class="sourceLine" id="cb211-9" data-line-number="9">  <span class="cf">if</span>(trtmt[i]<span class="op">==</span><span class="st">&quot;A&quot;</span>) val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb211-10" data-line-number="10">  <span class="cf">else</span> <span class="cf">if</span>(trtmt[i]<span class="op">==</span><span class="st">&quot;B&quot;</span>) val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">4</span>) </a>
+<a class="sourceLine" id="cb211-11" data-line-number="11">  <span class="cf">else</span> <span class="cf">if</span>(trtmt[i]<span class="op">==</span><span class="st">&quot;C&quot;</span>) val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">30</span>, <span class="dv">6</span>) </a>
+<a class="sourceLine" id="cb211-12" data-line-number="12">  <span class="cf">else</span> <span class="cf">if</span>(trtmt[i]<span class="op">==</span><span class="st">&quot;D&quot;</span>) val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">40</span>, <span class="dv">8</span>) </a>
+<a class="sourceLine" id="cb211-13" data-line-number="13">  <span class="cf">else</span> <span class="cf">if</span>(trtmt[i]<span class="op">==</span><span class="st">&quot;E&quot;</span>) val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">10</span>) </a>
+<a class="sourceLine" id="cb211-14" data-line-number="14">  <span class="cf">else</span> val[i] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dv">60</span>, <span class="dv">12</span>) </a>
+<a class="sourceLine" id="cb211-15" data-line-number="15">}</a>
+<a class="sourceLine" id="cb211-16" data-line-number="16">val</a></code></pre></div>
+<pre><code>##   [1] 11.576376  9.465103 18.275351 42.031274 45.563227 41.332462 24.833032
+##   [8] 42.691672 40.744736 49.839709 48.709138  9.140163 53.761520  7.556632
+##  [15] 55.170821 45.567743 19.882858  9.441267 29.355899 21.854935 41.837018
+##  [22] 20.847891 10.577338 53.994109 11.756548  7.220519 35.605797 20.602421
+##  [29] 22.494072 23.460312 77.272943  8.083332 50.191954 44.710898 35.851786
+##  [36] 15.227514 36.406731  7.629116 22.142077 46.214166 29.967466 57.336725
+##  [43] 11.565971 66.447415 10.287138 11.361467 14.925814 40.228507 36.535038
+##  [50] 12.579261 79.615106 63.708583 36.752670  7.442945 28.897760 23.752219
+##  [57] 56.837868 47.786744  8.976672 37.284647 23.177804 19.440649 12.169583
+##  [64] 73.423544 28.170850 22.354030 28.736339 42.352745  8.309049 45.972741
+##  [71] 36.180210 71.510068 48.076684 23.123753 44.510092 32.208610 17.285662
+##  [78] 51.708670 38.888889 40.239945 19.856443 51.841459 11.116210 10.201142
+##  [85] 10.731335 15.530799 25.867331 13.562846 78.238912 71.711494 21.023212
+##  [92] 53.096569 34.340418 42.060234 22.412097 47.359702 14.419714 50.694225
+##  [99] 23.365908 23.004778 20.989515 66.045645 31.510570 31.206626 46.958690
+## [106] 68.825559 21.832495 28.566367 38.870232 27.790953 47.581605 56.614140
+## [113] 11.058591 18.954572 54.668096 59.020574 39.165581 11.091255 48.491145
+## [120] 64.562534 54.176034 42.888166 60.696432  7.418108 23.238997  9.421419
+## [127] 73.738707 26.924804 14.870279 13.724914  9.337480 25.781511 68.176093
+## [134] 14.270560 52.080972 71.493883 35.365105 64.200543 44.373374 44.819049
+## [141] 59.315340 36.343243 36.255372 39.430310 31.269215 76.636012 19.782770
+## [148]  8.641738 27.402907 54.055081 23.951215  8.191447 37.277908 52.530782
+## [155] 39.701506 21.416825 59.400033 69.243008 49.193184 11.718405 53.574984
+## [162] 33.507361 39.308784 52.606870  9.253777 63.638915 11.232726 33.299307
+## [169] 32.582860 25.835494 23.319721 73.039736 24.149536 10.244137  8.794697
+## [176] 21.474519 12.588297  9.987547 26.512094 12.781433 41.539991  8.606029
+## [183] 70.952206 24.017570 15.773603 47.551492 43.257415 47.640365 37.928899
+## [190] 36.086770 56.328465 60.242036 20.711093 12.439874 31.923822 35.771169
+## [197] 47.532915 22.668178 30.793951 49.884352</code></pre>
+<p>A more R-like way would be to take advantage of vectorized functions. First
+create a data frame with one row for each group and the mean and standard
+deviations we want to use to generate the data for that group.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">g=</span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>],<span class="dt">mean=</span><span class="kw">seq</span>(<span class="dv">10</span>,<span class="dv">60</span>,<span class="dv">10</span>),<span class="dt">sd=</span><span class="kw">seq</span>(<span class="dv">2</span>,<span class="dv">12</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3">dat</a></code></pre></div>
+<pre><code>##   g mean sd
+## 1 A   10  2
+## 2 B   20  4
+## 3 C   30  6
+## 4 D   40  8
+## 5 E   50 10
+## 6 F   60 12</code></pre>
+<p>dat is currently a petite little dataframe of 6 rows.</p>
+<p>Now sample the row numbers (1 - 6) WITH replacement. We can use these to
+randomly sample the data frame rows.</p>
+<p>ASIDE: Recall that we can repeatedly call a row or element using subsetting brackets. For example, call the first row of iris 5 times:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">iris[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),]</a></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1            5.1         3.5          1.4         0.2  setosa
+## 1.1          5.1         3.5          1.4         0.2  setosa
+## 1.2          5.1         3.5          1.4         0.2  setosa
+## 1.3          5.1         3.5          1.4         0.2  setosa
+## 1.4          5.1         3.5          1.4         0.2  setosa</code></pre>
+<p>Let’s exploit that to randomly sample with replacement our data frame of
+groups:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">k &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb217-3" data-line-number="3">dat &lt;-<span class="st"> </span>dat[k,]</a>
+<a class="sourceLine" id="cb217-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5"><span class="kw">str</span>(dat)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    200 obs. of  3 variables:
+##  $ g   : Factor w/ 6 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 5 6 1 5 1 5 4 2 6 5 ...
+##  $ mean: num  50 60 10 50 10 50 40 20 60 50 ...
+##  $ sd  : num  10 12 2 10 2 10 8 4 12 10 ...</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="co"># Now generate our data for each group using ONE call to rnorm.</span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2">dat<span class="op">$</span>vals &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean=</span>dat<span class="op">$</span>mean, <span class="dt">sd=</span>dat<span class="op">$</span>sd)</a>
+<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="kw">head</span>(dat)</a></code></pre></div>
+<pre><code>##     g mean sd      vals
+## 5   E   50 10 53.555407
+## 6   F   60 12 58.975390
+## 1   A   10  2  9.436031
+## 5.1 E   50 10 66.783189
+## 1.1 A   10  2 11.565873
+## 5.2 E   50 10 43.187463</code></pre>
+<p>This is pretty neat. We go from one little dataframe to a larger one in a few lines of code. Mean and SD can be varied by the class, “g” in this case.</p>
+</div>
+<div id="a-demonstration-of-the-central-limit-theorem" class="section level2">
+<h2><span class="header-section-number">13.5</span> A demonstration of the Central Limit Theorem</h2>
+<p>The Central Limit Theorem states that the sum of a large number of independent random variables will be approximately normally distributed almost regardless of their individual distributions. We can demonstrate this using various rxxx functions.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="co"># sum 6 values from 6 different distributions (sample size = 6)</span></a>
+<a class="sourceLine" id="cb221-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="fl">1e4</span> <span class="co"># simulate 1000 times</span></a>
+<a class="sourceLine" id="cb221-3" data-line-number="3">clt  &lt;-<span class="st"> </span><span class="kw">rexp</span>(n, <span class="dt">rate =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">rbinom</span>(n,<span class="dv">10</span>,<span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">rchisq</span>(n,<span class="dt">df =</span> <span class="dv">6</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-4" data-line-number="4"><span class="st">  </span><span class="kw">rnorm</span>(n, <span class="dv">12</span>, <span class="dv">12</span>) <span class="op">+</span><span class="st"> </span><span class="kw">rpois</span>(n, <span class="dt">lambda =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">rt</span>(n, <span class="dt">df =</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="kw">hist</span>(clt, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb221-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb221-7" data-line-number="7"><span class="co"># overlay a normal density curve</span></a>
+<a class="sourceLine" id="cb221-8" data-line-number="8">X &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(clt),<span class="kw">max</span>(clt),<span class="dt">length =</span> <span class="dv">500</span>)       <span class="co"># x</span></a>
+<a class="sourceLine" id="cb221-9" data-line-number="9">Y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(X, <span class="dt">mean =</span> <span class="kw">mean</span>(clt), <span class="dt">sd =</span> <span class="kw">sd</span>(clt))  <span class="co"># f(x) = dnorm</span></a>
+<a class="sourceLine" id="cb221-10" data-line-number="10"><span class="kw">lines</span>(X,Y,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>) <span class="co"># plot (x,y) coordinates as a &quot;blue&quot; line (&quot;l&quot;)</span></a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="kw">rm</span>(X, Y, clt)</a></code></pre></div>
+<p>Let’s unpack some of this:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">clt1  &lt;-<span class="st"> </span><span class="kw">rexp</span>(n, <span class="dt">rate =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="kw">hist</span>(clt1, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">clt2  &lt;-<span class="st"> </span><span class="kw">rbinom</span>(n,<span class="dv">10</span>,<span class="fl">0.4</span>)</a>
+<a class="sourceLine" id="cb224-2" data-line-number="2"><span class="kw">hist</span>(clt2, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-2.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">clt3  &lt;-<span class="st"> </span><span class="kw">rchisq</span>(n,<span class="dt">df =</span> <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="kw">hist</span>(clt3, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-3.png" width="672" /></p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">clt4  &lt;-<span class="kw">rnorm</span>(n, <span class="dv">12</span>, <span class="dv">12</span>) </a>
+<a class="sourceLine" id="cb226-2" data-line-number="2"><span class="kw">hist</span>(clt4, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-4.png" width="672" /></p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">clt5  &lt;-<span class="st"> </span><span class="kw">rpois</span>(n, <span class="dt">lambda =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="kw">hist</span>(clt5, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-5.png" width="672" /></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">clt6  &lt;-<span class="st"> </span><span class="kw">rt</span>(n, <span class="dt">df =</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="kw">hist</span>(clt6, <span class="dt">freq=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-6.png" width="672" /></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="co"># All of this base R graphing is clunky and doesn&#39;t lend itself to modification as well as ggplot() figures.</span></a>
+<a class="sourceLine" id="cb229-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb229-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb229-4" data-line-number="4">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(clt1, clt2, clt3, clt4, clt5, clt6)</a>
+<a class="sourceLine" id="cb229-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb229-6" data-line-number="6">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(clt3)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb229-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-7.png" width="672" /></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(clt3)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-40-8.png" width="672" /></p>
+</div>
+<div id="overlaying-normal-curve-on-histogram" class="section level2">
+<h2><span class="header-section-number">13.6</span> Overlaying normal curve on histogram</h2>
+<p>The following solution was on StackOverflow at <a href="https://stackoverflow.com/questions/6967664/ggplot2-histogram-with-normal-curve" class="uri">https://stackoverflow.com/questions/6967664/ggplot2-histogram-with-normal-curve</a></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PF =</span> <span class="dv">10</span><span class="op">*</span><span class="kw">rnorm</span>(<span class="dv">1000</span>))</a>
+<a class="sourceLine" id="cb231-3" data-line-number="3"><span class="kw">ggplot</span>(df1, <span class="kw">aes</span>(<span class="dt">x =</span> PF)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb231-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span>..density..),</a>
+<a class="sourceLine" id="cb231-5" data-line-number="5">                   <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">40</span>, <span class="dv">40</span>, <span class="dt">by =</span> <span class="dv">5</span>), </a>
+<a class="sourceLine" id="cb231-6" data-line-number="6">                   <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, </a>
+<a class="sourceLine" id="cb231-7" data-line-number="7">                   <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb231-8" data-line-number="8"><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(df1<span class="op">$</span>PF), <span class="dt">sd =</span> <span class="kw">sd</span>(df1<span class="op">$</span>PF)), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) </a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>From the {ggplot2} help: “This stat makes it easy to superimpose a function on top of an existing plot. The function is called with a grid of evenly spaced values along the x axis, and the results are drawn (by default) with a line.”</p>
+<p>Note how stat_function() lends itself to quick addition: simply feed the correct fun and args to the function.</p>
+<p>Now accomplish this for clt3</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> clt3)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span>..density..),</a>
+<a class="sourceLine" id="cb232-3" data-line-number="3">                   <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dt">by =</span> <span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb232-4" data-line-number="4">                   <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, </a>
+<a class="sourceLine" id="cb232-5" data-line-number="5">                   <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="kw">stat_function</span>(<span class="dt">fun =</span> dchisq, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">df =</span> <span class="dv">6</span>), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb232-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;chi-squared distribution&quot;</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>Note how the args in dchisq includes only the df = 6. No mean needs to be calculated (as in dnorm).</p>
+<p>Now accomplish this for clt1</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> clt1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span>..density..),</a>
+<a class="sourceLine" id="cb233-3" data-line-number="3">                   <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>, <span class="dt">by =</span> <span class="fl">.5</span>), </a>
+<a class="sourceLine" id="cb233-4" data-line-number="4">                   <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, </a>
+<a class="sourceLine" id="cb233-5" data-line-number="5">                   <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb233-6" data-line-number="6"><span class="kw">stat_function</span>(<span class="dt">fun =</span> dexp, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">rate =</span> <span class="dv">1</span>), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb233-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;exponential distribution&quot;</span>)</a></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="generating-numerical-sequences.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10SimulatingData.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["test-book.pdf", "test-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
