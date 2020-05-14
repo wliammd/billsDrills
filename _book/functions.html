@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Bill’s Drills Book</title>
-  <meta name="description" content="References | Bill’s Drills Book" />
+  <title>Chapter 12 Functions | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 12 Functions | Bill’s Drills Book" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Bill’s Drills Book" />
+  <meta property="og:title" content="Chapter 12 Functions | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Bill’s Drills Book" />
+  <meta name="twitter:title" content="Chapter 12 Functions | Bill’s Drills Book" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions.html"/>
-
+<link rel="prev" href="simulating-data.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -199,25 +199,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="functions" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Functions</h1>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>From R4DS and the Solution book for R4DS:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rep</span>(<span class="ot">NA</span>,<span class="dv">3</span>)) </a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb235-3" data-line-number="3">cV &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb235-4" data-line-number="4">  <span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb235-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb235-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb235-7" data-line-number="7">xVar &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb235-8" data-line-number="8">  n &lt;-<span class="st"> </span><span class="kw">length</span>(x[<span class="op">!</span><span class="kw">is.na</span>(x)])</a>
+<a class="sourceLine" id="cb235-9" data-line-number="9">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb235-10" data-line-number="10">  sq_err &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span>m)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb235-11" data-line-number="11">  <span class="kw">sum</span>(sq_err, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb235-12" data-line-number="12">}</a></code></pre></div>
 
-<div id="refs" class="references">
-<div>
-<p>Stevens, T. M., and V. Parekh. 2016. “Mammary Analogue Secretory Carcinoma.” Journal Article. <em>Arch Pathol Lab Med.</em> 140 (9): 997–1001. doi: 10.5858/arpa.2015–0075–RS.</p>
-</div>
-<div>
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="functions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="simulating-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +254,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/12references.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11Functions.Rmd",
 "text": "Edit"
 },
 "history": {

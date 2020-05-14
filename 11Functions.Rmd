@@ -1,0 +1,23 @@
+# Functions
+
+```{r}
+library(tidyverse)
+```
+
+From R4DS and the Solution book for R4DS:
+
+```{r}
+x <- c(1:10, rep(NA,3)) 
+
+cV <- function(x){
+  sd(x, na.rm = TRUE)/mean(x, na.rm = TRUE)
+}
+
+xVar <- function(x) {
+  n <- length(x[!is.na(x)])
+  m <- mean(x, na.rm = TRUE)
+  sq_err <- (x - m)^2
+  sum(sq_err, na.rm = TRUE) / (n - 1)
+}
+```
+
