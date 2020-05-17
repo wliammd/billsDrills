@@ -61,6 +61,19 @@ starwars %>% filter(!is.na(species)) %>%
 
 As opposed to using `count()`, which progressively narrows the information available to be used, by using `group_by()`/`mutate()`/`ungroup()` with `geom_bar()` we have all of the variables still available for plotting. 
 
+## fct_infreq
+
+As expected, Hadley Wickham and Garrett Grolemund solve this more simple in **R4DS**:
+
+```{r starfig-4, fig.cap='Starwars Figure 5'}
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5)) %>% 
+  mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 
+  ggplot()+
+  geom_bar(aes(species, fill = gender))+
+  coord_flip()
+```
+
 ## Summarize is another very useful function:
 
 ```{r}
