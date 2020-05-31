@@ -65,7 +65,7 @@ As opposed to using `count()`, which progressively narrows the information avail
 
 As expected, Hadley Wickham and Garrett Grolemund solve this more simple in **R4DS**:
 
-```{r starfig-4, fig.cap='Starwars Figure 5'}
+```{r starfig-5, fig.cap='Starwars Figure 5'}
 starwars %>% filter(!is.na(species)) %>% 
   mutate(species = fct_lump(species, 5)) %>% 
   mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 

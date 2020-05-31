@@ -1,0 +1,38 @@
+# Relative versus absolute risk: display {#relativerisk}
+
+The following is adopted from <https://www.r-bloggers.com/lying-with-statistics-one-beer-a-day-will-kill-you/>
+
+**personograph** allows for cute displays of individuals in big groups
+
+```{r}
+library(personograph)
+library(tidyverse)
+```
+
+Start with 2000 people. Some of them will have problems without alcohol exposure, about 18, in fact. The blogger choses 2000 people to start with because $0.7*18=1$
+
+Note that this **doesn't** stratify for any other health problems, age, socio-economic status, etc. 
+
+```{r}
+n <- 2000
+probl_wo_alc <- 18 / n
+
+data <- list(first = probl_wo_alc, second = 1-probl_wo_alc)
+personograph(data,  colors = list(first = "black", second = "#efefef"),
+             fig.title = "18 of 2000 people with health problems",
+             draw.legend = FALSE, n.icons = n, dimensions = c(20, 100), 
+             plot.width = 0.97)
+```
+
+Now we illustrate the affect of 500 mL of alcohol per day. According to the Lancet article, the relative risk of serious illness following consumption of about 25 mL ethanol (500 mL beer at 5% ABV) increases by about 7%. 
+
+```{r}
+probl_w_alc <- 1 / n
+ 
+data_2 <- list(first = probl_wo_alc, second = probl_w_alc, third = 1-(probl_wo_alc+probl_w_alc))
+personograph(data_2, colors = list(first = "black", second = "red", third = "#efefef"),
+             fig.title = "About 1 additional case with half a litre of beer per day",
+             draw.legend = FALSE, n.icons = n, dimensions = c(20, 100),
+             plot.width = 0.97)
+```
+

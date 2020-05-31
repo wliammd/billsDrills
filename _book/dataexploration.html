@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-05-17" />
+<meta name="date" content="2020-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,7 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
 <li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
-<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.2</b> Summarize is another very useful function:</a></li>
+<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>3.2</b> fct_infreq</a></li>
+<li class="chapter" data-level="3.3" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.3</b> Summarize is another very useful function:</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4</b> Sampling</a><ul>
 <li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
@@ -178,6 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>11.14</b> Overlaying normal curve on histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>12</b> Functions</a></li>
+<li class="chapter" data-level="13" data-path="relativerisk.html"><a href="relativerisk.html"><i class="fa fa-check"></i><b>13</b> Relative versus absolute risk: display</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -225,8 +227,6 @@ Figure 3.1: Starwars Figure 1
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_reorder</span>(species, n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(species, n, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<pre><code>## Warning: Factor `gender` contains implicit NA, consider using
-## `forcats::fct_explicit_na`</code></pre>
 <div class="figure"><span id="fig:starfig-2"></span>
 <img src="test-book_files/figure-html/starfig-2-1.png" alt="Starwars Figure 2" width="672" />
 <p class="caption">
@@ -235,15 +235,13 @@ Figure 3.2: Starwars Figure 2
 </div>
 <p>But note that I’ve got a problem: the Droids, which outnumber the Gungans, are now reordered to <em>after</em> the Gungans. This happens because the <span class="math inline">\(n\)</span> that we’re counting comprises subcategories of species <em>and</em> gender. Only three Gungan males exist (and no females), but that is enough to tie the Droid NA category. The Droid NA category come after the Gungan category, presumably because <em>male</em> comes before <em>NA</em>, or because NA comes last (more likely).</p>
 <p>Exploring this, I see that I’m getting warning messages about the implicit NA’s in gender. Note that the following renders a slightly different plot. I <em>still</em> have not fixed the order of the species.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>), <span class="dt">gender =</span> <span class="kw">fct_lump</span>(gender, <span class="dv">2</span>), <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">fct_explicit_na</span>(gender),</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">         <span class="dt">species =</span> <span class="kw">fct_reorder</span>(species, n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(species, n, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<pre><code>## Warning: Factor `gender` contains implicit NA, consider using
-## `forcats::fct_explicit_na`</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>), <span class="dt">gender =</span> <span class="kw">fct_lump</span>(gender, <span class="dv">2</span>), <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">fct_explicit_na</span>(gender),</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">         <span class="dt">species =</span> <span class="kw">fct_reorder</span>(species, n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(species, n, <span class="dt">fill =</span> gender)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:starfig-3"></span>
 <img src="test-book_files/figure-html/starfig-3-1.png" alt="Starwars Figure 3" width="672" />
 <p class="caption">
@@ -251,15 +249,15 @@ Figure 3.3: Starwars Figure 3
 </p>
 </div>
 <p>The trick here is to use <code>group_by()</code> and <code>ungroup()</code> wisely.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">typeCount =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_reorder</span>(species, typeCount)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(species, <span class="dt">fill =</span> gender))<span class="op">+</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">typeCount =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_reorder</span>(species, typeCount)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(species, <span class="dt">fill =</span> gender))<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:starfig-4"></span>
 <img src="test-book_files/figure-html/starfig-4-1.png" alt="Starwars Figure 4" width="672" />
 <p class="caption">
@@ -268,18 +266,35 @@ Figure 3.4: Starwars Figure 4
 </div>
 <p>As opposed to using <code>count()</code>, which progressively narrows the information available to be used, by using <code>group_by()</code>/<code>mutate()</code>/<code>ungroup()</code> with <code>geom_bar()</code> we have all of the variables still available for plotting.</p>
 </div>
+<div id="fct_infreq" class="section level2">
+<h2><span class="header-section-number">3.2</span> fct_infreq</h2>
+<p>As expected, Hadley Wickham and Garrett Grolemund solve this more simple in <strong>R4DS</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> species <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_infreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_rev</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(species, <span class="dt">fill =</span> gender))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="figure"><span id="fig:starfig-5"></span>
+<img src="test-book_files/figure-html/starfig-5-1.png" alt="Starwars Figure 5" width="672" />
+<p class="caption">
+Figure 3.5: Starwars Figure 5
+</p>
+</div>
+</div>
 <div id="summarize-is-another-very-useful-function" class="section level2">
-<h2><span class="header-section-number">3.2</span> Summarize is another very useful function:</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(<span class="kw">is.na</span>(species))) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">mean =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</a></code></pre></div>
+<h2><span class="header-section-number">3.3</span> Summarize is another very useful function:</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(<span class="kw">is.na</span>(species))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n=</span><span class="kw">n</span>(), <span class="dt">mean =</span> <span class="kw">mean</span>(height, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</a></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 37 x 3
 ##    species      n  mean
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;
 ##  1 Human       35  177.
-##  2 Droid        5  140 
+##  2 Droid        6  131.
 ##  3 Gungan       3  209.
 ##  4 Kaminoan     2  221 
 ##  5 Mirialan     2  168 

@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-05-17" />
+<meta name="date" content="2020-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,7 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
 <li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
-<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.2</b> Summarize is another very useful function:</a></li>
+<li class="chapter" data-level="3.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>3.2</b> fct_infreq</a></li>
+<li class="chapter" data-level="3.3" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>3.3</b> Summarize is another very useful function:</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4</b> Sampling</a><ul>
 <li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
@@ -178,6 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>11.14</b> Overlaying normal curve on histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>12</b> Functions</a></li>
+<li class="chapter" data-level="13" data-path="relativerisk.html"><a href="relativerisk.html"><i class="fa fa-check"></i><b>13</b> Relative versus absolute risk: display</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -204,17 +206,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="think-about-throwing-a-bunch-of-dice." class="section level2">
 <h2><span class="header-section-number">4.1</span> Think about throwing a bunch of dice.</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">100</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>) </a></code></pre></div>
-<pre><code>##   [1] 5 5 5 2 3 4 1 1 6 4 5 3 5 1 1 2 2 6 1 4 5 5 5 1 4 3 6 4 5 5 2 1 1 6 4 5 6
-##  [38] 3 4 2 5 5 4 6 3 3 6 1 5 2 5 3 4 4 6 1 5 4 2 5 1 4 6 6 3 3 5 2 3 6 2 2 5 3
-##  [75] 6 3 6 3 5 5 5 4 2 3 1 6 4 6 3 1 4 1 5 4 3 1 4 3 2 6</code></pre>
+<pre><code>##   [1] 6 1 6 6 2 6 2 5 6 5 5 2 4 1 6 1 6 5 1 1 4 2 1 4 5 2 6 6 1 3 6 5 6 4 1 5 4
+##  [38] 1 5 6 3 2 3 1 3 3 6 1 3 6 5 1 3 1 4 4 4 2 3 4 5 4 6 1 4 1 1 4 1 5 3 1 4 5
+##  [75] 4 2 6 4 5 3 4 2 2 6 1 1 2 1 2 4 2 5 4 1 1 4 5 5 3 4</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">100</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##  1  2  3  4  5  6 
-## 17 13 20 16 18 16</code></pre>
+## 25  8 16 16 20 15</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">100</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prop.table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    1    2    3    4    5    6 
-## 0.21 0.21 0.13 0.18 0.11 0.16</code></pre>
+## 0.15 0.21 0.16 0.13 0.13 0.22</code></pre>
 </div>
 <div id="a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components." class="section level2">
 <h2><span class="header-section-number">4.2</span> A keen way to divide up a dataset into testing and training components.</h2>
