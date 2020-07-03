@@ -72,6 +72,14 @@ starwars %>% filter(!is.na(species)) %>%
   ggplot()+
   geom_bar(aes(species, fill = gender))+
   coord_flip()
+
+# Note that a single `mutate()` suffices to both lump factors, organize by frequency and reverse the order, as follows.
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5) %>% fct_infreq() %>% fct_rev()) %>% 
+  ggplot()+
+  geom_bar(aes(species, fill = gender))+
+  coord_flip()
+
 ```
 
 ## Summarize is another very useful function:
