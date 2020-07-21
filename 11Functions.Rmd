@@ -61,7 +61,7 @@ A couple of things can be added to avoid the following goofy mishaps (or at leas
 ```{r}
 sleep_scaled(0)
 
-sleep_scaled("rex")
+# sleep_scaled("rex")
 ```
 
 First we load Richie Cotton's package {assertive}.
@@ -88,7 +88,7 @@ sleep_scaled <- function(level = 1){
 sleep_scaled(0)
 sleep_scaled()
 sleep_scaled(2)
-sleep_scaled("joseph")
+# sleep_scaled("joseph")
 ```
 
 Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.

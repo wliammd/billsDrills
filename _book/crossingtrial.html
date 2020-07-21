@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Crossing Trial | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 6 Crossing Trial | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Crossing Trial | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-05-31" />
+<meta name="date" content="2020-07-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -204,26 +207,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="crossingtrial" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Crossing Trial</h1>
 <p>From David Robinson birthday paradox Rblogger at <a href="https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/" class="uri">https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/</a></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">summarized &lt;-<span class="st"> </span><span class="kw">crossing</span>(<span class="dt">people =</span> <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">50</span>, <span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">                       <span class="dt">trial =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">birthday =</span> <span class="kw">map</span>(people, <span class="op">~</span><span class="st"> </span><span class="kw">sample</span>(<span class="dv">365</span>, .x, <span class="dt">replace =</span> <span class="ot">TRUE</span>)),</a>
-<a class="sourceLine" id="cb25-4" data-line-number="4">         <span class="dt">multiple =</span> <span class="kw">map_lgl</span>(birthday, <span class="op">~</span><span class="st"> </span><span class="kw">any</span>(<span class="kw">duplicated</span>(.x)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(people) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">chance =</span> <span class="kw">mean</span>(multiple))</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="crossingtrial.html#cb26-1"></a>summarized &lt;-<span class="st"> </span><span class="kw">crossing</span>(<span class="dt">people =</span> <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">50</span>, <span class="dv">2</span>),</span>
+<span id="cb26-2"><a href="crossingtrial.html#cb26-2"></a>                       <span class="dt">trial =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
+<span id="cb26-3"><a href="crossingtrial.html#cb26-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">birthday =</span> <span class="kw">map</span>(people, <span class="op">~</span><span class="st"> </span><span class="kw">sample</span>(<span class="dv">365</span>, .x, <span class="dt">replace =</span> <span class="ot">TRUE</span>)),</span>
+<span id="cb26-4"><a href="crossingtrial.html#cb26-4"></a>         <span class="dt">multiple =</span> <span class="kw">map_lgl</span>(birthday, <span class="op">~</span><span class="st"> </span><span class="kw">any</span>(<span class="kw">duplicated</span>(.x)))) <span class="op">%&gt;%</span></span>
+<span id="cb26-5"><a href="crossingtrial.html#cb26-5"></a><span class="st">  </span><span class="kw">group_by</span>(people) <span class="op">%&gt;%</span></span>
+<span id="cb26-6"><a href="crossingtrial.html#cb26-6"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">chance =</span> <span class="kw">mean</span>(multiple))</span></code></pre></div>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">ggplot</span>(summarized, <span class="kw">aes</span>(people, chance)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Probability two have the same birthday&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="crossingtrial.html#cb28-1"></a><span class="kw">ggplot</span>(summarized, <span class="kw">aes</span>(people, chance)) <span class="op">+</span></span>
+<span id="cb28-2"><a href="crossingtrial.html#cb28-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb28-3"><a href="crossingtrial.html#cb28-3"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></span>
+<span id="cb28-4"><a href="crossingtrial.html#cb28-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Probability two have the same birthday&quot;</span>)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="co"># Checking the work with pbirthday function</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">summarized <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">exact =</span> <span class="kw">map_dbl</span>(people, pbirthday)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(people, chance)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> exact), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Probability two have the same birthday&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="crossingtrial.html#cb29-1"></a><span class="co"># Checking the work with pbirthday function</span></span>
+<span id="cb29-2"><a href="crossingtrial.html#cb29-2"></a>summarized <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb29-3"><a href="crossingtrial.html#cb29-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">exact =</span> <span class="kw">map_dbl</span>(people, pbirthday)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb29-4"><a href="crossingtrial.html#cb29-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(people, chance)) <span class="op">+</span></span>
+<span id="cb29-5"><a href="crossingtrial.html#cb29-5"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb29-6"><a href="crossingtrial.html#cb29-6"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> exact), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb29-7"><a href="crossingtrial.html#cb29-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span></span>
+<span id="cb29-8"><a href="crossingtrial.html#cb29-8"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Probability two have the same birthday&quot;</span>)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 
 </div>
