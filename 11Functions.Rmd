@@ -89,5 +89,11 @@ sleep_scaled(0)
 sleep_scaled()
 sleep_scaled(2)
 sleep_scaled("joseph")
-
 ```
+
+Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.
+
+```{r}
+hist(replicate(10000, sleep_scaled()), breaks = 70)
+```
+
