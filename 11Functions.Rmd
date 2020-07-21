@@ -21,3 +21,73 @@ xVar <- function(x) {
 }
 ```
 
+From Richie Cotton's DataCamp introductory course on function writing:
+
+```{r}
+roll_die <- function(n_die){
+  die_sides <- 1:6
+  sample(die_sides, n_die, replace = TRUE)
+}
+
+roll_die(6)
+```
+
+Let's apply some of these simple ideas to D&D. Say I play a character that can cast the *sleep* spell. This scales to different levels.
+
+At first level, one rolls 5 six-sided die. 
+
+```{r}
+sleep <- function(){
+  sum(sample(1:8, size = 5, replace = TRUE))
+}
+
+sleep()
+```
+
+If cast at higher levels, the spell adds 2 die per level above first: 7 die at second level, 9 die at third level, etc. Let's address this by adding a level variable to our function.
+
+```{r}
+sleep_scaled <- function(level){
+  if(level > 1){add_die = (level-1)*2
+  } else{
+    add_die = 0
+  }
+  sum(sample(1:8, size = 5 + add_die, replace = TRUE))
+}
+```
+
+A couple of things can be added to avoid the following goofy mishaps (or at least render useful error codes:
+
+```{r}
+sleep_scaled(0)
+
+sleep_scaled("rex")
+```
+
+First we load Richie Cotton's package {assertive}.
+
+```{r}
+library(assertive)
+```
+
+Then we get to work on the function:
+
+```{r}
+sleep_scaled <- function(level = 1){
+  # assert_is_numeric(level)
+  if(any(is_non_positive(level))){
+    return("x contains nonpositive values, so the spell makes no sense")
+  }
+  if(level > 1){add_die = (level-1)*2
+  } else{
+    add_die = 0
+  }
+  sum(sample(1:8, size = 5 + add_die, replace = TRUE))
+}
+
+sleep_scaled(0)
+sleep_scaled()
+sleep_scaled(2)
+sleep_scaled("joseph")
+
+```
