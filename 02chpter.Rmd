@@ -63,7 +63,7 @@ As opposed to using `count()`, which progressively narrows the information avail
 
 ## fct_infreq
 
-As expected, Hadley Wickham and Garrett Grolemund solve this more simple in **R4DS**:
+As expected, Hadley Wickham and Garrett Grolemund solve this more simply in **R4DS**:
 
 ```{r starfig-5, fig.cap='Starwars Figure 5'}
 starwars %>% filter(!is.na(species)) %>% 
