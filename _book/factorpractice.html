@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-07-24" />
+<meta name="date" content="2020-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
 <li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
-<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a></li>
+<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a><ul>
+<li class="chapter" data-level="7.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>7.1</b> A financial example</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>8</b> Correlation Plots</a></li>
 <li class="chapter" data-level="9" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html"><i class="fa fa-check"></i><b>9</b> if_else() and case_when(): Comparison</a><ul>
 <li class="chapter" data-level="9.1" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#case_when"><i class="fa fa-check"></i><b>9.1</b> case_when()</a></li>
@@ -206,10 +208,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="factorpractice" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Factor Practice</h1>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="factorpractice.html#cb24-1"></a>cups &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
-<span id="cb24-2"><a href="factorpractice.html#cb24-2"></a>manyCups &lt;-<span class="st"> </span><span class="kw">sample</span>(cups, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb24-3"><a href="factorpractice.html#cb24-3"></a>sizesCups &lt;-<span class="st"> </span><span class="kw">factor</span>(manyCups, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
-<span id="cb24-4"><a href="factorpractice.html#cb24-4"></a>sizesCups</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="factorpractice.html#cb25-1"></a>cups &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
+<span id="cb25-2"><a href="factorpractice.html#cb25-2"></a>manyCups &lt;-<span class="st"> </span><span class="kw">sample</span>(cups, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb25-3"><a href="factorpractice.html#cb25-3"></a>sizesCups &lt;-<span class="st"> </span><span class="kw">factor</span>(manyCups, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb25-4"><a href="factorpractice.html#cb25-4"></a>sizesCups</span></code></pre></div>
 <pre><code>##   [1] medium medium medium medium large  small  large  small  small  small 
 ##  [11] small  medium small  small  medium medium medium small  large  small 
 ##  [21] large  medium medium medium medium large  medium small  large  medium

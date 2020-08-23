@@ -2,6 +2,11 @@
 
 From David Robinson birthday paradox Rblogger at <https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/>
 
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+library(tidyverse)
+```
+
+
 ```{r}
 summarized <- crossing(people = seq(2, 50, 2),
                        trial = 1:100) %>%

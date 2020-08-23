@@ -37,3 +37,44 @@ keep <- 2:ncol(my.data)
 my.data[,keep]
 ```
 
+## A financial example
+
+Dealing with financial data often means cleaning variable names and getting pesky dollar signs and commas out of downloaded files. Check out this example:
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+First, load the **tidyverse**
+
+
+
+```{r}
+etf_data <- tribble(
+  ~Sign, ~"Market Value",
+  "VTI", "$172.22",
+  "VXUS", "$52.99"
+)
+
+etf_data
+
+# First let's address the crappy variable names:
+
+etf_data_namedOK <- janitor::clean_names(etf_data)
+
+etf_data_namedOK
+
+# Now remove the offending dollar signs and commas (if present)
+
+etf_data_namedOK$market_value <- as.numeric(gsub('\\$|,','',as.character(etf_data_namedOK$market_value)))
+
+etf_data_namedOK
+
+# Don't be alarmed by the rounding behavior in the console. You can see that the data is intact. 
+str(etf_data_namedOK)
+
+glimpse(etf_data_namedOK)
+
+etf_data_namedOK$market_value
+
+```
+

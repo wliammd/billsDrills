@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-07-24" />
+<meta name="date" content="2020-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
 <li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
-<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a></li>
+<li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a><ul>
+<li class="chapter" data-level="7.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>7.1</b> A financial example</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>8</b> Correlation Plots</a></li>
 <li class="chapter" data-level="9" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html"><i class="fa fa-check"></i><b>9</b> if_else() and case_when(): Comparison</a><ul>
 <li class="chapter" data-level="9.1" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#case_when"><i class="fa fa-check"></i><b>9.1</b> case_when()</a></li>
@@ -206,50 +208,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="functions" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Functions</h1>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="functions.html#cb237-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="functions.html#cb250-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>From R4DS and the Solution book for R4DS:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="functions.html#cb238-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rep</span>(<span class="ot">NA</span>,<span class="dv">3</span>)) </span>
-<span id="cb238-2"><a href="functions.html#cb238-2"></a></span>
-<span id="cb238-3"><a href="functions.html#cb238-3"></a>cV &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb238-4"><a href="functions.html#cb238-4"></a>  <span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb238-5"><a href="functions.html#cb238-5"></a>}</span>
-<span id="cb238-6"><a href="functions.html#cb238-6"></a></span>
-<span id="cb238-7"><a href="functions.html#cb238-7"></a>xVar &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb238-8"><a href="functions.html#cb238-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x[<span class="op">!</span><span class="kw">is.na</span>(x)])</span>
-<span id="cb238-9"><a href="functions.html#cb238-9"></a>  m &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb238-10"><a href="functions.html#cb238-10"></a>  sq_err &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span>m)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb238-11"><a href="functions.html#cb238-11"></a>  <span class="kw">sum</span>(sq_err, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb238-12"><a href="functions.html#cb238-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="functions.html#cb251-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rep</span>(<span class="ot">NA</span>,<span class="dv">3</span>)) </span>
+<span id="cb251-2"><a href="functions.html#cb251-2"></a></span>
+<span id="cb251-3"><a href="functions.html#cb251-3"></a>cV &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb251-4"><a href="functions.html#cb251-4"></a>  <span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb251-5"><a href="functions.html#cb251-5"></a>}</span>
+<span id="cb251-6"><a href="functions.html#cb251-6"></a></span>
+<span id="cb251-7"><a href="functions.html#cb251-7"></a>xVar &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb251-8"><a href="functions.html#cb251-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x[<span class="op">!</span><span class="kw">is.na</span>(x)])</span>
+<span id="cb251-9"><a href="functions.html#cb251-9"></a>  m &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb251-10"><a href="functions.html#cb251-10"></a>  sq_err &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span>m)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb251-11"><a href="functions.html#cb251-11"></a>  <span class="kw">sum</span>(sq_err, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb251-12"><a href="functions.html#cb251-12"></a>}</span></code></pre></div>
 <p>From Richie Cotton’s DataCamp introductory course on function writing:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="functions.html#cb239-1"></a>roll_die &lt;-<span class="st"> </span><span class="cf">function</span>(n_die){</span>
-<span id="cb239-2"><a href="functions.html#cb239-2"></a>  die_sides &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb239-3"><a href="functions.html#cb239-3"></a>  <span class="kw">sample</span>(die_sides, n_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb239-4"><a href="functions.html#cb239-4"></a>}</span>
-<span id="cb239-5"><a href="functions.html#cb239-5"></a></span>
-<span id="cb239-6"><a href="functions.html#cb239-6"></a><span class="kw">roll_die</span>(<span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="functions.html#cb252-1"></a>roll_die &lt;-<span class="st"> </span><span class="cf">function</span>(n_die){</span>
+<span id="cb252-2"><a href="functions.html#cb252-2"></a>  die_sides &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb252-3"><a href="functions.html#cb252-3"></a>  <span class="kw">sample</span>(die_sides, n_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb252-4"><a href="functions.html#cb252-4"></a>}</span>
+<span id="cb252-5"><a href="functions.html#cb252-5"></a></span>
+<span id="cb252-6"><a href="functions.html#cb252-6"></a><span class="kw">roll_die</span>(<span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## [1] 3 3 2 6 4 5</code></pre>
 <p>Let’s apply some of these simple ideas to D&amp;D. Say I play a character that can cast the <em>sleep</em> spell. This scales to different levels.</p>
 <p>At first level, one rolls 5 six-sided die.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="functions.html#cb241-1"></a>sleep &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb241-2"><a href="functions.html#cb241-2"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb241-3"><a href="functions.html#cb241-3"></a>}</span>
-<span id="cb241-4"><a href="functions.html#cb241-4"></a></span>
-<span id="cb241-5"><a href="functions.html#cb241-5"></a><span class="kw">sleep</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="functions.html#cb254-1"></a>sleep &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb254-2"><a href="functions.html#cb254-2"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb254-3"><a href="functions.html#cb254-3"></a>}</span>
+<span id="cb254-4"><a href="functions.html#cb254-4"></a></span>
+<span id="cb254-5"><a href="functions.html#cb254-5"></a><span class="kw">sleep</span>()</span></code></pre></div>
 <pre><code>## [1] 28</code></pre>
 <p>If cast at higher levels, the spell adds 2 die per level above first: 7 die at second level, 9 die at third level, etc. Let’s address this by adding a level variable to our function.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="functions.html#cb243-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(level){</span>
-<span id="cb243-2"><a href="functions.html#cb243-2"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb243-3"><a href="functions.html#cb243-3"></a>  } <span class="cf">else</span>{</span>
-<span id="cb243-4"><a href="functions.html#cb243-4"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb243-5"><a href="functions.html#cb243-5"></a>  }</span>
-<span id="cb243-6"><a href="functions.html#cb243-6"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb243-7"><a href="functions.html#cb243-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="functions.html#cb256-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(level){</span>
+<span id="cb256-2"><a href="functions.html#cb256-2"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb256-3"><a href="functions.html#cb256-3"></a>  } <span class="cf">else</span>{</span>
+<span id="cb256-4"><a href="functions.html#cb256-4"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb256-5"><a href="functions.html#cb256-5"></a>  }</span>
+<span id="cb256-6"><a href="functions.html#cb256-6"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb256-7"><a href="functions.html#cb256-7"></a>}</span></code></pre></div>
 <p>A couple of things can be added to avoid the following goofy mishaps (or at least render useful error codes:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="functions.html#cb244-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="functions.html#cb257-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] 27</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="functions.html#cb246-1"></a><span class="co"># sleep_scaled(&quot;rex&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="functions.html#cb259-1"></a><span class="co"># sleep_scaled(&quot;rex&quot;)</span></span></code></pre></div>
 <p>First we load Richie Cotton’s package {assertive}.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="functions.html#cb247-1"></a><span class="kw">library</span>(assertive)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="functions.html#cb260-1"></a><span class="kw">library</span>(assertive)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;assertive&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:magrittr&#39;:
@@ -264,28 +266,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     has_rownames</code></pre>
 <p>Then we get to work on the function:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="functions.html#cb252-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">level =</span> <span class="dv">1</span>){</span>
-<span id="cb252-2"><a href="functions.html#cb252-2"></a>  <span class="co"># assert_is_numeric(level)</span></span>
-<span id="cb252-3"><a href="functions.html#cb252-3"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is_non_positive</span>(level))){</span>
-<span id="cb252-4"><a href="functions.html#cb252-4"></a>    <span class="kw">return</span>(<span class="st">&quot;x contains nonpositive values, so the spell makes no sense&quot;</span>)</span>
-<span id="cb252-5"><a href="functions.html#cb252-5"></a>  }</span>
-<span id="cb252-6"><a href="functions.html#cb252-6"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb252-7"><a href="functions.html#cb252-7"></a>  } <span class="cf">else</span>{</span>
-<span id="cb252-8"><a href="functions.html#cb252-8"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb252-9"><a href="functions.html#cb252-9"></a>  }</span>
-<span id="cb252-10"><a href="functions.html#cb252-10"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb252-11"><a href="functions.html#cb252-11"></a>}</span>
-<span id="cb252-12"><a href="functions.html#cb252-12"></a></span>
-<span id="cb252-13"><a href="functions.html#cb252-13"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="functions.html#cb265-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">level =</span> <span class="dv">1</span>){</span>
+<span id="cb265-2"><a href="functions.html#cb265-2"></a>  <span class="co"># assert_is_numeric(level)</span></span>
+<span id="cb265-3"><a href="functions.html#cb265-3"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is_non_positive</span>(level))){</span>
+<span id="cb265-4"><a href="functions.html#cb265-4"></a>    <span class="kw">return</span>(<span class="st">&quot;x contains nonpositive values, so the spell makes no sense&quot;</span>)</span>
+<span id="cb265-5"><a href="functions.html#cb265-5"></a>  }</span>
+<span id="cb265-6"><a href="functions.html#cb265-6"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb265-7"><a href="functions.html#cb265-7"></a>  } <span class="cf">else</span>{</span>
+<span id="cb265-8"><a href="functions.html#cb265-8"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb265-9"><a href="functions.html#cb265-9"></a>  }</span>
+<span id="cb265-10"><a href="functions.html#cb265-10"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb265-11"><a href="functions.html#cb265-11"></a>}</span>
+<span id="cb265-12"><a href="functions.html#cb265-12"></a></span>
+<span id="cb265-13"><a href="functions.html#cb265-13"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;x contains nonpositive values, so the spell makes no sense&quot;</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="functions.html#cb254-1"></a><span class="kw">sleep_scaled</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="functions.html#cb267-1"></a><span class="kw">sleep_scaled</span>()</span></code></pre></div>
 <pre><code>## [1] 23</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="functions.html#cb256-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="functions.html#cb269-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 28</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="functions.html#cb258-1"></a><span class="co"># sleep_scaled(&quot;joseph&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="functions.html#cb271-1"></a><span class="co"># sleep_scaled(&quot;joseph&quot;)</span></span></code></pre></div>
 <p>Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="functions.html#cb259-1"></a><span class="kw">hist</span>(<span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">sleep_scaled</span>()), <span class="dt">breaks =</span> <span class="dv">70</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="functions.html#cb272-1"></a><span class="kw">hist</span>(<span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">sleep_scaled</span>()), <span class="dt">breaks =</span> <span class="dv">70</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 
 </div>
             </section>
