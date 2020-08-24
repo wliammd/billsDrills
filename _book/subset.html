@@ -210,11 +210,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 10</span> Subsetting</h1>
 <p>From <a href="https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/" class="uri">https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/</a></p>
 <p>Note: since this is down for maintenance, I will turn off evaluation on these chunks:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="subset.html#cb91-1"></a>education &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/robustbase/education.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb91-2"><a href="subset.html#cb91-2"></a></span>
-<span id="cb91-3"><a href="subset.html#cb91-3"></a><span class="kw">colnames</span>(education) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Region&quot;</span>,<span class="st">&quot;Urban.Population&quot;</span>,<span class="st">&quot;Per.Capita.Income&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)</span>
-<span id="cb91-4"><a href="subset.html#cb91-4"></a></span>
-<span id="cb91-5"><a href="subset.html#cb91-5"></a><span class="kw">glimpse</span>(education)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="subset.html#cb93-1"></a>education &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/robustbase/education.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb93-2"><a href="subset.html#cb93-2"></a></span>
+<span id="cb93-3"><a href="subset.html#cb93-3"></a><span class="kw">colnames</span>(education) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Region&quot;</span>,<span class="st">&quot;Urban.Population&quot;</span>,<span class="st">&quot;Per.Capita.Income&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)</span>
+<span id="cb93-4"><a href="subset.html#cb93-4"></a></span>
+<span id="cb93-5"><a href="subset.html#cb93-5"></a><span class="kw">glimpse</span>(education)</span></code></pre></div>
 <pre><code>## Rows: 50
 ## Columns: 7
 ## $ X                      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,…
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ Education.Expenditures &lt;int&gt; 235, 231, 270, 261, 300, 317, 387, 285, 300, 2…</code></pre>
 <div id="subsetting-using-brackets" class="section level2">
 <h2><span class="header-section-number">10.1</span> Subsetting using brackets</h2>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="subset.html#cb93-1"></a>education[<span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>),<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="op">:</span><span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="subset.html#cb95-1"></a>education[<span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>),<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="op">:</span><span class="dv">7</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want" class="section level2">
 <h2><span class="header-section-number">10.2</span> Subset using brackets by omitting the rows and columns we don’t want</h2>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="subset.html#cb95-1"></a>education[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="op">:</span><span class="dv">50</span>),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="subset.html#cb97-1"></a>education[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="op">:</span><span class="dv">50</span>),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator" class="section level2">
 <h2><span class="header-section-number">10.3</span> Subset using brackets in combination with the which() function and the %in% operator</h2>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="subset.html#cb97-1"></a>education[<span class="kw">which</span>(education<span class="op">$</span>Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">names</span>(education) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="subset.html#cb99-1"></a>education[<span class="kw">which</span>(education<span class="op">$</span>Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">names</span>(education) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -277,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="subset-using-the-subset-function" class="section level2">
 <h2><span class="header-section-number">10.4</span> Subset using the subset() function</h2>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="subset.html#cb99-1"></a><span class="kw">subset</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="subset.html#cb101-1"></a><span class="kw">subset</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -294,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="subset-using-dyplyrs-filter-and-select" class="section level2">
 <h2><span class="header-section-number">10.5</span> Subset using dyplyr’s filter() and select()</h2>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="subset.html#cb101-1"></a><span class="kw">select</span>(<span class="kw">filter</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">c</span>(State,Minor.Population<span class="op">:</span>Education.Expenditures))</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="subset.html#cb103-1"></a><span class="kw">select</span>(<span class="kw">filter</span>(education, Region <span class="op">==</span><span class="st"> </span><span class="dv">2</span>),<span class="kw">c</span>(State,Minor.Population<span class="op">:</span>Education.Expenditures))</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 1     OH              324                    221
 ## 2     IN              329                    264

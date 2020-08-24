@@ -1,8 +1,22 @@
 # Factor Practice {#factorpractice}
 
+## The basic structure
+
+Let's say that you have 100 cups of sizes small, medium, or large. 
+
 ```{r}
 cups <- c("small", "medium", "large")
+set.seed(2020)
 manyCups <- sample(cups, size = 100, replace = TRUE)
+table(manyCups)
+```
+
+Note that `table()` renders these in alphabetical order. It's usually more useful to render them in order of magnitude by setting levels. 
+
+```{r}
 sizesCups <- factor(manyCups, levels = c("small", "medium", "large"))
 sizesCups
+table(sizesCups)
 ```
+
+The **forcats** package is designed to work with factors. 

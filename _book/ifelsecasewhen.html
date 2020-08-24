@@ -211,11 +211,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="case_when" class="section level2">
 <h2><span class="header-section-number">9.1</span> case_when()</h2>
 <p>case_when() from <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when" class="uri">https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when</a></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="ifelsecasewhen.html#cb85-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
-<span id="cb85-2"><a href="ifelsecasewhen.html#cb85-2"></a>y &lt;-<span class="st"> </span><span class="dv">51</span><span class="op">:</span><span class="dv">100</span></span>
-<span id="cb85-3"><a href="ifelsecasewhen.html#cb85-3"></a></span>
-<span id="cb85-4"><a href="ifelsecasewhen.html#cb85-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</span>
-<span id="cb85-5"><a href="ifelsecasewhen.html#cb85-5"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="ifelsecasewhen.html#cb87-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
+<span id="cb87-2"><a href="ifelsecasewhen.html#cb87-2"></a>y &lt;-<span class="st"> </span><span class="dv">51</span><span class="op">:</span><span class="dv">100</span></span>
+<span id="cb87-3"><a href="ifelsecasewhen.html#cb87-3"></a></span>
+<span id="cb87-4"><a href="ifelsecasewhen.html#cb87-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</span>
+<span id="cb87-5"><a href="ifelsecasewhen.html#cb87-5"></a>df</span></code></pre></div>
 <pre><code>##     x   y
 ## 1   1  51
 ## 2   2  52
@@ -267,12 +267,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 48 48  98
 ## 49 49  99
 ## 50 50 100</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="ifelsecasewhen.html#cb87-1"></a><span class="kw">case_when</span>(</span>
-<span id="cb87-2"><a href="ifelsecasewhen.html#cb87-2"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">35</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz buzz&quot;</span>,</span>
-<span id="cb87-3"><a href="ifelsecasewhen.html#cb87-3"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz&quot;</span>,</span>
-<span id="cb87-4"><a href="ifelsecasewhen.html#cb87-4"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">7</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;buzz&quot;</span>,</span>
-<span id="cb87-5"><a href="ifelsecasewhen.html#cb87-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="kw">as.character</span>(x)</span>
-<span id="cb87-6"><a href="ifelsecasewhen.html#cb87-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="ifelsecasewhen.html#cb89-1"></a><span class="kw">case_when</span>(</span>
+<span id="cb89-2"><a href="ifelsecasewhen.html#cb89-2"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">35</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz buzz&quot;</span>,</span>
+<span id="cb89-3"><a href="ifelsecasewhen.html#cb89-3"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz&quot;</span>,</span>
+<span id="cb89-4"><a href="ifelsecasewhen.html#cb89-4"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">7</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;buzz&quot;</span>,</span>
+<span id="cb89-5"><a href="ifelsecasewhen.html#cb89-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="kw">as.character</span>(x)</span>
+<span id="cb89-6"><a href="ifelsecasewhen.html#cb89-6"></a>)</span></code></pre></div>
 <pre><code>##  [1] &quot;1&quot;         &quot;2&quot;         &quot;3&quot;         &quot;4&quot;         &quot;fizz&quot;      &quot;6&quot;        
 ##  [7] &quot;buzz&quot;      &quot;8&quot;         &quot;9&quot;         &quot;fizz&quot;      &quot;11&quot;        &quot;12&quot;       
 ## [13] &quot;13&quot;        &quot;buzz&quot;      &quot;fizz&quot;      &quot;16&quot;        &quot;17&quot;        &quot;18&quot;       
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="compare-this-with-if_else" class="section level2">
 <h2><span class="header-section-number">9.2</span> Compare this with if_else()</h2>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="ifelsecasewhen.html#cb89-1"></a><span class="kw">if_else</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;even&quot;</span>, <span class="st">&quot;odd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="ifelsecasewhen.html#cb91-1"></a><span class="kw">if_else</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;even&quot;</span>, <span class="st">&quot;odd&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
 ## [11] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
 ## [21] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;

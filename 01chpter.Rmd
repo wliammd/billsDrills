@@ -5,9 +5,9 @@ library(tidyverse)
 
 ## Basic conventions 
   * the `_bookdown.yml` file contains a snippet that is important to inserting the word "Chapter" before the chapter number in each of the Rmd files. 
-  * packages are indicated in bold, like **dplyr**
+  * packages are indicated in bold, like **dplyr** (surround with double asterisks)
   * programs, like RStudio or MS Word, are in regular typeface
-  * inline code and filenames are indicated in typerwriter face using backticks, like `_bookdown.yml`
+  * inline code and filenames are indicated in typerwriter face by surrounding with backticks: `_bookdown.yml`
   * `_output.yml` is modified from that used by Xie in his `bookdown-demo` [@R-bookdown]; it evokes `style.css`, `toc.css`, `preamble.tex`, which are also borrowed from Xie. 
   * chapters are set in order by using adding 01, 02, 03, ... before the name of their Rmd, like `01chpter.Rmd`. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag. `index.Rmd` always comes first in the book build, and contains the `yml` front matter. 
   * the most frequently used keyboard shortcuts from RStudio include:
@@ -41,7 +41,6 @@ Also, I note that the build does not generate the caption unless the reference i
 Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size:
 
 ![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](_bookdown_files/pathologyImages/TpitIHC.jpg){#id .class width=50% height=50%}
-
 ## Referencing citations:
 
 In order to insert citations, one needs a .bib file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
@@ -55,5 +54,27 @@ Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib 
 ```{r}
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ComplexHeatmap'), 'packages.bib')
 ```
+
+All packages are maintained in `packages.bib`. In the knitted document, references appear automatically at the end of a chapter. 
+
+## Nifty test figure.
+
+First I need the help of the **tidverse**.
+
+```{r loadTidyverse, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+Now to generate a figure. The code chunk contains the following: `{r starfig-1, fig.cap='Starwars Figure 1'}`. This labels the figure with a short name, *starfig-1*, and gives it the caption *Starwars Figure 1*. 
+
+```{r starfig-1, fig.cap='Starwars Figure 1'}
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5)) %>% 
+  mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 
+  ggplot()+
+  geom_bar(aes(species, fill = gender))+
+  coord_flip()
+```
+
 
 References appear automatically at the end of a chapter. 
