@@ -1,5 +1,9 @@
 # Factor Practice {#factorpractice}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 ## The basic structure
 
 Let's say that you have 100 cups of sizes small, medium, or large. 
@@ -19,4 +23,20 @@ sizesCups
 table(sizesCups)
 ```
 
-The **forcats** package is designed to work with factors. 
+The **forcats** package is designed to work with factors. Although I use it frequently, I haven't generalized the ideas, or internalized them. That's a mistake. The RStudio cheat sheet is a nice place to begin with this: <https://rstudio.com/resources/cheatsheets/>. 
+
+Let's use my favorite **starwars** illustration to help illustrate some of **forcats**'s usefulness.
+
+```{r}
+starwars %>% 
+  filter(!is.na(species)) %>% 
+  count(species, sort = TRUE)
+```
+
+We see that there are a ton of unique species in this list. 
+
+```{r}
+fct_count(starwars$species, sort = TRUE)
+
+```
+

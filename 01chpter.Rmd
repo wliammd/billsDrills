@@ -41,11 +41,12 @@ Also, I note that the build does not generate the caption unless the reference i
 Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size:
 
 ![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](_bookdown_files/pathologyImages/TpitIHC.jpg){#id .class width=50% height=50%}
+
 ## Referencing citations:
 
-In order to insert citations, one needs a .bib file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
+In order to insert reference citations, one needs a  `.bib` file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. A separate `packages.bib` file is also used to hold the R packages cited.
 
-To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly [@R-bookdown]. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the book.bib and packages.bib files carefully, with .txt files generated in Endnote, I should be OK.
+To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly [@R-bookdown]. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the `book.bib` and `packages.bib` files carefully, with .txt files generated in Endnote, I should be OK.
 
 For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib`.
 
@@ -75,6 +76,5 @@ starwars %>% filter(!is.na(species)) %>%
   geom_bar(aes(species, fill = gender))+
   coord_flip()
 ```
-
 
 References appear automatically at the end of a chapter. 

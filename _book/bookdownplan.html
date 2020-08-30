@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-08-23" />
+<meta name="date" content="2020-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
 <li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
@@ -150,7 +151,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
 <li class="chapter" data-level="4.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>4.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a><ul>
+<li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
 <li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a><ul>
 <li class="chapter" data-level="7.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>7.1</b> A financial example</a></li>
@@ -212,9 +215,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.1</span> Basic conventions</h2>
 <ul>
 <li>the <code>_bookdown.yml</code> file contains a snippet that is important to inserting the word “Chapter” before the chapter number in each of the Rmd files.</li>
-<li>packages are indicated in bold, like <strong>dplyr</strong></li>
+<li>packages are indicated in bold, like <strong>dplyr</strong> (surround with double asterisks)</li>
 <li>programs, like RStudio or MS Word, are in regular typeface</li>
-<li>inline code and filenames are indicated in typerwriter face using backticks, like <code>_bookdown.yml</code></li>
+<li>inline code and filenames are indicated in typerwriter face by surrounding with backticks: <code>_bookdown.yml</code></li>
 <li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
 <li>chapters are set in order by using adding 01, 02, 03, … before the name of their Rmd, like <code>01chpter.Rmd</code>. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag. <code>index.Rmd</code> always comes first in the book build, and contains the <code>yml</code> front matter.</li>
 <li>the most frequently used keyboard shortcuts from RStudio include:
@@ -228,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="referencing-other-parts-of-the-document" class="section level2">
 <h2><span class="header-section-number">2.2</span> Referencing other parts of the document</h2>
-<p>This is a good place to practice referencing figures. Say that I want to refer the reader back to my first starwars figure. See Figure <a href="dataexploration.html#fig:starfig-1">3.1</a>.</p>
+<p>This is a good place to practice referencing figures. Say that I want to refer the reader back to my first starwars figure. See Figure <a href="bookdownplan.html#fig:starfig-1">2.1</a>.</p>
 <p>I can reference other pages in a similar fashion. See Chapter <a href="subset.html#subset">10</a>. Note that this works by referencing a {#label} placed in the chapter title.</p>
 <p>See Chapter <a href="index.html#intro">1</a></p>
 <p>See Chapter <a href="dataexploration.html#dataexploration">3</a></p>
@@ -251,13 +254,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="referencing-citations" class="section level2">
 <h2><span class="header-section-number">2.4</span> Referencing citations:</h2>
-<p>In order to insert citations, one needs a .bib file in the project. I’ve included one in this project as <code>book.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span> and <span class="math inline">\(biblio-style:\)</span> line added.</p>
-<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the book.bib and packages.bib files carefully, with .txt files generated in Endnote, I should be OK.</p>
+<p>In order to insert reference citations, one needs a <code>.bib</code> file in the project. I’ve included one in this project as <code>book.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span> and <span class="math inline">\(biblio-style:\)</span> line added. A separate <code>packages.bib</code> file is also used to hold the R packages cited.</p>
+<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the <code>book.bib</code> and <code>packages.bib</code> files carefully, with .txt files generated in Endnote, I should be OK.</p>
 <p>For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here <span class="citation">(Stevens and Parekh <a href="#ref-RN2750" role="doc-biblioref">2016</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code>.</p>
 <p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for R packages:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="bookdownplan.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(<span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;ComplexHeatmap&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
 <pre><code>## Warning in knitr::write_bib(c(.packages(), &quot;bookdown&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, :
 ## package(s) ComplexHeatmap not found</code></pre>
+<p>All packages are maintained in <code>packages.bib</code>. In the knitted document, references appear automatically at the end of a chapter.</p>
+</div>
+<div id="nifty-test-figure." class="section level2">
+<h2><span class="header-section-number">2.5</span> Nifty test figure.</h2>
+<p>First I need the help of the <strong>tidverse</strong>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<p>Now to generate a figure. The code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1"></a>starwars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-2"><a href="bookdownplan.html#cb4-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-3"><a href="bookdownplan.html#cb4-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> species <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_infreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_rev</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-4"><a href="bookdownplan.html#cb4-4"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb4-5"><a href="bookdownplan.html#cb4-5"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(species, <span class="dt">fill =</span> gender))<span class="op">+</span></span>
+<span id="cb4-6"><a href="bookdownplan.html#cb4-6"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:starfig-1"></span>
+<img src="test-book_files/figure-html/starfig-1-1.png" alt="Starwars Figure 1" width="672" />
+<p class="caption">
+Figure 2.1: Starwars Figure 1
+</p>
+</div>
 <p>References appear automatically at the end of a chapter.</p>
 
 </div>
