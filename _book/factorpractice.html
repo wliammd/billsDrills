@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-08-23" />
+<meta name="date" content="2020-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
 <li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
@@ -150,7 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
 <li class="chapter" data-level="4.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>4.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a><ul>
+<li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
+<li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
+<li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
+<li class="chapter" data-level="5.4" data-path="factorpractice.html"><a href="factorpractice.html#inspecting-factors"><i class="fa fa-check"></i><b>5.4</b> Inspecting factors</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
 <li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a><ul>
 <li class="chapter" data-level="7.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>7.1</b> A financial example</a></li>
@@ -208,22 +214,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="factorpractice" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Factor Practice</h1>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="factorpractice.html#cb25-1"></a>cups &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
-<span id="cb25-2"><a href="factorpractice.html#cb25-2"></a>manyCups &lt;-<span class="st"> </span><span class="kw">sample</span>(cups, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb25-3"><a href="factorpractice.html#cb25-3"></a>sizesCups &lt;-<span class="st"> </span><span class="kw">factor</span>(manyCups, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
-<span id="cb25-4"><a href="factorpractice.html#cb25-4"></a>sizesCups</span></code></pre></div>
-<pre><code>##   [1] medium medium medium medium large  small  large  small  small  small 
-##  [11] small  medium small  small  medium medium medium small  large  small 
-##  [21] large  medium medium medium medium large  medium small  large  medium
-##  [31] small  small  large  medium medium large  large  medium medium medium
-##  [41] medium small  medium medium medium medium small  large  large  medium
-##  [51] large  large  medium large  large  small  small  small  small  large 
-##  [61] medium large  small  small  medium small  small  small  small  large 
-##  [71] medium small  small  large  large  large  medium medium medium large 
-##  [81] medium medium large  large  large  small  medium medium small  large 
-##  [91] large  medium large  medium small  medium small  large  large  small 
+<div id="the-basic-structure" class="section level2">
+<h2><span class="header-section-number">5.1</span> The basic structure</h2>
+<p>Let’s say that you have 100 cups of sizes small, medium, or large.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="factorpractice.html#cb1-1"></a>cups &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
+<span id="cb1-2"><a href="factorpractice.html#cb1-2"></a><span class="kw">set.seed</span>(<span class="dv">2020</span>)</span>
+<span id="cb1-3"><a href="factorpractice.html#cb1-3"></a>manyCups &lt;-<span class="st"> </span><span class="kw">sample</span>(cups, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-4"><a href="factorpractice.html#cb1-4"></a><span class="kw">table</span>(manyCups)</span></code></pre></div>
+<pre><code>## manyCups
+##  large medium  small 
+##     25     39     36</code></pre>
+<p>Note that <code>table()</code> renders these in alphabetical order. It’s usually more useful to render them in order of magnitude by setting levels.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="factorpractice.html#cb3-1"></a>sizesCups &lt;-<span class="st"> </span><span class="kw">factor</span>(manyCups, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb3-2"><a href="factorpractice.html#cb3-2"></a>sizesCups</span></code></pre></div>
+<pre><code>##   [1] large  medium small  small  medium medium small  small  medium medium
+##  [11] medium small  medium large  medium small  medium medium medium large 
+##  [21] medium large  medium small  large  medium medium medium large  medium
+##  [31] large  large  small  small  small  medium large  small  small  medium
+##  [41] large  small  small  small  large  small  small  large  medium medium
+##  [51] medium small  large  medium small  medium large  small  small  medium
+##  [61] small  medium large  medium large  medium medium small  large  medium
+##  [71] large  small  medium large  medium medium medium small  small  small 
+##  [81] large  medium medium small  small  medium small  small  medium small 
+##  [91] large  small  large  small  small  large  large  large  medium small 
 ## Levels: small medium large</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="factorpractice.html#cb5-1"></a><span class="kw">table</span>(sizesCups)</span></code></pre></div>
+<pre><code>## sizesCups
+##  small medium  large 
+##     36     39     25</code></pre>
+<p>The <strong>forcats</strong> package is designed to work with factors. Although I use it frequently, I haven’t generalized the ideas, or internalized them. That’s a mistake. The RStudio cheat sheet is a nice place to begin with this: <a href="https://rstudio.com/resources/cheatsheets/" class="uri">https://rstudio.com/resources/cheatsheets/</a>.</p>
+<p>Let’s use my favorite <strong>starwars</strong> illustration to help illustrate some of <strong>forcats</strong>’s usefulness.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="factorpractice.html#cb7-1"></a>starwars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb7-2"><a href="factorpractice.html#cb7-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb7-3"><a href="factorpractice.html#cb7-3"></a><span class="st">  </span><span class="kw">count</span>(species, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 37 x 2
+##    species      n
+##    &lt;chr&gt;    &lt;int&gt;
+##  1 Human       35
+##  2 Droid        6
+##  3 Gungan       3
+##  4 Kaminoan     2
+##  5 Mirialan     2
+##  6 Twi&#39;lek      2
+##  7 Wookiee      2
+##  8 Zabrak       2
+##  9 Aleena       1
+## 10 Besalisk     1
+## # … with 27 more rows</code></pre>
+<p>The <strong>forcats</strong> cheat sheet contains a bunch of often-used functions that I rarely take the time to think about.</p>
+</div>
+<div id="not-all-nominal-data-is-a-factor" class="section level2">
+<h2><span class="header-section-number">5.2</span> Not all nominal data is a factor</h2>
+<p>Note that many categorical variables are not encoded as factors. This has certain advantages, since levels can sometimes be seen as complicating ballast that is dragged around by the variable.</p>
+<p>See, so instance, that the <code>species</code> variable is not encoded as a factor:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="factorpractice.html#cb9-1"></a><span class="kw">class</span>(starwars<span class="op">$</span>species)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="making-variables-into-factors" class="section level2">
+<h2><span class="header-section-number">5.3</span> Making variables into factors</h2>
+<p>The <code>factor()</code> function (or the <code>as_factor()</code> function) make a variable into a factor and allow the assignation of levels.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="factorpractice.html#cb11-1"></a><span class="kw">class</span>(<span class="kw">factor</span>(starwars<span class="op">$</span>species))</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>The <code>levels()</code> function is useful for returning these levels:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="factorpractice.html#cb13-1"></a><span class="kw">levels</span>(<span class="kw">factor</span>(starwars<span class="op">$</span>species))</span></code></pre></div>
+<pre><code>##  [1] &quot;Aleena&quot;         &quot;Besalisk&quot;       &quot;Cerean&quot;         &quot;Chagrian&quot;      
+##  [5] &quot;Clawdite&quot;       &quot;Droid&quot;          &quot;Dug&quot;            &quot;Ewok&quot;          
+##  [9] &quot;Geonosian&quot;      &quot;Gungan&quot;         &quot;Human&quot;          &quot;Hutt&quot;          
+## [13] &quot;Iktotchi&quot;       &quot;Kaleesh&quot;        &quot;Kaminoan&quot;       &quot;Kel Dor&quot;       
+## [17] &quot;Mirialan&quot;       &quot;Mon Calamari&quot;   &quot;Muun&quot;           &quot;Nautolan&quot;      
+## [21] &quot;Neimodian&quot;      &quot;Pau&#39;an&quot;         &quot;Quermian&quot;       &quot;Rodian&quot;        
+## [25] &quot;Skakoan&quot;        &quot;Sullustan&quot;      &quot;Tholothian&quot;     &quot;Togruta&quot;       
+## [29] &quot;Toong&quot;          &quot;Toydarian&quot;      &quot;Trandoshan&quot;     &quot;Twi&#39;lek&quot;       
+## [33] &quot;Vulptereen&quot;     &quot;Wookiee&quot;        &quot;Xexto&quot;          &quot;Yoda&#39;s species&quot;
+## [37] &quot;Zabrak&quot;</code></pre>
+<p><code>levels()</code> can also be used to set the levels.</p>
+<p>And additional structure can be observed with <code>unclass()</code>. Note that the default level order in <code>species</code> is alphabetical.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="factorpractice.html#cb15-1"></a><span class="kw">unclass</span>(<span class="kw">factor</span>(starwars<span class="op">$</span>species))</span></code></pre></div>
+<pre><code>##  [1] 11  6  6 11 11 11 11  6 11 11 11 11 34 11 24 12 11 11 36 11 11  6 31 11 11
+## [26] 18 11 11  8 26 11 21 11 10 10 10 NA 30  7 NA 11 37 32 32 33 35 29 11  3 20
+## [51] 37 27 13 23 16  4 11 11 11  9 17 17 11 11 11 11  5  2 15 15 11  1  6 25 19
+## [76] 28 14 34 11 NA 22 11 11 11  6 NA 11
+## attr(,&quot;levels&quot;)
+##  [1] &quot;Aleena&quot;         &quot;Besalisk&quot;       &quot;Cerean&quot;         &quot;Chagrian&quot;      
+##  [5] &quot;Clawdite&quot;       &quot;Droid&quot;          &quot;Dug&quot;            &quot;Ewok&quot;          
+##  [9] &quot;Geonosian&quot;      &quot;Gungan&quot;         &quot;Human&quot;          &quot;Hutt&quot;          
+## [13] &quot;Iktotchi&quot;       &quot;Kaleesh&quot;        &quot;Kaminoan&quot;       &quot;Kel Dor&quot;       
+## [17] &quot;Mirialan&quot;       &quot;Mon Calamari&quot;   &quot;Muun&quot;           &quot;Nautolan&quot;      
+## [21] &quot;Neimodian&quot;      &quot;Pau&#39;an&quot;         &quot;Quermian&quot;       &quot;Rodian&quot;        
+## [25] &quot;Skakoan&quot;        &quot;Sullustan&quot;      &quot;Tholothian&quot;     &quot;Togruta&quot;       
+## [29] &quot;Toong&quot;          &quot;Toydarian&quot;      &quot;Trandoshan&quot;     &quot;Twi&#39;lek&quot;       
+## [33] &quot;Vulptereen&quot;     &quot;Wookiee&quot;        &quot;Xexto&quot;          &quot;Yoda&#39;s species&quot;
+## [37] &quot;Zabrak&quot;</code></pre>
+</div>
+<div id="inspecting-factors" class="section level2">
+<h2><span class="header-section-number">5.4</span> Inspecting factors</h2>
+<p>We see that there are a ton of unique species in this list.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="factorpractice.html#cb17-1"></a><span class="kw">fct_count</span>(starwars<span class="op">$</span>species, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 38 x 2
+##    f            n
+##    &lt;fct&gt;    &lt;int&gt;
+##  1 Human       35
+##  2 Droid        6
+##  3 &lt;NA&gt;         4
+##  4 Gungan       3
+##  5 Kaminoan     2
+##  6 Mirialan     2
+##  7 Twi&#39;lek      2
+##  8 Wookiee      2
+##  9 Zabrak       2
+## 10 Aleena       1
+## # … with 28 more rows</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="factorpractice.html#cb19-1"></a><span class="kw">fct_unique</span>(<span class="kw">factor</span>(starwars<span class="op">$</span>species))</span></code></pre></div>
+<pre><code>##  [1] Aleena         Besalisk       Cerean         Chagrian       Clawdite      
+##  [6] Droid          Dug            Ewok           Geonosian      Gungan        
+## [11] Human          Hutt           Iktotchi       Kaleesh        Kaminoan      
+## [16] Kel Dor        Mirialan       Mon Calamari   Muun           Nautolan      
+## [21] Neimodian      Pau&#39;an         Quermian       Rodian         Skakoan       
+## [26] Sullustan      Tholothian     Togruta        Toong          Toydarian     
+## [31] Trandoshan     Twi&#39;lek        Vulptereen     Wookiee        Xexto         
+## [36] Yoda&#39;s species Zabrak        
+## 37 Levels: Aleena Besalisk Cerean Chagrian Clawdite Droid Dug ... Zabrak</code></pre>
 
+</div>
 </div>
             </section>
 
@@ -281,20 +393,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

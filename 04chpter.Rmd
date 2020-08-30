@@ -33,10 +33,50 @@ starwars %>%
   count(species, sort = TRUE)
 ```
 
+The **forcats** cheat sheet contains a bunch of often-used functions that I rarely take the time to think about. 
+
+## Not all nominal data is a factor
+
+Note that many categorical variables are not encoded as factors. This has certain advantages, since levels can sometimes be seen as complicating ballast that is dragged around by the variable. 
+
+See, so instance, that the `species` variable is not encoded as a factor:
+
+```{r}
+class(starwars$species)
+```
+
+## Making variables into factors
+
+The `factor()` function (or the `as_factor()` function) make a variable into a factor and allow the assignation of levels. 
+
+```{r}
+class(factor(starwars$species))
+```
+
+The `levels()` function is useful for returning these levels:
+
+```{r}
+levels(factor(starwars$species))
+```
+
+`levels()` can also be used to set the levels.
+
+And additional structure can be observed with `unclass()`. Note that the default level order in `species` is alphabetical. 
+
+```{r}
+unclass(factor(starwars$species))
+```
+
+
+
+## Inspecting factors
+
 We see that there are a ton of unique species in this list. 
 
 ```{r}
 fct_count(starwars$species, sort = TRUE)
+
+fct_unique(factor(starwars$species))
 
 ```
 
