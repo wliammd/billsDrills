@@ -10,7 +10,7 @@ library(tidyverse)
 
 ## Counting things. The naming of parts. 
 
-```{r starfig-1, fig.cap='Starwars Figure 1'}
+```{r starfig-1a, fig.cap='Starwars Figure 1'}
 starwars %>% 
   filter(!is.na(species)) %>% 
   count(species = fct_lump(species, 5), sort = TRUE) %>% 

@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-08-23" />
+<meta name="date" content="2020-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>3</b> Data Exploration</a><ul>
 <li class="chapter" data-level="3.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>3.1</b> Counting things. The naming of parts.</a></li>
@@ -150,7 +151,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>4.1</b> Think about throwing a bunch of dice.</a></li>
 <li class="chapter" data-level="4.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>4.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a><ul>
+<li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
+<li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
+<li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
+<li class="chapter" data-level="5.4" data-path="factorpractice.html"><a href="factorpractice.html#inspecting-factors"><i class="fa fa-check"></i><b>5.4</b> Inspecting factors</a></li>
+<li class="chapter" data-level="5.5" data-path="factorpractice.html"><a href="factorpractice.html#fct_lump"><i class="fa fa-check"></i><b>5.5</b> fct_lump()</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>6</b> Crossing Trial</a></li>
 <li class="chapter" data-level="7" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>7</b> By Any Other Name</a><ul>
 <li class="chapter" data-level="7.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>7.1</b> A financial example</a></li>
@@ -186,6 +193,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>12</b> Functions</a></li>
 <li class="chapter" data-level="13" data-path="relativerisk.html"><a href="relativerisk.html"><i class="fa fa-check"></i><b>13</b> Relative versus absolute risk: display</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="14" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>14</b> Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="14.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>14.1</b> Experiment in showing dimensionality reduction for pathologists</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -211,11 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="case_when" class="section level2">
 <h2><span class="header-section-number">9.1</span> case_when()</h2>
 <p>case_when() from <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when" class="uri">https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when</a></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="ifelsecasewhen.html#cb87-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
-<span id="cb87-2"><a href="ifelsecasewhen.html#cb87-2"></a>y &lt;-<span class="st"> </span><span class="dv">51</span><span class="op">:</span><span class="dv">100</span></span>
-<span id="cb87-3"><a href="ifelsecasewhen.html#cb87-3"></a></span>
-<span id="cb87-4"><a href="ifelsecasewhen.html#cb87-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</span>
-<span id="cb87-5"><a href="ifelsecasewhen.html#cb87-5"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="ifelsecasewhen.html#cb115-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
+<span id="cb115-2"><a href="ifelsecasewhen.html#cb115-2"></a>y &lt;-<span class="st"> </span><span class="dv">51</span><span class="op">:</span><span class="dv">100</span></span>
+<span id="cb115-3"><a href="ifelsecasewhen.html#cb115-3"></a></span>
+<span id="cb115-4"><a href="ifelsecasewhen.html#cb115-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</span>
+<span id="cb115-5"><a href="ifelsecasewhen.html#cb115-5"></a>df</span></code></pre></div>
 <pre><code>##     x   y
 ## 1   1  51
 ## 2   2  52
@@ -267,12 +277,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 48 48  98
 ## 49 49  99
 ## 50 50 100</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="ifelsecasewhen.html#cb89-1"></a><span class="kw">case_when</span>(</span>
-<span id="cb89-2"><a href="ifelsecasewhen.html#cb89-2"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">35</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz buzz&quot;</span>,</span>
-<span id="cb89-3"><a href="ifelsecasewhen.html#cb89-3"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz&quot;</span>,</span>
-<span id="cb89-4"><a href="ifelsecasewhen.html#cb89-4"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">7</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;buzz&quot;</span>,</span>
-<span id="cb89-5"><a href="ifelsecasewhen.html#cb89-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="kw">as.character</span>(x)</span>
-<span id="cb89-6"><a href="ifelsecasewhen.html#cb89-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="ifelsecasewhen.html#cb117-1"></a><span class="kw">case_when</span>(</span>
+<span id="cb117-2"><a href="ifelsecasewhen.html#cb117-2"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">35</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz buzz&quot;</span>,</span>
+<span id="cb117-3"><a href="ifelsecasewhen.html#cb117-3"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz&quot;</span>,</span>
+<span id="cb117-4"><a href="ifelsecasewhen.html#cb117-4"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">7</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;buzz&quot;</span>,</span>
+<span id="cb117-5"><a href="ifelsecasewhen.html#cb117-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="kw">as.character</span>(x)</span>
+<span id="cb117-6"><a href="ifelsecasewhen.html#cb117-6"></a>)</span></code></pre></div>
 <pre><code>##  [1] &quot;1&quot;         &quot;2&quot;         &quot;3&quot;         &quot;4&quot;         &quot;fizz&quot;      &quot;6&quot;        
 ##  [7] &quot;buzz&quot;      &quot;8&quot;         &quot;9&quot;         &quot;fizz&quot;      &quot;11&quot;        &quot;12&quot;       
 ## [13] &quot;13&quot;        &quot;buzz&quot;      &quot;fizz&quot;      &quot;16&quot;        &quot;17&quot;        &quot;18&quot;       
@@ -285,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="compare-this-with-if_else" class="section level2">
 <h2><span class="header-section-number">9.2</span> Compare this with if_else()</h2>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="ifelsecasewhen.html#cb91-1"></a><span class="kw">if_else</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;even&quot;</span>, <span class="st">&quot;odd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="ifelsecasewhen.html#cb119-1"></a><span class="kw">if_else</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;even&quot;</span>, <span class="st">&quot;odd&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
 ## [11] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
 ## [21] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;

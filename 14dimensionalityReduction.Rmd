@@ -1,0 +1,63 @@
+# Dimensionality Reduction {#dimensionalityreduction}
+
+```{r}
+library(tidyverse)
+library(plot3D)
+library(plotly)
+```
+
+## Experiment in showing dimensionality reduction for pathologists
+
+```{r}
+df <- tibble(
+  diagnostic_class = rep("A", 100),
+  x = rnorm(100, mean = 1, sd = 0.1), 
+  y = rnorm(100, mean = 1, sd = 0.1), 
+  z = rnorm(100, mean = 1, sd = 0.1)
+)
+
+scatter3D(df$x, df$y, df$z)
+```
+
+When it's all one big cloud, most static plots work well enough. But let's suppose that we have three clouds:
+
+```{r}
+df1 <- tibble(
+  diagnostic_class = rep("B", 100),
+  x = rnorm(100, mean = 2, sd = 0.1), 
+  y = rnorm(100, mean = 2, sd = 0.1), 
+  z = rnorm(100, mean = 1, sd = 0.1)
+)
+
+df2 <- tibble(
+  diagnostic_class = rep("C", 100),
+  x = rnorm(100, mean = 2, sd = 0.1), 
+  y = rnorm(100, mean = 2, sd = 0.1), 
+  z = rnorm(100, mean = 2, sd = 0.1)
+)
+
+df <- df %>% rbind(df1, df2)
+```
+
+Now it's helpful to use a more dynamic display:
+
+```{r}
+plot_ly(df, x = ~x, y = ~y, z = ~z, color = ~diagnostic_class)
+```
+
+Depending upon how one rotates the figure, you can see that one group can obscure the other. 
+
+```{r}
+df %>% ggplot(aes(x,y, color = diagnostic_class)) + geom_point()
+```
+
+The trouble with 3D plots is that they don't print well. And what does one do with more than 3 dimensions?
+
+## Dimension reduction techniques
+
+I've used two methods that help out here: principle component analysis and t-distributed stochastic neighbor embedding. Let's try them.
+
+```{r}
+
+```
+

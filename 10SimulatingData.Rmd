@@ -1,5 +1,9 @@
 # Simulating data
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 I've just begun to explore R, and I realize that many of my questions could be improved with example data. Generating this kind of data takes practice, though.
 
 Some good websites:

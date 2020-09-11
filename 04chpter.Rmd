@@ -23,7 +23,7 @@ sizesCups <- factor(manyCups, levels = c("small", "medium", "large"))
 sizesCups
 table(sizesCups)
 levels(sizesCups)
-levels(many)
+levels(manyCups)
 ```
 
 The **forcats** package is designed to work with factors. Although I use it frequently, I haven't generalized the ideas, or internalized them. That's a mistake. The RStudio cheat sheet is a nice place to begin with this: <https://rstudio.com/resources/cheatsheets/>. 
