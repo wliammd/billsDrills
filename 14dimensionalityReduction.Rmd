@@ -2,11 +2,12 @@
 
 ```{r}
 library(tidyverse)
-library(plot3D)
 library(plotly)
 ```
 
 ## Experiment in showing dimensionality reduction for pathologists
+
+The first step is to build three separate "clouds" of data that do not overlap in three dimensions, but which do overlap in two dimensions. 
 
 ```{r}
 df <- tibble(
@@ -16,48 +17,50 @@ df <- tibble(
   z = rnorm(100, mean = 1, sd = 0.1)
 )
 
-scatter3D(df$x, df$y, df$z)
-```
-
-When it's all one big cloud, most static plots work well enough. But let's suppose that we have three clouds:
-
-```{r}
 df1 <- tibble(
   diagnostic_class = rep("B", 100),
-  x = rnorm(100, mean = 2, sd = 0.1), 
+  x = rnorm(100, mean = 1, sd = 0.1), 
   y = rnorm(100, mean = 2, sd = 0.1), 
   z = rnorm(100, mean = 1, sd = 0.1)
 )
 
 df2 <- tibble(
   diagnostic_class = rep("C", 100),
-  x = rnorm(100, mean = 2, sd = 0.1), 
-  y = rnorm(100, mean = 2, sd = 0.1), 
+  x = rnorm(100, mean = 1, sd = 0.1), 
+  y = rnorm(100, mean = 1, sd = 0.1), 
   z = rnorm(100, mean = 2, sd = 0.1)
 )
 
-df <- df %>% rbind(df1, df2)
+df <- df %>% rbind(df1) %>% rbind(df2)
 ```
 
-Now it's helpful to use a more dynamic display:
-
-```{r}
-plot_ly(df, x = ~x, y = ~y, z = ~z, color = ~diagnostic_class)
-```
-
-Depending upon how one rotates the figure, you can see that one group can obscure the other. 
+The following 2D and 3D plots make it clear that the diagnostic class is only obvious when one takes into account the z-axis. 
 
 ```{r}
 df %>% ggplot(aes(x,y, color = diagnostic_class)) + geom_point()
+
+plot_ly(x=df$x, y=df$y, z=df$z, type="scatter3d", mode="markers", color = df$diagnostic_class)
 ```
 
-The trouble with 3D plots is that they don't print well. And what does one do with more than 3 dimensions?
-
-## Dimension reduction techniques
-
-I've used two methods that help out here: principle component analysis and t-distributed stochastic neighbor embedding. Let's try them.
+### Principle component analysis
 
 ```{r}
+library(ggfortify)
+autoplot(prcomp(df[,2:4]), data = df, colour = 'diagnostic_class', size = 8)
+```
+
+### t-distributed stochastic neighbor embedding
+
+```{r}
+library(Rtsne)
+
+df_unique <- unique(df) #removes duplicates
+df_matrix <- as.matrix(df[,2:4])
+set.seed(2020)
+tsne_out <- Rtsne(df_matrix)
+
+tsne_plot <- data.frame(x = tsne_out$Y[,1], y = tsne_out$Y[,2], col = df$diagnostic_class)
+ggplot(tsne_plot) + geom_point(aes(x=x, y=y, color=col))
 
 ```
 
