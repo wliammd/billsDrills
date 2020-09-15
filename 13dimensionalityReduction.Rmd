@@ -1,5 +1,16 @@
 # Dimensionality Reduction {#dimensionalityreduction}
 
+## Background
+
+Most complex diagnosis is conducted without recourse to perfect prevalence data, or to the characteristics of available tests. Indeed, we often don't know which variables are relevant. An expert in pathology is defined, more or less, by an intuitive understanding of prevalence and the properties of tests which can be used to classify diseases. 
+
+The process by which pathologists classify disease is often poorly understood. Magical thinking and arguments from authority infuse the process, particularly at the edges of what is known--especially when disease is rare and evidence is weak. Careers in diagnostic pathology were formerly made by adding a new rare disease to the ever-growing bestiary. 
+
+Beginners often stumble when trying to visualize the testing process, and how classes are established. Dimension reduction methods are useful to prioritize variables (factors), and begin the iterative process of classification-test validation-clinical testing, it is often useful to see which ones permit the clearest distinction between clusters in high dimensional spaces--like those created when numerous tests are deployed to establish a single diagnosis. 
+
+Resources to understand dimensionality reduction:
+<https://www.datacamp.com/community/tutorials/introduction-t-sne>
+
 ```{r}
 library(tidyverse)
 library(plotly)
@@ -43,6 +54,11 @@ plot_ly(x=df$x, y=df$y, z=df$z, type="scatter3d", mode="markers", color = df$dia
 ```
 
 ### Principle component analysis
+
+PCA concentrates on placing dissimilar data points far apart in a lower dimension representation.
+
+Some useful websites for principle component analysis:
+<http://huboqiang.cn/2016/03/03/RscatterPlotPCA>
 
 ```{r}
 library(ggfortify)
