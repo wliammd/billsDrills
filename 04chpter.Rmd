@@ -95,3 +95,7 @@ starwars %>% filter(!is.na(species)) %>%
 ```
 
 `fct_lump()` is will produce more than the requested number of categories (in this case 5), when ties are present in the last place. In this case, since 5 species each have 2 members, all of these species are listed. 
+
+## fct_infreq() and fct_rev()
+
+These are very important in plotting. See Figure \@ref(fig:starfig-5) for a good example.

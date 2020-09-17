@@ -65,21 +65,23 @@ As opposed to using `count()`, which progressively narrows the information avail
 
 As expected, Hadley Wickham and Garrett Grolemund solve this more simply in **R4DS**:
 
-```{r starfig-5, fig.cap='Starwars Figure 5'}
+```{r starfig-5, fig.cap='Starwars Figure 5. Serial mutates are used.'}
 starwars %>% filter(!is.na(species)) %>% 
   mutate(species = fct_lump(species, 5)) %>% 
   mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 
   ggplot()+
   geom_bar(aes(species, fill = gender))+
   coord_flip()
+```
 
-# Note that a single `mutate()` suffices to both lump factors, organize by frequency and reverse the order, as follows.
+Note that a single `mutate()` suffices to both lump factors, organize by frequency and reverse the order, as follows.
+
+```{r starfig-6, fig.cap='Starwars Figure 6. A single mutate is used.'}
 starwars %>% filter(!is.na(species)) %>% 
   mutate(species = fct_lump(species, 5) %>% fct_infreq() %>% fct_rev()) %>% 
   ggplot()+
   geom_bar(aes(species, fill = gender))+
   coord_flip()
-
 ```
 
 ## Summarize is another very useful function:
