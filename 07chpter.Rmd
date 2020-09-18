@@ -1,5 +1,10 @@
 # Correlation Plots {#correlation}
 
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+
 ```{r}
 head(iris)
 iris %>% select(-Species) %>% cor()

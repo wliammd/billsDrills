@@ -2,7 +2,7 @@
 
 Data exploration is one of the most important aspects of data science and forms the cornerstone of my drills. Nonetheless, I have lots of room for improvement.
 
-I like Hadely Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the **tidyverse**. 
+I like Hadley Wickham's writing and find his approach exceptionally clear. Therefore, I'll use the **tidyverse**. 
 
 ```{r, message=FALSE}
 library(tidyverse)
@@ -83,6 +83,22 @@ starwars %>% filter(!is.na(species)) %>%
   geom_bar(aes(species, fill = gender))+
   coord_flip()
 ```
+
+## Weight weight, don't tell me!
+
+One feature of `count()` is difficult for me to remember, mostly because it is *not* a count--it is a sum. 
+
+```{r}
+df <- tibble(
+  Symbol = c("a", "b", "c", "c", "d", "e"),
+  Value = 1:6
+)
+
+df %>% count(Symbol, sort = TRUE)
+df %>% count(Symbol, wt = Value, sort = TRUE)
+```
+
+The above example shows that `count()` performs in the usual way unless we use the `wt =` argument, which then sums the value specified and generates `n`, which now indicates a weight, not a count of a nominal variable. 
 
 ## Summarize is another very useful function:
 

@@ -1,0 +1,216 @@
+# Factor Practice {#factorpractice}
+
+```{r include=FALSE}
+library(tidyverse)
+library("forcats")
+library("gapminder")
+library("skimr")
+```
+
+## The basic structure
+
+Let's say that you have 100 cups of sizes small, medium, or large. 
+
+```{r}
+cups <- c("small", "medium", "large")
+set.seed(2020)
+manyCups <- sample(cups, size = 100, replace = TRUE)
+table(manyCups)
+str(manyCups)
+```
+
+Note that `table()` renders these in alphabetical order. It's usually more useful to render them in order of magnitude by setting levels. 
+
+```{r}
+sizesCups <- factor(manyCups, levels = c("small", "medium", "large"))
+sizesCups
+table(sizesCups)
+levels(sizesCups)
+levels(manyCups)
+```
+
+The **forcats** package is designed to work with factors. Although I use it frequently, I haven't generalized the ideas, or internalized them. That's a mistake. The RStudio cheat sheet is a nice place to begin with this: <https://rstudio.com/resources/cheatsheets/>. 
+
+Let's use my favorite **starwars** illustration to help illustrate some of **forcats**'s usefulness.
+
+```{r}
+starwars %>% 
+  filter(!is.na(species)) %>% 
+  count(species, sort = TRUE)
+```
+
+The **forcats** cheat sheet contains a bunch of often-used functions that I rarely take the time to think about. 
+
+## Not all nominal data is a factor
+
+Note that many categorical variables are not encoded as factors. This has certain advantages, since levels can sometimes be seen as complicating ballast that is dragged around by the variable. 
+
+See, so instance, that the `species` variable is not encoded as a factor:
+
+```{r}
+class(starwars$species)
+```
+
+See? `species` is character, not factor, class.
+
+## Making variables into factors
+
+The `factor()` function (or the `as_factor()` function) make a variable into a factor and allow the assignation of levels. 
+
+```{r}
+class(factor(starwars$species))
+```
+
+The `levels()` function is useful for returning these levels:
+
+```{r}
+levels(factor(starwars$species))
+```
+
+`levels()` can also be used to set the levels.
+
+And additional structure can be observed with `unclass()`. Note that the default level order in `species` is alphabetical. 
+
+```{r}
+unclass(factor(starwars$species))
+```
+
+
+## Inspecting factors
+
+We see that there are a ton of unique species in this list. 
+
+```{r}
+fct_count(starwars$species, sort = TRUE)
+
+fct_unique(factor(starwars$species))
+
+```
+
+## fct_lump()
+
+We often don't want to see all of the rare outcomes for a nominal variable, and are content to *lump* the uncommon ones together in an `other` category.
+
+```{r}
+starwars %>% filter(!is.na(species)) %>% 
+  mutate(species = fct_lump(species, 5)) %>%
+  count(species, sort = TRUE)
+```
+
+`fct_lump()` is will produce more than the requested number of categories (in this case 5), when ties are present in the last place. In this case, since 5 species each have 2 members, all of these species are listed. 
+
+## fct_infreq() and fct_rev()
+
+These are very important in plotting. See Figure \@ref(fig:starfig-5) for a good example.
+
+## Additional practice
+
+The following is based on code and materials from <http://stat545.com/block029_factors.html> with some running commentary by me.
+
+Get to know the factors by assaying the **gapminder** dataset, particularly the factor "continent."
+
+```{r}
+skimr::skim(gapminder)
+glimpse(gapminder)
+str(gapminder)
+levels(gapminder$continent)
+nlevels(gapminder$continent)
+class(gapminder$continent)
+```
+
+Now to study the `continent` a little more carefully.
+
+```{r}
+gapminder %>% 
+  count(continent, sort = TRUE)
+
+fct_count(gapminder$continent, sort = TRUE)
+```
+
+However, R keeps levels even when you filter out values. It drags them around like invisible dead weight. See, for instance: 
+
+```{r}
+nlevels(gapminder$country)
+h_countries <- c("Egypt", "Haiti", "Romania", "Thailand", "Venezuela")
+h_gap <- gapminder %>%
+  filter(country %in% h_countries)
+nlevels(h_gap$country)
+str(h_gap$country)
+str(h_gap)
+```
+So h_gap has only 60 records from only 5 countries, but it retains 142 country levels. 
+
+There are 2 easy solutions that drop these levels: `droplevels()` from base R and `forcats::fct_drop()`.
+
+```{r}
+h_gap_dropped <- h_gap %>% 
+  droplevels()
+
+nlevels(h_gap_dropped$country)
+str(h_gap_dropped)
+```
+Now we can see that h_gap_dropped has only 5 country levels, as one would expect. It still retains all 60 rows. 
+
+`fct_drop()` is the other way to do this:
+
+```{r}
+x <- fct_drop(h_gap$country)
+levels(x)
+nlevels(x)
+```
+
+## Reordering Factors
+
+```{r}
+gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia")
+
+gap_asia_2007 %>% ggplot(aes(x = lifeExp, y = country)) + 
+  geom_point()
+```
+
+This is helter skelter. Much better is an reordered display, based upon life expectancy.
+
+```{r}
+gap_asia_2007 %>% 
+  ggplot(aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_point()
+```
+### Improving legibility: change the linetype
+
+```{r}
+h_countries <- c("Egypt", "Haiti", "Romania", "Thailand", "Venezuela")
+h_gap <- gapminder %>%
+  filter(country %in% h_countries) %>% 
+  droplevels()
+
+h_gap %>% 
+  ggplot(aes(x = year, 
+             y = lifeExp, 
+             color = country, 
+             linetype = country)) +
+  geom_line()
+```
+
+### fct_reorder2(): another way to improve legibility
+
+Use fct_reorder2() when you have a *line chart* of a quantitative x against another quantitative y and your factor provides the color. The legend appears in some order as the data. 
+
+```{r}
+h_gap %>% ggplot(aes(x = year, 
+                     y = lifeExp,
+                     color = fct_reorder2(country, year, lifeExp))) +
+  geom_line() +
+  labs(color = "country")
+```
+
+Now work on combining the two elements. Note in the following that the color and linetype are treated separately in both the `aes()` and the `labs()`. The "Spiffy Title" has to be named explicitly--and they must be exactly the same--for both aesthetic values or two legends will be generated. 
+
+```{r}
+h_gap %>% ggplot(aes(x = year, 
+                     y = lifeExp,
+                     color = fct_reorder2(country, year, lifeExp),
+                     linetype = fct_reorder2(country, year, lifeExp))) +
+  geom_line() +
+  labs(color = "Spiffy Title",
+       linetype = "Spiffy Title")
+```

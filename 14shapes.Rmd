@@ -1,0 +1,277 @@
+# Shape of Data {#datashape}
+
+One of my fundamental stumbling blocks is understanding the shape of data, even "rectangular data" of the sort that Hadley Wickham refers to in R4DS. 
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+## Making data frames
+
+```{r}
+DF1 <- tibble(
+  Symbol = c("a", "b", "c"),
+  Value = 1:3
+)
+DF1
+
+DF2 <- tibble(
+  Symbol = c("c", "d", "e"),
+  Value = 4:6
+)
+DF2
+
+DFmerge <- rbind(DF1,DF2)
+DFmerge
+```
+
+## Gather, spread, pivoting in the tidyverse
+
+The following exercises are based on **R4DS**. 
+
+Several simple data tables are available for practice. Check them out:
+
+```{r}
+table1
+```
+Note that only table 1 is tidy. Tidy rules the day, making cool things possible. For instance:
+
+```{r}
+table1 %>% 
+  count(year, wt = cases)
+
+table1 %>% 
+  count(year, wt = NULL)
+# BTW, note the difference between the above count and this one:
+table1 %>% 
+  group_by(year) %>% 
+  count(cases)
+# Or the following group and summarize:
+table1 %>% 
+  group_by(year) %>% 
+  summarise(AggCases = sum(cases))
+
+# Or the following plot (I couldn't help but embellish this with a fct_reorder--vital to ggplot/geom_line displays,but a trick that I always forget):
+
+table1 %>% 
+  mutate(country = fct_reorder(country, -population)) %>% 
+  ggplot(aes(year, cases)) + 
+  geom_line(aes(group = country), colour = "grey50") + 
+  geom_point(aes(colour = country))
+```
+
+An aside on count() and tally(): tally() is a convenient wrapper for summarise that will either call n() or sum(n) depending on whether you're tallying for the first time, or re-tallying. count() is similar but calls group_by() before and ungroup() after. If the data is already grouped, count() adds an additional group that is removed afterwards.
+
+Tidy data is not space-efficient, though. Note how values are reduplicated. This is not an issue in small datasets, but can be a bummer if datasets get large or human data entry is necessary--manually entering demographics is always error-prone. 
+
+Table 2 on the other hand contains 2 sorts of data in the count column--cases and population. Not only is this less efficient than table 1, it is much more verbose. 
+
+```{r}
+table2
+```
+Table 3 contains unnecessary internal structure. I combines two values into one field. Kudos for transparency, but little is actually gained by doing this, and it complicates analyses. Best to break them apart.
+
+```{r}
+table3
+```
+
+Tables 4a and 4b break data into separate structures when a single table would suffice. Many database tables will be arranged like this. However, to perform calculations on data from each table, it can be better to weld the tables into a single structure. 
+
+```{r}
+table4a
+table4b
+```
+
+## Gathering steam...
+
+Table 4a has a *key* field--the year--and a *value* field--cases. To bring the key down into the table, we gather it:
+
+```{r}
+table4a
+tidy4a <- table4a %>% 
+  gather(`1999`, `2000`, key = "year", value = "cases")
+tidy4a
+```
+
+Note that we replace column names that should be data fields with a key (in this example we call it "year"), and the corresponding data held in table4a with a value (in this example "cases").
+
+The same thing can be done with 4b, except now the value is population. 
+
+```{r}
+table4b
+tidy4b <- table4b %>% 
+  gather(`1999`, `2000`, key = "year", value = "population")
+tidy4b
+```
+Note that we get new key and value columns and the gathered columns are dropped. This has the effect of gathering them down into more rows.  
+
+It should be noted that many examples of gathering are not written in this way. By default, the key and value simply dropped into the correct part of the gather(). Columns that are not part of the gather are then exempted by negation.
+
+```{r}
+table4b %>% 
+  gather(year, cases, -country)
+```
+
+David Robinson has even shown examples where he simply uses gather(key, value, -exemptedColumn) (see his YouTube at <https://www.youtube.com/watch?v=KzRP40PzopY>).
+
+The two new tidy tables are joined as follows:
+
+```{r}
+left_join(tidy4a, tidy4b)
+```
+ 
+David Robinson shows in this bit <https://www.youtube.com/watch?v=KzRP40PzopY> (about 8m 30s into the YouTube) that you don't need to make the key and value explicit, and also that you can exempt some columns from the process. 
+
+## Spread your wings
+
+So spread is the opposite of gather. Consider Table 2.
+
+```{r}
+table2
+```
+
+Now our task is to spread cases and population from the type column into their own columns. In `table2` the `type` column should be distributed into variable with their own columns. Note that this has the effect of *spreading* table into more columns.
+
+```{r}
+table2 %>% 
+  spread(key = type, value = count)
+```
+
+Hadley provides an interesting example that shows how gather and spread are NOT perfect compliments.
+
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2016, 2016),
+  half  = c(   1,    2,     1,    2),
+  return = c(1.88, 0.59, 0.92, 0.17)
+)
+stocks
+
+stocks %>% 
+  spread(year, return) %>% 
+  gather("year", "return", `2015`:`2016`)
+```
+
+Note how the correct columns are in place, but the year column is now character data. 
+
+## Missing Data: Ich vemisse Dich!
+
+Hadley provides a different stock example:
+
+```{r}
+stocks <- tibble(
+  year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016),
+  qtr    = c(   1,    2,    3,    4,    2,    3,    4),
+  return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66)
+)
+
+stocks
+```
+
+Hadley points out that 2 data points are missing in this data set: one explicit and one implicit.
+
+> One way to think about the difference is with this Zen-like koan: An explicit missing value is the presence of an absence; an implicit missing value is the absence of a presence.
+
+The implicitly missing value here can be made explicit by *spreading* the years. 
+
+```{r}
+stocks %>% 
+  spread(year, return)
+```
+
+Note exactly how this works: the rows are now determined by qtr. The 2015 4th quarter value, explicitly NA before, remains NA. Now, however, when 2016 is spread as a variable, the gap in quarter 1 is revealed. 
+
+These NA's can be removed by gathering the data back up using na.rm = TRUE. 
+
+```{r}
+stocks %>% 
+  spread(year, return) %>% 
+  gather(year, return, `2015`:`2016`, na.rm = TRUE)
+```
+
+### You complete(me)
+
+The complete() function is also an important way to make missing values explicit.
+
+< *complete()* takes a set of columns, and finds all unique combinations. It then ensures the original dataset contains all those values, filling in explicit NAs where necessary
+
+```{r}
+stocks
+
+stocks %>% 
+  complete(year, qtr)
+```
+
+### fill(ing) in the gaps
+
+While complete() can make explicit the missing values, fill() lets you address a particular type of missing value. Here, the last observation is carried forward. This is very common in data sets.
+
+```{r}
+treatment <- tribble(
+  ~ person,           ~ treatment, ~response,
+  "Derrick Whitmore", 1,           7,
+  NA,                 2,           10,
+  NA,                 3,           9,
+  "Katherine Burke",  1,           4
+)
+
+treatment
+
+treatment %>% 
+  fill(person)
+```
+
+## Pivoting to something new
+
+These are great exercises, but gather() and spread() are being upgraded to pivot_longer() and pivot_wider(). See <https://www.r-bloggers.com/data-pivoting-with-tidyr/>
+
+```{r}
+table4a
+
+table4a_long <- table4a %>%
+  pivot_longer(
+    `1999`:`2000`,
+    names_to = "year",
+    values_to = "value"
+  )
+
+table4a_long
+
+table4b_long <- table4b %>% 
+  pivot_longer(
+    `1999`:`2000`,
+    names_to = "year",
+    values_to = "value"
+  )
+
+table4b_long
+
+```
+
+This is presumably reversible. 
+
+```{r}
+table4aNew <- table4a_long %>% 
+  pivot_wider(
+    names_from = "year",
+    values_from = "value"
+  )
+
+table4aNew
+table4a
+```
+
+So they are the same.
+
+Table 2 can also be `spread()`... ahem, `pivot_wider()`ed. 
+
+```{r}
+table2
+
+table2 %>% pivot_wider(
+  names_from = c("year", "type"),
+  values_from = "count"
+)
+```
+
+Note that, names_from can come from multiple columns. When there are multiple names_from or values_from columns, names_sep will be used to join values together to form column names.
