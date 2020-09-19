@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="simulating-data.html"/>
-<link rel="next" href="ifelsecasewhen.html"/>
+<link rel="next" href="correlation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -187,6 +187,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>7.2</b> fct_infreq</a></li>
 <li class="chapter" data-level="7.3" data-path="dataexploration.html"><a href="dataexploration.html#weight-weight-dont-tell-me"><i class="fa fa-check"></i><b>7.3</b> Weight weight, don’t tell me!</a></li>
 <li class="chapter" data-level="7.4" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>7.4</b> Summarize is another very useful function:</a></li>
+<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a><ul>
 <li class="chapter" data-level="8.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>8.1</b> Think about throwing a bunch of dice.</a></li>
@@ -207,22 +211,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.12" data-path="simulating-data.html"><a href="simulating-data.html#the-good-stuff-building-in-a-difference-based-on-a-categorical-variable"><i class="fa fa-check"></i><b>9.12</b> The good stuff: building in a difference based on a categorical variable</a></li>
 <li class="chapter" data-level="9.13" data-path="simulating-data.html"><a href="simulating-data.html#a-demonstration-of-the-central-limit-theorem"><i class="fa fa-check"></i><b>9.13</b> A demonstration of the Central Limit Theorem</a></li>
 <li class="chapter" data-level="9.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>9.14</b> Overlaying normal curve on histogram</a></li>
+<li class="chapter" data-level="9.15" data-path="simulating-data.html"><a href="simulating-data.html#crossing-trial"><i class="fa fa-check"></i><b>9.15</b> Crossing trial</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a></li>
-<li class="chapter" data-level="11" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html"><i class="fa fa-check"></i><b>11</b> if_else() and case_when(): Comparison</a><ul>
-<li class="chapter" data-level="11.1" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#case_when"><i class="fa fa-check"></i><b>11.1</b> case_when()</a></li>
-<li class="chapter" data-level="11.2" data-path="ifelsecasewhen.html"><a href="ifelsecasewhen.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>11.2</b> Compare this with if_else()</a></li>
+<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a><ul>
+<li class="chapter" data-level="10.1" data-path="functions.html"><a href="functions.html#a-little-dungeons-dragons-tm-to-spice-it-up"><i class="fa fa-check"></i><b>10.1</b> A little Dungeons &amp; Dragons (tm) to spice it up</a></li>
+<li class="chapter" data-level="10.2" data-path="functions.html"><a href="functions.html#geometric-and-harmonic-means"><i class="fa fa-check"></i><b>10.2</b> Geometric and harmonic means</a></li>
+<li class="chapter" data-level="10.3" data-path="functions.html"><a href="functions.html#for-loop"><i class="fa fa-check"></i><b>10.3</b> for loop</a></li>
+<li class="chapter" data-level="10.4" data-path="functions.html"><a href="functions.html#case_when"><i class="fa fa-check"></i><b>10.4</b> case_when()</a></li>
+<li class="chapter" data-level="10.5" data-path="functions.html"><a href="functions.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>10.5</b> Compare this with if_else()</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Correlation Plots</a></li>
-<li class="chapter" data-level="13" data-path="relativerisk.html"><a href="relativerisk.html"><i class="fa fa-check"></i><b>13</b> Relative versus absolute risk: display</a></li>
-<li class="chapter" data-level="14" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>14</b> Dimensionality Reduction</a><ul>
-<li class="chapter" data-level="14.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>14.1</b> Background</a></li>
-<li class="chapter" data-level="14.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>14.2</b> Experiment in showing dimensionality reduction for pathologists</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>14.2.1</b> Principle component analysis</a></li>
-<li class="chapter" data-level="14.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>14.2.2</b> t-distributed stochastic neighbor embedding</a></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation Plots</a></li>
+<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="12.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
+<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>12.2.1</b> Principle component analysis</a></li>
+<li class="chapter" data-level="12.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>12.2.2</b> t-distributed stochastic neighbor embedding</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="crossingtrial.html"><a href="crossingtrial.html"><i class="fa fa-check"></i><b>15</b> Crossing Trial</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -246,87 +251,221 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="functions" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Functions</h1>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="functions.html#cb373-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<p>From R4DS and the Solution book for R4DS:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="functions.html#cb374-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rep</span>(<span class="ot">NA</span>,<span class="dv">3</span>)) </span>
-<span id="cb374-2"><a href="functions.html#cb374-2"></a></span>
-<span id="cb374-3"><a href="functions.html#cb374-3"></a>cV &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb374-4"><a href="functions.html#cb374-4"></a>  <span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb374-5"><a href="functions.html#cb374-5"></a>}</span>
-<span id="cb374-6"><a href="functions.html#cb374-6"></a></span>
-<span id="cb374-7"><a href="functions.html#cb374-7"></a>xVar &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb374-8"><a href="functions.html#cb374-8"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x[<span class="op">!</span><span class="kw">is.na</span>(x)])</span>
-<span id="cb374-9"><a href="functions.html#cb374-9"></a>  m &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb374-10"><a href="functions.html#cb374-10"></a>  sq_err &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span>m)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb374-11"><a href="functions.html#cb374-11"></a>  <span class="kw">sum</span>(sq_err, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb374-12"><a href="functions.html#cb374-12"></a>}</span></code></pre></div>
-<p>From Richie Cotton’s DataCamp introductory course on function writing:</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="functions.html#cb375-1"></a>roll_die &lt;-<span class="st"> </span><span class="cf">function</span>(n_die){</span>
-<span id="cb375-2"><a href="functions.html#cb375-2"></a>  die_sides &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb375-3"><a href="functions.html#cb375-3"></a>  <span class="kw">sample</span>(die_sides, n_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb375-4"><a href="functions.html#cb375-4"></a>}</span>
-<span id="cb375-5"><a href="functions.html#cb375-5"></a></span>
-<span id="cb375-6"><a href="functions.html#cb375-6"></a><span class="kw">roll_die</span>(<span class="dv">6</span>)</span></code></pre></div>
-<pre><code>## [1] 3 3 2 6 4 5</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="functions.html#cb387-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<p>From R4DS and the Solution book for R4DS. Make functions to calculate the coefficient of variation (cV) and the variance (xVar) of a vector.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">rep</span>(<span class="ot">NA</span>,<span class="dv">3</span>)) </span>
+<span id="cb388-2"><a href="functions.html#cb388-2"></a></span>
+<span id="cb388-3"><a href="functions.html#cb388-3"></a>cV &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb388-4"><a href="functions.html#cb388-4"></a>  <span class="kw">sd</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb388-5"><a href="functions.html#cb388-5"></a>}</span>
+<span id="cb388-6"><a href="functions.html#cb388-6"></a></span>
+<span id="cb388-7"><a href="functions.html#cb388-7"></a><span class="kw">cV</span>(x)</span></code></pre></div>
+<pre><code>## [1] 0.5504819</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="functions.html#cb390-1"></a>xVar &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb390-2"><a href="functions.html#cb390-2"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x[<span class="op">!</span><span class="kw">is.na</span>(x)])</span>
+<span id="cb390-3"><a href="functions.html#cb390-3"></a>  m &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb390-4"><a href="functions.html#cb390-4"></a>  sq_err &lt;-<span class="st"> </span>(x <span class="op">-</span><span class="st"> </span>m)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb390-5"><a href="functions.html#cb390-5"></a>  <span class="kw">sum</span>(sq_err, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb390-6"><a href="functions.html#cb390-6"></a>}</span>
+<span id="cb390-7"><a href="functions.html#cb390-7"></a></span>
+<span id="cb390-8"><a href="functions.html#cb390-8"></a><span class="kw">xVar</span>(x)</span></code></pre></div>
+<pre><code>## [1] 9.166667</code></pre>
+<p>The interesting thing is that these functions are exceptionally modular. By working stepwise through the calculation, it’s possible to take a much more difficult or obscure problem and “unpack” it.</p>
+<div id="a-little-dungeons-dragons-tm-to-spice-it-up" class="section level2">
+<h2><span class="header-section-number">10.1</span> A little Dungeons &amp; Dragons (tm) to spice it up</h2>
+<p>Adapted from Richie Cotton’s DataCamp introductory course on function writing. The following example shows how a function can emulate the rolling of a die, for instance, in D&amp;D.</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functions.html#cb392-1"></a>roll_die &lt;-<span class="st"> </span><span class="cf">function</span>(n_die){</span>
+<span id="cb392-2"><a href="functions.html#cb392-2"></a>  die_sides &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb392-3"><a href="functions.html#cb392-3"></a>  <span class="kw">sample</span>(die_sides, n_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb392-4"><a href="functions.html#cb392-4"></a>}</span>
+<span id="cb392-5"><a href="functions.html#cb392-5"></a></span>
+<span id="cb392-6"><a href="functions.html#cb392-6"></a><span class="kw">roll_die</span>(<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] 6 5 1 6 1 2</code></pre>
 <p>Let’s apply some of these simple ideas to D&amp;D. Say I play a character that can cast the <em>sleep</em> spell. This scales to different levels.</p>
 <p>At first level, one rolls 5 six-sided die.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="functions.html#cb377-1"></a>sleep &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb377-2"><a href="functions.html#cb377-2"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb377-3"><a href="functions.html#cb377-3"></a>}</span>
-<span id="cb377-4"><a href="functions.html#cb377-4"></a></span>
-<span id="cb377-5"><a href="functions.html#cb377-5"></a><span class="kw">sleep</span>()</span></code></pre></div>
-<pre><code>## [1] 28</code></pre>
-<p>If cast at higher levels, the spell adds 2 die per level above first: 7 die at second level, 9 die at third level, etc. Let’s address this by adding a level variable to our function.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="functions.html#cb379-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(level){</span>
-<span id="cb379-2"><a href="functions.html#cb379-2"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb379-3"><a href="functions.html#cb379-3"></a>  } <span class="cf">else</span>{</span>
-<span id="cb379-4"><a href="functions.html#cb379-4"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb379-5"><a href="functions.html#cb379-5"></a>  }</span>
-<span id="cb379-6"><a href="functions.html#cb379-6"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb379-7"><a href="functions.html#cb379-7"></a>}</span></code></pre></div>
-<p>A couple of things can be added to avoid the following goofy mishaps (or at least render useful error codes:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="functions.html#cb380-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="functions.html#cb394-1"></a>sleep &lt;-<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb394-2"><a href="functions.html#cb394-2"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb394-3"><a href="functions.html#cb394-3"></a>}</span>
+<span id="cb394-4"><a href="functions.html#cb394-4"></a></span>
+<span id="cb394-5"><a href="functions.html#cb394-5"></a><span class="kw">sleep</span>()</span></code></pre></div>
 <pre><code>## [1] 27</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="functions.html#cb382-1"></a><span class="co"># sleep_scaled(&quot;rex&quot;)</span></span></code></pre></div>
+<p>If cast at higher levels, the spell adds 2 die per level above first: 7 die at second level, 9 die at third level, etc. Let’s address this by adding a level variable to our function.</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="functions.html#cb396-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(level){</span>
+<span id="cb396-2"><a href="functions.html#cb396-2"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb396-3"><a href="functions.html#cb396-3"></a>  } <span class="cf">else</span>{</span>
+<span id="cb396-4"><a href="functions.html#cb396-4"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb396-5"><a href="functions.html#cb396-5"></a>  }</span>
+<span id="cb396-6"><a href="functions.html#cb396-6"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb396-7"><a href="functions.html#cb396-7"></a>}</span></code></pre></div>
+<p>A couple of things can be added to avoid the following goofy mishaps (or at least render useful error codes:</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="functions.html#cb397-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="functions.html#cb399-1"></a><span class="co"># sleep_scaled(&quot;rex&quot;)</span></span>
+<span id="cb399-2"><a href="functions.html#cb399-2"></a><span class="co"># removed so that **knitr** doesn&#39;t choke on this</span></span></code></pre></div>
 <p>First we load Richie Cotton’s package {assertive}.</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="functions.html#cb383-1"></a><span class="kw">library</span>(assertive)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;assertive&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:magrittr&#39;:
-## 
-##     is_greater_than, is_less_than</code></pre>
-<pre><code>## The following objects are masked from &#39;package:purrr&#39;:
-## 
-##     is_atomic, is_character, is_double, is_empty, is_formula,
-##     is_function, is_integer, is_list, is_logical, is_null, is_numeric,
-##     is_vector</code></pre>
-<pre><code>## The following object is masked from &#39;package:tibble&#39;:
-## 
-##     has_rownames</code></pre>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="functions.html#cb400-1"></a><span class="kw">library</span>(assertive)</span></code></pre></div>
 <p>Then we get to work on the function:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">level =</span> <span class="dv">1</span>){</span>
-<span id="cb388-2"><a href="functions.html#cb388-2"></a>  <span class="co"># assert_is_numeric(level)</span></span>
-<span id="cb388-3"><a href="functions.html#cb388-3"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is_non_positive</span>(level))){</span>
-<span id="cb388-4"><a href="functions.html#cb388-4"></a>    <span class="kw">return</span>(<span class="st">&quot;x contains nonpositive values, so the spell makes no sense&quot;</span>)</span>
-<span id="cb388-5"><a href="functions.html#cb388-5"></a>  }</span>
-<span id="cb388-6"><a href="functions.html#cb388-6"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb388-7"><a href="functions.html#cb388-7"></a>  } <span class="cf">else</span>{</span>
-<span id="cb388-8"><a href="functions.html#cb388-8"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb388-9"><a href="functions.html#cb388-9"></a>  }</span>
-<span id="cb388-10"><a href="functions.html#cb388-10"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb388-11"><a href="functions.html#cb388-11"></a>}</span>
-<span id="cb388-12"><a href="functions.html#cb388-12"></a></span>
-<span id="cb388-13"><a href="functions.html#cb388-13"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="functions.html#cb401-1"></a>sleep_scaled &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">level =</span> <span class="dv">1</span>){</span>
+<span id="cb401-2"><a href="functions.html#cb401-2"></a>  <span class="kw">assert_is_numeric</span>(level)</span>
+<span id="cb401-3"><a href="functions.html#cb401-3"></a>  <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">is_non_positive</span>(level))){</span>
+<span id="cb401-4"><a href="functions.html#cb401-4"></a>    <span class="kw">return</span>(<span class="st">&quot;x contains nonpositive values, so the spell makes no sense&quot;</span>)</span>
+<span id="cb401-5"><a href="functions.html#cb401-5"></a>  }</span>
+<span id="cb401-6"><a href="functions.html#cb401-6"></a>  <span class="cf">if</span>(level <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){add_die =<span class="st"> </span>(level<span class="dv">-1</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb401-7"><a href="functions.html#cb401-7"></a>  } <span class="cf">else</span>{</span>
+<span id="cb401-8"><a href="functions.html#cb401-8"></a>    add_die =<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb401-9"><a href="functions.html#cb401-9"></a>  }</span>
+<span id="cb401-10"><a href="functions.html#cb401-10"></a>  <span class="kw">sum</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">size =</span> <span class="dv">5</span> <span class="op">+</span><span class="st"> </span>add_die, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb401-11"><a href="functions.html#cb401-11"></a>}</span>
+<span id="cb401-12"><a href="functions.html#cb401-12"></a></span>
+<span id="cb401-13"><a href="functions.html#cb401-13"></a><span class="kw">sleep_scaled</span>(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;x contains nonpositive values, so the spell makes no sense&quot;</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="functions.html#cb390-1"></a><span class="kw">sleep_scaled</span>()</span></code></pre></div>
-<pre><code>## [1] 23</code></pre>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functions.html#cb392-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 28</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="functions.html#cb394-1"></a><span class="co"># sleep_scaled(&quot;joseph&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="functions.html#cb403-1"></a><span class="kw">sleep_scaled</span>()</span></code></pre></div>
+<pre><code>## [1] 26</code></pre>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="functions.html#cb405-1"></a><span class="kw">sleep_scaled</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="functions.html#cb407-1"></a><span class="co"># sleep_scaled(&quot;joseph&quot;)</span></span>
+<span id="cb407-2"><a href="functions.html#cb407-2"></a><span class="co"># removed so that **knitr** doesn&#39;t choke on this</span></span></code></pre></div>
 <p>Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="functions.html#cb395-1"></a><span class="kw">hist</span>(<span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">sleep_scaled</span>()), <span class="dt">breaks =</span> <span class="dv">70</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="functions.html#cb408-1"></a><span class="kw">hist</span>(<span class="kw">replicate</span>(<span class="dv">10000</span>, <span class="kw">sleep_scaled</span>()), <span class="dt">breaks =</span> <span class="dv">70</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+</div>
+<div id="geometric-and-harmonic-means" class="section level2">
+<h2><span class="header-section-number">10.2</span> Geometric and harmonic means</h2>
+<p>Good examples on functions. Also taken from Richie Cotton’s DataCamp introductory course on function writing.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="functions.html#cb409-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">12</span>, <span class="ot">NA</span>)</span>
+<span id="cb409-2"><a href="functions.html#cb409-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">12</span>,<span class="op">-</span><span class="dv">2</span>,<span class="ot">NA</span>)</span>
+<span id="cb409-3"><a href="functions.html#cb409-3"></a><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 4.333333</code></pre>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="functions.html#cb411-1"></a><span class="kw">mean</span>(y, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 3.428571</code></pre>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="functions.html#cb413-1"></a><span class="kw">log</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mean</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="functions.html#cb415-1"></a><span class="kw">log</span>(x)</span></code></pre></div>
+<pre><code>## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.3862944 2.4849066        NA</code></pre>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="functions.html#cb417-1"></a><span class="kw">exp</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2.718282e+00 7.389056e+00 2.008554e+01 5.459815e+01 5.459815e+01
+## [6] 1.627548e+05           NA</code></pre>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="functions.html#cb419-1"></a>calc_geom_mean &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>){</span>
+<span id="cb419-2"><a href="functions.html#cb419-2"></a>  <span class="kw">log</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mean</span>(<span class="dt">na.rm =</span>na.rm) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</span>
+<span id="cb419-3"><a href="functions.html#cb419-3"></a>}</span>
+<span id="cb419-4"><a href="functions.html#cb419-4"></a></span>
+<span id="cb419-5"><a href="functions.html#cb419-5"></a><span class="kw">calc_geom_mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.237741</code></pre>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="functions.html#cb421-1"></a><span class="kw">calc_geom_mean</span>(y)</span></code></pre></div>
+<pre><code>## Warning in log(x): NaNs produced</code></pre>
+<pre><code>## [1] 3.237741</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="functions.html#cb424-1"></a>get_reciprocal &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb424-2"><a href="functions.html#cb424-2"></a>  <span class="dv">1</span> <span class="op">/</span><span class="st"> </span>x</span>
+<span id="cb424-3"><a href="functions.html#cb424-3"></a>}</span>
+<span id="cb424-4"><a href="functions.html#cb424-4"></a></span>
+<span id="cb424-5"><a href="functions.html#cb424-5"></a>calc_harmonic_mean &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) {</span>
+<span id="cb424-6"><a href="functions.html#cb424-6"></a>  x <span class="op">%&gt;%</span></span>
+<span id="cb424-7"><a href="functions.html#cb424-7"></a><span class="st">    </span><span class="kw">get_reciprocal</span>() <span class="op">%&gt;%</span></span>
+<span id="cb424-8"><a href="functions.html#cb424-8"></a><span class="st">    </span><span class="kw">mean</span>(<span class="dt">na.rm =</span> na.rm) <span class="op">%&gt;%</span></span>
+<span id="cb424-9"><a href="functions.html#cb424-9"></a><span class="st">    </span><span class="kw">get_reciprocal</span>()</span>
+<span id="cb424-10"><a href="functions.html#cb424-10"></a>}</span>
+<span id="cb424-11"><a href="functions.html#cb424-11"></a></span>
+<span id="cb424-12"><a href="functions.html#cb424-12"></a><span class="kw">calc_harmonic_mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2.482759</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="functions.html#cb426-1"></a><span class="kw">calc_harmonic_mean</span>(y)</span></code></pre></div>
+<pre><code>## [1] 3.652174</code></pre>
+</div>
+<div id="for-loop" class="section level2">
+<h2><span class="header-section-number">10.3</span> for loop</h2>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="functions.html#cb428-1"></a>z &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb428-2"><a href="functions.html#cb428-2"></a>total &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb428-3"><a href="functions.html#cb428-3"></a><span class="cf">for</span>(value <span class="cf">in</span> z){</span>
+<span id="cb428-4"><a href="functions.html#cb428-4"></a>  total &lt;-<span class="st"> </span>total <span class="op">+</span><span class="st"> </span>value</span>
+<span id="cb428-5"><a href="functions.html#cb428-5"></a>}</span>
+<span id="cb428-6"><a href="functions.html#cb428-6"></a></span>
+<span id="cb428-7"><a href="functions.html#cb428-7"></a>total</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+</div>
+<div id="case_when" class="section level2">
+<h2><span class="header-section-number">10.4</span> case_when()</h2>
+<p>case_when() from Hadley Wickhams’s <strong>dplyr</strong> <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when" class="uri">https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when</a></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="functions.html#cb430-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></span>
+<span id="cb430-2"><a href="functions.html#cb430-2"></a>y &lt;-<span class="st"> </span><span class="dv">51</span><span class="op">:</span><span class="dv">100</span></span>
+<span id="cb430-3"><a href="functions.html#cb430-3"></a></span>
+<span id="cb430-4"><a href="functions.html#cb430-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y)</span>
+<span id="cb430-5"><a href="functions.html#cb430-5"></a>df</span></code></pre></div>
+<pre><code>##     x   y
+## 1   1  51
+## 2   2  52
+## 3   3  53
+## 4   4  54
+## 5   5  55
+## 6   6  56
+## 7   7  57
+## 8   8  58
+## 9   9  59
+## 10 10  60
+## 11 11  61
+## 12 12  62
+## 13 13  63
+## 14 14  64
+## 15 15  65
+## 16 16  66
+## 17 17  67
+## 18 18  68
+## 19 19  69
+## 20 20  70
+## 21 21  71
+## 22 22  72
+## 23 23  73
+## 24 24  74
+## 25 25  75
+## 26 26  76
+## 27 27  77
+## 28 28  78
+## 29 29  79
+## 30 30  80
+## 31 31  81
+## 32 32  82
+## 33 33  83
+## 34 34  84
+## 35 35  85
+## 36 36  86
+## 37 37  87
+## 38 38  88
+## 39 39  89
+## 40 40  90
+## 41 41  91
+## 42 42  92
+## 43 43  93
+## 44 44  94
+## 45 45  95
+## 46 46  96
+## 47 47  97
+## 48 48  98
+## 49 49  99
+## 50 50 100</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="functions.html#cb432-1"></a><span class="kw">case_when</span>(</span>
+<span id="cb432-2"><a href="functions.html#cb432-2"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">35</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz buzz&quot;</span>,</span>
+<span id="cb432-3"><a href="functions.html#cb432-3"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;fizz&quot;</span>,</span>
+<span id="cb432-4"><a href="functions.html#cb432-4"></a>  x <span class="op">%%</span><span class="st"> </span><span class="dv">7</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">~</span><span class="st"> &quot;buzz&quot;</span>,</span>
+<span id="cb432-5"><a href="functions.html#cb432-5"></a>  <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="kw">as.character</span>(x)</span>
+<span id="cb432-6"><a href="functions.html#cb432-6"></a>)</span></code></pre></div>
+<pre><code>##  [1] &quot;1&quot;         &quot;2&quot;         &quot;3&quot;         &quot;4&quot;         &quot;fizz&quot;      &quot;6&quot;        
+##  [7] &quot;buzz&quot;      &quot;8&quot;         &quot;9&quot;         &quot;fizz&quot;      &quot;11&quot;        &quot;12&quot;       
+## [13] &quot;13&quot;        &quot;buzz&quot;      &quot;fizz&quot;      &quot;16&quot;        &quot;17&quot;        &quot;18&quot;       
+## [19] &quot;19&quot;        &quot;fizz&quot;      &quot;buzz&quot;      &quot;22&quot;        &quot;23&quot;        &quot;24&quot;       
+## [25] &quot;fizz&quot;      &quot;26&quot;        &quot;27&quot;        &quot;buzz&quot;      &quot;29&quot;        &quot;fizz&quot;     
+## [31] &quot;31&quot;        &quot;32&quot;        &quot;33&quot;        &quot;34&quot;        &quot;fizz buzz&quot; &quot;36&quot;       
+## [37] &quot;37&quot;        &quot;38&quot;        &quot;39&quot;        &quot;fizz&quot;      &quot;41&quot;        &quot;buzz&quot;     
+## [43] &quot;43&quot;        &quot;44&quot;        &quot;fizz&quot;      &quot;46&quot;        &quot;47&quot;        &quot;48&quot;       
+## [49] &quot;buzz&quot;      &quot;fizz&quot;</code></pre>
+</div>
+<div id="compare-this-with-if_else" class="section level2">
+<h2><span class="header-section-number">10.5</span> Compare this with if_else()</h2>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="functions.html#cb434-1"></a><span class="kw">if_else</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;even&quot;</span>, <span class="st">&quot;odd&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
+## [11] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
+## [21] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
+## [31] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;
+## [41] &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot; &quot;odd&quot;  &quot;even&quot;</code></pre>
 
+</div>
 </div>
             </section>
 
@@ -334,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="simulating-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ifelsecasewhen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

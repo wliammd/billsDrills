@@ -497,3 +497,30 @@ stat_function(fun = dexp, args = list(rate = 1), color = "blue") +
   labs(title = "exponential distribution")
 ```
 
+## Crossing trial
+
+From David Robinson birthday paradox Rblogger at <https://www.r-bloggers.com/the-birthday-paradox-puzzle-tidy-simulation-in-r/>
+
+```{r}
+summarized <- crossing(people = seq(2, 50, 2),
+                       trial = 1:100) %>%
+  mutate(birthday = map(people, ~ sample(365, .x, replace = TRUE)),
+         multiple = map_lgl(birthday, ~ any(duplicated(.x)))) %>%
+  group_by(people) %>%
+  summarize(chance = mean(multiple))
+
+ggplot(summarized, aes(people, chance)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(y = "Probability two have the same birthday")
+
+# Checking the work with pbirthday function
+summarized %>% 
+  mutate(exact = map_dbl(people, pbirthday)) %>% 
+  ggplot(aes(people, chance)) +
+  geom_line() +
+  geom_line(aes(y = exact), lty = 2, color = "blue") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(y = "Probability two have the same birthday")
+```
+

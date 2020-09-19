@@ -1,10 +1,10 @@
 # Functions
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 ```
 
-From R4DS and the Solution book for R4DS:
+From R4DS and the Solution book for R4DS. Make functions to calculate the coefficient of variation (cV) and the variance (xVar) of a vector.
 
 ```{r}
 x <- c(1:10, rep(NA,3)) 
@@ -13,15 +13,23 @@ cV <- function(x){
   sd(x, na.rm = TRUE)/mean(x, na.rm = TRUE)
 }
 
+cV(x)
+
 xVar <- function(x) {
   n <- length(x[!is.na(x)])
   m <- mean(x, na.rm = TRUE)
   sq_err <- (x - m)^2
   sum(sq_err, na.rm = TRUE) / (n - 1)
 }
+
+xVar(x)
 ```
 
-From Richie Cotton's DataCamp introductory course on function writing:
+The interesting thing is that these functions are exceptionally modular. By working stepwise through the calculation, it's possible to take a much more difficult or obscure problem and "unpack" it. 
+
+## A little Dungeons & Dragons (tm) to spice it up
+
+Adapted from Richie Cotton's DataCamp introductory course on function writing. The following example shows how a function can emulate the rolling of a die, for instance, in D&D. 
 
 ```{r}
 roll_die <- function(n_die){
@@ -62,11 +70,12 @@ A couple of things can be added to avoid the following goofy mishaps (or at leas
 sleep_scaled(0)
 
 # sleep_scaled("rex")
+# removed so that **knitr** doesn't choke on this
 ```
 
 First we load Richie Cotton's package {assertive}.
 
-```{r}
+```{r, message=FALSE}
 library(assertive)
 ```
 
@@ -74,7 +83,7 @@ Then we get to work on the function:
 
 ```{r}
 sleep_scaled <- function(level = 1){
-  # assert_is_numeric(level)
+  assert_is_numeric(level)
   if(any(is_non_positive(level))){
     return("x contains nonpositive values, so the spell makes no sense")
   }
@@ -89,6 +98,7 @@ sleep_scaled(0)
 sleep_scaled()
 sleep_scaled(2)
 # sleep_scaled("joseph")
+# removed so that **knitr** doesn't choke on this
 ```
 
 Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.
@@ -96,4 +106,80 @@ Now, it would be useful to see the distribution of these rolls, to predict wheth
 ```{r}
 hist(replicate(10000, sleep_scaled()), breaks = 70)
 ```
+
+## Geometric and harmonic means
+
+Good examples on functions. Also taken from Richie Cotton's DataCamp introductory course on function writing. 
+
+```{r}
+x <- c(1,2,3,4,4,12, NA)
+y <- c(1,2,3,4,4,12,-2,NA)
+mean(x, na.rm = TRUE)
+mean(y, na.rm = TRUE)
+
+log(x) %>% mean() %>% exp()
+
+log(x)
+exp(x)
+
+calc_geom_mean <- function(x, na.rm = TRUE){
+  log(x) %>% mean(na.rm =na.rm) %>% exp()
+}
+
+calc_geom_mean(x)
+calc_geom_mean(y)
+
+get_reciprocal <- function(x) {
+  1 / x
+}
+
+calc_harmonic_mean <- function(x, na.rm = TRUE) {
+  x %>%
+    get_reciprocal() %>%
+    mean(na.rm = na.rm) %>%
+    get_reciprocal()
+}
+
+calc_harmonic_mean(x)
+calc_harmonic_mean(y)
+```
+
+## for loop
+
+```{r}
+z <- 1:3
+total <- 0
+for(value in z){
+  total <- total + value
+}
+
+total
+```
+
+## case_when()
+
+case_when() from Hadley Wickhams's **dplyr** <https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/case_when>
+
+```{r}
+x <- 1:50
+y <- 51:100
+
+df <- data.frame(x,y)
+df
+
+case_when(
+  x %% 35 == 0 ~ "fizz buzz",
+  x %% 5 == 0 ~ "fizz",
+  x %% 7 == 0 ~ "buzz",
+  TRUE ~ as.character(x)
+)
+```
+
+## Compare this with if_else()
+
+```{r}
+if_else(x %% 2 == 0, "even", "odd")
+```
+
+
 
