@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -248,31 +248,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 13</span> Relative versus absolute risk: display</h1>
 <p>The following is adopted from <a href="https://www.r-bloggers.com/lying-with-statistics-one-beer-a-day-will-kill-you/" class="uri">https://www.r-bloggers.com/lying-with-statistics-one-beer-a-day-will-kill-you/</a></p>
 <p><strong>personograph</strong> allows for cute displays of individuals in big groups</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="relativerisk.html#cb343-1"></a><span class="kw">library</span>(personograph)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="relativerisk.html#cb344-1"></a><span class="kw">library</span>(personograph)</span></code></pre></div>
 <pre><code>## Loading required package: grImport</code></pre>
 <pre><code>## Loading required package: grid</code></pre>
 <pre><code>## Loading required package: XML</code></pre>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="relativerisk.html#cb347-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="relativerisk.html#cb348-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>Start with 2000 people. Some of them will have problems without alcohol exposure, about 18, in fact. The blogger choses 2000 people to start with because <span class="math inline">\(0.7*18=1\)</span></p>
 <p>Note that this <strong>doesn’t</strong> stratify for any other health problems, age, socio-economic status, etc.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="relativerisk.html#cb348-1"></a>n &lt;-<span class="st"> </span><span class="dv">2000</span></span>
-<span id="cb348-2"><a href="relativerisk.html#cb348-2"></a>probl_wo_alc &lt;-<span class="st"> </span><span class="dv">18</span> <span class="op">/</span><span class="st"> </span>n</span>
-<span id="cb348-3"><a href="relativerisk.html#cb348-3"></a></span>
-<span id="cb348-4"><a href="relativerisk.html#cb348-4"></a>data &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> probl_wo_alc, <span class="dt">second =</span> <span class="dv">1</span><span class="op">-</span>probl_wo_alc)</span>
-<span id="cb348-5"><a href="relativerisk.html#cb348-5"></a><span class="kw">personograph</span>(data,  <span class="dt">colors =</span> <span class="kw">list</span>(<span class="dt">first =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">second =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
-<span id="cb348-6"><a href="relativerisk.html#cb348-6"></a>             <span class="dt">fig.title =</span> <span class="st">&quot;18 of 2000 people with health problems&quot;</span>,</span>
-<span id="cb348-7"><a href="relativerisk.html#cb348-7"></a>             <span class="dt">draw.legend =</span> <span class="ot">FALSE</span>, <span class="dt">n.icons =</span> n, <span class="dt">dimensions =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">100</span>), </span>
-<span id="cb348-8"><a href="relativerisk.html#cb348-8"></a>             <span class="dt">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
-<p>Now we illustrate the affect of 500 mL of alcohol per day. According to the Lancet article, the relative risk of serious illness following consumption of about 25 mL ethanol (500 mL beer at 5% ABV) increases by about 7%.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="relativerisk.html#cb349-1"></a>probl_w_alc &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>n</span>
-<span id="cb349-2"><a href="relativerisk.html#cb349-2"></a> </span>
-<span id="cb349-3"><a href="relativerisk.html#cb349-3"></a>data_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> probl_wo_alc, <span class="dt">second =</span> probl_w_alc, <span class="dt">third =</span> <span class="dv">1</span><span class="op">-</span>(probl_wo_alc<span class="op">+</span>probl_w_alc))</span>
-<span id="cb349-4"><a href="relativerisk.html#cb349-4"></a><span class="kw">personograph</span>(data_<span class="dv">2</span>, <span class="dt">colors =</span> <span class="kw">list</span>(<span class="dt">first =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">second =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">third =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
-<span id="cb349-5"><a href="relativerisk.html#cb349-5"></a>             <span class="dt">fig.title =</span> <span class="st">&quot;About 1 additional case with half a litre of beer per day&quot;</span>,</span>
-<span id="cb349-6"><a href="relativerisk.html#cb349-6"></a>             <span class="dt">draw.legend =</span> <span class="ot">FALSE</span>, <span class="dt">n.icons =</span> n, <span class="dt">dimensions =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
-<span id="cb349-7"><a href="relativerisk.html#cb349-7"></a>             <span class="dt">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="relativerisk.html#cb349-1"></a>n &lt;-<span class="st"> </span><span class="dv">2000</span></span>
+<span id="cb349-2"><a href="relativerisk.html#cb349-2"></a>probl_wo_alc &lt;-<span class="st"> </span><span class="dv">18</span> <span class="op">/</span><span class="st"> </span>n</span>
+<span id="cb349-3"><a href="relativerisk.html#cb349-3"></a></span>
+<span id="cb349-4"><a href="relativerisk.html#cb349-4"></a>data &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> probl_wo_alc, <span class="dt">second =</span> <span class="dv">1</span><span class="op">-</span>probl_wo_alc)</span>
+<span id="cb349-5"><a href="relativerisk.html#cb349-5"></a><span class="kw">personograph</span>(data,  <span class="dt">colors =</span> <span class="kw">list</span>(<span class="dt">first =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">second =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
+<span id="cb349-6"><a href="relativerisk.html#cb349-6"></a>             <span class="dt">fig.title =</span> <span class="st">&quot;18 of 2000 people with health problems&quot;</span>,</span>
+<span id="cb349-7"><a href="relativerisk.html#cb349-7"></a>             <span class="dt">draw.legend =</span> <span class="ot">FALSE</span>, <span class="dt">n.icons =</span> n, <span class="dt">dimensions =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">100</span>), </span>
+<span id="cb349-8"><a href="relativerisk.html#cb349-8"></a>             <span class="dt">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p>Now we illustrate the affect of 500 mL of alcohol per day. According to the Lancet article, the relative risk of serious illness following consumption of about 25 mL ethanol (500 mL beer at 5% ABV) increases by about 7%.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="relativerisk.html#cb350-1"></a>probl_w_alc &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>n</span>
+<span id="cb350-2"><a href="relativerisk.html#cb350-2"></a> </span>
+<span id="cb350-3"><a href="relativerisk.html#cb350-3"></a>data_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">first =</span> probl_wo_alc, <span class="dt">second =</span> probl_w_alc, <span class="dt">third =</span> <span class="dv">1</span><span class="op">-</span>(probl_wo_alc<span class="op">+</span>probl_w_alc))</span>
+<span id="cb350-4"><a href="relativerisk.html#cb350-4"></a><span class="kw">personograph</span>(data_<span class="dv">2</span>, <span class="dt">colors =</span> <span class="kw">list</span>(<span class="dt">first =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">second =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">third =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
+<span id="cb350-5"><a href="relativerisk.html#cb350-5"></a>             <span class="dt">fig.title =</span> <span class="st">&quot;About 1 additional case with half a litre of beer per day&quot;</span>,</span>
+<span id="cb350-6"><a href="relativerisk.html#cb350-6"></a>             <span class="dt">draw.legend =</span> <span class="ot">FALSE</span>, <span class="dt">n.icons =</span> n, <span class="dt">dimensions =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
+<span id="cb350-7"><a href="relativerisk.html#cb350-7"></a>             <span class="dt">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 
 </div>
             </section>
@@ -312,7 +312,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/12RelativeRisk.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/13relative_absolute_risk.Rmd",
 "text": "Edit"
 },
 "history": {
