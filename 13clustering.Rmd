@@ -1,0 +1,42 @@
+# Clustering {#clustering}
+
+The page by Rohan Joseph does a really nice job illustrative hierarchical clustering:
+
+<https://medium.com/@rohanjoseph_91119/learn-with-an-example-hierarchical-clustering-873b5b50890c>
+
+Joseph uses a one dimensional dataset to show the difference between types of hierarchical clustering. Joseph's hand-drawn calculations actually make the distinctionb between single and complete linkage very well.
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+x <- c(7,10,20,28,35) #Joseph's 1D dataset
+```
+
+The first step is to make a distance matrix between the elements of the dataset. In one dimension, this is accomplished by subtraction. 
+
+```{r}
+d <- dist(x)
+d
+```
+
+Before calling the **hclust** function, it's helpful to know the methods. 
+
+  * Single Linkage :  merge in each step the two clusters, whose two closest members have the smallest distance.
+  * Complete Linkage : merge the members of the clusters in each step which provide the smallest maximum pairwise distance.
+
+```{r}
+hclust(d)
+plot(hclust(d))
+```
+
+Note that the default method is complete. 
+
+```{r}
+hclust(d, method = "single")
+plot(hclust(d, method = "single"))
+```
+
+
+
