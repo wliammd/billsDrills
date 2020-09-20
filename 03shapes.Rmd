@@ -275,3 +275,26 @@ table2 %>% pivot_wider(
 ```
 
 Note that, names_from can come from multiple columns. When there are multiple names_from or values_from columns, names_sep will be used to join values together to form column names.
+
+## Larger structures
+
+The dataframe feels like a natural place to begin. Many times, though I'll want to call functions on more than one variable. . . 
+
+As I struggle to get my feet under me in R, StackOverflow has been a wonderful resource, although the community can be very pissy to newbies. 
+
+The following post is offers a nice description of the difference between lists and dataframes in R: <https://stackoverflow.com/a/15902963/7361502>
+
+```{r}
+df <- tibble::tibble(
+  a = rnorm(10),
+  b = rbinom(10, 1, 0.5),
+  c = rchisq(10, df = 6),
+  d = rexp(10, rate = 1)
+)
+
+map_dbl(df, mean)
+map_dfc(df, mean)
+map_dfr(df, mean)
+
+```
+
