@@ -1,5 +1,10 @@
 # Subsetting {#subset}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
+
 From <https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/>
 
 Note: since this is down for maintenance, I will turn off evaluation on these chunks: 
@@ -16,10 +21,7 @@ glimpse(education)
 ## Subsetting using brackets
 
 ```{r}
-
 education[c(10:21),c(2,6:7)]
-
-
 ```
 
 ## Subset using brackets by omitting the rows and columns we don’t want

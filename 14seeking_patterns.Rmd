@@ -1,0 +1,49 @@
+# Regular expressions  {#regex}
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+## Seeking patterns
+
+I'm not very good at manipulating regular expressions, so a page to practice manipulating them seems like a good idea. 
+
+The RStudio cheat sheet is a nice place to start: <https://rstudio.com/resources/cheatsheets/>
+
+Or Hadley Wickham and Garrett Grolemund's R4DS chapter on strings: <https://r4ds.had.co.nz/strings.html>
+
+```{r}
+string <- c("Hiphopopotamus", "Rhymenoceros", "time for bottomless lyrics")
+
+pattern <- "t.m"
+
+grep(pattern, string)
+
+grep(pattern, string, value = TRUE)
+
+grepl(pattern, string)
+
+stringr::str_detect(string, pattern)
+
+regexpr(pattern, string)
+# This finds the starting position and the length of the 1st match
+
+gregexpr(pattern, string)
+# This finds starting position and length of all matches
+
+stringr::str_locate(string, pattern)
+# This finds starting and end position of first match
+
+stringr::str_locate_all(string, pattern)
+# This finds starting and end position of all matches
+```
+
+It seems like dates and combined alphanumeric strings are frequently subjected to the gaze of grep and company. 
+
+```{r}
+string2 <- c("123.abc", "09/28/2020", "ABC..123", "...")
+
+grep(string2, "[a-z]+")
+  
+```
+
