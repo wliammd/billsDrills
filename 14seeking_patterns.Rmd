@@ -43,7 +43,28 @@ It seems like dates and combined alphanumeric strings are frequently subjected t
 ```{r}
 string2 <- c("123.abc", "09/28/2020", "ABC..123", "...")
 
-grep(string2, "[a-z]+")
+grep(pattern = "[a-z]+", 
+     x = string2)
+
+grepl(pattern = "[a-z]+", 
+     x = string2)
   
+```
+
+From the Intermediate R DataCamp course:
+
+```{r}
+rand_w <- c("A_2_4b3c", "Gi2/3_5")
+
+sub(pattern = "[a-zA-Z]",
+     replacement = "X",
+     x = rand_w)
+# sub replaces only the 1st instance of the match per string
+
+gsub(pattern = "[a-zA-Z]",
+     replacement = "X",
+     x = rand_w)
+# gsub replaces all instances of the match per string
+
 ```
 
