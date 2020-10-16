@@ -65,6 +65,21 @@ gsub(pattern = "[a-zA-Z]",
      replacement = "X",
      x = rand_w)
 # gsub replaces all instances of the match per string
+```
+
+**stringr** markedly alters the base R process. To get a handle on it, R4DS comes to the rescue. 
+
+For instance. Special characters have to be escaped. These include, `"`, `'`, `\`, `\n`, `\t`. For a complete list of these characters, see `?"'"`. 
+
+```{r}
+string1 <- "This is a string"
+double_quote <- "\"" # or '"'
+
+
+x <- c("\"", "\\")
+x
+
+writeLines(x)
 
 ```
 
