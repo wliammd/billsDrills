@@ -1,3 +1,11 @@
+fig:starfig-1
+tab:unnamed-chunk-39
+fig:starfig-1a
+fig:starfig-2
+fig:starfig-3
+fig:starfig-4
+fig:starfig-5
+fig:starfig-6
 intro
 bookdownplan
 basic-conventions
@@ -26,7 +34,6 @@ fct_lump
 fct_infreq-and-fct_rev
 additional-practice
 reordering-factors
-improving-legibility-change-the-linetype
 fct_reorder2-another-way-to-improve-legibility
 subset
 subsetting-using-brackets
@@ -76,3 +83,14 @@ t-distributed-stochastic-neighbor-embedding
 clustering
 regex
 seeking-patterns
+us_census_data_kyle_walker_presentation_youtube-censuss
+variables
+part-2-wrangling-census-data-with-tidyverse-tools
+normalizing-the-data-with-mutate.
+group_by-and-summarize-in-census-analysis
+margin-of-error-considerations
+visualizing-margins-of-error
+get_estimates-and-how-to-use-them
+ggbeeswarm-automates-some-jitter-considerations
+improving-legibility-change-the-linetype
+us_census_data_kyle_walker_presentation_youtube-censusss

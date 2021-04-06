@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Correlation Plots | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 11 Correlation Plots | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Correlation Plots | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-09-19" />
+<meta name="date" content="2021-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="functions.html"/>
 <link rel="next" href="dimensionalityreduction.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,29 +51,27 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -92,7 +91,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -142,28 +141,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
-<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a><ul>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
 <li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a><ul>
+<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="datashape.html"><a href="datashape.html#making-data-frames"><i class="fa fa-check"></i><b>3.1</b> Making data frames</a></li>
 <li class="chapter" data-level="3.2" data-path="datashape.html"><a href="datashape.html#gather-spread-pivoting-in-the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Gather, spread, pivoting in the tidyverse</a></li>
 <li class="chapter" data-level="3.3" data-path="datashape.html"><a href="datashape.html#gathering-steam"><i class="fa fa-check"></i><b>3.3</b> Gathering steam…</a></li>
 <li class="chapter" data-level="3.4" data-path="datashape.html"><a href="datashape.html#spread-your-wings"><i class="fa fa-check"></i><b>3.4</b> Spread your wings</a></li>
-<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a><ul>
+<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="datashape.html"><a href="datashape.html#you-completeme"><i class="fa fa-check"></i><b>3.5.1</b> You complete(me)</a></li>
 <li class="chapter" data-level="3.5.2" data-path="datashape.html"><a href="datashape.html#filling-in-the-gaps"><i class="fa fa-check"></i><b>3.5.2</b> fill(ing) in the gaps</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="datashape.html"><a href="datashape.html#pivoting-to-something-new"><i class="fa fa-check"></i><b>3.6</b> Pivoting to something new</a></li>
+<li class="chapter" data-level="3.7" data-path="datashape.html"><a href="datashape.html#larger-structures"><i class="fa fa-check"></i><b>3.7</b> Larger structures</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a><ul>
+<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>4.1</b> A financial example</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a><ul>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
 <li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
 <li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
@@ -171,32 +176,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="factorpractice.html"><a href="factorpractice.html#fct_lump"><i class="fa fa-check"></i><b>5.5</b> fct_lump()</a></li>
 <li class="chapter" data-level="5.6" data-path="factorpractice.html"><a href="factorpractice.html#fct_infreq-and-fct_rev"><i class="fa fa-check"></i><b>5.6</b> fct_infreq() and fct_rev()</a></li>
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
-<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a><ul>
+<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a><ul>
+<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>6.1</b> Subsetting using brackets</a></li>
 <li class="chapter" data-level="6.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>6.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
 <li class="chapter" data-level="6.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>6.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
 <li class="chapter" data-level="6.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>6.4</b> Subset using the subset() function</a></li>
 <li class="chapter" data-level="6.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>6.5</b> Subset using dyplyr’s filter() and select()</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a><ul>
+<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>7.1</b> Counting things. The naming of parts.</a></li>
 <li class="chapter" data-level="7.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>7.2</b> fct_infreq</a></li>
 <li class="chapter" data-level="7.3" data-path="dataexploration.html"><a href="dataexploration.html#weight-weight-dont-tell-me"><i class="fa fa-check"></i><b>7.3</b> Weight weight, don’t tell me!</a></li>
 <li class="chapter" data-level="7.4" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>7.4</b> Summarize is another very useful function:</a></li>
-<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a><ul>
+<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a>
+<ul>
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a><ul>
+<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>8.1</b> Think about throwing a bunch of dice.</a></li>
 <li class="chapter" data-level="8.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>8.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a><ul>
+<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="simulating-data.html"><a href="simulating-data.html#sample"><i class="fa fa-check"></i><b>9.1</b> Sample()</a></li>
 <li class="chapter" data-level="9.2" data-path="simulating-data.html"><a href="simulating-data.html#replicate"><i class="fa fa-check"></i><b>9.2</b> replicate()</a></li>
 <li class="chapter" data-level="9.3" data-path="simulating-data.html"><a href="simulating-data.html#sample-revisited"><i class="fa fa-check"></i><b>9.3</b> sample() revisited</a></li>
@@ -213,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>9.14</b> Overlaying normal curve on histogram</a></li>
 <li class="chapter" data-level="9.15" data-path="simulating-data.html"><a href="simulating-data.html#crossing-trial"><i class="fa fa-check"></i><b>9.15</b> Crossing trial</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a><ul>
+<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="functions.html"><a href="functions.html#a-little-dungeons-dragons-tm-to-spice-it-up"><i class="fa fa-check"></i><b>10.1</b> A little Dungeons &amp; Dragons (tm) to spice it up</a></li>
 <li class="chapter" data-level="10.2" data-path="functions.html"><a href="functions.html#geometric-and-harmonic-means"><i class="fa fa-check"></i><b>10.2</b> Geometric and harmonic means</a></li>
 <li class="chapter" data-level="10.3" data-path="functions.html"><a href="functions.html#for-loop"><i class="fa fa-check"></i><b>10.3</b> for loop</a></li>
@@ -221,14 +233,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.5" data-path="functions.html"><a href="functions.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>10.5</b> Compare this with if_else()</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation Plots</a></li>
-<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
-<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a><ul>
+<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>12.2.1</b> Principle component analysis</a></li>
 <li class="chapter" data-level="12.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>12.2.2</b> t-distributed stochastic neighbor embedding</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>13</b> Clustering</a></li>
+<li class="chapter" data-level="14" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>14</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="regex.html"><a href="regex.html#seeking-patterns"><i class="fa fa-check"></i><b>14.1</b> Seeking patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html"><i class="fa fa-check"></i><b>15</b> US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#variables"><i class="fa fa-check"></i><b>15.1</b> Variables</a></li>
+<li class="chapter" data-level="15.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#part-2-wrangling-census-data-with-tidyverse-tools"><i class="fa fa-check"></i><b>15.2</b> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#normalizing-the-data-with-mutate."><i class="fa fa-check"></i><b>15.2.1</b> Normalizing the data with <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="15.2.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#group_by-and-summarize-in-census-analysis"><i class="fa fa-check"></i><b>15.2.2</b> <code>group_by()</code> and <code>summarize()</code> in census analysis</a></li>
+<li class="chapter" data-level="15.2.3" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#margin-of-error-considerations"><i class="fa fa-check"></i><b>15.2.3</b> Margin of error considerations</a></li>
+<li class="chapter" data-level="15.2.4" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#visualizing-margins-of-error"><i class="fa fa-check"></i><b>15.2.4</b> Visualizing margins of error</a></li>
+<li class="chapter" data-level="15.2.5" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#get_estimates-and-how-to-use-them"><i class="fa fa-check"></i><b>15.2.5</b> <code>get_estimates()</code> and how to use them</a></li>
+<li class="chapter" data-level="15.2.6" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#ggbeeswarm-automates-some-jitter-considerations"><i class="fa fa-check"></i><b>15.2.6</b> <code>ggbeeswarm()</code> automates some jitter considerations</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -250,10 +281,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="correlation" class="section level1">
+<div id="correlation" class="section level1" number="11">
 <h1><span class="header-section-number">Chapter 11</span> Correlation Plots</h1>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="correlation.html#cb436-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="correlation.html#cb437-1"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="correlation.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="correlation.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -261,27 +292,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="correlation.html#cb439-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="correlation.html#cb440-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span> <span class="fu">cor</span>()</span></code></pre></div>
 <pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
 ## Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
 ## Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
 ## Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000</code></pre>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="correlation.html#cb441-1"></a>M &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">cor</span>(<span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="correlation.html#cb442-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="correlation.html#cb443-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-2.png" width="672" /></p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="correlation.html#cb444-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-3.png" width="672" /></p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="correlation.html#cb445-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;hclust&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-4.png" width="672" /></p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="correlation.html#cb446-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-5.png" width="672" /></p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="correlation.html#cb447-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">tl.col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-6.png" width="672" /></p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="correlation.html#cb448-1"></a>corrplot<span class="op">::</span><span class="kw">corrplot</span>(M, <span class="dt">method =</span> <span class="st">&quot;color&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="dt">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">tl.col=</span><span class="st">&quot;black&quot;</span>, <span class="dt">tl.srt =</span> <span class="dv">45</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-106-7.png" width="672" /></p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="correlation.html#cb442-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Species) <span class="sc">%&gt;%</span> <span class="fu">cor</span>(<span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="correlation.html#cb443-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="correlation.html#cb444-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-2.png" width="672" /></p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="correlation.html#cb445-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-3.png" width="672" /></p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="correlation.html#cb446-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-4.png" width="672" /></p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="correlation.html#cb447-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">addCoef.col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-5.png" width="672" /></p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="correlation.html#cb448-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">tl.col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-6.png" width="672" /></p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="correlation.html#cb449-1" aria-hidden="true" tabindex="-1"></a>corrplot<span class="sc">::</span><span class="fu">corrplot</span>(M, <span class="at">method =</span> <span class="st">&quot;color&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">tl.col=</span><span class="st">&quot;black&quot;</span>, <span class="at">tl.srt =</span> <span class="dv">45</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-108-7.png" width="672" /></p>
 
 </div>
             </section>

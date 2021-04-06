@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s | Bill’s Drills Book" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s | Bill’s Drills Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s | Bill’s Drills Book" />
+  
+  
+  
+
+<meta name="author" content="William McDonald" />
+
+
+<meta name="date" content="2021-03-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regex.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bill's Drills Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="datashape.html"><a href="datashape.html#making-data-frames"><i class="fa fa-check"></i><b>3.1</b> Making data frames</a></li>
+<li class="chapter" data-level="3.2" data-path="datashape.html"><a href="datashape.html#gather-spread-pivoting-in-the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Gather, spread, pivoting in the tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="datashape.html"><a href="datashape.html#gathering-steam"><i class="fa fa-check"></i><b>3.3</b> Gathering steam…</a></li>
+<li class="chapter" data-level="3.4" data-path="datashape.html"><a href="datashape.html#spread-your-wings"><i class="fa fa-check"></i><b>3.4</b> Spread your wings</a></li>
+<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="datashape.html"><a href="datashape.html#you-completeme"><i class="fa fa-check"></i><b>3.5.1</b> You complete(me)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="datashape.html"><a href="datashape.html#filling-in-the-gaps"><i class="fa fa-check"></i><b>3.5.2</b> fill(ing) in the gaps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="datashape.html"><a href="datashape.html#pivoting-to-something-new"><i class="fa fa-check"></i><b>3.6</b> Pivoting to something new</a></li>
+<li class="chapter" data-level="3.7" data-path="datashape.html"><a href="datashape.html#larger-structures"><i class="fa fa-check"></i><b>3.7</b> Larger structures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>4.1</b> A financial example</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
+<li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
+<li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
+<li class="chapter" data-level="5.4" data-path="factorpractice.html"><a href="factorpractice.html#inspecting-factors"><i class="fa fa-check"></i><b>5.4</b> Inspecting factors</a></li>
+<li class="chapter" data-level="5.5" data-path="factorpractice.html"><a href="factorpractice.html#fct_lump"><i class="fa fa-check"></i><b>5.5</b> fct_lump()</a></li>
+<li class="chapter" data-level="5.6" data-path="factorpractice.html"><a href="factorpractice.html#fct_infreq-and-fct_rev"><i class="fa fa-check"></i><b>5.6</b> fct_infreq() and fct_rev()</a></li>
+<li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
+<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>6.1</b> Subsetting using brackets</a></li>
+<li class="chapter" data-level="6.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>6.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
+<li class="chapter" data-level="6.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>6.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
+<li class="chapter" data-level="6.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>6.4</b> Subset using the subset() function</a></li>
+<li class="chapter" data-level="6.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>6.5</b> Subset using dyplyr’s filter() and select()</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>7.1</b> Counting things. The naming of parts.</a></li>
+<li class="chapter" data-level="7.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>7.2</b> fct_infreq</a></li>
+<li class="chapter" data-level="7.3" data-path="dataexploration.html"><a href="dataexploration.html#weight-weight-dont-tell-me"><i class="fa fa-check"></i><b>7.3</b> Weight weight, don’t tell me!</a></li>
+<li class="chapter" data-level="7.4" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>7.4</b> Summarize is another very useful function:</a></li>
+<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>8.1</b> Think about throwing a bunch of dice.</a></li>
+<li class="chapter" data-level="8.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>8.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simulating-data.html"><a href="simulating-data.html#sample"><i class="fa fa-check"></i><b>9.1</b> Sample()</a></li>
+<li class="chapter" data-level="9.2" data-path="simulating-data.html"><a href="simulating-data.html#replicate"><i class="fa fa-check"></i><b>9.2</b> replicate()</a></li>
+<li class="chapter" data-level="9.3" data-path="simulating-data.html"><a href="simulating-data.html#sample-revisited"><i class="fa fa-check"></i><b>9.3</b> sample() revisited</a></li>
+<li class="chapter" data-level="9.4" data-path="simulating-data.html"><a href="simulating-data.html#generating-fixed-levels--"><i class="fa fa-check"></i><b>9.4</b> generating fixed levels ————————————————-</a></li>
+<li class="chapter" data-level="9.5" data-path="simulating-data.html"><a href="simulating-data.html#generating-numerical-sequences"><i class="fa fa-check"></i><b>9.5</b> generating numerical sequences</a></li>
+<li class="chapter" data-level="9.6" data-path="simulating-data.html"><a href="simulating-data.html#seq_along-and-seq_len."><i class="fa fa-check"></i><b>9.6</b> seq_along() and seq_len().</a></li>
+<li class="chapter" data-level="9.7" data-path="simulating-data.html"><a href="simulating-data.html#generating-random-data-from-a-probability-distribution"><i class="fa fa-check"></i><b>9.7</b> generating random data from a probability distribution</a></li>
+<li class="chapter" data-level="9.8" data-path="simulating-data.html"><a href="simulating-data.html#normal-distribution"><i class="fa fa-check"></i><b>9.8</b> Normal distribution:</a></li>
+<li class="chapter" data-level="9.9" data-path="simulating-data.html"><a href="simulating-data.html#binomial-distribution"><i class="fa fa-check"></i><b>9.9</b> Binomial distribution:</a></li>
+<li class="chapter" data-level="9.10" data-path="simulating-data.html"><a href="simulating-data.html#uniform-distribution"><i class="fa fa-check"></i><b>9.10</b> Uniform distribution</a></li>
+<li class="chapter" data-level="9.11" data-path="simulating-data.html"><a href="simulating-data.html#sampling-from-multiple-distributions-building-in-a-difference"><i class="fa fa-check"></i><b>9.11</b> Sampling from multiple distributions (building in a “difference”)</a></li>
+<li class="chapter" data-level="9.12" data-path="simulating-data.html"><a href="simulating-data.html#the-good-stuff-building-in-a-difference-based-on-a-categorical-variable"><i class="fa fa-check"></i><b>9.12</b> The good stuff: building in a difference based on a categorical variable</a></li>
+<li class="chapter" data-level="9.13" data-path="simulating-data.html"><a href="simulating-data.html#a-demonstration-of-the-central-limit-theorem"><i class="fa fa-check"></i><b>9.13</b> A demonstration of the Central Limit Theorem</a></li>
+<li class="chapter" data-level="9.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>9.14</b> Overlaying normal curve on histogram</a></li>
+<li class="chapter" data-level="9.15" data-path="simulating-data.html"><a href="simulating-data.html#crossing-trial"><i class="fa fa-check"></i><b>9.15</b> Crossing trial</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="functions.html"><a href="functions.html#a-little-dungeons-dragons-tm-to-spice-it-up"><i class="fa fa-check"></i><b>10.1</b> A little Dungeons &amp; Dragons (tm) to spice it up</a></li>
+<li class="chapter" data-level="10.2" data-path="functions.html"><a href="functions.html#geometric-and-harmonic-means"><i class="fa fa-check"></i><b>10.2</b> Geometric and harmonic means</a></li>
+<li class="chapter" data-level="10.3" data-path="functions.html"><a href="functions.html#for-loop"><i class="fa fa-check"></i><b>10.3</b> for loop</a></li>
+<li class="chapter" data-level="10.4" data-path="functions.html"><a href="functions.html#case_when"><i class="fa fa-check"></i><b>10.4</b> case_when()</a></li>
+<li class="chapter" data-level="10.5" data-path="functions.html"><a href="functions.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>10.5</b> Compare this with if_else()</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation Plots</a></li>
+<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
+<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>12.2.1</b> Principle component analysis</a></li>
+<li class="chapter" data-level="12.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>12.2.2</b> t-distributed stochastic neighbor embedding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>13</b> Clustering</a></li>
+<li class="chapter" data-level="14" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>14</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="regex.html"><a href="regex.html#seeking-patterns"><i class="fa fa-check"></i><b>14.1</b> Seeking patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html"><i class="fa fa-check"></i><b>15</b> US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#variables"><i class="fa fa-check"></i><b>15.1</b> Variables</a></li>
+<li class="chapter" data-level="15.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#part-2-wrangling-census-data-with-tidyverse-tools"><i class="fa fa-check"></i><b>15.2</b> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#normalizing-the-data-with-mutate."><i class="fa fa-check"></i><b>15.2.1</b> Normalizing the data with <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="15.2.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#group_by-and-summarize-in-census-analysis"><i class="fa fa-check"></i><b>15.2.2</b> <code>group_by()</code> and <code>summarize()</code> in census analysis</a></li>
+<li class="chapter" data-level="15.2.3" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#margin-of-error-considerations"><i class="fa fa-check"></i><b>15.2.3</b> Margin of error considerations</a></li>
+<li class="chapter" data-level="15.2.4" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#visualizing-margins-of-error"><i class="fa fa-check"></i><b>15.2.4</b> Visualizing margins of error</a></li>
+<li class="chapter" data-level="15.2.5" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#get_estimates-and-how-to-use-them"><i class="fa fa-check"></i><b>15.2.5</b> <code>get_estimates()</code> and how to use them</a></li>
+<li class="chapter" data-level="15.2.6" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#ggbeeswarm-automates-some-jitter-considerations"><i class="fa fa-check"></i><b>15.2.6</b> <code>ggbeeswarm()</code> automates some jitter considerations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bill’s Drills Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="us_census_data_kyle_walker_presentation_youtube-censuss" class="section level1" number="15">
+<h1><span class="header-section-number">Chapter 15</span> US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s</h1>
+<p>These are notes from a course taught by Kyle Walker, PhD and posted to YouTube by John DeWitt at the following YouTube <a href="https://www.youtube.com/watch?v=PnFJfuJ83NI" class="uri">https://www.youtube.com/watch?v=PnFJfuJ83NI</a></p>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb501-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb501-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb501-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb501-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install a new API key if necessary by obtaining a new key and installing it with the following</span></span>
+<span id="cb501-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb501-6" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key(&quot;aec016261a3b069f2318c77075e5224445517668&quot;, install = TRUE)</span></span></code></pre></div>
+<p>Let’s see if this will connect me with the census data with a few simple queries. <code>get_decennial()</code> defaults to the latest 10-year, simple survey performed by the Census Bureau. The 10-year survey renders numbers.</p>
+<p><code>get_acs()</code> contains much more information, and is based on the latest American Community Survey. ACS variables are rendered as estimates with a margin of error (MOE).</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb502-1" aria-hidden="true" tabindex="-1"></a>pop10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;P001001&quot;</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2010 decennial Census</code></pre>
+<pre><code>## Using Census Summary File 1</code></pre>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb505-1" aria-hidden="true" tabindex="-1"></a>pop10</span></code></pre></div>
+<pre><code>## # A tibble: 52 x 4
+##    GEOID NAME        variable    value
+##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
+##  1 01    Alabama     P001001   4779736
+##  2 02    Alaska      P001001    710231
+##  3 04    Arizona     P001001   6392017
+##  4 05    Arkansas    P001001   2915918
+##  5 06    California  P001001  37253956
+##  6 22    Louisiana   P001001   4533372
+##  7 21    Kentucky    P001001   4339367
+##  8 08    Colorado    P001001   5029196
+##  9 09    Connecticut P001001   3574097
+## 10 10    Delaware    P001001    897934
+## # … with 42 more rows</code></pre>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb507-1" aria-hidden="true" tabindex="-1"></a>income_15to19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb507-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb507-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb509-1" aria-hidden="true" tabindex="-1"></a>income_19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb509-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb509-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb509-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb509-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>)</span></code></pre></div>
+<pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
+<pre><code>## Getting data from the 2019 1-year ACS</code></pre>
+<p>That looks great, but would be very labor intensive to assemble piecemeal.</p>
+<p>Luckily, common tables of variables are available.</p>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb512-1" aria-hidden="true" tabindex="-1"></a>age_table<span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb512-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb512-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">table =</span> <span class="st">&quot;B01001&quot;</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<pre><code>## Loading ACS5 variables for 2019 from table B01001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb515-1" aria-hidden="true" tabindex="-1"></a>age_table</span></code></pre></div>
+<pre><code>## # A tibble: 2,548 x 5
+##    GEOID NAME    variable   estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 01    Alabama B01001_001  4876250    NA
+##  2 01    Alabama B01001_002  2359355  1270
+##  3 01    Alabama B01001_003   149090   704
+##  4 01    Alabama B01001_004   153494  2290
+##  5 01    Alabama B01001_005   158617  2274
+##  6 01    Alabama B01001_006    98257   468
+##  7 01    Alabama B01001_007    64980   834
+##  8 01    Alabama B01001_008    35870  1436
+##  9 01    Alabama B01001_009    35040  1472
+## 10 01    Alabama B01001_010    95065  1916
+## # … with 2,538 more rows</code></pre>
+<p>That’s great, but the variables are still encoded in the long form of the table. We’ll need to solve that at some point.</p>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb517-1" aria-hidden="true" tabindex="-1"></a>wi_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb517-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb517-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb517-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb517-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
+<span id="cb517-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb517-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span>  <span class="dv">2019</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb519-1" aria-hidden="true" tabindex="-1"></a>wi_income</span></code></pre></div>
+<pre><code>## # A tibble: 72 x 5
+##    GEOID NAME                       variable   estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;                      &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 55001 Adams County, Wisconsin    B19013_001    46369  1834
+##  2 55003 Ashland County, Wisconsin  B19013_001    42510  2858
+##  3 55005 Barron County, Wisconsin   B19013_001    52703  2104
+##  4 55007 Bayfield County, Wisconsin B19013_001    56096  1877
+##  5 55009 Brown County, Wisconsin    B19013_001    62340  1112
+##  6 55011 Buffalo County, Wisconsin  B19013_001    57829  1873
+##  7 55013 Burnett County, Wisconsin  B19013_001    52672  1388
+##  8 55015 Calumet County, Wisconsin  B19013_001    75814  2425
+##  9 55017 Chippewa County, Wisconsin B19013_001    59742  1759
+## 10 55019 Clark County, Wisconsin    B19013_001    54012  1223
+## # … with 62 more rows</code></pre>
+<p>Querying by census tract is also possible. Census tracts are loosely analogous to neighborhoods and contain about 4000 people.</p>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb521-1" aria-hidden="true" tabindex="-1"></a>dane_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb521-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb521-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb521-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb521-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
+<span id="cb521-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb521-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">county =</span>  <span class="st">&quot;Dane&quot;</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb523-1" aria-hidden="true" tabindex="-1"></a>dane_income</span></code></pre></div>
+<pre><code>## # A tibble: 107 x 5
+##    GEOID       NAME                                     variable  estimate   moe
+##    &lt;chr&gt;       &lt;chr&gt;                                    &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+##  1 55025000100 Census Tract 1, Dane County, Wisconsin   B19013_0…    72471 12984
+##  2 55025000201 Census Tract 2.01, Dane County, Wiscons… B19013_0…    94821 11860
+##  3 55025000202 Census Tract 2.02, Dane County, Wiscons… B19013_0…    84145  7021
+##  4 55025000204 Census Tract 2.04, Dane County, Wiscons… B19013_0…    79617 11823
+##  5 55025000205 Census Tract 2.05, Dane County, Wiscons… B19013_0…    91326 13453
+##  6 55025000300 Census Tract 3, Dane County, Wisconsin   B19013_0…    53778  7593
+##  7 55025000401 Census Tract 4.01, Dane County, Wiscons… B19013_0…    98178  7330
+##  8 55025000402 Census Tract 4.02, Dane County, Wiscons… B19013_0…   107440  6585
+##  9 55025000405 Census Tract 4.05, Dane County, Wiscons… B19013_0…    68911  4141
+## 10 55025000406 Census Tract 4.06, Dane County, Wiscons… B19013_0…    74489 10451
+## # … with 97 more rows</code></pre>
+<div id="variables" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Variables</h2>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb525-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2019</span>, <span class="st">&quot;acs5&quot;</span>)</span>
+<span id="cb525-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb525-2" aria-hidden="true" tabindex="-1"></a>vars</span></code></pre></div>
+<pre><code>## # A tibble: 27,040 x 3
+##    name       label                                    concept   
+##    &lt;chr&gt;      &lt;chr&gt;                                    &lt;chr&gt;     
+##  1 B01001_001 Estimate!!Total:                         SEX BY AGE
+##  2 B01001_002 Estimate!!Total:!!Male:                  SEX BY AGE
+##  3 B01001_003 Estimate!!Total:!!Male:!!Under 5 years   SEX BY AGE
+##  4 B01001_004 Estimate!!Total:!!Male:!!5 to 9 years    SEX BY AGE
+##  5 B01001_005 Estimate!!Total:!!Male:!!10 to 14 years  SEX BY AGE
+##  6 B01001_006 Estimate!!Total:!!Male:!!15 to 17 years  SEX BY AGE
+##  7 B01001_007 Estimate!!Total:!!Male:!!18 and 19 years SEX BY AGE
+##  8 B01001_008 Estimate!!Total:!!Male:!!20 years        SEX BY AGE
+##  9 B01001_009 Estimate!!Total:!!Male:!!21 years        SEX BY AGE
+## 10 B01001_010 Estimate!!Total:!!Male:!!22 to 24 years  SEX BY AGE
+## # … with 27,030 more rows</code></pre>
+<p>This can be searched using RStudio’s <code>View()</code> function, but it’s still a mess. De Witt uses Census Reporter a lot–search online for this. Try <a href="https://censusreporter.org/" class="uri">https://censusreporter.org/</a>, especially the <strong>Explore</strong> search field, which is a good way to identify good variables. One useful trick is to find the table identifier in Census Reporter and then use that to explore variables loaded using <code>load_variables()</code>.</p>
+<p>Another invaluable resource is <a href="https://rconsortium.github.io/censusguide/" class="uri">https://rconsortium.github.io/censusguide/</a>.</p>
+<p>The census.gov tools are also extensive. See for instance <a href="https://www.census.gov/data/academy/data-gems/2021/how-to-visualize-your-data-using-thematic-maps-on-data-census-gov.html" class="uri">https://www.census.gov/data/academy/data-gems/2021/how-to-visualize-your-data-using-thematic-maps-on-data-census-gov.html</a>.</p>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb527-1" aria-hidden="true" tabindex="-1"></a>  hhinc <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb527-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb527-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb527-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb527-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
+<span id="cb527-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb527-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
+<span id="cb527-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb527-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
+<pre><code>## Getting data from the 2019 1-year ACS</code></pre>
+<pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb531-1" aria-hidden="true" tabindex="-1"></a>  hhinc</span></code></pre></div>
+<pre><code>## # A tibble: 884 x 5
+##    GEOID NAME    variable   estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 01    Alabama B19001_001  1897576 10370
+##  2 01    Alabama B19001_002   154558  5883
+##  3 01    Alabama B19001_003   103653  6001
+##  4 01    Alabama B19001_004   108500  5926
+##  5 01    Alabama B19001_005    98706  6491
+##  6 01    Alabama B19001_006    90916  5859
+##  7 01    Alabama B19001_007   105146  4149
+##  8 01    Alabama B19001_008    85014  5417
+##  9 01    Alabama B19001_009    87118  5163
+## 10 01    Alabama B19001_010    82323  4231
+## # … with 874 more rows</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb533-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>(hhinc)</span></code></pre></div>
+<pre><code>## Rows: 884
+## Columns: 5
+## $ GEOID    &lt;chr&gt; &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;…
+## $ NAME     &lt;chr&gt; &quot;Alabama&quot;, &quot;Alabama&quot;, &quot;Alabama&quot;, &quot;Alabama&quot;, &quot;Alabama&quot;, &quot;Alaba…
+## $ variable &lt;chr&gt; &quot;B19001_001&quot;, &quot;B19001_002&quot;, &quot;B19001_003&quot;, &quot;B19001_004&quot;, &quot;B190…
+## $ estimate &lt;dbl&gt; 1897576, 154558, 103653, 108500, 98706, 90916, 105146, 85014,…
+## $ moe      &lt;dbl&gt; 10370, 5883, 6001, 5926, 6491, 5859, 4149, 5417, 5163, 4231, …</code></pre>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb535-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(hhinc)</span></code></pre></div>
+<pre><code>## tibble [884 × 5] (S3: tbl_df/tbl/data.frame)
+##  $ GEOID   : chr [1:884] &quot;01&quot; &quot;01&quot; &quot;01&quot; &quot;01&quot; ...
+##  $ NAME    : chr [1:884] &quot;Alabama&quot; &quot;Alabama&quot; &quot;Alabama&quot; &quot;Alabama&quot; ...
+##  $ variable: chr [1:884] &quot;B19001_001&quot; &quot;B19001_002&quot; &quot;B19001_003&quot; &quot;B19001_004&quot; ...
+##  $ estimate: num [1:884] 1897576 154558 103653 108500 98706 ...
+##  $ moe     : num [1:884] 10370 5883 6001 5926 6491 ...</code></pre>
+<p>This is pretty tough to read. A wide form is easier and can be had without using <code>pivot_wider()</code>.</p>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-1" aria-hidden="true" tabindex="-1"></a>  hhinc_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb537-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb537-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
+<span id="cb537-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>,</span>
+<span id="cb537-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb537-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb537-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
+<pre><code>## Getting data from the 2019 1-year ACS</code></pre>
+<pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb541-1" aria-hidden="true" tabindex="-1"></a>hhinc_wide</span></code></pre></div>
+<pre><code>## # A tibble: 52 x 36
+##    GEOID NAME        B19001_001E B19001_001M B19001_002E B19001_002M B19001_003E
+##    &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 28    Mississippi     1100229        9887      102072        5891       72195
+##  2 29    Missouri        2458337       10406      155827        6687      111813
+##  3 30    Montana          437651        4637       23489        2194       21550
+##  4 31    Nebraska         771444        4475       37219        2805       30395
+##  5 32    Nevada          1143557        8281       68825        4164       45099
+##  6 33    New Hampsh…      541396        5389       21229        2566       16539
+##  7 34    New Jersey      3286264        9466      154374        7219       95123
+##  8 35    New Mexico       793420        7074       65613        4413       42519
+##  9 36    New York        7446812       13820      497771       10405      329325
+## 10 37    North Caro…     4046348       15467      251158        9332      187653
+## # … with 42 more rows, and 29 more variables: B19001_003M &lt;dbl&gt;,
+## #   B19001_004E &lt;dbl&gt;, B19001_004M &lt;dbl&gt;, B19001_005E &lt;dbl&gt;, B19001_005M &lt;dbl&gt;,
+## #   B19001_006E &lt;dbl&gt;, B19001_006M &lt;dbl&gt;, B19001_007E &lt;dbl&gt;, B19001_007M &lt;dbl&gt;,
+## #   B19001_008E &lt;dbl&gt;, B19001_008M &lt;dbl&gt;, B19001_009E &lt;dbl&gt;, B19001_009M &lt;dbl&gt;,
+## #   B19001_010E &lt;dbl&gt;, B19001_010M &lt;dbl&gt;, B19001_011E &lt;dbl&gt;, B19001_011M &lt;dbl&gt;,
+## #   B19001_012E &lt;dbl&gt;, B19001_012M &lt;dbl&gt;, B19001_013E &lt;dbl&gt;, B19001_013M &lt;dbl&gt;,
+## #   B19001_014E &lt;dbl&gt;, B19001_014M &lt;dbl&gt;, B19001_015E &lt;dbl&gt;, B19001_015M &lt;dbl&gt;,
+## #   B19001_016E &lt;dbl&gt;, B19001_016M &lt;dbl&gt;, B19001_017E &lt;dbl&gt;, B19001_017M &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hhinc_wide)</span></code></pre></div>
+<pre><code>## Rows: 52
+## Columns: 36
+## $ GEOID       &lt;chr&gt; &quot;28&quot;, &quot;29&quot;, &quot;30&quot;, &quot;31&quot;, &quot;32&quot;, &quot;33&quot;, &quot;34&quot;, &quot;35&quot;, &quot;36&quot;, &quot;37&quot;…
+## $ NAME        &lt;chr&gt; &quot;Mississippi&quot;, &quot;Missouri&quot;, &quot;Montana&quot;, &quot;Nebraska&quot;, &quot;Nevada&quot;…
+## $ B19001_001E &lt;dbl&gt; 1100229, 2458337, 437651, 771444, 1143557, 541396, 3286264…
+## $ B19001_001M &lt;dbl&gt; 9887, 10406, 4637, 4475, 8281, 5389, 9466, 7074, 13820, 15…
+## $ B19001_002E &lt;dbl&gt; 102072, 155827, 23489, 37219, 68825, 21229, 154374, 65613,…
+## $ B19001_002M &lt;dbl&gt; 5891, 6687, 2194, 2805, 4164, 2566, 7219, 4413, 10405, 933…
+## $ B19001_003E &lt;dbl&gt; 72195, 111813, 21550, 30395, 45099, 16539, 95123, 42519, 3…
+## $ B19001_003M &lt;dbl&gt; 5563, 5577, 2415, 2679, 3502, 2663, 5069, 3479, 10854, 808…
+## $ B19001_004E &lt;dbl&gt; 74167, 115140, 21335, 26514, 39946, 16216, 91608, 41543, 2…
+## $ B19001_004M &lt;dbl&gt; 4559, 5621, 1726, 2433, 3403, 2271, 5576, 3752, 8790, 7905…
+## $ B19001_005E &lt;dbl&gt; 63780, 122095, 23022, 35113, 50808, 19054, 113018, 48909, …
+## $ B19001_005M &lt;dbl&gt; 4127, 5489, 2418, 2753, 4299, 2165, 5398, 4239, 9953, 7810…
+## $ B19001_006E &lt;dbl&gt; 64942, 111981, 18577, 30390, 44720, 18377, 96889, 41728, 2…
+## $ B19001_006M &lt;dbl&gt; 4703, 5528, 1955, 2643, 3607, 2294, 6271, 4027, 10138, 828…
+## $ B19001_007E &lt;dbl&gt; 58033, 121608, 21148, 36654, 48167, 18368, 112428, 39967, …
+## $ B19001_007M &lt;dbl&gt; 4432, 5756, 2408, 2792, 3496, 2010, 6077, 3532, 9361, 6745…
+## $ B19001_008E &lt;dbl&gt; 55748, 113730, 20959, 32908, 46762, 15983, 98003, 32647, 2…
+## $ B19001_008M &lt;dbl&gt; 4483, 5553, 2769, 2509, 3920, 1838, 5978, 3073, 9135, 8731…
+## $ B19001_009E &lt;dbl&gt; 51897, 116231, 21917, 37925, 51108, 22257, 104770, 37765, …
+## $ B19001_009M &lt;dbl&gt; 4901, 5683, 2316, 3333, 3854, 2391, 6257, 2701, 10075, 760…
+## $ B19001_010E &lt;dbl&gt; 43423, 104380, 20023, 31514, 51006, 21203, 93426, 28960, 2…
+## $ B19001_010M &lt;dbl&gt; 3597, 4723, 2670, 2681, 4531, 2169, 5753, 3159, 9161, 7460…
+## $ B19001_011E &lt;dbl&gt; 86214, 198458, 36769, 64039, 90046, 39230, 202459, 63845, …
+## $ B19001_011M &lt;dbl&gt; 5966, 7477, 3056, 3492, 5207, 3351, 7998, 4301, 12232, 917…
+## $ B19001_012E &lt;dbl&gt; 105304, 260646, 44994, 86318, 123473, 52252, 290552, 79144…
+## $ B19001_012M &lt;dbl&gt; 5907, 7646, 3051, 3863, 5807, 3758, 8825, 4473, 13405, 120…
+## $ B19001_013E &lt;dbl&gt; 122825, 318344, 58858, 111438, 159361, 76433, 401067, 9694…
+## $ B19001_013M &lt;dbl&gt; 6357, 8489, 3855, 4655, 6715, 4378, 11429, 5032, 14989, 13…
+## $ B19001_014E &lt;dbl&gt; 72151, 216220, 39064, 75244, 116598, 61021, 343771, 60173,…
+## $ B19001_014M &lt;dbl&gt; 4143, 6681, 2723, 3690, 5686, 4132, 10134, 4229, 12558, 10…
+## $ B19001_015E &lt;dbl&gt; 47726, 135532, 23818, 47119, 64746, 40422, 250060, 38540, …
+## $ B19001_015M &lt;dbl&gt; 3282, 5371, 2653, 3029, 3977, 3563, 8064, 3416, 11556, 806…
+## $ B19001_016E &lt;dbl&gt; 44171, 129949, 23210, 47279, 69365, 49858, 338989, 39437, …
+## $ B19001_016M &lt;dbl&gt; 3353, 6087, 2351, 2722, 4085, 3039, 9700, 3428, 12227, 710…
+## $ B19001_017E &lt;dbl&gt; 35581, 126383, 18918, 41375, 73527, 52954, 499727, 35685, …
+## $ B19001_017M &lt;dbl&gt; 2826, 5183, 2211, 2731, 4035, 3332, 8735, 2595, 12818, 645…</code></pre>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hhinc_wide)</span></code></pre></div>
+<pre><code>## tibble [52 × 36] (S3: tbl_df/tbl/data.frame)
+##  $ GEOID      : chr [1:52] &quot;28&quot; &quot;29&quot; &quot;30&quot; &quot;31&quot; ...
+##  $ NAME       : chr [1:52] &quot;Mississippi&quot; &quot;Missouri&quot; &quot;Montana&quot; &quot;Nebraska&quot; ...
+##  $ B19001_001E: num [1:52] 1100229 2458337 437651 771444 1143557 ...
+##  $ B19001_001M: num [1:52] 9887 10406 4637 4475 8281 ...
+##  $ B19001_002E: num [1:52] 102072 155827 23489 37219 68825 ...
+##  $ B19001_002M: num [1:52] 5891 6687 2194 2805 4164 ...
+##  $ B19001_003E: num [1:52] 72195 111813 21550 30395 45099 ...
+##  $ B19001_003M: num [1:52] 5563 5577 2415 2679 3502 ...
+##  $ B19001_004E: num [1:52] 74167 115140 21335 26514 39946 ...
+##  $ B19001_004M: num [1:52] 4559 5621 1726 2433 3403 ...
+##  $ B19001_005E: num [1:52] 63780 122095 23022 35113 50808 ...
+##  $ B19001_005M: num [1:52] 4127 5489 2418 2753 4299 ...
+##  $ B19001_006E: num [1:52] 64942 111981 18577 30390 44720 ...
+##  $ B19001_006M: num [1:52] 4703 5528 1955 2643 3607 ...
+##  $ B19001_007E: num [1:52] 58033 121608 21148 36654 48167 ...
+##  $ B19001_007M: num [1:52] 4432 5756 2408 2792 3496 ...
+##  $ B19001_008E: num [1:52] 55748 113730 20959 32908 46762 ...
+##  $ B19001_008M: num [1:52] 4483 5553 2769 2509 3920 ...
+##  $ B19001_009E: num [1:52] 51897 116231 21917 37925 51108 ...
+##  $ B19001_009M: num [1:52] 4901 5683 2316 3333 3854 ...
+##  $ B19001_010E: num [1:52] 43423 104380 20023 31514 51006 ...
+##  $ B19001_010M: num [1:52] 3597 4723 2670 2681 4531 ...
+##  $ B19001_011E: num [1:52] 86214 198458 36769 64039 90046 ...
+##  $ B19001_011M: num [1:52] 5966 7477 3056 3492 5207 ...
+##  $ B19001_012E: num [1:52] 105304 260646 44994 86318 123473 ...
+##  $ B19001_012M: num [1:52] 5907 7646 3051 3863 5807 ...
+##  $ B19001_013E: num [1:52] 122825 318344 58858 111438 159361 ...
+##  $ B19001_013M: num [1:52] 6357 8489 3855 4655 6715 ...
+##  $ B19001_014E: num [1:52] 72151 216220 39064 75244 116598 ...
+##  $ B19001_014M: num [1:52] 4143 6681 2723 3690 5686 ...
+##  $ B19001_015E: num [1:52] 47726 135532 23818 47119 64746 ...
+##  $ B19001_015M: num [1:52] 3282 5371 2653 3029 3977 ...
+##  $ B19001_016E: num [1:52] 44171 129949 23210 47279 69365 ...
+##  $ B19001_016M: num [1:52] 3353 6087 2351 2722 4085 ...
+##  $ B19001_017E: num [1:52] 35581 126383 18918 41375 73527 ...
+##  $ B19001_017M: num [1:52] 2826 5183 2211 2731 4035 ...</code></pre>
+<p>We still aren’t transparent with respect to vectors. I will never remember them. Named vectors can be used:</p>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-1" aria-hidden="true" tabindex="-1"></a>ga_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb547-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb547-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;GA&quot;</span>,</span>
+<span id="cb547-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb547-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
+<span id="cb547-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb547-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb547-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb549-1" aria-hidden="true" tabindex="-1"></a>ga_wide</span></code></pre></div>
+<pre><code>## # A tibble: 159 x 6
+##    GEOID NAME                    median_incE median_incM median_ageE median_ageM
+##    &lt;chr&gt; &lt;chr&gt;                         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 13005 Bacon County, Georgia         37519        5492        36.7         0.7
+##  2 13025 Brantley County, Georg…       38857        3480        41.1         0.8
+##  3 13017 Ben Hill County, Georg…       32229        3845        39.9         1.1
+##  4 13033 Burke County, Georgia         44151        2438        37.4         0.6
+##  5 13047 Catoosa County, Georgia       56235        2290        40.4         0.4
+##  6 13053 Chattahoochee County, …       47096        5158        24.5         0.5
+##  7 13055 Chattooga County, Geor…       36807        2268        39.4         0.7
+##  8 13073 Columbia County, Georg…       82339        3532        36.9         0.4
+##  9 13087 Decatur County, Georgia       41481        3584        37.8         0.6
+## 10 13115 Floyd County, Georgia         48336        2266        38.3         0.3
+## # … with 149 more rows</code></pre>
+<p>Let’s try something closer to home:</p>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb551-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb551-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb551-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
+<span id="cb551-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb551-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb551-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb553-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide</span></code></pre></div>
+<pre><code>## # A tibble: 1,338 x 4
+##    GEOID       NAME                                      median_ageE median_ageM
+##    &lt;chr&gt;       &lt;chr&gt;                                           &lt;dbl&gt;       &lt;dbl&gt;
+##  1 27053025401 Census Tract 254.01, Hennepin County, Mi…        37.4         3.8
+##  2 27053025805 Census Tract 258.05, Hennepin County, Mi…        52.2         6  
+##  3 27053026018 Census Tract 260.18, Hennepin County, Mi…        41.9         1.8
+##  4 27053026402 Census Tract 264.02, Hennepin County, Mi…        36.1         2.9
+##  5 27053026404 Census Tract 264.04, Hennepin County, Mi…        50.5         3.7
+##  6 27053026809 Census Tract 268.09, Hennepin County, Mi…        29.1         2.2
+##  7 27053027602 Census Tract 276.02, Hennepin County, Mi…        45.9         3.6
+##  8 27053102000 Census Tract 1020, Hennepin County, Minn…        33.9         3.6
+##  9 27053103600 Census Tract 1036, Hennepin County, Minn…        47.9         5.1
+## 10 27053022902 Census Tract 229.02, Hennepin County, Mi…        40.2         3.1
+## # … with 1,328 more rows</code></pre>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-1" aria-hidden="true" tabindex="-1"></a>vs15 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2015</span>, <span class="st">&quot;acs5&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb555-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-3" aria-hidden="true" tabindex="-1"></a>mn_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb555-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb555-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb555-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">total_pop =</span> <span class="st">&quot;B01003_001&quot;</span>, </span>
+<span id="cb555-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb555-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>,</span>
+<span id="cb555-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">white =</span> <span class="st">&quot;B02001_002&quot;</span>,</span>
+<span id="cb555-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">black =</span> <span class="st">&quot;B02001_003&quot;</span>,</span>
+<span id="cb555-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">native_am =</span> <span class="st">&quot;B02001_004&quot;</span>,</span>
+<span id="cb555-12"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">asian =</span> <span class="st">&quot;B02001_005&quot;</span>,</span>
+<span id="cb555-13"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">doctor =</span> <span class="st">&quot;B15003_025&quot;</span>),</span>
+<span id="cb555-14"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb555-15"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb555-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb557-1" aria-hidden="true" tabindex="-1"></a>mn_wide</span></code></pre></div>
+<pre><code>## # A tibble: 87 x 18
+##    GEOID NAME          total_popE total_popM median_incE median_incM median_ageE
+##    &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 27093 Meeker Count…      23105         NA       63452        1601        42.2
+##  2 27131 Rice County,…      66185         NA       68584        2227        36.5
+##  3 27125 Red Lake Cou…       4015         NA       58576        4262        42.7
+##  4 27027 Clay County,…      63446         NA       65269        2909        32.6
+##  5 27045 Fillmore Cou…      20949         NA       61207        1604        42.3
+##  6 27119 Polk County,…      31521         NA       59343        2282        38.7
+##  7 27143 Sibley Count…      14892         NA       63439        1646        41.7
+##  8 27165 Watonwan Cou…      10972         NA       54065        2930        39.9
+##  9 27011 Big Stone Co…       4996         NA       53900        5054        49  
+## 10 27021 Cass County,…      29268         NA       52204        1447        48.9
+## # … with 77 more rows, and 11 more variables: median_ageM &lt;dbl&gt;, whiteE &lt;dbl&gt;,
+## #   whiteM &lt;dbl&gt;, blackE &lt;dbl&gt;, blackM &lt;dbl&gt;, native_amE &lt;dbl&gt;,
+## #   native_amM &lt;dbl&gt;, asianE &lt;dbl&gt;, asianM &lt;dbl&gt;, doctorE &lt;dbl&gt;, doctorM &lt;dbl&gt;</code></pre>
+</div>
+<div id="part-2-wrangling-census-data-with-tidyverse-tools" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</h2>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb559-1" aria-hidden="true" tabindex="-1"></a>median_age <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb559-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb559-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb559-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb559-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;B01002_001&quot;</span></span>
+<span id="cb559-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb559-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, estimate)</span></code></pre></div>
+<pre><code>## # A tibble: 3,220 x 5
+##    GEOID NAME                          variable   estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;                         &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 51678 Lexington city, Virginia      B01002_001     22.3   0.7
+##  2 51750 Radford city, Virginia        B01002_001     23.4   0.5
+##  3 16065 Madison County, Idaho         B01002_001     23.5   0.2
+##  4 46121 Todd County, South Dakota     B01002_001     23.8   0.4
+##  5 02158 Kusilvak Census Area, Alaska  B01002_001     24.1   0.2
+##  6 13053 Chattahoochee County, Georgia B01002_001     24.5   0.5
+##  7 53075 Whitman County, Washington    B01002_001     24.7   0.3
+##  8 49049 Utah County, Utah             B01002_001     24.8   0.1
+##  9 46027 Clay County, South Dakota     B01002_001     24.9   0.4
+## 10 51830 Williamsburg city, Virginia   B01002_001     24.9   0.7
+## # … with 3,210 more rows</code></pre>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, <span class="fu">desc</span>(estimate))</span></code></pre></div>
+<pre><code>## # A tibble: 3,220 x 5
+##    GEOID NAME                            variable   estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;                           &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 12119 Sumter County, Florida          B01002_001     67.4   0.2
+##  2 51091 Highland County, Virginia       B01002_001     60.9   3.5
+##  3 08027 Custer County, Colorado         B01002_001     59.7   2.6
+##  4 12015 Charlotte County, Florida       B01002_001     59.1   0.2
+##  5 41069 Wheeler County, Oregon          B01002_001     59     3.3
+##  6 51133 Northumberland County, Virginia B01002_001     58.9   0.7
+##  7 26131 Ontonagon County, Michigan      B01002_001     58.6   0.4
+##  8 35021 Harding County, New Mexico      B01002_001     58.5   5.5
+##  9 53031 Jefferson County, Washington    B01002_001     58.3   0.7
+## 10 26001 Alcona County, Michigan         B01002_001     58.2   0.3
+## # … with 3,210 more rows</code></pre>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb565-1" aria-hidden="true" tabindex="-1"></a>above50 <span class="ot">&lt;-</span> <span class="fu">filter</span>(median_age, estimate <span class="sc">&gt;=</span><span class="dv">50</span>)</span></code></pre></div>
+<p>Note how DeWitt assembles the following race/ethnicity groups, and then applies a summary variable:</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-1" aria-hidden="true" tabindex="-1"></a>race_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb566-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">white =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
+<span id="cb566-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
+<span id="cb566-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">native =</span> <span class="st">&quot;B03002_005&quot;</span>,</span>
+<span id="cb566-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
+<span id="cb566-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">HIPI =</span> <span class="st">&quot;B03002_007&quot;</span>,</span>
+<span id="cb566-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hispanic =</span> <span class="st">&quot;B03002_012&quot;</span></span>
+<span id="cb566-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb566-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-10" aria-hidden="true" tabindex="-1"></a>az_race <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb566-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb566-12"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;AZ&quot;</span>,</span>
+<span id="cb566-13"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> race_vars,</span>
+<span id="cb566-14"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B03002_001&quot;</span></span>
+<span id="cb566-15"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb566-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb568-1" aria-hidden="true" tabindex="-1"></a>az_race</span></code></pre></div>
+<pre><code>## # A tibble: 90 x 7
+##    GEOID NAME                    variable estimate   moe summary_est summary_moe
+##    &lt;chr&gt; &lt;chr&gt;                   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 04001 Apache County, Arizona  white       13022     4       71511          NA
+##  2 04001 Apache County, Arizona  black         373   138       71511          NA
+##  3 04001 Apache County, Arizona  native      52285   234       71511          NA
+##  4 04001 Apache County, Arizona  asian         246    78       71511          NA
+##  5 04001 Apache County, Arizona  HIPI           16    16       71511          NA
+##  6 04001 Apache County, Arizona  hispanic     4531    NA       71511          NA
+##  7 04003 Cochise County, Arizona white       69216   235      125867          NA
+##  8 04003 Cochise County, Arizona black        4620   247      125867          NA
+##  9 04003 Cochise County, Arizona native       1142   191      125867          NA
+## 10 04003 Cochise County, Arizona asian        2431   162      125867          NA
+## # … with 80 more rows</code></pre>
+<div id="normalizing-the-data-with-mutate." class="section level3" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> Normalizing the data with <code>mutate()</code>.</h3>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb570-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="ot">&lt;-</span>  az_race <span class="sc">%&gt;%</span> </span>
+<span id="cb570-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb570-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="dv">100</span><span class="sc">*</span>(estimate<span class="sc">/</span>summary_est)) <span class="sc">%&gt;%</span> </span>
+<span id="cb570-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb570-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, variable, percent)</span>
+<span id="cb570-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb570-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb570-5" aria-hidden="true" tabindex="-1"></a>az_race_percent</span></code></pre></div>
+<pre><code>## # A tibble: 90 x 3
+##    NAME                    variable percent
+##    &lt;chr&gt;                   &lt;chr&gt;      &lt;dbl&gt;
+##  1 Apache County, Arizona  white    18.2   
+##  2 Apache County, Arizona  black     0.522 
+##  3 Apache County, Arizona  native   73.1   
+##  4 Apache County, Arizona  asian     0.344 
+##  5 Apache County, Arizona  HIPI      0.0224
+##  6 Apache County, Arizona  hispanic  6.34  
+##  7 Cochise County, Arizona white    55.0   
+##  8 Cochise County, Arizona black     3.67  
+##  9 Cochise County, Arizona native    0.907 
+## 10 Cochise County, Arizona asian     1.93  
+## # … with 80 more rows</code></pre>
+</div>
+<div id="group_by-and-summarize-in-census-analysis" class="section level3" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> <code>group_by()</code> and <code>summarize()</code> in census analysis</h3>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb572-1" aria-hidden="true" tabindex="-1"></a>largest_group <span class="ot">&lt;-</span> az_race_percent <span class="sc">%&gt;%</span> </span>
+<span id="cb572-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb572-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(NAME) <span class="sc">%&gt;%</span> </span>
+<span id="cb572-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb572-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="fu">max</span>(percent))</span>
+<span id="cb572-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb572-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb572-5" aria-hidden="true" tabindex="-1"></a>largest_group</span></code></pre></div>
+<pre><code>## # A tibble: 15 x 3
+## # Groups:   NAME [15]
+##    NAME                       variable percent
+##    &lt;chr&gt;                      &lt;chr&gt;      &lt;dbl&gt;
+##  1 Apache County, Arizona     native      73.1
+##  2 Cochise County, Arizona    white       55.0
+##  3 Coconino County, Arizona   white       54.1
+##  4 Gila County, Arizona       white       62.3
+##  5 Graham County, Arizona     white       50.9
+##  6 Greenlee County, Arizona   hispanic    46.8
+##  7 La Paz County, Arizona     white       57.4
+##  8 Maricopa County, Arizona   white       55.2
+##  9 Mohave County, Arizona     white       77.3
+## 10 Navajo County, Arizona     native      43.5
+## 11 Pima County, Arizona       white       51.7
+## 12 Pinal County, Arizona      white       56.8
+## 13 Santa Cruz County, Arizona hispanic    83.5
+## 14 Yavapai County, Arizona    white       80.5
+## 15 Yuma County, Arizona       hispanic    63.8</code></pre>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb574-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="sc">%&gt;%</span> </span>
+<span id="cb574-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb574-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb574-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb574-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median_pct =</span> <span class="fu">median</span>(percent))</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   variable median_pct
+##   &lt;chr&gt;         &lt;dbl&gt;
+## 1 asian         0.924
+## 2 black         1.12 
+## 3 HIPI          0.121
+## 4 hispanic     30.2  
+## 5 native        3.58 
+## 6 white        54.1</code></pre>
+</div>
+<div id="margin-of-error-considerations" class="section level3" number="15.2.3">
+<h3><span class="header-section-number">15.2.3</span> Margin of error considerations</h3>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-1" aria-hidden="true" tabindex="-1"></a>vars1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;B01001_0&quot;</span>, <span class="fu">c</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">44</span><span class="sc">:</span><span class="dv">49</span>))</span>
+<span id="cb576-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-2" aria-hidden="true" tabindex="-1"></a>salt_lake <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb576-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb576-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> vars1,</span>
+<span id="cb576-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Utah&quot;</span>,</span>
+<span id="cb576-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="st">&quot;Salt Lake&quot;</span>,</span>
+<span id="cb576-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
+<span id="cb576-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb576-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb578-1" aria-hidden="true" tabindex="-1"></a>example_tract <span class="ot">&lt;-</span> salt_lake <span class="sc">%&gt;%</span> </span>
+<span id="cb578-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb578-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEOID <span class="sc">==</span> <span class="st">&quot;49035100100&quot;</span>)</span>
+<span id="cb578-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb578-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb578-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb578-4" aria-hidden="true" tabindex="-1"></a>example_tract <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>NAME)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 4
+##    GEOID       variable   estimate   moe
+##    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
+##  1 49035100100 B01001_020       12    13
+##  2 49035100100 B01001_021       36    23
+##  3 49035100100 B01001_022        8    11
+##  4 49035100100 B01001_023        5     8
+##  5 49035100100 B01001_024        0    11
+##  6 49035100100 B01001_025       22    23
+##  7 49035100100 B01001_044        0    11
+##  8 49035100100 B01001_045       11    13
+##  9 49035100100 B01001_046       27    20
+## 10 49035100100 B01001_047       10    12
+## 11 49035100100 B01001_048        7    11
+## 12 49035100100 B01001_049        0    11</code></pre>
+<p><strong>tidycensus</strong> has multiple functions already built to make margin of error calculations more straigtforward when you are assembling calculated values from multiple variables each with their own margin of error.</p>
+<p>One of these functions is <code>mod_prop()</code>. Check out the help documentation to understand the following example:</p>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_prop</span>(<span class="dv">25</span>,<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0494343</code></pre>
+<p>At 1 hour 52 minutes in the YouTube, a nice example to reduce margin of error by grouping small bins of data into larger bins is introduced. I do not take it up here.</p>
+<p>Exercises for 2nd break:</p>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb582-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb582-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb582-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb582-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb582-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb582-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb582-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;DP02_0068P&quot;</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<pre><code>## Using the ACS Data Profile</code></pre>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb585-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up<span class="sc">$</span>estimate <span class="sc">%&gt;%</span> <span class="fu">median</span>()</span></code></pre></div>
+<pre><code>## [1] 22.2</code></pre>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mn_bachelors_and_up<span class="sc">$</span>estimate)</span></code></pre></div>
+<pre><code>## [1] 22.2</code></pre>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mn_bachelors_and_up %&gt;% median()</span></span></code></pre></div>
+<p>New goal: find the percentage of commuters taking public transit to work in the 20 most populous metropolitan areas.</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-1" aria-hidden="true" tabindex="-1"></a>  metros <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb590-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;cbsa&quot;</span>,</span>
+<span id="cb590-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">variables =</span> <span class="st">&quot;DP03_0021P&quot;</span>,</span>
+<span id="cb590-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">summary_var =</span> <span class="st">&quot;B01003_001&quot;</span>,</span>
+<span id="cb590-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
+<span id="cb590-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb590-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(summary_est)) <span class="sc">&lt;</span><span class="dv">21</span>)</span></code></pre></div>
+<pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
+<pre><code>## Getting data from the 2019 1-year ACS</code></pre>
+<pre><code>## Using the ACS Data Profile</code></pre>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb594-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(metros)</span></code></pre></div>
+<pre><code>## Rows: 20
+## Columns: 7
+## $ GEOID       &lt;chr&gt; &quot;12060&quot;, &quot;14460&quot;, &quot;16980&quot;, &quot;19100&quot;, &quot;19740&quot;, &quot;19820&quot;, &quot;264…
+## $ NAME        &lt;chr&gt; &quot;Atlanta-Sandy Springs-Alpharetta, GA Metro Area&quot;, &quot;Boston…
+## $ variable    &lt;chr&gt; &quot;DP03_0021P&quot;, &quot;DP03_0021P&quot;, &quot;DP03_0021P&quot;, &quot;DP03_0021P&quot;, &quot;D…
+## $ estimate    &lt;dbl&gt; 2.8, 13.4, 12.4, 1.3, 4.5, 1.4, 2.0, 4.8, 2.9, 4.5, 31.6, …
+## $ moe         &lt;dbl&gt; 0.2, 0.4, 0.3, 0.1, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.2, 0.3…
+## $ summary_est &lt;dbl&gt; 6018744, 4873019, 9457867, 7573136, 2967239, 4319629, 7066…
+## $ summary_moe &lt;dbl&gt; 3340, NA, 1469, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb596-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> metros, <span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb596-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb596-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-1" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> metros <span class="sc">%&gt;%</span> </span>
+<span id="cb597-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;-.*$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb597-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;,.*$&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb597-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate), <span class="at">x =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb597-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span>
+<span id="cb597-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb597-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-7" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb597-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Nifty title&quot;</span>,</span>
+<span id="cb597-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb597-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;acs estimate (percent)&quot;</span>,</span>
+<span id="cb597-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb597-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">caption =</span> <span class="st">&quot;Nifty caption&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-141-2.png" width="672" /></p>
+</div>
+<div id="visualizing-margins-of-error" class="section level3" number="15.2.4">
+<h3><span class="header-section-number">15.2.4</span> Visualizing margins of error</h3>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb598-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb598-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb598-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Maine&quot;</span>,</span>
+<span id="cb598-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb598-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb598-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb598-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">hhincome =</span> <span class="st">&quot;B19013_001&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb598-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb598-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot; County, Maine&quot;</span>))</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb600-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(moe))</span></code></pre></div>
+<pre><code>## # A tibble: 16 x 5
+##    GEOID NAME         variable estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 23015 Lincoln      hhincome    57720  3240
+##  2 23007 Franklin     hhincome    51422  2966
+##  3 23013 Knox         hhincome    57751  2820
+##  4 23021 Piscataquis  hhincome    40890  2613
+##  5 23025 Somerset     hhincome    44256  2591
+##  6 23023 Sagadahoc    hhincome    63694  2309
+##  7 23027 Waldo        hhincome    51931  2170
+##  8 23009 Hancock      hhincome    57178  2057
+##  9 23011 Kennebec     hhincome    55365  1948
+## 10 23017 Oxford       hhincome    49204  1879
+## 11 23001 Androscoggin hhincome    53509  1770
+## 12 23029 Washington   hhincome    41347  1565
+## 13 23031 York         hhincome    67830  1450
+## 14 23005 Cumberland   hhincome    73072  1427
+## 15 23003 Aroostook    hhincome    41123  1381
+## 16 23019 Penobscot    hhincome    50808  1326</code></pre>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(</span>
+<span id="cb602-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
+<span id="cb602-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate<span class="sc">-</span>moe, <span class="at">xmax =</span> estimate<span class="sc">+</span>moe)) <span class="sc">+</span></span>
+<span id="cb602-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb602-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Spiffy title&quot;</span>,</span>
+<span id="cb602-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">&quot;Counites of Maine&quot;</span>,</span>
+<span id="cb602-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;2015-2019 ACS Estimate&quot;</span>,</span>
+<span id="cb602-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb602-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb602-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+</div>
+<div id="get_estimates-and-how-to-use-them" class="section level3" number="15.2.5">
+<h3><span class="header-section-number">15.2.5</span> <code>get_estimates()</code> and how to use them</h3>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-1" aria-hidden="true" tabindex="-1"></a>utah <span class="ot">&lt;-</span> <span class="fu">get_estimates</span>(</span>
+<span id="cb603-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb603-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;UT&quot;</span>,</span>
+<span id="cb603-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">product =</span> <span class="st">&quot;characteristics&quot;</span>,</span>
+<span id="cb603-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown =</span> <span class="fu">c</span>(<span class="st">&quot;SEX&quot;</span>, <span class="st">&quot;AGEGROUP&quot;</span>),</span>
+<span id="cb603-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown_labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb603-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
+<span id="cb603-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb603-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb603-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb603-10" aria-hidden="true" tabindex="-1"></a>utah</span></code></pre></div>
+<pre><code>## # A tibble: 96 x 5
+##    GEOID NAME    value SEX        AGEGROUP          
+##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;             
+##  1 49    Utah  3205958 Both sexes All ages          
+##  2 49    Utah   247803 Both sexes Age 0 to 4 years  
+##  3 49    Utah   258976 Both sexes Age 5 to 9 years  
+##  4 49    Utah  1614917 Male       All ages          
+##  5 49    Utah   132868 Male       Age 5 to 9 years  
+##  6 49    Utah  1591041 Female     All ages          
+##  7 49    Utah   126108 Female     Age 5 to 9 years  
+##  8 49    Utah    23039 Female     Age 80 to 84 years
+##  9 49    Utah   267985 Both sexes Age 10 to 14 years
+## 10 49    Utah   137940 Male       Age 10 to 14 years
+## # … with 86 more rows</code></pre>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb605-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(utah, <span class="fu">str_detect</span>(AGEGROUP, <span class="st">&quot;^Age&quot;</span>),</span>
+<span id="cb605-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb605-2" aria-hidden="true" tabindex="-1"></a>                        SEX <span class="sc">!=</span> <span class="st">&quot;Both sexes&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb605-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb605-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">ifelse</span>(SEX <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>, <span class="sc">-</span>value, value))</span>
+<span id="cb605-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb605-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb605-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb605-5" aria-hidden="true" tabindex="-1"></a>utah_filtered</span></code></pre></div>
+<pre><code>## # A tibble: 36 x 5
+##    GEOID NAME    value SEX    AGEGROUP          
+##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;fct&gt;             
+##  1 49    Utah  -132868 Male   Age 5 to 9 years  
+##  2 49    Utah   126108 Female Age 5 to 9 years  
+##  3 49    Utah    23039 Female Age 80 to 84 years
+##  4 49    Utah  -137940 Male   Age 10 to 14 years
+##  5 49    Utah  -129312 Male   Age 15 to 19 years
+##  6 49    Utah   130045 Female Age 10 to 14 years
+##  7 49    Utah   124535 Female Age 15 to 19 years
+##  8 49    Utah  -135806 Male   Age 20 to 24 years
+##  9 49    Utah   128846 Female Age 20 to 24 years
+## 10 49    Utah  -111776 Male   Age 30 to 34 years
+## # … with 26 more rows</code></pre>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb607-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
+<span id="cb607-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb607-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-1" aria-hidden="true" tabindex="-1"></a>utah_pyramid <span class="ot">&lt;-</span> utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
+<span id="cb608-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>)<span class="sc">+</span></span>
+<span id="cb608-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Verdana&quot;</span>) <span class="sc">+</span></span>
+<span id="cb608-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(y)<span class="fu">paste0</span>(<span class="fu">abs</span>(y<span class="sc">/</span><span class="dv">1000</span>), <span class="st">&quot;k&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb608-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x)<span class="fu">gsub</span>(<span class="st">&quot;Age|years&quot;</span>, <span class="st">&quot;&quot;</span>, x)) <span class="sc">+</span></span>
+<span id="cb608-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb608-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb608-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;2019 Census Bureau population estimate&quot;</span>,</span>
+<span id="cb608-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population Structure in Utah&quot;</span>,</span>
+<span id="cb608-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb608-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: US Census Bureau population estimates and tidycensus R package&quot;</span>)</span>
+<span id="cb608-12"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb608-13"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb608-13" aria-hidden="true" tabindex="-1"></a>utah_pyramid</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-143-2.png" width="672" /></p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(utah_pyramid)</span></code></pre></div>
+<div id="htmlwidget-155dce4377c038838833" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-155dce4377c038838833">{"x":{"data":[{"orientation":"v","width":[126108,23039,130045,124535,128846,108654,113907,104121,86950,78972,75578,64309,49913,120743,122197,75046,35411,22667],"base":[1.525,16.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,0.525,5.525,10.525,15.525,17.525],"x":[63054,11519.5,65022.5,62267.5,64423,54327,56953.5,52060.5,43475,39486,37789,32154.5,24956.5,60371.5,61098.5,37523,17705.5,11333.5],"y":[0.95,0.950000000000003,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.95,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003],"text":["value:  126108<br />AGEGROUP: Age 5 to 9 years<br />SEX: Female","value:   23039<br />AGEGROUP: Age 80 to 84 years<br />SEX: Female","value:  130045<br />AGEGROUP: Age 10 to 14 years<br />SEX: Female","value:  124535<br />AGEGROUP: Age 15 to 19 years<br />SEX: Female","value:  128846<br />AGEGROUP: Age 20 to 24 years<br />SEX: Female","value:  108654<br />AGEGROUP: Age 30 to 34 years<br />SEX: Female","value:  113907<br />AGEGROUP: Age 35 to 39 years<br />SEX: Female","value:  104121<br />AGEGROUP: Age 40 to 44 years<br />SEX: Female","value:   86950<br />AGEGROUP: Age 45 to 49 years<br />SEX: Female","value:   78972<br />AGEGROUP: Age 55 to 59 years<br />SEX: Female","value:   75578<br />AGEGROUP: Age 60 to 64 years<br />SEX: Female","value:   64309<br />AGEGROUP: Age 65 to 69 years<br />SEX: Female","value:   49913<br />AGEGROUP: Age 70 to 74 years<br />SEX: Female","value:  120743<br />AGEGROUP: Age 0 to 4 years<br />SEX: Female","value:  122197<br />AGEGROUP: Age 25 to 29 years<br />SEX: Female","value:   75046<br />AGEGROUP: Age 50 to 54 years<br />SEX: Female","value:   35411<br />AGEGROUP: Age 75 to 79 years<br />SEX: Female","value:   22667<br />AGEGROUP: Age 85 years and older<br />SEX: Female"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[132868,137940,129312,135806,111776,117335,108090,89984,76536,72048,59874,45370,19148,15907,127060,129179,76450,30234],"base":[1.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,16.525,17.525,0.525,5.525,10.525,15.525],"x":[-66434,-68970,-64656,-67903,-55888,-58667.5,-54045,-44992,-38268,-36024,-29937,-22685,-9574,-7953.5,-63530,-64589.5,-38225,-15117],"y":[0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000003,0.950000000000003,0.95,0.949999999999999,0.949999999999999,0.950000000000001],"text":["value: -132868<br />AGEGROUP: Age 5 to 9 years<br />SEX: Male","value: -137940<br />AGEGROUP: Age 10 to 14 years<br />SEX: Male","value: -129312<br />AGEGROUP: Age 15 to 19 years<br />SEX: Male","value: -135806<br />AGEGROUP: Age 20 to 24 years<br />SEX: Male","value: -111776<br />AGEGROUP: Age 30 to 34 years<br />SEX: Male","value: -117335<br />AGEGROUP: Age 35 to 39 years<br />SEX: Male","value: -108090<br />AGEGROUP: Age 40 to 44 years<br />SEX: Male","value:  -89984<br />AGEGROUP: Age 45 to 49 years<br />SEX: Male","value:  -76536<br />AGEGROUP: Age 55 to 59 years<br />SEX: Male","value:  -72048<br />AGEGROUP: Age 60 to 64 years<br />SEX: Male","value:  -59874<br />AGEGROUP: Age 65 to 69 years<br />SEX: Male","value:  -45370<br />AGEGROUP: Age 70 to 74 years<br />SEX: Male","value:  -19148<br />AGEGROUP: Age 80 to 84 years<br />SEX: Male","value:  -15907<br />AGEGROUP: Age 85 years and older<br />SEX: Male","value: -127060<br />AGEGROUP: Age 0 to 4 years<br />SEX: Male","value: -129179<br />AGEGROUP: Age 25 to 29 years<br />SEX: Male","value:  -76450<br />AGEGROUP: Age 50 to 54 years<br />SEX: Male","value:  -30234<br />AGEGROUP: Age 75 to 79 years<br />SEX: Male"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,0,128,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":107.397260273973},"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187},"title":{"text":"Population Structure in Utah","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-151339.25,143444.25],"tickmode":"array","ticktext":["150k","100k","50k","0k","50k","100k"],"tickvals":[-150000,-100000,-50000,0,50000,100000],"categoryorder":"array","categoryarray":["150k","100k","50k","0k","50k","100k"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,18.6],"tickmode":"array","ticktext":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"2019 Census Bureau population estimate","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":11.689497716895},"y":0.913385826771654},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"d29316f72aeb":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"d29316f72aeb","visdat":{"d29316f72aeb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="ggbeeswarm-automates-some-jitter-considerations" class="section level3" number="15.2.6">
+<h3><span class="header-section-number">15.2.6</span> <code>ggbeeswarm()</code> automates some jitter considerations</h3>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-1" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb610-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb610-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb610-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="fu">c</span>(<span class="st">&quot;Hennepin&quot;</span>, <span class="st">&quot;Ramsey&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Carver&quot;</span>, <span class="st">&quot;Dakota&quot;</span>, <span class="st">&quot;Anoka&quot;</span>, <span class="st">&quot;Wright&quot;</span>, <span class="st">&quot;Scott&quot;</span>),</span>
+<span id="cb610-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">White =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
+<span id="cb610-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
+<span id="cb610-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">Asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
+<span id="cb610-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">Hispanic =</span> <span class="st">&quot;B03002_012&quot;</span>),</span>
+<span id="cb610-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B19013_001&quot;</span></span>
+<span id="cb610-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(GEOID) <span class="sc">%&gt;%</span> </span>
+<span id="cb610-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">==</span> <span class="fu">max</span>(estimate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb610-12"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb610-13"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb610-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb612-2"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb612-3"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-3" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, </span>
+<span id="cb612-4"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> summary_est, </span>
+<span id="cb612-5"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">color =</span> summary_est)) <span class="sc">+</span></span>
+<span id="cb612-6"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quasirandom</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb612-7"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb612-8"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb612-9"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb612-10"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
+<span id="cb612-11"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Largest Group in Census Tract&quot;</span>,</span>
+<span id="cb612-12"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Median Household Income&quot;</span>,</span>
+<span id="cb612-13"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Household Income By Largest Race/Ethnic Group&quot;</span>,</span>
+<span id="cb612-14"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Census Tracts, Twin Cities Metro Area&quot;</span>,</span>
+<span id="cb612-15"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#cb612-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: 2015-2019 ACS&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 3 rows containing missing values (position_quasirandom).</code></pre>
+<p><img src="test-book_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15US_census_work.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["test-book.pdf", "test-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

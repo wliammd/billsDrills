@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 bookdown Tips for This Document | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 2 bookdown Tips for This Document | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 bookdown Tips for This Document | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2020-09-19" />
+<meta name="date" content="2021-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="datashape.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,29 +51,27 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -92,7 +91,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -142,28 +141,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
-<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a><ul>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> bookdown Tips for This Document</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
 <li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.2</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#nifty-test-figure."><i class="fa fa-check"></i><b>2.5</b> Nifty test figure.</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a><ul>
+<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="datashape.html"><a href="datashape.html#making-data-frames"><i class="fa fa-check"></i><b>3.1</b> Making data frames</a></li>
 <li class="chapter" data-level="3.2" data-path="datashape.html"><a href="datashape.html#gather-spread-pivoting-in-the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Gather, spread, pivoting in the tidyverse</a></li>
 <li class="chapter" data-level="3.3" data-path="datashape.html"><a href="datashape.html#gathering-steam"><i class="fa fa-check"></i><b>3.3</b> Gathering steam…</a></li>
 <li class="chapter" data-level="3.4" data-path="datashape.html"><a href="datashape.html#spread-your-wings"><i class="fa fa-check"></i><b>3.4</b> Spread your wings</a></li>
-<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a><ul>
+<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="datashape.html"><a href="datashape.html#you-completeme"><i class="fa fa-check"></i><b>3.5.1</b> You complete(me)</a></li>
 <li class="chapter" data-level="3.5.2" data-path="datashape.html"><a href="datashape.html#filling-in-the-gaps"><i class="fa fa-check"></i><b>3.5.2</b> fill(ing) in the gaps</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="datashape.html"><a href="datashape.html#pivoting-to-something-new"><i class="fa fa-check"></i><b>3.6</b> Pivoting to something new</a></li>
+<li class="chapter" data-level="3.7" data-path="datashape.html"><a href="datashape.html#larger-structures"><i class="fa fa-check"></i><b>3.7</b> Larger structures</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a><ul>
+<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>4.1</b> A financial example</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a><ul>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
 <li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
 <li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
@@ -171,32 +176,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="factorpractice.html"><a href="factorpractice.html#fct_lump"><i class="fa fa-check"></i><b>5.5</b> fct_lump()</a></li>
 <li class="chapter" data-level="5.6" data-path="factorpractice.html"><a href="factorpractice.html#fct_infreq-and-fct_rev"><i class="fa fa-check"></i><b>5.6</b> fct_infreq() and fct_rev()</a></li>
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
-<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a><ul>
+<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a><ul>
+<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>6.1</b> Subsetting using brackets</a></li>
 <li class="chapter" data-level="6.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>6.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
 <li class="chapter" data-level="6.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>6.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
 <li class="chapter" data-level="6.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>6.4</b> Subset using the subset() function</a></li>
 <li class="chapter" data-level="6.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>6.5</b> Subset using dyplyr’s filter() and select()</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a><ul>
+<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>7.1</b> Counting things. The naming of parts.</a></li>
 <li class="chapter" data-level="7.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>7.2</b> fct_infreq</a></li>
 <li class="chapter" data-level="7.3" data-path="dataexploration.html"><a href="dataexploration.html#weight-weight-dont-tell-me"><i class="fa fa-check"></i><b>7.3</b> Weight weight, don’t tell me!</a></li>
 <li class="chapter" data-level="7.4" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>7.4</b> Summarize is another very useful function:</a></li>
-<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a><ul>
+<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a>
+<ul>
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a><ul>
+<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>8.1</b> Think about throwing a bunch of dice.</a></li>
 <li class="chapter" data-level="8.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>8.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a><ul>
+<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="simulating-data.html"><a href="simulating-data.html#sample"><i class="fa fa-check"></i><b>9.1</b> Sample()</a></li>
 <li class="chapter" data-level="9.2" data-path="simulating-data.html"><a href="simulating-data.html#replicate"><i class="fa fa-check"></i><b>9.2</b> replicate()</a></li>
 <li class="chapter" data-level="9.3" data-path="simulating-data.html"><a href="simulating-data.html#sample-revisited"><i class="fa fa-check"></i><b>9.3</b> sample() revisited</a></li>
@@ -213,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>9.14</b> Overlaying normal curve on histogram</a></li>
 <li class="chapter" data-level="9.15" data-path="simulating-data.html"><a href="simulating-data.html#crossing-trial"><i class="fa fa-check"></i><b>9.15</b> Crossing trial</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a><ul>
+<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="functions.html"><a href="functions.html#a-little-dungeons-dragons-tm-to-spice-it-up"><i class="fa fa-check"></i><b>10.1</b> A little Dungeons &amp; Dragons (tm) to spice it up</a></li>
 <li class="chapter" data-level="10.2" data-path="functions.html"><a href="functions.html#geometric-and-harmonic-means"><i class="fa fa-check"></i><b>10.2</b> Geometric and harmonic means</a></li>
 <li class="chapter" data-level="10.3" data-path="functions.html"><a href="functions.html#for-loop"><i class="fa fa-check"></i><b>10.3</b> for loop</a></li>
@@ -221,14 +233,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.5" data-path="functions.html"><a href="functions.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>10.5</b> Compare this with if_else()</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation Plots</a></li>
-<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a><ul>
+<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
-<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a><ul>
+<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>12.2.1</b> Principle component analysis</a></li>
 <li class="chapter" data-level="12.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>12.2.2</b> t-distributed stochastic neighbor embedding</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>13</b> Clustering</a></li>
+<li class="chapter" data-level="14" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>14</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="regex.html"><a href="regex.html#seeking-patterns"><i class="fa fa-check"></i><b>14.1</b> Seeking patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html"><i class="fa fa-check"></i><b>15</b> US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}s</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#variables"><i class="fa fa-check"></i><b>15.1</b> Variables</a></li>
+<li class="chapter" data-level="15.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#part-2-wrangling-census-data-with-tidyverse-tools"><i class="fa fa-check"></i><b>15.2</b> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#normalizing-the-data-with-mutate."><i class="fa fa-check"></i><b>15.2.1</b> Normalizing the data with <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="15.2.2" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#group_by-and-summarize-in-census-analysis"><i class="fa fa-check"></i><b>15.2.2</b> <code>group_by()</code> and <code>summarize()</code> in census analysis</a></li>
+<li class="chapter" data-level="15.2.3" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#margin-of-error-considerations"><i class="fa fa-check"></i><b>15.2.3</b> Margin of error considerations</a></li>
+<li class="chapter" data-level="15.2.4" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#visualizing-margins-of-error"><i class="fa fa-check"></i><b>15.2.4</b> Visualizing margins of error</a></li>
+<li class="chapter" data-level="15.2.5" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#get_estimates-and-how-to-use-them"><i class="fa fa-check"></i><b>15.2.5</b> <code>get_estimates()</code> and how to use them</a></li>
+<li class="chapter" data-level="15.2.6" data-path="us-census-data-kyle-walker-presentation-youtube-censuss.html"><a href="us-census-data-kyle-walker-presentation-youtube-censuss.html#ggbeeswarm-automates-some-jitter-considerations"><i class="fa fa-check"></i><b>15.2.6</b> <code>ggbeeswarm()</code> automates some jitter considerations</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -250,16 +281,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bookdownplan" class="section level1">
+<div id="bookdownplan" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> bookdown Tips for This Document</h1>
-<div id="basic-conventions" class="section level2">
+<div id="basic-conventions" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Basic conventions</h2>
 <ul>
 <li>the <code>_bookdown.yml</code> file contains a snippet that is important to inserting the word “Chapter” before the chapter number in each of the Rmd files.</li>
 <li>packages are indicated in bold, like <strong>dplyr</strong> (surround with double asterisks)</li>
 <li>programs, like RStudio or MS Word, are in regular typeface</li>
 <li>inline code and filenames are indicated in typerwriter face by surrounding with backticks: <code>_bookdown.yml</code></li>
-<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
+<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(<a href="references.html#ref-R-bookdown" role="doc-biblioref">Xie 2020</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
 <li>chapters are set in order by using adding 02, 03, … before the name of their Rmd, like <code>02bookdown_tips.Rmd</code>. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag. <code>index.Rmd</code> always comes first in the book build, and contains the <code>yml</code> front matter. To make it easier to see structure, note that chapter filenames start with 02 in order to correspond with the chapter notation generated by <strong>bookdown</strong></li>
 <li>the most frequently used keyboard shortcuts from RStudio include:
 <ul>
@@ -270,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="referencing-other-parts-of-the-document" class="section level2">
+<div id="referencing-other-parts-of-the-document" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Referencing other parts of the document</h2>
 <p>This is a good place to practice referencing figures. Say that I want to refer the reader back to my first starwars figure. See Figure <a href="bookdownplan.html#fig:starfig-1">2.1</a>.</p>
 <p>I can reference other pages in a similar fashion. See Chapter <a href="subset.html#subset">6</a>. Note that this works by referencing a {#label} placed in the chapter title.</p>
@@ -278,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>See Chapter <a href="dataexploration.html#dataexploration">7</a></p>
 <p>Note that the {#label} uses a single run-together word. It does not tolerate spaces and this cannot be overcome by ‘quoting’ it.</p>
 </div>
-<div id="inserting-pictures" class="section level2">
+<div id="inserting-pictures" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Inserting pictures</h2>
 <p>Pictures can be included in the <code>test-book_files</code> subdirectories and referenced like this:</p>
 <div class="figure">
@@ -293,28 +324,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph</p>
 </div>
 </div>
-<div id="referencing-citations" class="section level2">
+<div id="referencing-citations" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Referencing citations:</h2>
 <p>In order to insert reference citations, one needs a <code>.bib</code> file in the project. I’ve included one in this project as <code>book.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span> and <span class="math inline">\(biblio-style:\)</span> line added. A separate <code>packages.bib</code> file is also used to hold the R packages cited.</p>
-<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the <code>book.bib</code> and <code>packages.bib</code> files carefully, with .txt files generated in Endnote, I should be OK.</p>
-<p>For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here <span class="citation">(Stevens and Parekh <a href="#ref-RN2750" role="doc-biblioref">2016</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code>.</p>
+<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <span class="citation">(<a href="references.html#ref-R-bookdown" role="doc-biblioref">Xie 2020</a>)</span>. Note that I need to figure out an adequate workflow of references. The convenience of Endnote in MS Word will not be available. Nonetheless, if I populate the <code>book.bib</code> and <code>packages.bib</code> files carefully, with .txt files generated in Endnote, I should be OK.</p>
+<p>For instance, a recent dump of my Endnote library is in bookFromEndnote.txt. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast paper that I want to cite here <span class="citation">(<a href="references.html#ref-RN2750" role="doc-biblioref">Stevens and Parekh 2016</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code>.</p>
 <p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for R packages:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="bookdownplan.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(<span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;ComplexHeatmap&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
-<pre><code>## Warning in knitr::write_bib(c(.packages(), &quot;bookdown&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, :
-## package(s) ComplexHeatmap not found</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="bookdownplan.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;ComplexHeatmap&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
 <p>All packages are maintained in <code>packages.bib</code>. In the knitted document, references appear automatically at the end of a chapter.</p>
 </div>
-<div id="nifty-test-figure." class="section level2">
+<div id="nifty-test-figure." class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Nifty test figure.</h2>
 <p>First I need the help of the <strong>tidverse</strong>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bookdownplan.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>Now to generate a figure. The code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1"></a>starwars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(species)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-2"><a href="bookdownplan.html#cb4-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> <span class="kw">fct_lump</span>(species, <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-3"><a href="bookdownplan.html#cb4-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">species =</span> species <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_infreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_rev</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-4"><a href="bookdownplan.html#cb4-4"></a><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
-<span id="cb4-5"><a href="bookdownplan.html#cb4-5"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(species, <span class="dt">fill =</span> gender))<span class="op">+</span></span>
-<span id="cb4-6"><a href="bookdownplan.html#cb4-6"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="bookdownplan.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="bookdownplan.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="bookdownplan.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb3-5"><a href="bookdownplan.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
+<span id="cb3-6"><a href="bookdownplan.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:starfig-1"></span>
 <img src="test-book_files/figure-html/starfig-1-1.png" alt="Starwars Figure 1" width="672" />
 <p class="caption">
@@ -323,15 +352,6 @@ Figure 2.1: Starwars Figure 1
 </div>
 <p>References appear automatically at the end of a chapter.</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-RN2750">
-<p>Stevens, T. M., and V. Parekh. 2016. “Mammary Analogue Secretory Carcinoma.” Journal Article. <em>Arch Pathol Lab Med.</em> 140 (9): 997–1001. doi: 10.5858/arpa.2015–0075–RS.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 </div>
             </section>
