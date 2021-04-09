@@ -119,7 +119,7 @@ At the risk of biting off far more than I can chew without starting a separate c
 Joyplots are a little hokey but can be visually satisfying. 
 
 ```{r, message=FALSE}
-library(ggjoy)
+library(ggridges)
 ```
 The following display is from data taken from **The Cancer Genome Atlas** in 2017. It combines glioblastoma with lower grade infiltrating gliomas. Since I'm only interested in diagnosis and patient age, that's all that I've assembled in the `CSV`. 
 
@@ -131,7 +131,7 @@ DiffuseGlioma <- na.omit(DiffuseGlioma) #gets rid of the NA's
 head(DiffuseGlioma)
 
 ggplot(DiffuseGlioma,aes(x=AGE,y=HISTOLOGY)) +
-  geom_joy(rel_min_height = 0.01) +  # removes tails
+  geom_density_ridges(rel_min_height = 0.01) +  # removes tails
   scale_y_discrete(expand = c(0.01, 0)) + # removes cutoff top
   labs(x="age (y)",y="number") +
   theme_minimal()

@@ -9,10 +9,10 @@ fig:starfig-6
 intro
 bookdownplan
 basic-conventions
-referencing-other-parts-of-the-document
 inserting-pictures
+referencing-other-parts-of-the-document
 referencing-citations
-nifty-test-figure.
+figures.
 datashape
 making-data-frames
 gather-spread-pivoting-in-the-tidyverse
@@ -83,7 +83,7 @@ t-distributed-stochastic-neighbor-embedding
 clustering
 regex
 seeking-patterns
-us_census_data_kyle_walker_presentation_youtube-censuss
+census
 variables
 part-2-wrangling-census-data-with-tidyverse-tools
 normalizing-the-data-with-mutate.
@@ -92,5 +92,3 @@ margin-of-error-considerations
 visualizing-margins-of-error
 get_estimates-and-how-to-use-them
 ggbeeswarm-automates-some-jitter-considerations
-improving-legibility-change-the-linetype
-us_census_data_kyle_walker_presentation_youtube-censusss
