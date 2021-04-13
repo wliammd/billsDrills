@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-04-09" />
+<meta name="date" content="2021-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="bookdownplan.html"/>
 <link rel="next" href="changenames.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,20 +51,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -179,7 +171,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
+<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -285,33 +278,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="datashape" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Shape of Data</h1>
 <p>One of my fundamental stumbling blocks is understanding the shape of data, even “rectangular data” of the sort that Hadley Wickham refers to in R4DS.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="datashape.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="datashape.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="making-data-frames" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Making data frames</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="datashape.html#cb6-1" aria-hidden="true" tabindex="-1"></a>DF1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb6-2"><a href="datashape.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>),</span>
-<span id="cb6-3"><a href="datashape.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb6-4"><a href="datashape.html#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-5"><a href="datashape.html#cb6-5" aria-hidden="true" tabindex="-1"></a>DF1</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="datashape.html#cb2-1" aria-hidden="true" tabindex="-1"></a>DF1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-2"><a href="datashape.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>),</span>
+<span id="cb2-3"><a href="datashape.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb2-4"><a href="datashape.html#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-5"><a href="datashape.html#cb2-5" aria-hidden="true" tabindex="-1"></a>DF1</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Symbol Value
 ##   &lt;chr&gt;  &lt;int&gt;
 ## 1 a          1
 ## 2 b          2
 ## 3 c          3</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="datashape.html#cb8-1" aria-hidden="true" tabindex="-1"></a>DF2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-2"><a href="datashape.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>),</span>
-<span id="cb8-3"><a href="datashape.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb8-4"><a href="datashape.html#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-5"><a href="datashape.html#cb8-5" aria-hidden="true" tabindex="-1"></a>DF2</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="datashape.html#cb4-1" aria-hidden="true" tabindex="-1"></a>DF2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-2"><a href="datashape.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>),</span>
+<span id="cb4-3"><a href="datashape.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb4-4"><a href="datashape.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-5"><a href="datashape.html#cb4-5" aria-hidden="true" tabindex="-1"></a>DF2</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Symbol Value
 ##   &lt;chr&gt;  &lt;int&gt;
 ## 1 c          4
 ## 2 d          5
 ## 3 e          6</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="datashape.html#cb10-1" aria-hidden="true" tabindex="-1"></a>DFmerge <span class="ot">&lt;-</span> <span class="fu">rbind</span>(DF1,DF2)</span>
-<span id="cb10-2"><a href="datashape.html#cb10-2" aria-hidden="true" tabindex="-1"></a>DFmerge</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="datashape.html#cb6-1" aria-hidden="true" tabindex="-1"></a>DFmerge <span class="ot">&lt;-</span> <span class="fu">rbind</span>(DF1,DF2)</span>
+<span id="cb6-2"><a href="datashape.html#cb6-2" aria-hidden="true" tabindex="-1"></a>DFmerge</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   Symbol Value
 ##   &lt;chr&gt;  &lt;int&gt;
@@ -326,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> Gather, spread, pivoting in the tidyverse</h2>
 <p>The following exercises are based on <strong>R4DS</strong>.</p>
 <p>Several simple data tables are available for practice. Check them out:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datashape.html#cb12-1" aria-hidden="true" tabindex="-1"></a>table1</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="datashape.html#cb8-1" aria-hidden="true" tabindex="-1"></a>table1</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   country      year  cases population
 ##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
@@ -337,24 +330,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p>Note that only table 1 is tidy. Tidy rules the day, making cool things possible. For instance:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datashape.html#cb14-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="datashape.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">wt =</span> cases)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="datashape.html#cb10-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="datashape.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">wt =</span> cases)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##    year      n
 ##   &lt;int&gt;  &lt;int&gt;
 ## 1  1999 250740
 ## 2  2000 296920</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datashape.html#cb16-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="datashape.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">wt =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="datashape.html#cb12-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="datashape.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">wt =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##    year     n
 ##   &lt;int&gt; &lt;int&gt;
 ## 1  1999     3
 ## 2  2000     3</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="datashape.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BTW, note the difference between the above count and this one:</span></span>
-<span id="cb18-2"><a href="datashape.html#cb18-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="datashape.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-4"><a href="datashape.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cases)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="datashape.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BTW, note the difference between the above count and this one:</span></span>
+<span id="cb14-2"><a href="datashape.html#cb14-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="datashape.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="datashape.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cases)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ## # Groups:   year [2]
 ##    year  cases     n
@@ -365,27 +358,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  2000   2666     1
 ## 5  2000  80488     1
 ## 6  2000 213766     1</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="datashape.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the following group and summarize:</span></span>
-<span id="cb20-2"><a href="datashape.html#cb20-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="datashape.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="datashape.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AggCases =</span> <span class="fu">sum</span>(cases))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="datashape.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the following group and summarize:</span></span>
+<span id="cb16-2"><a href="datashape.html#cb16-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="datashape.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="datashape.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AggCases =</span> <span class="fu">sum</span>(cases))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##    year AggCases
 ##   &lt;int&gt;    &lt;int&gt;
 ## 1  1999   250740
 ## 2  2000   296920</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="datashape.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the following plot (I couldn&#39;t help but embellish this with a fct_reorder--vital to ggplot/geom_line displays,but a trick that I always forget):</span></span>
-<span id="cb22-2"><a href="datashape.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="datashape.html#cb22-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="datashape.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">fct_reorder</span>(country, <span class="sc">-</span>population)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-5"><a href="datashape.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, cases)) <span class="sc">+</span> </span>
-<span id="cb22-6"><a href="datashape.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> country), <span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb22-7"><a href="datashape.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> country))</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="datashape.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or the following plot (I couldn&#39;t help but embellish this with a fct_reorder--vital to ggplot/geom_line displays,but a trick that I always forget):</span></span>
+<span id="cb18-2"><a href="datashape.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="datashape.html#cb18-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="datashape.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">fct_reorder</span>(country, <span class="sc">-</span>population)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="datashape.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, cases)) <span class="sc">+</span> </span>
+<span id="cb18-6"><a href="datashape.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> country), <span class="at">colour =</span> <span class="st">&quot;grey50&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb18-7"><a href="datashape.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> country))</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>An aside on count() and tally(): tally() is a convenient wrapper for summarise that will either call n() or sum(n) depending on whether you’re tallying for the first time, or re-tallying. count() is similar but calls group_by() before and ungroup() after. If the data is already grouped, count() adds an additional group that is removed afterwards.</p>
 <p>Tidy data is not space-efficient, though. Note how values are reduplicated. This is not an issue in small datasets, but can be a bummer if datasets get large or human data entry is necessary–manually entering demographics is always error-prone.</p>
 <p>Table 2 on the other hand contains 2 sorts of data in the count column–cases and population. Not only is this less efficient than table 1, it is much more verbose.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="datashape.html#cb23-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="datashape.html#cb19-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ##    country      year type            count
 ##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
@@ -402,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11 China        2000 cases          213766
 ## 12 China        2000 population 1280428583</code></pre>
 <p>Table 3 contains unnecessary internal structure. I combines two values into one field. Kudos for transparency, but little is actually gained by doing this, and it complicates analyses. Best to break them apart.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="datashape.html#cb25-1" aria-hidden="true" tabindex="-1"></a>table3</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="datashape.html#cb21-1" aria-hidden="true" tabindex="-1"></a>table3</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country      year rate             
 ## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
@@ -413,14 +406,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China        1999 212258/1272915272
 ## 6 China        2000 213766/1280428583</code></pre>
 <p>Tables 4a and 4b break data into separate structures when a single table would suffice. Many database tables will be arranged like this. However, to perform calculations on data from each table, it can be better to weld the tables into a single structure.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="datashape.html#cb27-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="datashape.html#cb23-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="datashape.html#cb29-1" aria-hidden="true" tabindex="-1"></a>table4b</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="datashape.html#cb25-1" aria-hidden="true" tabindex="-1"></a>table4b</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country         `1999`     `2000`
 ## * &lt;chr&gt;            &lt;int&gt;      &lt;int&gt;
@@ -431,16 +424,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gathering-steam" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Gathering steam…</h2>
 <p>Table 4a has a <em>key</em> field–the year–and a <em>value</em> field–cases. To bring the key down into the table, we gather it:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="datashape.html#cb31-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="datashape.html#cb27-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="datashape.html#cb33-1" aria-hidden="true" tabindex="-1"></a>tidy4a <span class="ot">&lt;-</span> table4a <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="datashape.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>, <span class="at">key =</span> <span class="st">&quot;year&quot;</span>, <span class="at">value =</span> <span class="st">&quot;cases&quot;</span>)</span>
-<span id="cb33-3"><a href="datashape.html#cb33-3" aria-hidden="true" tabindex="-1"></a>tidy4a</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="datashape.html#cb29-1" aria-hidden="true" tabindex="-1"></a>tidy4a <span class="ot">&lt;-</span> table4a <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="datashape.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>, <span class="at">key =</span> <span class="st">&quot;year&quot;</span>, <span class="at">value =</span> <span class="st">&quot;cases&quot;</span>)</span>
+<span id="cb29-3"><a href="datashape.html#cb29-3" aria-hidden="true" tabindex="-1"></a>tidy4a</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year   cases
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
@@ -452,16 +445,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 China       2000  213766</code></pre>
 <p>Note that we replace column names that should be data fields with a key (in this example we call it “year”), and the corresponding data held in table4a with a value (in this example “cases”).</p>
 <p>The same thing can be done with 4b, except now the value is population.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="datashape.html#cb35-1" aria-hidden="true" tabindex="-1"></a>table4b</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="datashape.html#cb31-1" aria-hidden="true" tabindex="-1"></a>table4b</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country         `1999`     `2000`
 ## * &lt;chr&gt;            &lt;int&gt;      &lt;int&gt;
 ## 1 Afghanistan   19987071   20595360
 ## 2 Brazil       172006362  174504898
 ## 3 China       1272915272 1280428583</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="datashape.html#cb37-1" aria-hidden="true" tabindex="-1"></a>tidy4b <span class="ot">&lt;-</span> table4b <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="datashape.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>, <span class="at">key =</span> <span class="st">&quot;year&quot;</span>, <span class="at">value =</span> <span class="st">&quot;population&quot;</span>)</span>
-<span id="cb37-3"><a href="datashape.html#cb37-3" aria-hidden="true" tabindex="-1"></a>tidy4b</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="datashape.html#cb33-1" aria-hidden="true" tabindex="-1"></a>tidy4b <span class="ot">&lt;-</span> table4b <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="datashape.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>, <span class="at">key =</span> <span class="st">&quot;year&quot;</span>, <span class="at">value =</span> <span class="st">&quot;population&quot;</span>)</span>
+<span id="cb33-3"><a href="datashape.html#cb33-3" aria-hidden="true" tabindex="-1"></a>tidy4b</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year  population
 ##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
@@ -473,8 +466,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 China       2000  1280428583</code></pre>
 <p>Note that we get new key and value columns and the gathered columns are dropped. This has the effect of gathering them down into more rows.</p>
 <p>It should be noted that many examples of gathering are not written in this way. By default, the key and value simply dropped into the correct part of the gather(). Columns that are not part of the gather are then exempted by negation.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="datashape.html#cb39-1" aria-hidden="true" tabindex="-1"></a>table4b <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a href="datashape.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(year, cases, <span class="sc">-</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="datashape.html#cb35-1" aria-hidden="true" tabindex="-1"></a>table4b <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="datashape.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(year, cases, <span class="sc">-</span>country)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year       cases
 ##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
@@ -486,7 +479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 China       2000  1280428583</code></pre>
 <p>David Robinson has even shown examples where he simply uses gather(key, value, -exemptedColumn) (see his YouTube at <a href="https://www.youtube.com/watch?v=KzRP40PzopY" class="uri">https://www.youtube.com/watch?v=KzRP40PzopY</a>).</p>
 <p>The two new tidy tables are joined as follows:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="datashape.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(tidy4a, tidy4b)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="datashape.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(tidy4a, tidy4b)</span></code></pre></div>
 <pre><code>## Joining, by = c(&quot;country&quot;, &quot;year&quot;)</code></pre>
 <pre><code>## # A tibble: 6 x 4
 ##   country     year   cases population
@@ -502,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="spread-your-wings" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Spread your wings</h2>
 <p>So spread is the opposite of gather. Consider Table 2.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="datashape.html#cb44-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="datashape.html#cb40-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ##    country      year type            count
 ##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
@@ -519,8 +512,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11 China        2000 cases          213766
 ## 12 China        2000 population 1280428583</code></pre>
 <p>Now our task is to spread cases and population from the type column into their own columns. In <code>table2</code> the <code>type</code> column should be distributed into variable with their own columns. Note that this has the effect of <em>spreading</em> table into more columns.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="datashape.html#cb46-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="datashape.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> type, <span class="at">value =</span> count)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="datashape.html#cb42-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="datashape.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> type, <span class="at">value =</span> count)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   country      year  cases population
 ##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
@@ -531,12 +524,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p>Hadley provides an interesting example that shows how gather and spread are NOT perfect compliments.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="datashape.html#cb48-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb48-2"><a href="datashape.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year   =</span> <span class="fu">c</span>(<span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2016</span>),</span>
-<span id="cb48-3"><a href="datashape.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">half  =</span> <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">2</span>,     <span class="dv">1</span>,    <span class="dv">2</span>),</span>
-<span id="cb48-4"><a href="datashape.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">return =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>)</span>
-<span id="cb48-5"><a href="datashape.html#cb48-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb48-6"><a href="datashape.html#cb48-6" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="datashape.html#cb44-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-2"><a href="datashape.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year   =</span> <span class="fu">c</span>(<span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2016</span>),</span>
+<span id="cb44-3"><a href="datashape.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">half  =</span> <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">2</span>,     <span class="dv">1</span>,    <span class="dv">2</span>),</span>
+<span id="cb44-4"><a href="datashape.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">return =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>)</span>
+<span id="cb44-5"><a href="datashape.html#cb44-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-6"><a href="datashape.html#cb44-6" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##    year  half return
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -544,9 +537,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2  2015     2   0.59
 ## 3  2016     1   0.92
 ## 4  2016     2   0.17</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="datashape.html#cb50-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a href="datashape.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-3"><a href="datashape.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;return&quot;</span>, <span class="st">`</span><span class="at">2015</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="datashape.html#cb46-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="datashape.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="datashape.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;return&quot;</span>, <span class="st">`</span><span class="at">2015</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##    half year  return
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
@@ -559,13 +552,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="missing-data-ich-vemisse-dich" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Missing Data: Ich vemisse Dich!</h2>
 <p>Hadley provides a different stock example:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="datashape.html#cb52-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb52-2"><a href="datashape.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year   =</span> <span class="fu">c</span>(<span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2016</span>, <span class="dv">2016</span>),</span>
-<span id="cb52-3"><a href="datashape.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">qtr    =</span> <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>),</span>
-<span id="cb52-4"><a href="datashape.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">return =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.35</span>,   <span class="cn">NA</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>, <span class="fl">2.66</span>)</span>
-<span id="cb52-5"><a href="datashape.html#cb52-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb52-6"><a href="datashape.html#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="datashape.html#cb52-7" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="datashape.html#cb48-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb48-2"><a href="datashape.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year   =</span> <span class="fu">c</span>(<span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2016</span>, <span class="dv">2016</span>),</span>
+<span id="cb48-3"><a href="datashape.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">qtr    =</span> <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>,    <span class="dv">2</span>,    <span class="dv">3</span>,    <span class="dv">4</span>),</span>
+<span id="cb48-4"><a href="datashape.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">return =</span> <span class="fu">c</span>(<span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.35</span>,   <span class="cn">NA</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>, <span class="fl">2.66</span>)</span>
+<span id="cb48-5"><a href="datashape.html#cb48-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-6"><a href="datashape.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="datashape.html#cb48-7" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 3
 ##    year   qtr return
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -581,8 +574,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One way to think about the difference is with this Zen-like koan: An explicit missing value is the presence of an absence; an implicit missing value is the absence of a presence.</p>
 </blockquote>
 <p>The implicitly missing value here can be made explicit by <em>spreading</em> the years.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="datashape.html#cb54-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="datashape.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="datashape.html#cb50-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="datashape.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##     qtr `2015` `2016`
 ##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -592,9 +585,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4  NA      2.66</code></pre>
 <p>Note exactly how this works: the rows are now determined by qtr. The 2015 4th quarter value, explicitly NA before, remains NA. Now, however, when 2016 is spread as a variable, the gap in quarter 1 is revealed.</p>
 <p>These NA’s can be removed by gathering the data back up using na.rm = TRUE.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="datashape.html#cb56-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
-<span id="cb56-2"><a href="datashape.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return) <span class="sc">%&gt;%</span> </span>
-<span id="cb56-3"><a href="datashape.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(year, return, <span class="st">`</span><span class="at">2015</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="datashape.html#cb52-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="datashape.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(year, return) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="datashape.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(year, return, <span class="st">`</span><span class="at">2015</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##     qtr year  return
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
@@ -608,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.5.1</span> You complete(me)</h3>
 <p>The complete() function is also an important way to make missing values explicit.</p>
 <p>&lt; <em>complete()</em> takes a set of columns, and finds all unique combinations. It then ensures the original dataset contains all those values, filling in explicit NAs where necessary</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="datashape.html#cb58-1" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="datashape.html#cb54-1" aria-hidden="true" tabindex="-1"></a>stocks</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 3
 ##    year   qtr return
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -619,8 +612,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5  2016     2   0.92
 ## 6  2016     3   0.17
 ## 7  2016     4   2.66</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="datashape.html#cb60-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
-<span id="cb60-2"><a href="datashape.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(year, qtr)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="datashape.html#cb56-1" aria-hidden="true" tabindex="-1"></a>stocks <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="datashape.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(year, qtr)</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 3
 ##    year   qtr return
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -636,15 +629,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="filling-in-the-gaps" class="section level3" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> fill(ing) in the gaps</h3>
 <p>While complete() can make explicit the missing values, fill() lets you address a particular type of missing value. Here, the last observation is carried forward. This is very common in data sets.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="datashape.html#cb62-1" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb62-2"><a href="datashape.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> person,           <span class="sc">~</span> treatment, <span class="sc">~</span>response,</span>
-<span id="cb62-3"><a href="datashape.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Derrick Whitmore&quot;</span>, <span class="dv">1</span>,           <span class="dv">7</span>,</span>
-<span id="cb62-4"><a href="datashape.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>,                 <span class="dv">2</span>,           <span class="dv">10</span>,</span>
-<span id="cb62-5"><a href="datashape.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>,                 <span class="dv">3</span>,           <span class="dv">9</span>,</span>
-<span id="cb62-6"><a href="datashape.html#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Katherine Burke&quot;</span>,  <span class="dv">1</span>,           <span class="dv">4</span></span>
-<span id="cb62-7"><a href="datashape.html#cb62-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-8"><a href="datashape.html#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="datashape.html#cb62-9" aria-hidden="true" tabindex="-1"></a>treatment</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="datashape.html#cb58-1" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb58-2"><a href="datashape.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> person,           <span class="sc">~</span> treatment, <span class="sc">~</span>response,</span>
+<span id="cb58-3"><a href="datashape.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Derrick Whitmore&quot;</span>, <span class="dv">1</span>,           <span class="dv">7</span>,</span>
+<span id="cb58-4"><a href="datashape.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>,                 <span class="dv">2</span>,           <span class="dv">10</span>,</span>
+<span id="cb58-5"><a href="datashape.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>,                 <span class="dv">3</span>,           <span class="dv">9</span>,</span>
+<span id="cb58-6"><a href="datashape.html#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Katherine Burke&quot;</span>,  <span class="dv">1</span>,           <span class="dv">4</span></span>
+<span id="cb58-7"><a href="datashape.html#cb58-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb58-8"><a href="datashape.html#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="datashape.html#cb58-9" aria-hidden="true" tabindex="-1"></a>treatment</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   person           treatment response
 ##   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;
@@ -652,8 +645,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 &lt;NA&gt;                     2       10
 ## 3 &lt;NA&gt;                     3        9
 ## 4 Katherine Burke          1        4</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="datashape.html#cb64-1" aria-hidden="true" tabindex="-1"></a>treatment <span class="sc">%&gt;%</span> </span>
-<span id="cb64-2"><a href="datashape.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(person)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="datashape.html#cb60-1" aria-hidden="true" tabindex="-1"></a>treatment <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="datashape.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(person)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   person           treatment response
 ##   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;
@@ -666,21 +659,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pivoting-to-something-new" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Pivoting to something new</h2>
 <p>These are great exercises, but gather() and spread() are being upgraded to pivot_longer() and pivot_wider(). See <a href="https://www.r-bloggers.com/data-pivoting-with-tidyr/" class="uri">https://www.r-bloggers.com/data-pivoting-with-tidyr/</a></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="datashape.html#cb66-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="datashape.html#cb62-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="datashape.html#cb68-1" aria-hidden="true" tabindex="-1"></a>table4a_long <span class="ot">&lt;-</span> table4a <span class="sc">%&gt;%</span></span>
-<span id="cb68-2"><a href="datashape.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb68-3"><a href="datashape.html#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">1999</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2000</span><span class="st">`</span>,</span>
-<span id="cb68-4"><a href="datashape.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb68-5"><a href="datashape.html#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
-<span id="cb68-6"><a href="datashape.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb68-7"><a href="datashape.html#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-8"><a href="datashape.html#cb68-8" aria-hidden="true" tabindex="-1"></a>table4a_long</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="datashape.html#cb64-1" aria-hidden="true" tabindex="-1"></a>table4a_long <span class="ot">&lt;-</span> table4a <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="datashape.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb64-3"><a href="datashape.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">1999</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2000</span><span class="st">`</span>,</span>
+<span id="cb64-4"><a href="datashape.html#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb64-5"><a href="datashape.html#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
+<span id="cb64-6"><a href="datashape.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb64-7"><a href="datashape.html#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="datashape.html#cb64-8" aria-hidden="true" tabindex="-1"></a>table4a_long</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year   value
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
@@ -690,14 +683,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Brazil      2000   80488
 ## 5 China       1999  212258
 ## 6 China       2000  213766</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="datashape.html#cb70-1" aria-hidden="true" tabindex="-1"></a>table4b_long <span class="ot">&lt;-</span> table4b <span class="sc">%&gt;%</span> </span>
-<span id="cb70-2"><a href="datashape.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb70-3"><a href="datashape.html#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">1999</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2000</span><span class="st">`</span>,</span>
-<span id="cb70-4"><a href="datashape.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb70-5"><a href="datashape.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
-<span id="cb70-6"><a href="datashape.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb70-7"><a href="datashape.html#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-8"><a href="datashape.html#cb70-8" aria-hidden="true" tabindex="-1"></a>table4b_long</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="datashape.html#cb66-1" aria-hidden="true" tabindex="-1"></a>table4b_long <span class="ot">&lt;-</span> table4b <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="datashape.html#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb66-3"><a href="datashape.html#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">1999</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2000</span><span class="st">`</span>,</span>
+<span id="cb66-4"><a href="datashape.html#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb66-5"><a href="datashape.html#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span></span>
+<span id="cb66-6"><a href="datashape.html#cb66-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb66-7"><a href="datashape.html#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="datashape.html#cb66-8" aria-hidden="true" tabindex="-1"></a>table4b_long</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year       value
 ##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
@@ -708,20 +701,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China       1999  1272915272
 ## 6 China       2000  1280428583</code></pre>
 <p>This is presumably reversible.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="datashape.html#cb72-1" aria-hidden="true" tabindex="-1"></a>table4aNew <span class="ot">&lt;-</span> table4a_long <span class="sc">%&gt;%</span> </span>
-<span id="cb72-2"><a href="datashape.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb72-3"><a href="datashape.html#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb72-4"><a href="datashape.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="st">&quot;value&quot;</span></span>
-<span id="cb72-5"><a href="datashape.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb72-6"><a href="datashape.html#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-7"><a href="datashape.html#cb72-7" aria-hidden="true" tabindex="-1"></a>table4aNew</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="datashape.html#cb68-1" aria-hidden="true" tabindex="-1"></a>table4aNew <span class="ot">&lt;-</span> table4a_long <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="datashape.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb68-3"><a href="datashape.html#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb68-4"><a href="datashape.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="st">&quot;value&quot;</span></span>
+<span id="cb68-5"><a href="datashape.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb68-6"><a href="datashape.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="datashape.html#cb68-7" aria-hidden="true" tabindex="-1"></a>table4aNew</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ##   &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="datashape.html#cb74-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="datashape.html#cb70-1" aria-hidden="true" tabindex="-1"></a>table4a</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
@@ -730,7 +723,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 China       212258 213766</code></pre>
 <p>So they are the same.</p>
 <p>Table 2 can also be <code>spread()</code>… ahem, <code>pivot_wider()</code>ed. </p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="datashape.html#cb76-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="datashape.html#cb72-1" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ##    country      year type            count
 ##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
@@ -746,10 +739,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 China        1999 population 1272915272
 ## 11 China        2000 cases          213766
 ## 12 China        2000 population 1280428583</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="datashape.html#cb78-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb78-2"><a href="datashape.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;type&quot;</span>),</span>
-<span id="cb78-3"><a href="datashape.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> <span class="st">&quot;count&quot;</span></span>
-<span id="cb78-4"><a href="datashape.html#cb78-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="datashape.html#cb74-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
+<span id="cb74-2"><a href="datashape.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;type&quot;</span>),</span>
+<span id="cb74-3"><a href="datashape.html#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> <span class="st">&quot;count&quot;</span></span>
+<span id="cb74-4"><a href="datashape.html#cb74-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 5
 ##   country     `1999_cases` `1999_population` `2000_cases` `2000_population`
 ##   &lt;chr&gt;              &lt;int&gt;             &lt;int&gt;        &lt;int&gt;             &lt;int&gt;
@@ -763,26 +756,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The dataframe feels like a natural place to begin. Many times, though I’ll want to call functions on more than one variable. . .</p>
 <p>As I struggle to get my feet under me in R, StackOverflow has been a wonderful resource, although the community can be very pissy to newbies.</p>
 <p>The following post is offers a nice description of the difference between lists and dataframes in R: <a href="https://stackoverflow.com/a/15902963/7361502" class="uri">https://stackoverflow.com/a/15902963/7361502</a></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="datashape.html#cb80-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb80-2"><a href="datashape.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb80-3"><a href="datashape.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rbinom</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
-<span id="cb80-4"><a href="datashape.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">6</span>),</span>
-<span id="cb80-5"><a href="datashape.html#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rexp</span>(<span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
-<span id="cb80-6"><a href="datashape.html#cb80-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb80-7"><a href="datashape.html#cb80-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-8"><a href="datashape.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(df, mean)</span></code></pre></div>
-<pre><code>##         a         b         c         d 
-## 0.5465850 0.7000000 5.2809913 0.5756583</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="datashape.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(df, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="datashape.html#cb76-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb76-2"><a href="datashape.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb76-3"><a href="datashape.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rbinom</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb76-4"><a href="datashape.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rchisq</span>(<span class="dv">10</span>, <span class="at">df =</span> <span class="dv">6</span>),</span>
+<span id="cb76-5"><a href="datashape.html#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rexp</span>(<span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb76-6"><a href="datashape.html#cb76-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb76-7"><a href="datashape.html#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="datashape.html#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(df, mean)</span></code></pre></div>
+<pre><code>##          a          b          c          d 
+## -0.4906316  0.6000000  8.3772907  0.7569727</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="datashape.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(df, mean)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
-##       a     b     c     d
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.547   0.7  5.28 0.576</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="datashape.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(df, mean)</span></code></pre></div>
+##        a     b     c     d
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.491   0.6  8.38 0.757</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="datashape.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(df, mean)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
-##       a     b     c     d
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.547   0.7  5.28 0.576</code></pre>
+##        a     b     c     d
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.491   0.6  8.38 0.757</code></pre>
 
 </div>
 </div>
@@ -842,20 +835,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
