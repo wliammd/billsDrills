@@ -1,11 +1,12 @@
 # **bookdown** Tips for This Document {#bookdownplan}
 
 ## Basic conventions 
+  * I am deeply indepted to Yihui Xie and his tireless efforts to improve open source publishing via **bookdown**. The basic structure of this book is taken directly from Xie's `bookdown-demo` [@R-bookdown]. 
   * The `_bookdown.yml` file contains a snippet that is important to inserting the word "Chapter" before the chapter number in each of the Rmd files. 
   * `_output.yml` is modified from that used by Xie in his `bookdown-demo` [@R-bookdown]; it evokes `style.css`, `toc.css`, `preamble.tex`, which are also borrowed from Xie. 
   * Packages are indicated in bold, like **dplyr**
   * Programs, like RStudio or MS Word, are in regular typeface
-  * Inline code, functions, and filenames are indicated in typerwriter face using backticks, like `_bookdown.yml`. Functions are generally written with parentheses, like `mean()`. 
+  * Inline code, functions, and file names are indicated in typewriter face using backticks, like `_bookdown.yml`. Functions are generally written with parentheses, like `mean()`. 
   * Chapters are set in order by using adding 01, 02, 03, ... before the name of their Rmd, like `01chpter.Rmd`. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag. `index.Rmd` always comes first in the book build, and contains the `yml` front matter. 
   * The most frequently used keyboard shortcuts from RStudio include:
     + Option-Hyphen (the assignment operator)
@@ -58,11 +59,11 @@ Note that the `{#label}` uses a single run-together word. It does not tolerate s
 
 In order to insert citations, one needs a .bib file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
 
-To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly ``[@R-bookdown]`` [@R-bookdown]. Note that I need to figure out an adequate workflow of references. The convenience of EndNote in MS Word will not be available. Nonetheless, if I populate the `book.bib` and packages.bib files carefully, with .txt files generated in Endnote, I should be OK.
+To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly ``[@R-bookdown]`` [@R-bookdown]. I enjoy the convenience of EndNote in MS Word, so I populate the `book.bib` and packages.bib files carefully, with .txt files generated in EndNote.
 
-For instance, a recent dump of my EndNote library is in `bookFromEndnote.txt`. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast pathology paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib`. Generally speaking, all references should be maintained in EndNote. 
+For instance, a recent dump of my EndNote library is in `bookFromEndnote.txt`. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast pathology paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib`. Generally speaking, I maintain all references in EndNote, and manually generate a .txt file to update my references. 
 
-Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for R packages:
+Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for all the R packages that I'd like to cite:
 
 ```{r}
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ComplexHeatmap'), 'packages.bib')
@@ -74,7 +75,7 @@ In the knitted document, references appear automatically at the end of ~~a chapt
 
 ## Figures.   
 
-First I need the help of the **tidverse** and **gglplot2**. The most powerful arguments that can be brought to these analyses are made with graphs and tables. 
+ **tidverse** and **gglplot2** are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables. 
 
 ```{r loadTidyverse, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -86,8 +87,8 @@ Now to generate a figure. The code chunk contains the following: `{r starfig-1, 
 starwars %>% filter(!is.na(species)) %>% 
   mutate(species = fct_lump(species, 5)) %>% 
   mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 
-  ggplot()+
-  geom_bar(aes(species, fill = gender))+
+  ggplot() +
+  geom_bar(aes(species, fill = gender)) +
   coord_flip()
 ```
 
