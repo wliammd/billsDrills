@@ -4,7 +4,6 @@
 library(tidyverse)
 ```
 
-
 From <https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/>
 
 Note: since this is down for maintenance, I will turn off evaluation on these chunks: 
