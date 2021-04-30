@@ -79,7 +79,7 @@ First we load Richie Cotton's package {assertive}.
 library(assertive)
 ```
 
-Then we get to work on the function:
+Then we get to work on the function. Note how **assert_is_numeric()** generates an automatic message if a non-numeric input is handed to the function. More refined rules that include custom error messages can also be used, as in the **if(){}** statement, below. 
 
 ```{r}
 sleep_scaled <- function(level = 1){
@@ -101,7 +101,7 @@ sleep_scaled(2)
 # removed so that **knitr** doesn't choke on this
 ```
 
-Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective.
+Now, it would be useful to see the distribution of these rolls, to predict whether the spell would be effective, say, on a horde of kobolds.
 
 ```{r}
 hist(replicate(10000, sleep_scaled()), breaks = 70)
@@ -110,6 +110,12 @@ hist(replicate(10000, sleep_scaled()), breaks = 70)
 ## Geometric and harmonic means
 
 Good examples on functions. Also taken from Richie Cotton's DataCamp introductory course on function writing. 
+
+Geometric mean (GM) is calculated differently than the arithmetic mean (AM), and is often used in investment. Outliers are dampened in the geometric mean. Notice, however, that only positive numbers may be examined with geometric mean. 
+
+The harmonic mean (HM) is useful for sets of numbers defined in relationship to some unit, as in the case of speed (in m/sec, for instance).
+
+Note the following relationship: `AM >= GM >= HM`
 
 ```{r}
 x <- c(1,2,3,4,4,12, NA)
