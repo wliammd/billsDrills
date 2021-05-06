@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book" />
+  
+  
+  
+
+<meta name="author" content="William McDonald" />
+
+
+<meta name="date" content="2021-05-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="census.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bill's Drills Book</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Drills: Part of Every Healthy Intellectual Diet</a></li>
+<li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> <strong>bookdown</strong> Tips for This Document</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.2</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="datashape.html"><a href="datashape.html#making-data-frames"><i class="fa fa-check"></i><b>3.1</b> Making data frames</a></li>
+<li class="chapter" data-level="3.2" data-path="datashape.html"><a href="datashape.html#gather-spread-pivoting-in-the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Gather, spread, pivoting in the tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="datashape.html"><a href="datashape.html#gathering-steam"><i class="fa fa-check"></i><b>3.3</b> Gathering steam…</a></li>
+<li class="chapter" data-level="3.4" data-path="datashape.html"><a href="datashape.html#spread-your-wings"><i class="fa fa-check"></i><b>3.4</b> Spread your wings</a></li>
+<li class="chapter" data-level="3.5" data-path="datashape.html"><a href="datashape.html#missing-data-ich-vemisse-dich"><i class="fa fa-check"></i><b>3.5</b> Missing Data: Ich vemisse Dich!</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="datashape.html"><a href="datashape.html#you-completeme"><i class="fa fa-check"></i><b>3.5.1</b> You complete(me)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="datashape.html"><a href="datashape.html#filling-in-the-gaps"><i class="fa fa-check"></i><b>3.5.2</b> fill(ing) in the gaps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="datashape.html"><a href="datashape.html#pivoting-to-something-new"><i class="fa fa-check"></i><b>3.6</b> Pivoting to something new</a></li>
+<li class="chapter" data-level="3.7" data-path="datashape.html"><a href="datashape.html#larger-structures"><i class="fa fa-check"></i><b>3.7</b> Larger structures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="changenames.html"><a href="changenames.html"><i class="fa fa-check"></i><b>4</b> By Any Other Name</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="changenames.html"><a href="changenames.html#a-financial-example"><i class="fa fa-check"></i><b>4.1</b> A financial example</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="factorpractice.html"><a href="factorpractice.html"><i class="fa fa-check"></i><b>5</b> Factor Practice</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factorpractice.html"><a href="factorpractice.html#the-basic-structure"><i class="fa fa-check"></i><b>5.1</b> The basic structure</a></li>
+<li class="chapter" data-level="5.2" data-path="factorpractice.html"><a href="factorpractice.html#not-all-nominal-data-is-a-factor"><i class="fa fa-check"></i><b>5.2</b> Not all nominal data is a factor</a></li>
+<li class="chapter" data-level="5.3" data-path="factorpractice.html"><a href="factorpractice.html#making-variables-into-factors"><i class="fa fa-check"></i><b>5.3</b> Making variables into factors</a></li>
+<li class="chapter" data-level="5.4" data-path="factorpractice.html"><a href="factorpractice.html#inspecting-factors"><i class="fa fa-check"></i><b>5.4</b> Inspecting factors</a></li>
+<li class="chapter" data-level="5.5" data-path="factorpractice.html"><a href="factorpractice.html#fct_lump"><i class="fa fa-check"></i><b>5.5</b> fct_lump()</a></li>
+<li class="chapter" data-level="5.6" data-path="factorpractice.html"><a href="factorpractice.html#fct_infreq-and-fct_rev"><i class="fa fa-check"></i><b>5.6</b> fct_infreq() and fct_rev()</a></li>
+<li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
+<li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
+<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="subset.html"><a href="subset.html#subsetting-using-brackets"><i class="fa fa-check"></i><b>6.1</b> Subsetting using brackets</a></li>
+<li class="chapter" data-level="6.2" data-path="subset.html"><a href="subset.html#subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want"><i class="fa fa-check"></i><b>6.2</b> Subset using brackets by omitting the rows and columns we don’t want</a></li>
+<li class="chapter" data-level="6.3" data-path="subset.html"><a href="subset.html#subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator"><i class="fa fa-check"></i><b>6.3</b> Subset using brackets in combination with the which() function and the %in% operator</a></li>
+<li class="chapter" data-level="6.4" data-path="subset.html"><a href="subset.html#subset-using-the-subset-function"><i class="fa fa-check"></i><b>6.4</b> Subset using the subset() function</a></li>
+<li class="chapter" data-level="6.5" data-path="subset.html"><a href="subset.html#subset-using-dyplyrs-filter-and-select"><i class="fa fa-check"></i><b>6.5</b> Subset using dyplyr’s filter() and select()</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataexploration.html"><a href="dataexploration.html"><i class="fa fa-check"></i><b>7</b> Data Exploration</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dataexploration.html"><a href="dataexploration.html#counting-things.-the-naming-of-parts."><i class="fa fa-check"></i><b>7.1</b> Counting things. The naming of parts.</a></li>
+<li class="chapter" data-level="7.2" data-path="dataexploration.html"><a href="dataexploration.html#fct_infreq"><i class="fa fa-check"></i><b>7.2</b> fct_infreq</a></li>
+<li class="chapter" data-level="7.3" data-path="dataexploration.html"><a href="dataexploration.html#weight-weight-dont-tell-me"><i class="fa fa-check"></i><b>7.3</b> Weight weight, don’t tell me!</a></li>
+<li class="chapter" data-level="7.4" data-path="dataexploration.html"><a href="dataexploration.html#summarize-is-another-very-useful-function"><i class="fa fa-check"></i><b>7.4</b> Summarize is another very useful function:</a></li>
+<li class="chapter" data-level="7.5" data-path="dataexploration.html"><a href="dataexploration.html#graphical-displays"><i class="fa fa-check"></i><b>7.5</b> Graphical displays</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sampling.html"><a href="sampling.html#think-about-throwing-a-bunch-of-dice."><i class="fa fa-check"></i><b>8.1</b> Think about throwing a bunch of dice.</a></li>
+<li class="chapter" data-level="8.2" data-path="sampling.html"><a href="sampling.html#a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components."><i class="fa fa-check"></i><b>8.2</b> A keen way to divide up a dataset into testing and training components.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>9</b> Simulating data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simulating-data.html"><a href="simulating-data.html#sample"><i class="fa fa-check"></i><b>9.1</b> Sample()</a></li>
+<li class="chapter" data-level="9.2" data-path="simulating-data.html"><a href="simulating-data.html#replicate"><i class="fa fa-check"></i><b>9.2</b> replicate()</a></li>
+<li class="chapter" data-level="9.3" data-path="simulating-data.html"><a href="simulating-data.html#sample-revisited"><i class="fa fa-check"></i><b>9.3</b> sample() revisited</a></li>
+<li class="chapter" data-level="9.4" data-path="simulating-data.html"><a href="simulating-data.html#generating-fixed-levels--"><i class="fa fa-check"></i><b>9.4</b> generating fixed levels ————————————————-</a></li>
+<li class="chapter" data-level="9.5" data-path="simulating-data.html"><a href="simulating-data.html#generating-numerical-sequences"><i class="fa fa-check"></i><b>9.5</b> generating numerical sequences</a></li>
+<li class="chapter" data-level="9.6" data-path="simulating-data.html"><a href="simulating-data.html#seq_along-and-seq_len."><i class="fa fa-check"></i><b>9.6</b> seq_along() and seq_len().</a></li>
+<li class="chapter" data-level="9.7" data-path="simulating-data.html"><a href="simulating-data.html#generating-random-data-from-a-probability-distribution"><i class="fa fa-check"></i><b>9.7</b> generating random data from a probability distribution</a></li>
+<li class="chapter" data-level="9.8" data-path="simulating-data.html"><a href="simulating-data.html#normal-distribution"><i class="fa fa-check"></i><b>9.8</b> Normal distribution:</a></li>
+<li class="chapter" data-level="9.9" data-path="simulating-data.html"><a href="simulating-data.html#binomial-distribution"><i class="fa fa-check"></i><b>9.9</b> Binomial distribution:</a></li>
+<li class="chapter" data-level="9.10" data-path="simulating-data.html"><a href="simulating-data.html#uniform-distribution"><i class="fa fa-check"></i><b>9.10</b> Uniform distribution</a></li>
+<li class="chapter" data-level="9.11" data-path="simulating-data.html"><a href="simulating-data.html#sampling-from-multiple-distributions-building-in-a-difference"><i class="fa fa-check"></i><b>9.11</b> Sampling from multiple distributions (building in a “difference”)</a></li>
+<li class="chapter" data-level="9.12" data-path="simulating-data.html"><a href="simulating-data.html#the-good-stuff-building-in-a-difference-based-on-a-categorical-variable"><i class="fa fa-check"></i><b>9.12</b> The good stuff: building in a difference based on a categorical variable</a></li>
+<li class="chapter" data-level="9.13" data-path="simulating-data.html"><a href="simulating-data.html#a-demonstration-of-the-central-limit-theorem"><i class="fa fa-check"></i><b>9.13</b> A demonstration of the Central Limit Theorem</a></li>
+<li class="chapter" data-level="9.14" data-path="simulating-data.html"><a href="simulating-data.html#overlaying-normal-curve-on-histogram"><i class="fa fa-check"></i><b>9.14</b> Overlaying normal curve on histogram</a></li>
+<li class="chapter" data-level="9.15" data-path="simulating-data.html"><a href="simulating-data.html#crossing-trial"><i class="fa fa-check"></i><b>9.15</b> Crossing trial</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>10</b> Functions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="functions.html"><a href="functions.html#a-little-dungeons-dragons-tm-to-spice-it-up"><i class="fa fa-check"></i><b>10.1</b> A little Dungeons &amp; Dragons (tm) to spice it up</a></li>
+<li class="chapter" data-level="10.2" data-path="functions.html"><a href="functions.html#geometric-and-harmonic-means"><i class="fa fa-check"></i><b>10.2</b> Geometric and harmonic means</a></li>
+<li class="chapter" data-level="10.3" data-path="functions.html"><a href="functions.html#for-loop"><i class="fa fa-check"></i><b>10.3</b> for loop</a></li>
+<li class="chapter" data-level="10.4" data-path="functions.html"><a href="functions.html#case_when"><i class="fa fa-check"></i><b>10.4</b> case_when()</a></li>
+<li class="chapter" data-level="10.5" data-path="functions.html"><a href="functions.html#compare-this-with-if_else"><i class="fa fa-check"></i><b>10.5</b> Compare this with if_else()</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Correlation Plots</a></li>
+<li class="chapter" data-level="12" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html"><i class="fa fa-check"></i><b>12</b> Dimensionality Reduction</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
+<li class="chapter" data-level="12.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#experiment-in-showing-dimensionality-reduction-for-pathologists"><i class="fa fa-check"></i><b>12.2</b> Experiment in showing dimensionality reduction for pathologists</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#principle-component-analysis"><i class="fa fa-check"></i><b>12.2.1</b> Principle component analysis</a></li>
+<li class="chapter" data-level="12.2.2" data-path="dimensionalityreduction.html"><a href="dimensionalityreduction.html#t-distributed-stochastic-neighbor-embedding"><i class="fa fa-check"></i><b>12.2.2</b> t-distributed stochastic neighbor embedding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="clustering.html"><a href="clustering.html"><i class="fa fa-check"></i><b>13</b> Clustering</a></li>
+<li class="chapter" data-level="14" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>14</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="regex.html"><a href="regex.html#seeking-patterns"><i class="fa fa-check"></i><b>14.1</b> Seeking patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="census.html"><a href="census.html"><i class="fa fa-check"></i><b>15</b> US_Census_Data_Kyle_Walker_Presentation_YouTube</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="census.html"><a href="census.html#variables"><i class="fa fa-check"></i><b>15.1</b> Variables</a></li>
+<li class="chapter" data-level="15.2" data-path="census.html"><a href="census.html#part-2-wrangling-census-data-with-tidyverse-tools"><i class="fa fa-check"></i><b>15.2</b> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="census.html"><a href="census.html#normalizing-the-data-with-mutate."><i class="fa fa-check"></i><b>15.2.1</b> Normalizing the data with <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="15.2.2" data-path="census.html"><a href="census.html#group_by-and-summarize-in-census-analysis"><i class="fa fa-check"></i><b>15.2.2</b> <code>group_by()</code> and <code>summarize()</code> in census analysis</a></li>
+<li class="chapter" data-level="15.2.3" data-path="census.html"><a href="census.html#margin-of-error-considerations"><i class="fa fa-check"></i><b>15.2.3</b> Margin of error considerations</a></li>
+<li class="chapter" data-level="15.2.4" data-path="census.html"><a href="census.html#visualizing-margins-of-error"><i class="fa fa-check"></i><b>15.2.4</b> Visualizing margins of error</a></li>
+<li class="chapter" data-level="15.2.5" data-path="census.html"><a href="census.html#get_estimates-and-how-to-use-them"><i class="fa fa-check"></i><b>15.2.5</b> <code>get_estimates()</code> and how to use them</a></li>
+<li class="chapter" data-level="15.2.6" data-path="census.html"><a href="census.html#ggbeeswarm-automates-some-jitter-considerations"><i class="fa fa-check"></i><b>15.2.6</b> <code>ggbeeswarm()</code> automates some jitter considerations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bill’s Drills Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="knncv" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="knncv.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## 
+## Attaching package: &#39;caret&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     lift</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="knncv.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span></code></pre></div>
+<pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;pROC&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     cov, smooth, var</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="knncv.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb22-2"><a href="knncv.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-3"><a href="knncv.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MLmetrics)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MLmetrics&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:caret&#39;:
+## 
+##     MAE, RMSE</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     Recall</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="knncv.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div>
+<p>Good resource: <a href="https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29" class="uri">https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29</a></p>
+<p>An excellent source for the <strong>caret</strong> is <a href="https://topepo.github.io/caret/index.html" class="uri">https://topepo.github.io/caret/index.html</a></p>
+<p>The following code is from <a href="https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r" class="uri">https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r</a></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="knncv.html#cb27-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb27-2"><a href="knncv.html#cb27-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb27-3"><a href="knncv.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="knncv.html#cb27-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> .,</span>
+<span id="cb27-5"><a href="knncv.html#cb27-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
+<span id="cb27-6"><a href="knncv.html#cb27-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb27-7"><a href="knncv.html#cb27-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
+<span id="cb27-8"><a href="knncv.html#cb27-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb27-9"><a href="knncv.html#cb27-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> iris)</span>
+<span id="cb27-10"><a href="knncv.html#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="knncv.html#cb27-11" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<pre><code>## k-Nearest Neighbors 
+## 
+## 150 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 120, 120, 120, 120, 120 
+## Resampling results across tuning parameters:
+## 
+##   k   Accuracy   Kappa
+##    1  0.9600000  0.94 
+##    2  0.9466667  0.92 
+##    3  0.9533333  0.93 
+##    4  0.9533333  0.93 
+##    5  0.9533333  0.93 
+##    6  0.9466667  0.92 
+##    7  0.9600000  0.94 
+##    8  0.9666667  0.95 
+##    9  0.9600000  0.94 
+##   10  0.9600000  0.94 
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was k = 8.</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="knncv.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>I’d like to see whether this will help build a model to improve the classification of pituitary neuroendocrine tumors (pituitary adenomas).</p>
+<p>A copy of the patmandx data from PitAdTMA9.0 is already in the test book data directory.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="knncv.html#cb30-1" aria-hidden="true" tabindex="-1"></a>pit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   .default = col_double(),
+##   Dx = col_character(),
+##   SurgPathNo = col_character(),
+##   CAM5.2Pattern = col_character(),
+##   newDx = col_character(),
+##   finDx = col_character(),
+##   villaDx = col_character(),
+##   villaCode = col_character(),
+##   Note = col_character(),
+##   manDx = col_character(),
+##   OrigDx = col_character(),
+##   Sex = col_character(),
+##   ClinNotes = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="knncv.html#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pit <span class="sc">%&gt;%</span> <span class="fu">select</span>(SF1Median, Pit1Median, TPITMedian, PRLMedian, </span>
+<span id="cb32-2"><a href="knncv.html#cb32-2" aria-hidden="true" tabindex="-1"></a>    GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, </span>
+<span id="cb32-3"><a href="knncv.html#cb32-3" aria-hidden="true" tabindex="-1"></a>    GATA3Median, manDx) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb32-4"><a href="knncv.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="knncv.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+<pre><code>## 
+## ACTH   GH  GON NULL PIT1 PLUR  PRL  UNK 
+##   23   16   77   10    4    1   15    1</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="knncv.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, the trouble with null cell adenoma is that the diagnosis abbreviation &quot;NULL&quot; is mistaken for the NULL value. I&#39;ll need to change this. The following is an ugly way to do this.</span></span>
+<span id="cb34-2"><a href="knncv.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="knncv.html#cb34-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">manDx =</span> <span class="fu">case_when</span>(</span>
+<span id="cb34-4"><a href="knncv.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  manDx <span class="sc">==</span> <span class="st">&quot;NULL&quot;</span> <span class="sc">~</span> <span class="st">&quot;Null&quot;</span>,</span>
+<span id="cb34-5"><a href="knncv.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> manDx</span>
+<span id="cb34-6"><a href="knncv.html#cb34-6" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb34-7"><a href="knncv.html#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="knncv.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+<pre><code>## 
+## ACTH   GH  GON Null PIT1 PLUR  PRL  UNK 
+##   23   16   77   10    4    1   15    1</code></pre>
+<p>Now I’ll ape the code from above and see whether it works.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="knncv.html#cb36-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb36-2"><a href="knncv.html#cb36-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb36-3"><a href="knncv.html#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="knncv.html#cb36-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(manDx <span class="sc">~</span> .,</span>
+<span id="cb36-5"><a href="knncv.html#cb36-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
+<span id="cb36-6"><a href="knncv.html#cb36-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb36-7"><a href="knncv.html#cb36-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
+<span id="cb36-8"><a href="knncv.html#cb36-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb36-9"><a href="knncv.html#cb36-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> df)</span></code></pre></div>
+<pre><code>## Warning: predictions failed for Fold2: k= 1 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 2 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 3 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 4 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 5 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 6 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 7 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 8 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k= 9 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning: predictions failed for Fold2: k=10 Error in dimnames(x) &lt;- dn : 
+##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
+<pre><code>## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
+## There were missing values in resampled performance measures.</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="knncv.html#cb48-1" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<pre><code>## k-Nearest Neighbors 
+## 
+## 147 samples
+##  11 predictor
+##   8 classes: &#39;ACTH&#39;, &#39;GH&#39;, &#39;GON&#39;, &#39;Null&#39;, &#39;PIT1&#39;, &#39;PLUR&#39;, &#39;PRL&#39;, &#39;UNK&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 118, 117, 118, 119, 116 
+## Resampling results across tuning parameters:
+## 
+##   k   Accuracy   Kappa    
+##    1  0.9387315  0.9068413
+##    2  0.9048049  0.8518203
+##    3  0.9223542  0.8793651
+##    4  0.9301108  0.8917910
+##    5  0.9387315  0.9057871
+##    6  0.9217384  0.8805768
+##    7  0.9217384  0.8811790
+##    8  0.9306670  0.8930613
+##    9  0.9050532  0.8561589
+##   10  0.8964325  0.8424796
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was k = 5.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="knncv.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Note that if I run this multiple times, I get multiple different optimal values of k. <strong>set.seed(1234)</strong>* would render a single, reproducible (if not “correct”) value.</p>
+<p>So ostensibly, this works, but I have a couple important items to address:</p>
+<ul>
+<li>A fundimental lack of understanding “what’s going on under the hood.”</li>
+<li>A bunch of warnings that I’m simply ignoring for now.</li>
+<li>I’ve inadvertently included more packages than necessary. These need to be weeded out.</li>
+</ul>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="census.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/16knncv.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["test-book.pdf", "test-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

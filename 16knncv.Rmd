@@ -1,0 +1,80 @@
+# **K Nearest Neighbors Revisited: Cross Validation Added** Tips for This Document {#knncv}
+
+```{r message=FALSE, warning=FALSE}
+library(caret)
+library(tidyverse)
+
+theme_set(theme_minimal())
+```
+
+Good resource: <https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&utm_medium=email&utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29>
+
+An excellent source for the **caret** is <https://topepo.github.io/caret/index.html>
+
+The following code is from <https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r>
+
+```{r}
+trControl <- trainControl(method  = "cv",
+                          number  = 5)
+
+fit <- train(Species ~ .,
+             method     = "knn",
+             tuneGrid   = expand.grid(k = 1:10),
+             trControl  = trControl,
+             metric     = "Accuracy",
+             data       = iris)
+
+fit
+
+plot(fit)
+```
+
+I'd like to see whether this will help build a model to improve the classification of pituitary neuroendocrine tumors (pituitary adenomas). 
+
+A copy of the patmandx data from PitAdTMA9.0 is already in the test book data directory. 
+
+```{r}
+pit <- read_csv("data/patmanDx.csv")
+df <- pit %>% select(SF1Median, Pit1Median, TPITMedian, PRLMedian, 
+    GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, 
+    GATA3Median, manDx) %>% na.omit()
+
+table(df$manDx)
+
+# Now, the trouble with null cell adenoma is that the diagnosis abbreviation "NULL" is mistaken for the NULL value. I'll need to change this. The following is an ugly way to do this.
+
+df <- df %>% mutate(manDx = case_when(
+  manDx == "NULL" ~ "Null",
+  TRUE ~ manDx
+))
+
+table(df$manDx)
+```
+
+Now I'll ape the code from above and see whether it works.
+
+
+```{r}
+trControl <- trainControl(method  = "cv",
+                          number  = 5)
+
+fit <- train(manDx ~ .,
+             method     = "knn",
+             tuneGrid   = expand.grid(k = 1:10),
+             trControl  = trControl,
+             metric     = "Accuracy",
+             data       = df)
+
+fit
+
+plot(fit)
+
+```
+
+Note that if I run this multiple times, I get multiple different optimal values of k. **set.seed(1234)*** would render a single, reproducible (if not "correct") value. 
+
+So ostensibly, this works, but I have a couple important items to address:
+
+- A fundimental lack of understanding "what's going on under the hood."
+- A bunch of warnings that I'm simply ignoring for now. 
+
