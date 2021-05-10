@@ -10,6 +10,8 @@ library(rpart)
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. 
 
+### An **rpart** classification example.
+
 ```{r}
 model <- rpart(
   Species ~ .,
