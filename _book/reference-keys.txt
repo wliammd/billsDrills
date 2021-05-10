@@ -94,3 +94,5 @@ get_estimates-and-how-to-use-them
 ggbeeswarm-automates-some-jitter-considerations
 improving-legibility-change-the-linetype
 knncv
+modeling
+modeling-notes

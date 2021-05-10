@@ -1,0 +1,28 @@
+# Modeling {#modeling}
+
+
+```{r include=FALSE}
+library(tidyverse)
+library(rpart)
+```
+
+## Modeling notes
+
+```{r}
+model <- rpart(
+  Species ~ .,
+  data = iris,
+  method = "class"
+)
+
+predicted <- predict(model, iris, type = "class")
+predicted
+mean(predicted == iris$Species)
+```
+
+Study what's going on in **predict()**:
+
+```{r}
+?predict.rpart
+```
+
