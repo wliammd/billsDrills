@@ -1,6 +1,5 @@
 # Modeling {#modeling}
 
-
 ```{r include=FALSE}
 library(tidyverse)
 library(rpart)
@@ -29,4 +28,68 @@ Study what's going on in **predict()**:
 ```{r}
 ?predict.rpart
 ```
+
+Now for a regression example from the course:
+
+```{r}
+library(caret)
+
+model <- train(
+  price~., 
+  diamonds,
+  method = "lm",
+  trControl = trainControl(
+    method = "cv", 
+    number = 10,
+    verboseIter = TRUE
+  )
+)
+
+# Print model to console
+model
+```
+
+Note that **caret** handles the work of splitting test sets and calculating RMSE. 
+
+Another example from the DataCamp course.
+
+```{r}
+library(MASS)
+
+# Fit lm model using 5-fold CV: model
+model <- train(
+  medv~., 
+  Boston,
+  method = "lm",
+  trControl = trainControl(
+    method = "cv", 
+    number = 5,
+    verboseIter = TRUE
+  )
+)
+
+# Print model to console
+model
+```
+
+Cross validation can *itself* be repeated. The following is a 5-fold cross validation repeated 5 times.
+
+```{r}
+# Fit lm model using 5 x 5-fold CV: model
+model <- train(
+  medv ~ ., 
+  Boston,
+  method = "lm",
+  trControl = trainControl(
+    method = "repeatedcv", 
+    number = 5,
+    repeats = 5, 
+    verboseIter = TRUE
+  )
+)
+
+# Print model to console
+model
+```
+
 
