@@ -8,6 +8,8 @@ library(rpart)
 
 ## Modeling notes
 
+Notes on/inspired by the Machine Learning with caret in R DataCamp course. 
+
 ```{r}
 model <- rpart(
   Species ~ .,
