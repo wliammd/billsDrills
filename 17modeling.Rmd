@@ -9,25 +9,6 @@ library(rpart)
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. 
 
-### An **rpart** classification example.
-
-```{r}
-model <- rpart(
-  Species ~ .,
-  data = iris,
-  method = "class"
-)
-
-predicted <- predict(model, iris, type = "class")
-predicted
-mean(predicted == iris$Species)
-```
-
-Study what's going on in **predict()**:
-
-```{r}
-?predict.rpart
-```
 
 Now for a regression example from the course:
 
@@ -90,6 +71,66 @@ model <- train(
 
 # Print model to console
 model
+
+predict(model, Boston)
 ```
 
+## Classification
+
+### An **rpart** classification example.
+
+```{r}
+model <- rpart(
+  Species ~ .,
+  data = iris,
+  method = "class"
+)
+
+predicted <- predict(model, iris, type = "class")
+predicted
+mean(predicted == iris$Species)
+```
+
+Study what's going on in **predict()**:
+
+```{r}
+?predict.rpart
+```
+
+## From the DataCamp course
+
+```{r}
+library(mlbench)
+data("Sonar")
+
+# First randomize the dataset.
+rows <- sample(nrow(Sonar))
+Sonar <- Sonar[rows,]
+
+# The split it into testing and training sets. 
+split <- round(nrow(Sonar)*0.60)
+train <- Sonar[1:split,]
+test <- Sonar[(split+1):nrow(Sonar),]
+
+nrow(train)/nrow(Sonar)
+```
+
+Let's build a model.
+
+```{r}
+model <- glm(
+  Class ~ .,
+  family = binomial(link = "logit"),
+  train
+)
+
+p <- predict(model, test, type = "response")
+summary(p)
+
+p_class <- as.factor(ifelse(p > 0.1, "M", "R"))
+
+table(p_class, test[["Class"]])
+
+confusionMatrix(p_class, test[["Class"]])
+```
 
