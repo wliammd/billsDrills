@@ -134,3 +134,27 @@ table(p_class, test[["Class"]])
 confusionMatrix(p_class, test[["Class"]])
 ```
 
+Receiver operator curves add a new level of complexity and usefulness. According to Zach Mayer in DataCamp, 
+
+ `trainControl()` in **caret** can use AUC (instead of accuracy), to tune the parameters of your models. The `twoClassSummary()` convenience function allows you to do this easily.
+
+When using `twoClassSummary()`, be sure to always include the argument `classProbs = TRUE` or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)
+
+```{r}
+# Create trainControl object: myControl
+myControl <- trainControl(
+  method = "cv",
+  number = 10,
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, # IMPORTANT!
+  verboseIter = TRUE
+)
+
+# Train glm with custom trainControl: model
+model<-train(Class~., data=Sonar, method="glm", trControl=myControl)
+
+
+# Print model to console
+model
+```
+
