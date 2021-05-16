@@ -182,5 +182,28 @@ model <- train(
 
 # Print model to console
 model
+
+plot(model)
+```
+
+Let's try this again with a longer `tuneLength`. This explores more models and potentially finds a better model.
+
+```{r}
+model <- train(
+  quality~.,
+  tuneLength = 10,
+  data = wine, 
+  method = "ranger",
+  trControl = trainControl(
+    method = "cv", 
+    number = 5, 
+    verboseIter = TRUE
+  )
+)
+
+# Print model to console
+model
+
+plot(model)
 ```
 
