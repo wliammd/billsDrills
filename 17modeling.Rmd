@@ -7,10 +7,10 @@ library(rpart)
 
 ## Modeling notes
 
-Notes on/inspired by the Machine Learning with caret in R DataCamp course. 
+Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, too. 
 
 
-Now for a regression example from the course:
+A regression example from the course:
 
 ```{r}
 library(caret)
@@ -153,6 +153,32 @@ myControl <- trainControl(
 # Train glm with custom trainControl: model
 model<-train(Class~., data=Sonar, method="glm", trControl=myControl)
 
+# Print model to console
+model
+```
+
+## Random forest with **caret**
+
+For this set, we'll use the white wine quality dataset from UC Irvine. 
+
+```{r}
+wine <- read.csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv", sep = ";")
+
+glimpse(wine)
+# Note that quality is an integer, not a factor. **caret** seems to take this in stride. 
+
+# Fit random forest: model
+model <- train(
+  quality~.,
+  tuneLength = 1,
+  data = wine, 
+  method = "ranger",
+  trControl = trainControl(
+    method = "cv", 
+    number = 5, 
+    verboseIter = TRUE
+  )
+)
 
 # Print model to console
 model
