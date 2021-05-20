@@ -207,3 +207,85 @@ model
 plot(model)
 ```
 
+Custom tuning of grids can be used in **caret** by using `tuneGrid()`. While it is the most flexible method for fitting **caret** models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time. 
+
+An example provided by Zach Meyer:
+
+```{r}
+library(mlbench)
+library(caret)
+data("Sonar")
+myGrid <- data.frame(mtry = c(2,3,4,5,10,20))
+
+set.seed(42)
+model <- train(
+  Class~.,
+  data = Sonar,
+  method = "ranger", 
+  tuneGrid = myGrid
+)
+```
+
+This generates an error currently. Try the following frome DataCamp exercise that followed Zach's video.
+
+```{r}
+tuneGrid <- data.frame(
+  .mtry = c(2, 3, 7),
+  .splitrule = "variance",
+  .min.node.size = 5
+)
+
+# Fit random forest: model
+model <- train(
+  quality ~ .,
+  tuneGrid = tuneGrid,
+  data = wine, 
+  method = "ranger",
+  trControl = trainControl(
+    method = "cv", 
+    number = 5, 
+    verboseIter = TRUE
+  )
+)
+
+# Print model to console
+model
+
+# Plot model
+plot(model)
+```
+
+## **glmnet** and `patma` 
+
+I'd like to explore Zach Meyer's teaching on **glmnet** models using my own data. That means dipping into `patmanDx.csv` and pulling out the relative data. 
+
+```{r}
+patma <- read_csv("data/patmanDx.csv")
+df <- patma %>% 
+  select(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, GATA3Median, manDx) %>%
+  na.omit()
+
+glimpse(df)
+```
+
+That seems to give me what I'm looking for. Let's get to work:
+
+```{r}
+myControl <- trainControl(
+  method = "cv",
+  number = 10,
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, #Critical to have this, per Meyers.
+  verboseIter = TRUE
+)
+
+set.seed(42)
+model <- train(
+  manDx ~ .,
+  df,
+  method = "glmnet",
+  trControl = myControl
+)
+```
+
+I note that this throws errors because `manDx` contains NULL cell classes, which are converted to `NULL.`. While this is intended to designate null cell adenoma, I'll need to change this. 
