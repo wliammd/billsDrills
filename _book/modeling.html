@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="knncv.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,6 +53,13 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +126,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -174,8 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
-<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -260,10 +288,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
 <li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a>
+<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
 <ul>
-<li class="chapter" data-level="17.1.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.1.1</b> An <strong>rpart</strong> classification example.</a></li>
+<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
 </ul></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -290,84 +322,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 17</span> Modeling</h1>
 <div id="modeling-notes" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> Modeling notes</h2>
-<p>Notes on/inspired by the Machine Learning with caret in R DataCamp course.</p>
-<div id="an-rpart-classification-example." class="section level3" number="17.1.1">
-<h3><span class="header-section-number">17.1.1</span> An <strong>rpart</strong> classification example.</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="modeling.html#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
-<span id="cb14-2"><a href="modeling.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  Species <span class="sc">~</span> .,</span>
-<span id="cb14-3"><a href="modeling.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
-<span id="cb14-4"><a href="modeling.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;class&quot;</span></span>
-<span id="cb14-5"><a href="modeling.html#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-6"><a href="modeling.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="modeling.html#cb14-7" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, iris, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
-<span id="cb14-8"><a href="modeling.html#cb14-8" aria-hidden="true" tabindex="-1"></a>predicted</span></code></pre></div>
-<pre><code>##          1          2          3          4          5          6          7 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##          8          9         10         11         12         13         14 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         15         16         17         18         19         20         21 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         22         23         24         25         26         27         28 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         29         30         31         32         33         34         35 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         36         37         38         39         40         41         42 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         43         44         45         46         47         48         49 
-##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
-##         50         51         52         53         54         55         56 
-##     setosa versicolor versicolor versicolor versicolor versicolor versicolor 
-##         57         58         59         60         61         62         63 
-## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
-##         64         65         66         67         68         69         70 
-## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
-##         71         72         73         74         75         76         77 
-##  virginica versicolor versicolor versicolor versicolor versicolor versicolor 
-##         78         79         80         81         82         83         84 
-## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
-##         85         86         87         88         89         90         91 
-## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
-##         92         93         94         95         96         97         98 
-## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
-##         99        100        101        102        103        104        105 
-## versicolor versicolor  virginica  virginica  virginica  virginica  virginica 
-##        106        107        108        109        110        111        112 
-##  virginica versicolor  virginica  virginica  virginica  virginica  virginica 
-##        113        114        115        116        117        118        119 
-##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
-##        120        121        122        123        124        125        126 
-## versicolor  virginica  virginica  virginica  virginica  virginica  virginica 
-##        127        128        129        130        131        132        133 
-##  virginica  virginica  virginica versicolor  virginica  virginica  virginica 
-##        134        135        136        137        138        139        140 
-## versicolor versicolor  virginica  virginica  virginica  virginica  virginica 
-##        141        142        143        144        145        146        147 
-##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
-##        148        149        150 
-##  virginica  virginica  virginica 
-## Levels: setosa versicolor virginica</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="modeling.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
-<pre><code>## [1] 0.96</code></pre>
-<p>Study what’s going on in <strong>predict()</strong>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="modeling.html#cb18-1" aria-hidden="true" tabindex="-1"></a>?predict.rpart</span></code></pre></div>
-<p>Now for a regression example from the course:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modeling.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## 
-## Attaching package: &#39;caret&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     lift</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="modeling.html#cb23-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb23-2"><a href="modeling.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  price<span class="sc">~</span>., </span>
-<span id="cb23-3"><a href="modeling.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  diamonds,</span>
-<span id="cb23-4"><a href="modeling.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb23-5"><a href="modeling.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb23-6"><a href="modeling.html#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb23-7"><a href="modeling.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">10</span>,</span>
-<span id="cb23-8"><a href="modeling.html#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb23-9"><a href="modeling.html#cb23-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb23-10"><a href="modeling.html#cb23-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Notes on/inspired by the Machine Learning with caret in R DataCamp course. I’d like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, too.</p>
+<p>A regression example from the course:</p>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="modeling.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb640-2"><a href="modeling.html#cb640-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb640-3"><a href="modeling.html#cb640-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(price <span class="sc">~</span> ., diamonds, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb640-4"><a href="modeling.html#cb640-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">10</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## + Fold01: intercept=TRUE 
 ## - Fold01: intercept=TRUE 
 ## + Fold02: intercept=TRUE 
@@ -390,8 +350,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## - Fold10: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="modeling.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb25-2"><a href="modeling.html#cb25-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="modeling.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb642-2"><a href="modeling.html#cb642-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 53940 samples
@@ -399,32 +359,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 48546, 48546, 48547, 48546, 48545, 48547, ... 
+## Summary of sample sizes: 48546, 48547, 48547, 48545, 48546, 48547, ... 
 ## Resampling results:
 ## 
-##   RMSE      Rsquared  MAE     
-##   1130.829  0.919719  740.4618
+##   RMSE      Rsquared   MAE     
+##   1131.043  0.9196793  740.4792
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <p>Note that <strong>caret</strong> handles the work of splitting test sets and calculating RMSE.</p>
 <p>Another example from the DataCamp course.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="modeling.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="modeling.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:plotly&#39;:
+## 
+##     select</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="modeling.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5-fold CV: model</span></span>
-<span id="cb30-2"><a href="modeling.html#cb30-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb30-3"><a href="modeling.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  medv<span class="sc">~</span>., </span>
-<span id="cb30-4"><a href="modeling.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
-<span id="cb30-5"><a href="modeling.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb30-6"><a href="modeling.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb30-7"><a href="modeling.html#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb30-8"><a href="modeling.html#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
-<span id="cb30-9"><a href="modeling.html#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-10"><a href="modeling.html#cb30-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb30-11"><a href="modeling.html#cb30-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="modeling.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5-fold CV: model</span></span>
+<span id="cb648-2"><a href="modeling.html#cb648-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(medv <span class="sc">~</span> ., Boston, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb648-3"><a href="modeling.html#cb648-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## + Fold1: intercept=TRUE 
 ## - Fold1: intercept=TRUE 
 ## + Fold2: intercept=TRUE 
@@ -437,8 +392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## - Fold5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="modeling.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb32-2"><a href="modeling.html#cb32-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="modeling.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb650-2"><a href="modeling.html#cb650-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 506 samples
@@ -446,26 +401,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 405, 405, 404, 405, 405 
+## Summary of sample sizes: 405, 405, 405, 404, 405 
 ## Resampling results:
 ## 
 ##   RMSE      Rsquared   MAE     
-##   4.833617  0.7289616  3.388943
+##   4.823722  0.7287776  3.383241
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
-<p>Cross validation can <em>itself</em> be repeated.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="modeling.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5 x 5-fold CV: model</span></span>
-<span id="cb34-2"><a href="modeling.html#cb34-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb34-3"><a href="modeling.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  medv <span class="sc">~</span> ., </span>
-<span id="cb34-4"><a href="modeling.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
-<span id="cb34-5"><a href="modeling.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb34-6"><a href="modeling.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb34-7"><a href="modeling.html#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, </span>
-<span id="cb34-8"><a href="modeling.html#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
-<span id="cb34-9"><a href="modeling.html#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">repeats =</span> <span class="dv">5</span>, </span>
-<span id="cb34-10"><a href="modeling.html#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb34-11"><a href="modeling.html#cb34-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb34-12"><a href="modeling.html#cb34-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Cross validation can <em>itself</em> be repeated. The following is a 5-fold cross validation repeated 5 times.</p>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="modeling.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5 x 5-fold CV: model</span></span>
+<span id="cb652-2"><a href="modeling.html#cb652-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(medv <span class="sc">~</span> ., Boston, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, </span>
+<span id="cb652-3"><a href="modeling.html#cb652-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, <span class="at">repeats =</span> <span class="dv">5</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## + Fold1.Rep1: intercept=TRUE 
 ## - Fold1.Rep1: intercept=TRUE 
 ## + Fold2.Rep1: intercept=TRUE 
@@ -518,8 +464,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## - Fold5.Rep5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="modeling.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb36-2"><a href="modeling.html#cb36-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="modeling.html#cb654-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb654-2"><a href="modeling.html#cb654-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 506 samples
@@ -527,15 +473,755 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 404, 406, 404, 405, 405, 404, ... 
+## Summary of sample sizes: 405, 404, 404, 405, 406, 406, ... 
 ## Resampling results:
 ## 
-##   RMSE      Rsquared   MAE     
-##   4.926058  0.7180034  3.429873
+##   RMSE      Rsquared  MAE     
+##   4.874903  0.724829  3.410363
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
-
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="modeling.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model, Boston)</span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+## 30.0038434 25.0255624 30.5675967 28.6070365 27.9435242 25.2562845 23.0018083 
+##          8          9         10         11         12         13         14 
+## 19.5359884 11.5236369 18.9202621 18.9994965 21.5867957 20.9065215 19.5529028 
+##         15         16         17         18         19         20         21 
+## 19.2834821 19.2974832 20.5275098 16.9114013 16.1780111 18.4061360 12.5238575 
+##         22         23         24         25         26         27         28 
+## 17.6710367 15.8328813 13.8062853 15.6783383 13.3866856 15.4639765 14.7084743 
+##         29         30         31         32         33         34         35 
+## 19.5473729 20.8764282 11.4551176 18.0592329  8.8110574 14.2827581 13.7067589 
+##         36         37         38         39         40         41         42 
+## 23.8146353 22.3419371 23.1089114 22.9150261 31.3576257 34.2151023 28.0205641 
+##         43         44         45         46         47         48         49 
+## 25.2038663 24.6097927 22.9414918 22.0966982 20.4232003 18.0365509  9.1065538 
+##         50         51         52         53         54         55         56 
+## 17.2060775 21.2815254 23.9722228 27.6558508 24.0490181 15.3618477 31.1526495 
+##         57         58         59         60         61         62         63 
+## 24.8568698 33.1091981 21.7753799 21.0849356 17.8725804 18.5111021 23.9874286 
+##         64         65         66         67         68         69         70 
+## 22.5540887 23.3730864 30.3614836 25.5305651 21.1133856 17.4215379 20.7848363 
+##         71         72         73         74         75         76         77 
+## 25.2014886 21.7426577 24.5574496 24.0429571 25.5049972 23.9669302 22.9454540 
+##         78         79         80         81         82         83         84 
+## 23.3569982 21.2619827 22.4281737 28.4057697 26.9948609 26.0357630 25.0587348 
+##         85         86         87         88         89         90         91 
+## 24.7845667 27.7904920 22.1685342 25.8927642 30.6746183 30.8311062 27.1190194 
+##         92         93         94         95         96         97         98 
+## 27.4126673 28.9412276 29.0810555 27.0397736 28.6245995 24.7274498 35.7815952 
+##         99        100        101        102        103        104        105 
+## 35.1145459 32.2510280 24.5802202 25.5941347 19.7901368 20.3116713 21.4348259 
+##        106        107        108        109        110        111        112 
+## 18.5399401 17.1875599 20.7504903 22.6482911 19.7720367 20.6496586 26.5258674 
+##        113        114        115        116        117        118        119 
+## 20.7732364 20.7154831 25.1720888 20.4302559 23.3772463 23.6904326 20.3357836 
+##        120        121        122        123        124        125        126 
+## 20.7918087 21.9163207 22.4710778 20.5573856 16.3666198 20.5609982 22.4817845 
+##        127        128        129        130        131        132        133 
+## 14.6170663 15.1787668 18.9386859 14.0557329 20.0352740 19.4101340 20.0619157 
+##        134        135        136        137        138        139        140 
+## 15.7580767 13.2564524 17.2627773 15.8784188 19.3616395 13.8148390 16.4488147 
+##        141        142        143        144        145        146        147 
+## 13.5714193  3.9888551 14.5949548 12.1488148  8.7282236 12.0358534 15.8208206 
+##        148        149        150        151        152        153        154 
+##  8.5149902  9.7184414 14.8045137 20.8385815 18.3010117 20.1228256 17.2860189 
+##        155        156        157        158        159        160        161 
+## 22.3660023 20.1037592 13.6212589 33.2598270 29.0301727 25.5675277 32.7082767 
+##        162        163        164        165        166        167        168 
+## 36.7746701 40.5576584 41.8472817 24.7886738 25.3788924 37.2034745 23.0874875 
+##        169        170        171        172        173        174        175 
+## 26.4027396 26.6538211 22.5551466 24.2908281 22.9765722 29.0719431 26.5219434 
+##        176        177        178        179        180        181        182 
+## 30.7220906 25.6166931 29.1374098 31.4357197 32.9223157 34.7244046 27.7655211 
+##        183        184        185        186        187        188        189 
+## 33.8878732 30.9923804 22.7182001 24.7664781 35.8849723 33.4247672 32.4119915 
+##        190        191        192        193        194        195        196 
+## 34.5150995 30.7610949 30.2893414 32.9191871 32.1126077 31.5587100 40.8455572 
+##        197        198        199        200        201        202        203 
+## 36.1277008 32.6692081 34.7046912 30.0934516 30.6439391 29.2871950 37.0714839 
+##        204        205        206        207        208        209        210 
+## 42.0319312 43.1894984 22.6903480 23.6828471 17.8544721 23.4942899 17.0058772 
+##        211        212        213        214        215        216        217 
+## 22.3925110 17.0604275 22.7389292 25.2194255 11.1191674 24.5104915 26.6033477 
+##        218        219        220        221        222        223        224 
+## 28.3551871 24.9152546 29.6865277 33.1841975 23.7745666 32.1405196 29.7458199 
+##        225        226        227        228        229        230        231 
+## 38.3710245 39.8146187 37.5860575 32.3995325 35.4566524 31.2341151 24.4844923 
+##        232        233        234        235        236        237        238 
+## 33.2883729 38.0481048 37.1632863 31.7138352 25.2670557 30.1001074 32.7198716 
+##        239        240        241        242        243        244        245 
+## 28.4271706 28.4294068 27.2937594 23.7426248 24.1200789 27.4020841 16.3285756 
+##        246        247        248        249        250        251        252 
+## 13.3989126 20.0163878 19.8618443 21.2883131 24.0798915 24.2063355 25.0421582 
+##        253        254        255        256        257        258        259 
+## 24.9196401 29.9456337 23.9722832 21.6958089 37.5110924 43.3023904 36.4836142 
+##        260        261        262        263        264        265        266 
+## 34.9898859 34.8121151 37.1663133 40.9892850 34.4463409 35.8339755 28.2457430 
+##        267        268        269        270        271        272        273 
+## 31.2267359 40.8395575 39.3179239 25.7081791 22.3029553 27.2034097 28.5116947 
+##        274        275        276        277        278        279        280 
+## 35.4767660 36.1063916 33.7966827 35.6108586 34.8399338 30.3519266 35.3098070 
+##        281        282        283        284        285        286        287 
+## 38.7975697 34.3312319 40.3396307 44.6730834 31.5968909 27.3565923 20.1017415 
+##        288        289        290        291        292        293        294 
+## 27.0420667 27.2136458 26.9139584 33.4356331 34.4034963 31.8333982 25.8178324 
+##        295        296        297        298        299        300        301 
+## 24.4298235 28.4576434 27.3626700 19.5392876 29.1130984 31.9105461 30.7715945 
+##        302        303        304        305        306        307        308 
+## 28.9427587 28.8819102 32.7988723 33.2090546 30.7683179 35.5622686 32.7090512 
+##        309        310        311        312        313        314        315 
+## 28.6424424 23.5896583 18.5426690 26.8788984 23.2813398 25.5458025 25.4812006 
+##        316        317        318        319        320        321        322 
+## 20.5390990 17.6157257 18.3758169 24.2907028 21.3252904 24.8868224 24.8693728 
+##        323        324        325        326        327        328        329 
+## 22.8695245 19.4512379 25.1178340 24.6678691 23.6807618 19.3408962 21.1741811 
+##        330        331        332        333        334        335        336 
+## 24.2524907 21.5926089 19.9844661 23.3388800 22.1406069 21.5550993 20.6187291 
+##        337        338        339        340        341        342        343 
+## 20.1609718 19.2849039 22.1667232 21.2496577 21.4293931 30.3278880 22.0473498 
+##        344        345        346        347        348        349        350 
+## 27.7064791 28.5479412 16.5450112 14.7835964 25.2738008 27.5420512 22.1483756 
+##        351        352        353        354        355        356        357 
+## 20.4594409 20.5460542 16.8806383 25.4025351 14.3248663 16.5948846 19.6370469 
+##        358        359        360        361        362        363        364 
+## 22.7180661 22.2021889 19.2054806 22.6661611 18.9319262 18.2284680 20.2315081 
+##        365        366        367        368        369        370        371 
+## 37.4944739 14.2819073 15.5428625 10.8316232 23.8007290 32.6440736 34.6068404 
+##        372        373        374        375        376        377        378 
+## 24.9433133 25.9998091  6.1263250  0.7777981 25.3071306 17.7406106 20.2327441 
+##        379        380        381        382        383        384        385 
+## 15.8333130 16.8351259 14.3699483 18.4768283 13.4276828 13.0617751  3.2791812 
+##        386        387        388        389        390        391        392 
+##  8.0602217  6.1284220  5.6186481  6.4519857 14.2076474 17.2122518 17.2988727 
+##        393        394        395        396        397        398        399 
+##  9.8911664 20.2212419 17.9418118 20.3044578 19.2955908 16.3363278  6.5516232 
+##        400        401        402        403        404        405        406 
+## 10.8901678 11.8814587 17.8117451 18.2612659 12.9794878  7.3781636  8.2111586 
+##        407        408        409        410        411        412        413 
+##  8.0662619 19.9829479 13.7075637 19.8526845 15.2230830 16.9607198  1.7185181 
+##        414        415        416        417        418        419        420 
+## 11.8057839 -4.2813107  9.5837674 13.3666081  6.8956236  6.1477985 14.6066179 
+##        421        422        423        424        425        426        427 
+## 19.6000267 18.1242748 18.5217713 13.1752861 14.6261762  9.9237498 16.3459065 
+##        428        429        430        431        432        433        434 
+## 14.0751943 14.2575624 13.0423479 18.1595569 18.6955435 21.5272830 17.0314186 
+##        435        436        437        438        439        440        441 
+## 15.9609044 13.3614161 14.5207938  8.8197601  4.8675110 13.0659131 12.7060970 
+##        442        443        444        445        446        447        448 
+## 17.2955806 18.7404850 18.0590103 11.5147468 11.9740036 17.6834462 18.1269524 
+##        449        450        451        452        453        454        455 
+## 17.5183465 17.2274251 16.5227163 19.4129110 18.5821524 22.4894479 15.2800013 
+##        456        457        458        459        460        461        462 
+## 15.8208934 12.6872558 12.8763379 17.1866853 18.5124761 19.0486053 20.1720893 
+##        463        464        465        466        467        468        469 
+## 19.7740732 22.4294077 20.3191185 17.8861625 14.3747852 16.9477685 16.9840576 
+##        470        471        472        473        474        475        476 
+## 18.5883840 20.1671944 22.9771803 22.4558073 25.5782463 16.3914763 16.1114628 
+##        477        478        479        480        481        482        483 
+## 20.5348160 11.5427274 19.2049630 21.8627639 23.4687887 27.0988732 28.5699430 
+##        484        485        486        487        488        489        490 
+## 21.0839878 19.4551620 22.2222591 19.6559196 21.3253610 11.8558372  8.2238669 
+##        491        492        493        494        495        496        497 
+##  3.6639967 13.7590854 15.9311855 20.6266205 20.6124941 16.8854196 14.0132079 
+##        498        499        500        501        502        503        504 
+## 19.1085414 21.2980517 18.4549884 20.4687085 23.5333405 22.3757189 27.6274261 
+##        505        506 
+## 26.1279668 22.3442123</code></pre>
 </div>
+<div id="classification" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Classification</h2>
+<div id="an-rpart-classification-example." class="section level3" number="17.2.1">
+<h3><span class="header-section-number">17.2.1</span> An <strong>rpart</strong> classification example.</h3>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="modeling.html#cb658-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> iris, <span class="at">method =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb658-2"><a href="modeling.html#cb658-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb658-3"><a href="modeling.html#cb658-3" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, iris, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb658-4"><a href="modeling.html#cb658-4" aria-hidden="true" tabindex="-1"></a>predicted</span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##          8          9         10         11         12         13         14 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         15         16         17         18         19         20         21 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         22         23         24         25         26         27         28 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         29         30         31         32         33         34         35 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         36         37         38         39         40         41         42 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         43         44         45         46         47         48         49 
+##     setosa     setosa     setosa     setosa     setosa     setosa     setosa 
+##         50         51         52         53         54         55         56 
+##     setosa versicolor versicolor versicolor versicolor versicolor versicolor 
+##         57         58         59         60         61         62         63 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##         64         65         66         67         68         69         70 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##         71         72         73         74         75         76         77 
+##  virginica versicolor versicolor versicolor versicolor versicolor versicolor 
+##         78         79         80         81         82         83         84 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##         85         86         87         88         89         90         91 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##         92         93         94         95         96         97         98 
+## versicolor versicolor versicolor versicolor versicolor versicolor versicolor 
+##         99        100        101        102        103        104        105 
+## versicolor versicolor  virginica  virginica  virginica  virginica  virginica 
+##        106        107        108        109        110        111        112 
+##  virginica versicolor  virginica  virginica  virginica  virginica  virginica 
+##        113        114        115        116        117        118        119 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##        120        121        122        123        124        125        126 
+## versicolor  virginica  virginica  virginica  virginica  virginica  virginica 
+##        127        128        129        130        131        132        133 
+##  virginica  virginica  virginica versicolor  virginica  virginica  virginica 
+##        134        135        136        137        138        139        140 
+## versicolor versicolor  virginica  virginica  virginica  virginica  virginica 
+##        141        142        143        144        145        146        147 
+##  virginica  virginica  virginica  virginica  virginica  virginica  virginica 
+##        148        149        150 
+##  virginica  virginica  virginica 
+## Levels: setosa versicolor virginica</code></pre>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="modeling.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
+<pre><code>## [1] 0.96</code></pre>
+<p>Study what’s going on in <strong>predict()</strong>:</p>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="modeling.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(predict.rpart)</span></code></pre></div>
+</div>
+</div>
+<div id="from-the-datacamp-course" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> From the DataCamp course</h2>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="modeling.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb663-2"><a href="modeling.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Sonar&quot;</span>)</span>
+<span id="cb663-3"><a href="modeling.html#cb663-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-4"><a href="modeling.html#cb663-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomize the dataset.</span></span>
+<span id="cb663-5"><a href="modeling.html#cb663-5" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(Sonar))</span>
+<span id="cb663-6"><a href="modeling.html#cb663-6" aria-hidden="true" tabindex="-1"></a>Sonar <span class="ot">&lt;-</span> Sonar[rows, ]</span>
+<span id="cb663-7"><a href="modeling.html#cb663-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-8"><a href="modeling.html#cb663-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The split it into testing and training sets.</span></span>
+<span id="cb663-9"><a href="modeling.html#cb663-9" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">nrow</span>(Sonar) <span class="sc">*</span> <span class="fl">0.6</span>)</span>
+<span id="cb663-10"><a href="modeling.html#cb663-10" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> Sonar[<span class="dv">1</span><span class="sc">:</span>split, ]</span>
+<span id="cb663-11"><a href="modeling.html#cb663-11" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Sonar[(split <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(Sonar), ]</span>
+<span id="cb663-12"><a href="modeling.html#cb663-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-13"><a href="modeling.html#cb663-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train)<span class="sc">/</span><span class="fu">nrow</span>(Sonar)</span></code></pre></div>
+<pre><code>## [1] 0.6009615</code></pre>
+<p>Let’s build a model.</p>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="modeling.html#cb665-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Class <span class="sc">~</span> ., <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>), train)</span></code></pre></div>
+<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="modeling.html#cb668-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb668-2"><a href="modeling.html#cb668-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(p)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.3824  1.0000  1.0000</code></pre>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="modeling.html#cb670-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
+<span id="cb670-2"><a href="modeling.html#cb670-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb670-3"><a href="modeling.html#cb670-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<pre><code>##        
+## p_class  M  R
+##       M  7 25
+##       R 35 16</code></pre>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="modeling.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction  M  R
+##          M  7 25
+##          R 35 16
+##                                           
+##                Accuracy : 0.2771          
+##                  95% CI : (0.1845, 0.3862)
+##     No Information Rate : 0.506           
+##     P-Value [Acc &gt; NIR] : 1.0000          
+##                                           
+##                   Kappa : -0.4418         
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.2453          
+##                                           
+##             Sensitivity : 0.16667         
+##             Specificity : 0.39024         
+##          Pos Pred Value : 0.21875         
+##          Neg Pred Value : 0.31373         
+##              Prevalence : 0.50602         
+##          Detection Rate : 0.08434         
+##    Detection Prevalence : 0.38554         
+##       Balanced Accuracy : 0.27846         
+##                                           
+##        &#39;Positive&#39; Class : M               
+## </code></pre>
+<p>Receiver operator curves add a new level of complexity and usefulness. According to Zach Mayer in DataCamp,</p>
+<p><code>trainControl()</code> in <strong>caret</strong> can use AUC (instead of accuracy), to tune the parameters of your models. The <code>twoClassSummary()</code> convenience function allows you to do this easily.</p>
+<p>When using <code>twoClassSummary()</code>, be sure to always include the argument <code>classProbs = TRUE</code> or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)</p>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="modeling.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trainControl object: myControl</span></span>
+<span id="cb674-2"><a href="modeling.html#cb674-2" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
+<span id="cb674-3"><a href="modeling.html#cb674-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb674-4"><a href="modeling.html#cb674-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb674-5"><a href="modeling.html#cb674-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> twoClassSummary,</span>
+<span id="cb674-6"><a href="modeling.html#cb674-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="co"># IMPORTANT!</span></span>
+<span id="cb674-7"><a href="modeling.html#cb674-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb674-8"><a href="modeling.html#cb674-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb674-9"><a href="modeling.html#cb674-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb674-10"><a href="modeling.html#cb674-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glm with custom trainControl: model</span></span>
+<span id="cb674-11"><a href="modeling.html#cb674-11" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">train</span>(Class<span class="sc">~</span>., <span class="at">data=</span>Sonar, <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">trControl=</span>myControl)</span></code></pre></div>
+<pre><code>## Warning in train.default(x, y, weights = w, ...): The metric &quot;Accuracy&quot; was not
+## in the result set. ROC will be used instead.</code></pre>
+<pre><code>## + Fold01: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold01: parameter=none 
+## + Fold02: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold02: parameter=none 
+## + Fold03: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold03: parameter=none 
+## + Fold04: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold04: parameter=none 
+## + Fold05: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold05: parameter=none 
+## + Fold06: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold06: parameter=none 
+## + Fold07: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold07: parameter=none 
+## + Fold08: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold08: parameter=none 
+## + Fold09: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold09: parameter=none 
+## + Fold10: parameter=none</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## - Fold10: parameter=none 
+## Aggregating results
+## Fitting final model on full training set</code></pre>
+<pre><code>## Warning: glm.fit: algorithm did not converge
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="modeling.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb699-2"><a href="modeling.html#cb699-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<pre><code>## Generalized Linear Model 
+## 
+## 208 samples
+##  60 predictor
+##   2 classes: &#39;M&#39;, &#39;R&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 188, 187, 187, 188, 187, 187, ... 
+## Resampling results:
+## 
+##   ROC        Sens       Spec
+##   0.7368182  0.7924242  0.64</code></pre>
+</div>
+<div id="random-forest-with-caret" class="section level2" number="17.4">
+<h2><span class="header-section-number">17.4</span> Random forest with <strong>caret</strong></h2>
+<p>For this set, we’ll use the white wine quality dataset from UC Irvine.</p>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="modeling.html#cb701-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, </span>
+<span id="cb701-2"><a href="modeling.html#cb701-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb701-3"><a href="modeling.html#cb701-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb701-4"><a href="modeling.html#cb701-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
+<pre><code>## Rows: 4,898
+## Columns: 12
+## $ fixed.acidity        &lt;dbl&gt; 7.0, 6.3, 8.1, 7.2, 7.2, 8.1, 6.2, 7.0, 6.3, 8.1,…
+## $ volatile.acidity     &lt;dbl&gt; 0.27, 0.30, 0.28, 0.23, 0.23, 0.28, 0.32, 0.27, 0…
+## $ citric.acid          &lt;dbl&gt; 0.36, 0.34, 0.40, 0.32, 0.32, 0.40, 0.16, 0.36, 0…
+## $ residual.sugar       &lt;dbl&gt; 20.70, 1.60, 6.90, 8.50, 8.50, 6.90, 7.00, 20.70,…
+## $ chlorides            &lt;dbl&gt; 0.045, 0.049, 0.050, 0.058, 0.058, 0.050, 0.045, …
+## $ free.sulfur.dioxide  &lt;dbl&gt; 45, 14, 30, 47, 47, 30, 30, 45, 14, 28, 11, 17, 1…
+## $ total.sulfur.dioxide &lt;dbl&gt; 170, 132, 97, 186, 186, 97, 136, 170, 132, 129, 6…
+## $ density              &lt;dbl&gt; 1.0010, 0.9940, 0.9951, 0.9956, 0.9956, 0.9951, 0…
+## $ pH                   &lt;dbl&gt; 3.00, 3.30, 3.26, 3.19, 3.19, 3.26, 3.18, 3.00, 3…
+## $ sulphates            &lt;dbl&gt; 0.45, 0.49, 0.44, 0.40, 0.40, 0.44, 0.47, 0.45, 0…
+## $ alcohol              &lt;dbl&gt; 8.8, 9.5, 10.1, 9.9, 9.9, 10.1, 9.6, 8.8, 9.5, 11…
+## $ quality              &lt;int&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 7, 5, 7, 6…</code></pre>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="modeling.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that quality is an integer, not a factor. **caret**</span></span>
+<span id="cb703-2"><a href="modeling.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="co"># seems to take this in stride.</span></span>
+<span id="cb703-3"><a href="modeling.html#cb703-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb703-4"><a href="modeling.html#cb703-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb703-5"><a href="modeling.html#cb703-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(quality <span class="sc">~</span> ., <span class="at">tuneLength =</span> <span class="dv">1</span>, <span class="at">data =</span> wine, <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>, </span>
+<span id="cb703-6"><a href="modeling.html#cb703-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## + Fold1: mtry=3, min.node.size=5, splitrule=variance 
+## - Fold1: mtry=3, min.node.size=5, splitrule=variance 
+## + Fold1: mtry=3, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry=3, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry=3, min.node.size=5, splitrule=variance 
+## - Fold2: mtry=3, min.node.size=5, splitrule=variance 
+## + Fold2: mtry=3, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry=3, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry=3, min.node.size=5, splitrule=variance 
+## - Fold3: mtry=3, min.node.size=5, splitrule=variance 
+## + Fold3: mtry=3, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry=3, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry=3, min.node.size=5, splitrule=variance 
+## - Fold4: mtry=3, min.node.size=5, splitrule=variance 
+## + Fold4: mtry=3, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry=3, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry=3, min.node.size=5, splitrule=variance 
+## - Fold5: mtry=3, min.node.size=5, splitrule=variance 
+## + Fold5: mtry=3, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry=3, min.node.size=5, splitrule=extratrees 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="modeling.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb705-2"><a href="modeling.html#cb705-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<pre><code>## Random Forest 
+## 
+## 4898 samples
+##   11 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 3918, 3919, 3918, 3919, 3918 
+## Resampling results across tuning parameters:
+## 
+##   splitrule   RMSE       Rsquared   MAE      
+##   variance    0.6033666  0.5450772  0.4356817
+##   extratrees  0.6137933  0.5401331  0.4549609
+## 
+## Tuning parameter &#39;mtry&#39; was held constant at a value of 3
+## Tuning
+##  parameter &#39;min.node.size&#39; was held constant at a value of 5
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were mtry = 3, splitrule = variance
+##  and min.node.size = 5.</code></pre>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="modeling.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p>Let’s try this again with a longer <code>tuneLength</code>. This explores more models and potentially finds a better model.</p>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="modeling.html#cb708-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(quality <span class="sc">~</span> ., <span class="at">tuneLength =</span> <span class="dv">10</span>, <span class="at">data =</span> wine, <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>, </span>
+<span id="cb708-2"><a href="modeling.html#cb708-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## + Fold1: mtry= 2, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 2, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 3, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 3, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 4, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 4, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 5, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 5, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 6, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 6, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 7, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 7, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 8, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 8, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 9, min.node.size=5, splitrule=variance 
+## - Fold1: mtry= 9, min.node.size=5, splitrule=variance 
+## + Fold1: mtry=10, min.node.size=5, splitrule=variance 
+## - Fold1: mtry=10, min.node.size=5, splitrule=variance 
+## + Fold1: mtry=11, min.node.size=5, splitrule=variance 
+## - Fold1: mtry=11, min.node.size=5, splitrule=variance 
+## + Fold1: mtry= 2, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 2, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 3, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 3, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 4, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 4, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 5, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 5, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 6, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 6, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 7, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 7, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 8, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 8, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry= 9, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry= 9, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry=10, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry=10, min.node.size=5, splitrule=extratrees 
+## + Fold1: mtry=11, min.node.size=5, splitrule=extratrees 
+## - Fold1: mtry=11, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 2, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 2, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 3, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 3, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 4, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 4, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 5, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 5, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 6, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 6, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 7, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 7, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 8, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 8, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 9, min.node.size=5, splitrule=variance 
+## - Fold2: mtry= 9, min.node.size=5, splitrule=variance 
+## + Fold2: mtry=10, min.node.size=5, splitrule=variance 
+## - Fold2: mtry=10, min.node.size=5, splitrule=variance 
+## + Fold2: mtry=11, min.node.size=5, splitrule=variance 
+## - Fold2: mtry=11, min.node.size=5, splitrule=variance 
+## + Fold2: mtry= 2, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 2, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 3, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 3, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 4, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 4, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 5, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 5, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 6, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 6, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 7, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 7, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 8, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 8, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry= 9, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry= 9, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry=10, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry=10, min.node.size=5, splitrule=extratrees 
+## + Fold2: mtry=11, min.node.size=5, splitrule=extratrees 
+## - Fold2: mtry=11, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 2, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 2, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 3, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 3, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 4, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 4, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 5, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 5, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 6, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 6, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 7, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 7, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 8, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 8, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 9, min.node.size=5, splitrule=variance 
+## - Fold3: mtry= 9, min.node.size=5, splitrule=variance 
+## + Fold3: mtry=10, min.node.size=5, splitrule=variance 
+## - Fold3: mtry=10, min.node.size=5, splitrule=variance 
+## + Fold3: mtry=11, min.node.size=5, splitrule=variance 
+## - Fold3: mtry=11, min.node.size=5, splitrule=variance 
+## + Fold3: mtry= 2, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 2, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 3, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 3, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 4, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 4, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 5, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 5, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 6, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 6, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 7, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 7, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 8, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 8, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry= 9, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry= 9, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry=10, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry=10, min.node.size=5, splitrule=extratrees 
+## + Fold3: mtry=11, min.node.size=5, splitrule=extratrees 
+## - Fold3: mtry=11, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 2, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 2, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 3, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 3, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 4, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 4, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 5, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 5, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 6, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 6, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 7, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 7, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 8, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 8, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 9, min.node.size=5, splitrule=variance 
+## - Fold4: mtry= 9, min.node.size=5, splitrule=variance 
+## + Fold4: mtry=10, min.node.size=5, splitrule=variance 
+## - Fold4: mtry=10, min.node.size=5, splitrule=variance 
+## + Fold4: mtry=11, min.node.size=5, splitrule=variance 
+## - Fold4: mtry=11, min.node.size=5, splitrule=variance 
+## + Fold4: mtry= 2, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 2, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 3, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 3, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 4, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 4, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 5, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 5, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 6, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 6, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 7, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 7, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 8, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 8, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry= 9, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry= 9, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry=10, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry=10, min.node.size=5, splitrule=extratrees 
+## + Fold4: mtry=11, min.node.size=5, splitrule=extratrees 
+## - Fold4: mtry=11, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 2, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 2, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 3, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 3, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 4, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 4, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 5, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 5, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 6, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 6, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 7, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 7, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 8, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 8, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 9, min.node.size=5, splitrule=variance 
+## - Fold5: mtry= 9, min.node.size=5, splitrule=variance 
+## + Fold5: mtry=10, min.node.size=5, splitrule=variance 
+## - Fold5: mtry=10, min.node.size=5, splitrule=variance 
+## + Fold5: mtry=11, min.node.size=5, splitrule=variance 
+## - Fold5: mtry=11, min.node.size=5, splitrule=variance 
+## + Fold5: mtry= 2, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 2, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 3, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 3, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 4, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 4, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 5, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 5, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 6, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 6, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 7, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 7, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 8, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 8, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry= 9, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry= 9, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry=10, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry=10, min.node.size=5, splitrule=extratrees 
+## + Fold5: mtry=11, min.node.size=5, splitrule=extratrees 
+## - Fold5: mtry=11, min.node.size=5, splitrule=extratrees 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting mtry = 6, splitrule = variance, min.node.size = 5 on full training set</code></pre>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="modeling.html#cb710-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb710-2"><a href="modeling.html#cb710-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<pre><code>## Random Forest 
+## 
+## 4898 samples
+##   11 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 3918, 3918, 3918, 3919, 3919 
+## Resampling results across tuning parameters:
+## 
+##   mtry  splitrule   RMSE       Rsquared   MAE      
+##    2    variance    0.6069581  0.5410221  0.4426745
+##    2    extratrees  0.6240820  0.5277850  0.4671227
+##    3    variance    0.6066188  0.5383533  0.4407241
+##    3    extratrees  0.6168302  0.5331728  0.4582571
+##    4    variance    0.6064374  0.5367609  0.4390616
+##    4    extratrees  0.6128171  0.5360079  0.4537150
+##    5    variance    0.6074111  0.5343182  0.4387798
+##    5    extratrees  0.6118408  0.5352904  0.4514463
+##    6    variance    0.6064264  0.5354166  0.4380527
+##    6    extratrees  0.6108749  0.5350826  0.4489788
+##    7    variance    0.6076386  0.5327889  0.4393150
+##    7    extratrees  0.6107910  0.5342133  0.4483339
+##    8    variance    0.6078153  0.5322627  0.4395093
+##    8    extratrees  0.6102915  0.5338978  0.4476795
+##    9    variance    0.6089379  0.5301610  0.4400406
+##    9    extratrees  0.6097957  0.5340594  0.4461298
+##   10    variance    0.6096608  0.5285380  0.4407910
+##   10    extratrees  0.6090278  0.5347409  0.4446596
+##   11    variance    0.6105009  0.5269332  0.4411073
+##   11    extratrees  0.6100895  0.5323886  0.4448451
+## 
+## Tuning parameter &#39;min.node.size&#39; was held constant at a value of 5
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were mtry = 6, splitrule = variance
+##  and min.node.size = 5.</code></pre>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="modeling.html#cb712-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+</div>
+<div id="random-forest-model" class="section level2" number="17.5">
+<h2><span class="header-section-number">17.5</span> Random forest model</h2>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="modeling.html#cb713-1" aria-hidden="true" tabindex="-1"></a>tuneGrid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">.mtry =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>), <span class="at">.splitrule =</span> <span class="st">&quot;variance&quot;</span>, </span>
+<span id="cb713-2"><a href="modeling.html#cb713-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">.min.node.size =</span> <span class="dv">5</span>)</span>
+<span id="cb713-3"><a href="modeling.html#cb713-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb713-4"><a href="modeling.html#cb713-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb713-5"><a href="modeling.html#cb713-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(quality <span class="sc">~</span> ., <span class="at">tuneGrid =</span> tuneGrid, <span class="at">data =</span> wine, </span>
+<span id="cb713-6"><a href="modeling.html#cb713-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>, <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb713-7"><a href="modeling.html#cb713-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">number =</span> <span class="dv">5</span>, <span class="at">verboseIter =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## + Fold1: mtry=2, splitrule=variance, min.node.size=5 
+## - Fold1: mtry=2, splitrule=variance, min.node.size=5 
+## + Fold1: mtry=3, splitrule=variance, min.node.size=5 
+## - Fold1: mtry=3, splitrule=variance, min.node.size=5 
+## + Fold1: mtry=7, splitrule=variance, min.node.size=5 
+## - Fold1: mtry=7, splitrule=variance, min.node.size=5 
+## + Fold2: mtry=2, splitrule=variance, min.node.size=5 
+## - Fold2: mtry=2, splitrule=variance, min.node.size=5 
+## + Fold2: mtry=3, splitrule=variance, min.node.size=5 
+## - Fold2: mtry=3, splitrule=variance, min.node.size=5 
+## + Fold2: mtry=7, splitrule=variance, min.node.size=5 
+## - Fold2: mtry=7, splitrule=variance, min.node.size=5 
+## + Fold3: mtry=2, splitrule=variance, min.node.size=5 
+## - Fold3: mtry=2, splitrule=variance, min.node.size=5 
+## + Fold3: mtry=3, splitrule=variance, min.node.size=5 
+## - Fold3: mtry=3, splitrule=variance, min.node.size=5 
+## + Fold3: mtry=7, splitrule=variance, min.node.size=5 
+## - Fold3: mtry=7, splitrule=variance, min.node.size=5 
+## + Fold4: mtry=2, splitrule=variance, min.node.size=5 
+## - Fold4: mtry=2, splitrule=variance, min.node.size=5 
+## + Fold4: mtry=3, splitrule=variance, min.node.size=5 
+## - Fold4: mtry=3, splitrule=variance, min.node.size=5 
+## + Fold4: mtry=7, splitrule=variance, min.node.size=5 
+## - Fold4: mtry=7, splitrule=variance, min.node.size=5 
+## + Fold5: mtry=2, splitrule=variance, min.node.size=5 
+## - Fold5: mtry=2, splitrule=variance, min.node.size=5 
+## + Fold5: mtry=3, splitrule=variance, min.node.size=5 
+## - Fold5: mtry=3, splitrule=variance, min.node.size=5 
+## + Fold5: mtry=7, splitrule=variance, min.node.size=5 
+## - Fold5: mtry=7, splitrule=variance, min.node.size=5 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="modeling.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb715-2"><a href="modeling.html#cb715-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<pre><code>## Random Forest 
+## 
+## 4898 samples
+##   11 predictor
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 3919, 3918, 3918, 3918, 3919 
+## Resampling results across tuning parameters:
+## 
+##   mtry  RMSE       Rsquared   MAE      
+##   2     0.6048422  0.5457247  0.4398213
+##   3     0.6040131  0.5441580  0.4373465
+##   7     0.6043547  0.5398590  0.4353982
+## 
+## Tuning parameter &#39;splitrule&#39; was held constant at a value of variance
+## 
+## Tuning parameter &#39;min.node.size&#39; was held constant at a value of 5
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were mtry = 3, splitrule = variance
+##  and min.node.size = 5.</code></pre>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="modeling.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot model</span></span>
+<span id="cb717-2"><a href="modeling.html#cb717-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+
 </div>
 </div>
             </section>
@@ -595,6 +1281,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

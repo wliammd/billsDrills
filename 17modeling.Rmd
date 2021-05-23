@@ -207,26 +207,9 @@ model
 plot(model)
 ```
 
+## Random forest model
+
 Custom tuning of grids can be used in **caret** by using `tuneGrid()`. While it is the most flexible method for fitting **caret** models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time. 
-
-An example provided by Zach Meyer:
-
-```{r}
-# library(mlbench)
-# library(caret)
-# data("Sonar")
-# myGrid <- data.frame(mtry = c(2,3,4,5,10,20))
-# 
-# set.seed(42)
-# model <- train(
-#   Class~.,
-#   data = Sonar,
-#   method = "ranger", 
-#   tuneGrid = myGrid
-# )
-```
-
-This generates an error currently. Try the following frome DataCamp exercise that followed Zach's video.
 
 ```{r}
 tuneGrid <- data.frame(
@@ -255,52 +238,4 @@ model
 plot(model)
 ```
 
-## **glmnet** and `patma` 
-
-I'd like to explore Zach Meyer's teaching on **glmnet** models using my own data. That means dipping into `patmanDx.csv` and pulling out the relative data. 
-
-```{r}
-patma <- read_csv("data/patmanDx.csv")
-df <- patma %>% 
-  select(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, GATA3Median, manDx) %>%
-  na.omit()
-
-glimpse(df)
-
-# Two problems: "NULL" and classes with only 1 value. These throw errors unless I make some modifications.
-
-df <- df %>% mutate(manDx = case_when(
-  manDx == "NULL" ~ "Null",
-  manDx %in% c("PLUR", "UNK") ~ "PlurUnk",
-  TRUE ~ manDx
-)) 
-
-glimpse(df)
-
-table(df$manDx)
-```
-
-That seems to give me what I'm looking for. Let's get to work:
-
-```{r}
-myControl <- trainControl(
-  method = "cv",
-  number = 10,
-  summaryFunction = defaultSummary,
-  classProbs = TRUE, #Critical to have this, per Meyers.
-  verboseIter = TRUE
-)
-
-set.seed(42)
-model <- train(
-  manDx ~ .,
-  df,
-  method = "glmnet",
-  trControl = myControl
-)
-
-model
-
-plot(model)
-```
 

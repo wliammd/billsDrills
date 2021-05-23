@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 bookdown Tips for This Document | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 2 bookdown Tips for This Document | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 bookdown Tips for This Document | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-04-09" />
+<meta name="date" content="2021-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="datashape.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -64,7 +66,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -123,6 +124,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -261,6 +285,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.6" data-path="census.html"><a href="census.html#ggbeeswarm-automates-some-jitter-considerations"><i class="fa fa-check"></i><b>15.2.6</b> <code>ggbeeswarm()</code> automates some jitter considerations</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
+<li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,11 +323,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="basic-conventions" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Basic conventions</h2>
 <ul>
+<li>I am deeply indepted to Yihui Xie and his tireless efforts to improve open source publishing via <strong>bookdown</strong>. The basic structure of this book is taken directly from Xie’s <code>bookdown-demo</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span>.</li>
 <li>The <code>_bookdown.yml</code> file contains a snippet that is important to inserting the word “Chapter” before the chapter number in each of the Rmd files.</li>
-<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(<a href="references.html#ref-R-bookdown" role="doc-biblioref">Xie 2020</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
+<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
 <li>Packages are indicated in bold, like <strong>dplyr</strong></li>
 <li>Programs, like RStudio or MS Word, are in regular typeface</li>
-<li>Inline code, functions, and filenames are indicated in typerwriter face using backticks, like <code>_bookdown.yml</code>. Functions are generally written with parentheses, like <code>mean()</code>.</li>
+<li>Inline code, functions, and file names are indicated in typewriter face using backticks, like <code>_bookdown.yml</code>. Functions are generally written with parentheses, like <code>mean()</code>.</li>
 <li>Chapters are set in order by using adding 01, 02, 03, … before the name of their Rmd, like <code>01chpter.Rmd</code>. Note that they can have short descriptive phrases, since the actual chapter titles are determined by the hashtag. <code>index.Rmd</code> always comes first in the book build, and contains the <code>yml</code> front matter.</li>
 <li>The most frequently used keyboard shortcuts from RStudio include:
 <ul>
@@ -335,24 +372,26 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <div id="referencing-citations" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Referencing citations:</h2>
 <p>In order to insert citations, one needs a .bib file in the project. I’ve included one in this project as <code>book.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span> and <span class="math inline">\(biblio-style:\)</span> line added.</p>
-<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <code>[@R-bookdown]</code> <span class="citation">(<a href="references.html#ref-R-bookdown" role="doc-biblioref">Xie 2020</a>)</span>. Note that I need to figure out an adequate workflow of references. The convenience of EndNote in MS Word will not be available. Nonetheless, if I populate the <code>book.bib</code> and packages.bib files carefully, with .txt files generated in Endnote, I should be OK.</p>
-<p>For instance, a recent dump of my EndNote library is in <code>bookFromEndnote.txt</code>. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast pathology paper that I want to cite here <span class="citation">(<a href="references.html#ref-RN2750" role="doc-biblioref">Stevens and Parekh 2016</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code>. Generally speaking, all references should be maintained in EndNote.</p>
-<p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for R packages:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bookdownplan.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;ComplexHeatmap&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
+<p>To insert a citation, use the <strong>citr</strong> Addin from RStudio. <strong>bookdown</strong>, for instance, is cited thusly <code>[@R-bookdown]</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span>. I enjoy the convenience of EndNote in MS Word, so I populate the <code>book.bib</code> and packages.bib files carefully, with .txt files generated in EndNote.</p>
+<p>For instance, a recent dump of my EndNote library is in <code>bookFromEndnote.txt</code>. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast pathology paper that I want to cite here <span class="citation">(<a href="#ref-RN2750" role="doc-biblioref">Stevens and Parekh 2016</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code>. Generally speaking, I maintain all references in EndNote, and manually generate a .txt file to update my references.</p>
+<p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for all the R packages that I’d like to cite:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bookdownplan.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, </span>
+<span id="cb2-2"><a href="bookdownplan.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;ComplexHeatmap&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
 <p>All packages are maintained in <code>packages.bib</code>.</p>
 <p>In the knitted document, references appear automatically at the end of <del>a chapter</del> the document.</p>
 </div>
 <div id="figures." class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Figures.</h2>
-<p>First I need the help of the <strong>tidverse</strong> and <strong>gglplot2</strong>. The most powerful arguments that can be brought to these analyses are made with graphs and tables.</p>
+<p><strong>tidverse</strong> and <strong>gglplot2</strong> are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>Now to generate a figure. The code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="bookdownplan.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="bookdownplan.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="bookdownplan.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb4-5"><a href="bookdownplan.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
-<span id="cb4-6"><a href="bookdownplan.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="bookdownplan.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="bookdownplan.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="bookdownplan.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="bookdownplan.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="bookdownplan.html#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="bookdownplan.html#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender)) <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:starfig-1"></span>
 <img src="test-book_files/figure-html/starfig-1-1.png" alt="Starwars Figure 1" width="672" />
 <p class="caption">
@@ -360,6 +399,15 @@ Figure 2.1: Starwars Figure 1
 </p>
 </div>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN2750" class="csl-entry">
+Stevens, T. M., and V. Parekh. 2016. <span>“Mammary Analogue Secretory Carcinoma.”</span> Journal Article. <em>Arch Pathol Lab Med.</em> 140 (9): 997-1001. doi: 10.5858/arpa.2015-0075-RS.
+</div>
+<div id="ref-R-bookdown" class="csl-entry">
+Xie, Yihui. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 </div>
             </section>
@@ -391,6 +439,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
