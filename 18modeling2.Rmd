@@ -50,3 +50,24 @@ model
 
 plot(model)
 ```
+
+Can we add imputation into the above example, and build our model using all 157 rows of patma?
+
+```{r}
+set.seed(42)
+X <- patma$manDx
+Y <- patma[,c(4:12,18,23,24)]
+
+model <- train(
+  X,
+  Y,
+  method = "glm",
+  preProcess = "knnImpute",
+  trControl = myControl
+)
+
+model
+
+plot(model)
+```
+
