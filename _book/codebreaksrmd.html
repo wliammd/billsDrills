@@ -24,7 +24,7 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-05-23" />
+<meta name="date" content="2021-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,6 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="codebreaksrmd.html"><a href="codebreaksrmd.html"><i class="fa fa-check"></i><b>18</b> Penalty box</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="codebreaksrmd.html"><a href="codebreaksrmd.html#glmnet-and-patma"><i class="fa fa-check"></i><b>18.1</b> <strong>glmnet</strong> and <code>patma</code></a></li>
+<li class="chapter" data-level="18.2" data-path="codebreaksrmd.html"><a href="codebreaksrmd.html#split-target-from-predictors"><i class="fa fa-check"></i><b>18.2</b> Split target from predictors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -479,6 +480,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## The final values used for the model were alpha = 0.1 and lambda = 0.08736605.</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="codebreaksrmd.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="split-target-from-predictors" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> Split target from predictors</h2>
+<p>This example shows how to generate some missing values, and to use imputation overcome these.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="codebreaksrmd.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb27-2"><a href="codebreaksrmd.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb27-3"><a href="codebreaksrmd.html#cb27-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars), <span class="dv">10</span>), <span class="st">&quot;hp&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb27-4"><a href="codebreaksrmd.html#cb27-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb27-5"><a href="codebreaksrmd.html#cb27-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb27-6"><a href="codebreaksrmd.html#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="codebreaksrmd.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># model &lt;- train(X,Y) #This fails, because of the NAs. Try imputation.</span></span>
+<span id="cb27-8"><a href="codebreaksrmd.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="codebreaksrmd.html#cb27-9" aria-hidden="true" tabindex="-1"></a>median_model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb27-10"><a href="codebreaksrmd.html#cb27-10" aria-hidden="true" tabindex="-1"></a>  X,</span>
+<span id="cb27-11"><a href="codebreaksrmd.html#cb27-11" aria-hidden="true" tabindex="-1"></a>  Y,</span>
+<span id="cb27-12"><a href="codebreaksrmd.html#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="st">&quot;medianImpute&quot;</span></span>
+<span id="cb27-13"><a href="codebreaksrmd.html#cb27-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## note: only 2 unique complexity parameters in default grid. Truncating the grid to 2 .</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="codebreaksrmd.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(median_model)</span></code></pre></div>
+<pre><code>## Random Forest 
+## 
+## 32 samples
+##  3 predictor
+## 
+## Pre-processing: median imputation (3) 
+## Resampling: Bootstrapped (25 reps) 
+## Summary of sample sizes: 32, 32, 32, 32, 32, 32, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  RMSE      Rsquared   MAE     
+##   2     2.758439  0.8106146  2.260273
+##   3     2.729423  0.8123802  2.224138
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was mtry = 3.</code></pre>
 
 </div>
 </div>

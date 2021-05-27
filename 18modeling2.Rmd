@@ -62,7 +62,7 @@ mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
 Y <- mtcars$mpg
 X <- mtcars[,2:4]
 
-model <- train(X,Y) #This fails, because of the NAs. Try imputation.
+# model <- train(X,Y) #This fails, because of the NAs. Try imputation.
 
 median_model <- train(
   X,
