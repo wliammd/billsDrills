@@ -51,23 +51,26 @@ model
 plot(model)
 ```
 
-Can we add imputation into the above example, and build our model using all 157 rows of patma?
+## Split target from predictors
+
+This example shows how to generate some missing values, and to use imputation overcome these.
 
 ```{r}
+data("mtcars")
 set.seed(42)
-X <- patma$manDx
-Y <- patma[,c(4:12,18,23,24)]
+mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
+Y <- mtcars$mpg
+X <- mtcars[,2:4]
 
-model <- train(
+model <- train(X,Y) #This fails, because of the NAs. Try imputation.
+
+median_model <- train(
   X,
   Y,
-  method = "glm",
-  preProcess = "knnImpute",
-  trControl = myControl
+  preProcess = "medianImpute"
 )
 
-model
+print(median_model)
 
-plot(model)
 ```
 
