@@ -74,3 +74,40 @@ print(median_model)
 
 ```
 
+## Multiple preprocessing methods
+
+Zach Mayer offers the following cheat sheet for preprocessing:
+
+* Start with median imputation (if you're using it)
+* Try KNN imputation if data NOT missing at random
+* For linear models (lm, glm, glmnet) always center and scale
+* Tree-based models (random forest, gbm) don't need much preprocessing
+
+```{r}
+data("mtcars")
+set.seed(42)
+mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
+Y <- mtcars$mpg
+X <- mtcars[,2:4] # missing at random
+
+set.seed(42)
+model <- train(
+  X,
+  Y,
+  method = "glm",
+  preProcess = c("medianImpute", "center", "scale")
+)
+
+print(min(model$results$RMSE))
+
+set.seed(42)
+model <- train(
+  X,
+  Y,
+  method = "glm",
+  preProcess = c("medianImpute", "center", "scale", "pca")
+)
+
+print(min(model$results$RMSE)) # with pca applied
+```
+
