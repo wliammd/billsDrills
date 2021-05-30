@@ -15,6 +15,7 @@ patma <- read_csv("data/patmanDx.csv")
 df <- patma %>% select(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, GATA3Median, manDx) %>% na.omit()
 
 glimpse(df)
+names(patma)[nearZeroVar(df)] #explore this
 
 df <- df %>% mutate(manDx = case_when(
   manDx == "NULL" ~ "Null",
@@ -25,6 +26,20 @@ df <- df %>% mutate(manDx = case_when(
 glimpse(df)
 
 table(df$manDx)
+
+modelPATMA <- train(
+  manDx ~ .,
+  df,
+  method = "rf",
+  trControl = trainControl(
+    method = "cv",
+    number = 10,
+    verbose = TRUE),
+  preProcess = "pca"
+)
+
+min(modelPATMA$results$Accuracy)
+
 ```
 
 That seems to give me what I'm looking for. Let's get to work:
