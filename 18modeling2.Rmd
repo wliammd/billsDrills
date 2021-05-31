@@ -1,69 +1,9 @@
 # More modeling {#moremodeling}
 
-```{r include=FALSE}
+```{r}
 library(tidyverse)
 library(rpart)
 library(caret)
-```
-
-## **glmnet** and `patma` 
-
-I'd like to explore Zach Meyer's teaching on **glmnet** models using my own data. That means dipping into `patmanDx.csv` and pulling out the relative data. 
-
-```{r}
-patma <- read_csv("data/patmanDx.csv")
-df <- patma %>% select(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, GATA3Median, manDx) %>% na.omit()
-
-glimpse(df)
-names(patma)[nearZeroVar(df)] #explore this
-
-df <- df %>% mutate(manDx = case_when(
-  manDx == "NULL" ~ "Null",
-  manDx %in% c("PLUR", "UNK") ~ "PlurUnk",
-  TRUE ~ manDx
-)) 
-
-glimpse(df)
-
-table(df$manDx)
-
-modelPATMA <- train(
-  manDx ~ .,
-  df,
-  method = "rf",
-  trControl = trainControl(
-    method = "cv",
-    number = 10,
-    verbose = TRUE),
-  preProcess = "pca"
-)
-
-min(modelPATMA$results$Accuracy)
-
-```
-
-That seems to give me what I'm looking for. Let's get to work:
-
-```{r warning=FALSE}
-myControl <- trainControl(
-  method = "cv",
-  number = 10,
-  summaryFunction = defaultSummary,
-  classProbs = TRUE, #Critical to have this, per Meyers.
-  verboseIter = TRUE
-)
-
-set.seed(42)
-model <- train(
-  manDx ~ .,
-  df,
-  method = "glmnet",
-  trControl = myControl
-)
-
-model
-
-plot(model)
 ```
 
 ## Split target from predictors

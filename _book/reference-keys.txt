@@ -52,7 +52,7 @@ relative-versus-absolute-risk
 sampling
 think-about-throwing-a-bunch-of-dice.
 a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components.
-simulating-data
+simulating
 sample
 replicate
 sample-revisited
@@ -101,6 +101,6 @@ from-the-datacamp-course
 random-forest-with-caret
 random-forest-model
 improving-legibility-change-the-linetype
-codebreaksrmd
-glmnet-and-patma
+moremodeling
 split-target-from-predictors
+multiple-preprocessing-methods

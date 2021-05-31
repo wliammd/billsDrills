@@ -1,4 +1,4 @@
-# Simulating data
+# Simulating data {#simulating}
 
 ```{r include=FALSE}
 library(tidyverse)
