@@ -2,7 +2,6 @@
 
 ```{r}
 library(tidyverse)
-library(rpart)
 library(caret)
 ```
 
@@ -64,5 +63,22 @@ model <- train(
 )
 
 print(min(model$results$RMSE)) # with pca applied
+```
+
+## Max Kuhn on reusing a trainControl
+
+```{r}
+library(C50)
+library(modeldata)
+data(mlc_churn)
+set.seed(1)
+inTrainingSet <- createDataPartition(mlc_churn$churn, 
+                                     p = 0.75,
+                                     list = FALSE)
+churnTrain <- mlc_churn[inTrainingSet,]
+churnTest <- mlc_churn[-inTrainingSet,]
+glimpse(churnTrain)
+glimpse(churnTest)
+table(churnTrain$churn/nrow(churnTrain))
 ```
 

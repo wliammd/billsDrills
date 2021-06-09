@@ -66,7 +66,7 @@ For instance, a recent dump of my EndNote library is in `bookFromEndnote.txt`. T
 Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for all the R packages that I'd like to cite:
 
 ```{r}
-knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ComplexHeatmap'), 'packages.bib')
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'caret'), 'packages.bib')
 ```
 
 All packages are maintained in `packages.bib`. 
@@ -89,6 +89,11 @@ starwars %>% filter(!is.na(species)) %>%
   mutate(species = species %>% fct_infreq() %>% fct_rev()) %>% 
   ggplot() +
   geom_bar(aes(species, fill = gender)) +
+  labs(
+    title = "Nifty Starwars Figure",
+    x = "Species",
+    y = "Count"
+  ) +
   coord_flip()
 ```
 
