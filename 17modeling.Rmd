@@ -1,6 +1,6 @@
 # Modeling {#modeling}
 
-```{r include=FALSE}
+```{r message = FALSE}
 library(tidyverse)
 library(rpart)
 ```
@@ -12,7 +12,7 @@ Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd l
 
 A regression example from the course:
 
-```{r}
+```{r regression-example, cached = TRUE}
 library(caret)
 
 model <- train(
@@ -34,7 +34,7 @@ Note that **caret** handles the work of splitting test sets and calculating RMSE
 
 Another example from the DataCamp course.
 
-```{r}
+```{r lm-example-5fcv, cached = TRUE}
 library(MASS)
 
 # Fit lm model using 5-fold CV: model
@@ -55,7 +55,7 @@ model
 
 Cross validation can *itself* be repeated. The following is a 5-fold cross validation repeated 5 times.
 
-```{r}
+```{r lm-example-5x5fold-cv, cached = TRUE}
 # Fit lm model using 5 x 5-fold CV: model
 model <- train(
   medv ~ ., 
@@ -79,7 +79,7 @@ predict(model, Boston)
 
 ### An **rpart** classification example.
 
-```{r}
+```{r rpart-classification-example, cached = TRUE}
 model <- rpart(
   Species ~ .,
   data = iris,
@@ -99,7 +99,7 @@ Study what's going on in **predict()**:
 
 ## From the DataCamp course
 
-```{r}
+```{r mlbench-sonar-example, cached = TRUE}
 library(mlbench)
 data("Sonar")
 
@@ -113,11 +113,7 @@ train <- Sonar[1:split,]
 test <- Sonar[(split+1):nrow(Sonar),]
 
 nrow(train)/nrow(Sonar)
-```
 
-Let's build a model.
-
-```{r}
 model <- glm(
   Class ~ .,
   family = binomial(link = "logit"),
@@ -140,7 +136,7 @@ Receiver operator curves add a new level of complexity and usefulness. According
 
 When using `twoClassSummary()`, be sure to always include the argument `classProbs = TRUE` or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)
 
-```{r}
+```{r glm-traincontrol-example, cached = TRUE}
 # Create trainControl object: myControl
 myControl <- trainControl(
   method = "cv",
@@ -161,7 +157,7 @@ model
 
 For this set, we'll use the white wine quality dataset from UC Irvine. 
 
-```{r}
+```{r wine-ranger-example, cached = TRUE}
 wine <- read.csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv", sep = ";")
 
 glimpse(wine)
@@ -188,7 +184,7 @@ plot(model)
 
 Let's try this again with a longer `tuneLength`. This explores more models and potentially finds a better model.
 
-```{r}
+```{r wine-tunelength-example, cached = TRUE}
 model <- train(
   quality~.,
   tuneLength = 10,
@@ -211,7 +207,7 @@ plot(model)
 
 Custom tuning of grids can be used in **caret** by using `tuneGrid()`. While it is the most flexible method for fitting **caret** models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time. 
 
-```{r}
+```{r tunegrid-example-ranger, cached = TRUE}
 tuneGrid <- data.frame(
   .mtry = c(2, 3, 7),
   .splitrule = "variance",
