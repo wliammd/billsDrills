@@ -165,6 +165,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -352,7 +353,7 @@ div.csl-indent {
 </div>
 <p>Some of the subdirectories throw an error in building the book, so I settled on <code>_bookdown_files/pathologyImages</code> as the location.</p>
 <p>Also, note that the build does not generate the caption unless the reference is on it’s own line.</p>
-<p>Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size using</p>
+<p>Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size using {} after the reference, as follows:</p>
 <p><code>![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](pathologyImages/TpitIHC.jpg){#id.class width=50% height=50%}</code></p>
 <div class="figure">
 <img src="pathologyImages/TpitIHC.jpg" id="id.class" style="width:50.0%;height:50.0%" alt="" />
@@ -400,6 +401,11 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 Figure 2.1: Starwars Figure 1
 </p>
 </div>
+</div>
+<div id="working-with-github" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Working with Github</h2>
+<p>Document control is important. Using the terminal, one can maintain a Github repository for a project.</p>
+<p>Recent changes at require the use of a <strong>personal access token</strong> rather than a password in order to update the repo from the terminal. Instructions can be found at <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token" class="uri">https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token</a>.</p>
 
 </div>
 </div>

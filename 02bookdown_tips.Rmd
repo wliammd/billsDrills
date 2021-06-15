@@ -96,3 +96,10 @@ starwars %>% filter(!is.na(species)) %>%
   coord_flip()
 ```
 
+## Working with Github
+
+Document control is important. Using the terminal, one can maintain a Github repository for a project. 
+
+Recent changes at require the use of a **personal access token** rather than a password in order to update the repo from the terminal. Instructions can be found at <https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token>. 
+
+The **personal access token** replaces the password in the Apple keychain. Following the above link explains this, and offers a further link to illustrate the process of changing the keychain. 
