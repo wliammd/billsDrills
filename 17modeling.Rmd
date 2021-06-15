@@ -9,7 +9,6 @@ library(rpart)
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, too. 
 
-
 A regression example from the course:
 
 ```{r regression-example, cached = TRUE}

@@ -37,10 +37,9 @@ Also, note that the build does not generate the caption unless the reference is 
 
 Also note that some controls on image size are available. For instance, the same image can be displayed at 50% size using 
 
-``![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](pathologyImages/TpitIHC.jpg){#id .class width=50% height=50%}``
+``![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](pathologyImages/TpitIHC.jpg){#id.class width=50% height=50%}``
 
-
-![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](pathologyImages/TpitIHC.jpg){#id .class width=50% height=50%}
+![Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph](pathologyImages/TpitIHC.jpg){#id.class width=50% height=50%}
 
 ## Referencing other parts of the document
 

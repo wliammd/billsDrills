@@ -9,7 +9,7 @@ library(caret)
 
 This example shows how to generate some missing values, and to use imputation overcome these.
 
-```{r}
+```{r mtcars-median-imputation-example, cached = TRUE}
 data("mtcars")
 set.seed(42)
 mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
@@ -37,7 +37,7 @@ Zach Mayer offers the following cheat sheet for preprocessing:
 * For linear models (lm, glm, glmnet) always center and scale
 * Tree-based models (random forest, gbm) don't need much preprocessing
 
-```{r}
+```{r mtcars-multiple-preprocessing-example, cached = TRUE}
 data("mtcars")
 set.seed(42)
 mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
@@ -67,7 +67,7 @@ print(min(model$results$RMSE)) # with pca applied
 
 ## Max Kuhn on reusing a trainControl
 
-```{r}
+```{r traincontrol-reusing-example, cached = TRUE}
 library(C50)
 library(modeldata)
 data(mlc_churn)
