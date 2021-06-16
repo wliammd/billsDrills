@@ -31,12 +31,11 @@ The following exercises are based on **R4DS**.
 
 Several simple data tables are available for practice. Check them out:
 
-```{r}
-table1
-```
 Note that only table 1 is tidy. Tidy rules the day, making cool things possible. For instance:
 
 ```{r}
+table1
+
 table1 %>% 
   count(year, wt = cases)
 
