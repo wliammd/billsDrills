@@ -4,6 +4,7 @@ One of my fundamental stumbling blocks is understanding the shape of data, even 
 
 ```{r, message=FALSE}
 library(tidyverse)
+library(lubridate)
 ```
 
 ## Making data frames
@@ -53,10 +54,12 @@ table1 %>%
 # Or the following plot (I couldn't help but embellish this with a fct_reorder--vital to ggplot/geom_line displays,but a trick that I always forget):
 
 table1 %>% 
-  mutate(country = fct_reorder(country, -population)) %>% 
+  mutate(country = fct_reorder(country, -population),
+         year = ymd(year, truncated = 2)) %>% 
   ggplot(aes(year, cases)) + 
   geom_line(aes(group = country), colour = "grey50") + 
-  geom_point(aes(colour = country))
+  geom_point(aes(colour = country)) +
+  scale_x_date(labels = scales::date_format("%Y")) 
 ```
 
 An aside on count() and tally(): tally() is a convenient wrapper for summarise that will either call n() or sum(n) depending on whether you're tallying for the first time, or re-tallying. count() is similar but calls group_by() before and ungroup() after. If the data is already grouped, count() adds an additional group that is removed afterwards.
