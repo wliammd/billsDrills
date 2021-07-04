@@ -11,6 +11,8 @@ Beginners often stumble when trying to visualize the testing process, and how cl
 Resources to understand dimensionality reduction:
 <https://www.datacamp.com/community/tutorials/introduction-t-sne>
 
+<http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/>
+
 ```{r}
 library(tidyverse)
 library(plotly)
