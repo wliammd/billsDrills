@@ -9,7 +9,36 @@ library(rpart)
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, too. 
 
-A regression example from the course:
+But let's back up and consider the whole rationale behind modeling: according to Haley Wickham in `R4DS`,
+
+> The goal of a model is to provide a simple low-dimensional summary of a dataset.
+
+Modeling is a mode of `supervised learning`, which can be divided into `classification` and `regression`. 
+
+**Root mean squared error**, `RMSE`, is an important concept in regression problems. It's worth taking a more careful look at RMSE, and practicing with it, to illustrate the underlying methods of regression before we get into **caret**. 
+
+```{r}
+glimpse(diamonds)
+
+# Fit lm model: model
+model<-lm(price~.,diamonds)
+
+# Predict on full data: p
+p<-predict(model, diamonds)
+
+# Compute errors: error
+error<-p-diamonds$price
+
+# Calculate RMSE
+sqrt(mean(error^2))
+```
+
+Within-sample RMSE always overestimates model accuracy--the model only "knows" what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate "validation set" of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper). 
+
+Sample size cannot always grow, however: samples are expensive. **caret** simulates the process of having a validation set and permits the progressive refinement of a model. 
+
+
+## A regression example from the course:
 
 ```{r regression-example, cached = TRUE}
 library(caret)
