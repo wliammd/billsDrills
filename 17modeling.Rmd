@@ -37,6 +37,41 @@ Within-sample RMSE always overestimates model accuracy--the model only "knows" w
 
 Sample size cannot always grow, however: samples are expensive. **caret** simulates the process of having a validation set and permits the progressive refinement of a model. 
 
+## Out of sample error example
+
+This example from the DataCamp course divides `diamonds` into test and training sets. Note the assumptions that get built into the process: the use of 80% train/20% test, for instance. How does one arrive at this figure?
+
+```{r}
+# Set seed
+set.seed(42)
+
+# Shuffle row indices in case the data set is inhomogeneous: rows
+rows<-sample(nrow(diamonds))
+
+# Randomly order data
+shuffled_diamonds<-diamonds[rows,]
+
+# Determine row to split on: split
+split<-round(nrow(diamonds)*0.80)
+
+# Create train
+train<-diamonds[1:split,]
+
+# Create test
+test<-diamonds[(split+1):nrow(diamonds),]
+
+# Fit lm model on train: model
+model<-lm(price~., train)
+
+# Predict on test: p
+p<-predict(model, test)
+
+# Compute errors: error
+error <- p -  test$price
+
+# Calculate RMSE
+sqrt(mean(error^2))
+```
 
 ## A regression example from the course:
 
