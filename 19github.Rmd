@@ -1,0 +1,12 @@
+# Working with Github {#github}
+
+## Basic idea
+
+Github will no longer take a password, but needs a personal access token. 
+
+## A couple invaluable websites
+For creating a personal access token:
+<https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token>
+
+For deploying a personal access token:
+<https://happygitwithr.com/credential-caching.html#credential-caching>
