@@ -15,7 +15,9 @@ But let's back up and consider the whole rationale behind modeling: according to
 
 Modeling is a mode of `supervised learning`, which can be divided into `classification` and `regression`. 
 
-**Root mean squared error**, `RMSE`, is an important concept in regression problems. For a review of what is meant by `RMSE`, see this Wikipedia page: <https://en.wikipedia.org/wiki/Root-mean-square_deviation>. It's worth taking a more careful look at RMSE, and practicing with it, to illustrate the underlying methods of regression before we get into **caret**. 
+**Root mean squared error**, `RMSE`, is an important concept in regression problems. For a review of what is meant by RMSE, see this Wikipedia page: <https://en.wikipedia.org/wiki/Root-mean-square_deviation>. The units RMSE are the same as the original data, so it is very interpretable.
+
+It's worth taking a more careful look at RMSE, and practicing with it, to illustrate the underlying methods of regression before we get into **caret**. 
 
 ```{r}
 glimpse(diamonds)
@@ -32,6 +34,8 @@ error<-p-diamonds$price
 # Calculate RMSE
 sqrt(mean(error^2))
 ```
+
+Note that the RMSE in this case is $`r sqrt(mean(error^2))`, which is in keeping with what we know about the price of diamonds, which range from $`r range(diamonds$price)[1]` to $`r range(diamonds$price)[2]` and average $`r round(mean(diamonds$price), 2)`.
 
 Within-sample RMSE always overestimates model accuracy--the model only "knows" what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate "validation set" of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper). 
 
