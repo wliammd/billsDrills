@@ -1,8 +1,8 @@
-# Working with Github {#github}
+# Working with GitHub {#github}
 
 ## Basic idea
 
-Github will no longer take a password, but needs a personal access token. 
+GitHub will no longer take a password, but needs a personal access token. 
 
 ## A couple invaluable websites
 For creating a personal access token:
@@ -32,9 +32,9 @@ set_github_pat()
 For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
 **************
 
-Note that this resulted in the revokation of my PAT. Drat! 
+Note that this resulted in the revocation of my PAT. Drat! This is readily solved by getting another PAT from GitHub. 
 
-More research is necessary. See
+More research is necessary. See:
 
 ```{r}
 ?set_github_pat
