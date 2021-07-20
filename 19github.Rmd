@@ -10,3 +10,32 @@ For creating a personal access token:
 
 For deploying a personal access token:
 <https://happygitwithr.com/credential-caching.html#credential-caching>
+
+
+I first explored my credentials with the following:
+
+```{r}
+library(gitcreds)
+
+gitcreds_set()
+```
+
+This shows off my github password, with the right menu selection, but not the PAT. 
+
+```{r}
+library(credentials)
+
+set_github_pat()
+```
+
+
+For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
+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
+
+More research is necessary. See
+
+```{r}
+?set_github_pat
+```
+
+
