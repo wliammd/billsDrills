@@ -40,4 +40,6 @@ More research is necessary. See:
 ?set_github_pat
 ```
 
+On returning home, I encountered trouble with R. This seems to have been settled by the old copy-and-paste the error into my browser and figure out a workaround that involved a couple different methods. Now I've generated another PAT for my home computer, and am hoping that GitHub will be happy with me now.
+
 

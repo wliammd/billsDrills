@@ -1,0 +1,339 @@
+---
+title: "Bill's Drills Book"
+author: "William McDonald"
+date: "Last edited `r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: https://github.com/wliammd/billsDrills
+---
+---
+title: "Bill's Drills Book"
+author: "William McDonald"
+date: "Last edited `r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: https://github.com/wliammd/billsDrills
+---
+
+# Drills: Part of Every Healthy Intellectual Diet {#intro}
+
+The goal of this book is to organize my R drills into reasonable chunks, the better to understand my strengths and weaknesses, and to plan new forays into data science.
+
+<!--chapter:end:index.Rmd-->
+
+
+# **bookdown** Tips for This Document {#bookdownplan}
+
+Placeholder
+
+
+## Basic conventions 
+## Inserting pictures
+## Referencing other parts of the document
+## Referencing citations:
+## Figures.   
+## Working with Github
+
+<!--chapter:end:02bookdown_tips.Rmd-->
+
+
+# Shape of Data {#datashape}
+
+Placeholder
+
+
+## Making data frames
+## Gather, spread, pivoting in the tidyverse
+## Gathering steam...
+## Spread your wings
+## Missing Data: Ich vemisse Dich!
+### You complete(me)
+### fill(ing) in the gaps
+## Pivoting to something new
+## Larger structures
+
+<!--chapter:end:03shapes.Rmd-->
+
+
+# By Any Other Name {#changenames}
+
+Placeholder
+
+
+## A financial example
+
+<!--chapter:end:04names.Rmd-->
+
+
+# Factor Practice {#factorpractice}
+
+Placeholder
+
+
+## The basic structure
+## Not all nominal data is a factor
+## Making variables into factors
+## Inspecting factors
+## fct_lump()
+## fct_infreq() and fct_rev()
+## Additional practice
+## Reordering Factors
+### Improving legibility: change the linetype
+### fct_reorder2(): another way to improve legibility
+
+<!--chapter:end:05factors.Rmd-->
+
+
+# Subsetting {#subset}
+
+Placeholder
+
+
+## Subsetting using brackets
+## Subset using brackets by omitting the rows and columns we don’t want
+## Subset using brackets in combination with the which() function and the %in% operator
+## Subset using the subset() function
+## Subset using dyplyr's filter() and select()
+
+<!--chapter:end:06subsetting.Rmd-->
+
+
+# Data Exploration {#dataexploration}
+
+Placeholder
+
+
+## Counting things. The naming of parts. 
+## fct_infreq
+## Weight weight, don't tell me!
+## Summarize is another very useful function:
+## Graphical displays
+### Joyplots
+## Relative versus absolute risk
+
+<!--chapter:end:07data_explore.Rmd-->
+
+
+# Sampling {#sampling}
+
+Placeholder
+
+
+## Think about throwing a bunch of dice.
+## A keen way to divide up a dataset into testing and training components. 
+
+<!--chapter:end:08sampling.Rmd-->
+
+
+# Simulating data {#simulating}
+
+Placeholder
+
+
+## Sample() 
+## replicate()
+## sample() revisited
+## generating fixed levels -------------------------------------------------
+## generating numerical sequences
+## seq_along() and seq_len(). 
+## generating random data from a probability distribution 
+## Normal distribution:
+## Binomial distribution:
+## Uniform distribution
+## Sampling from multiple distributions (building in a "difference")
+## The good stuff: building in a difference based on a categorical variable
+## A demonstration of the Central Limit Theorem
+## Overlaying normal curve on histogram
+## Crossing trial
+
+<!--chapter:end:09simulatingData.Rmd-->
+
+
+# Functions
+
+Placeholder
+
+
+## A little Dungeons & Dragons (tm) to spice it up
+## Geometric and harmonic means
+## for loop
+## case_when()
+## Compare this with if_else()
+
+<!--chapter:end:10functions.Rmd-->
+
+# Correlation Plots {#correlation}
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+head(iris)
+iris %>% select(-Species) %>% cor()
+
+M <- iris %>% select(-Species) %>% cor(method = "kendall")
+```
+
+```{r}
+corrplot::corrplot(M)
+corrplot::corrplot(M, method = "color")
+corrplot::corrplot(M, method = "color", type = "upper")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black")
+corrplot::corrplot(M, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col="black", tl.srt = 45)
+```
+
+
+
+
+
+<!--chapter:end:11correlation.Rmd-->
+
+
+# Dimensionality Reduction {#dimensionalityreduction}
+
+Placeholder
+
+
+## Background
+## Experiment in showing dimensionality reduction for pathologists
+### Principle component analysis
+### t-distributed stochastic neighbor embedding
+
+<!--chapter:end:12dimension_reduction.Rmd-->
+
+
+# Clustering {#clustering}
+
+Placeholder
+
+
+
+<!--chapter:end:13clustering.Rmd-->
+
+
+# Regular expressions  {#regex}
+
+Placeholder
+
+
+## Seeking patterns
+
+<!--chapter:end:14seeking_patterns.Rmd-->
+
+
+# US_Census_Data_Kyle_Walker_Presentation_YouTube {#census}
+
+Placeholder
+
+
+## Variables
+## Part 2: Wrangling Census Data with **tidyverse** Tools
+### Normalizing the data with `mutate()`.
+### `group_by()` and `summarize()` in census analysis
+### Margin of error considerations
+### Visualizing margins of error
+### `get_estimates()` and how to use them
+### `ggbeeswarm()` automates some jitter considerations
+
+<!--chapter:end:15US_census_work.Rmd-->
+
+
+# **K Nearest Neighbors Revisited: Cross Validation Added** Tips for This Document {#knncv}
+
+Placeholder
+
+
+
+<!--chapter:end:16knncv.Rmd-->
+
+
+# Modeling {#modeling}
+
+Placeholder
+
+
+## Modeling notes
+## Out of sample error example
+## A regression example from the course:
+## Classification
+### An **rpart** classification example.
+## From the DataCamp course
+## Random forest with **caret**
+## Random forest model
+
+<!--chapter:end:17modeling.Rmd-->
+
+
+# More modeling {#moremodeling}
+
+Placeholder
+
+
+## Split target from predictors
+## Multiple preprocessing methods
+## Max Kuhn on reusing a trainControl
+
+<!--chapter:end:18modeling2.Rmd-->
+
+# Working with GitHub {#github}
+
+## Basic idea
+
+GitHub will no longer take a password, but needs a personal access token. 
+
+## A couple invaluable websites
+For creating a personal access token:
+<https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token>
+
+For deploying a personal access token:
+<https://happygitwithr.com/credential-caching.html#credential-caching>
+
+
+I first explored my credentials with the following:
+
+```{r}
+library(gitcreds)
+
+gitcreds_set()
+```
+
+This shows off my github password, with the right menu selection, but not the PAT. 
+
+```{r}
+library(credentials)
+
+set_github_pat()
+```
+
+
+For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
+**************
+
+Note that this resulted in the revocation of my PAT. Drat! This is readily solved by getting another PAT from GitHub. 
+
+More research is necessary. See:
+
+```{r}
+?set_github_pat
+```
+
+
+
+<!--chapter:end:19github.Rmd-->
+
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+<!--chapter:end:99references.Rmd-->
+
