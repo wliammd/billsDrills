@@ -30,7 +30,9 @@ set_github_pat()
 
 
 For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
-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
+**************
+
+Note that this resulted in the revokation of my PAT. Drat! 
 
 More research is necessary. See
 
