@@ -15,10 +15,12 @@ For deploying a personal access token:
 I first explored my credentials with the following:
 
 ```{r}
-library(gitcreds)
-
-gitcreds_set()
+# library(gitcreds)
+# 
+# gitcreds_set()
 ```
+
+According to the error when I knit this, his only works in interactive sessions, so is commented out. 
 
 This shows off my github password, with the right menu selection, but not the PAT. 
 
@@ -27,7 +29,6 @@ library(credentials)
 
 set_github_pat()
 ```
-
 
 For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
 **************

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 19 Working with Github | Bill’s Drills Book</title>
-  <meta name="description" content="Chapter 19 Working with Github | Bill’s Drills Book" />
+  <title>Chapter 19 Working with GitHub | Bill’s Drills Book</title>
+  <meta name="description" content="Chapter 19 Working with GitHub | Bill’s Drills Book" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 19 Working with Github | Bill’s Drills Book" />
+  <meta property="og:title" content="Chapter 19 Working with GitHub | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/wliammd/billsDrills" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 19 Working with Github | Bill’s Drills Book" />
+  <meta name="twitter:title" content="Chapter 19 Working with GitHub | Bill’s Drills Book" />
   
   
   
@@ -58,7 +58,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -278,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.2</b> Multiple preprocessing methods</a></li>
 <li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.3</b> Max Kuhn on reusing a trainControl</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with Github</a>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
 <ul>
 <li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
 <li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
@@ -305,10 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="github" class="section level1" number="19">
-<h1><span class="header-section-number">Chapter 19</span> Working with Github</h1>
+<h1><span class="header-section-number">Chapter 19</span> Working with GitHub</h1>
 <div id="basic-idea" class="section level2" number="19.1">
 <h2><span class="header-section-number">19.1</span> Basic idea</h2>
-<p>Github will no longer take a password, but needs a personal access token.</p>
+<p>GitHub will no longer take a password, but needs a personal access token.</p>
 </div>
 <div id="a-couple-invaluable-websites" class="section level2" number="19.2">
 <h2><span class="header-section-number">19.2</span> A couple invaluable websites</h2>
@@ -316,6 +315,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token" class="uri">https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token</a></p>
 <p>For deploying a personal access token:
 <a href="https://happygitwithr.com/credential-caching.html#credential-caching" class="uri">https://happygitwithr.com/credential-caching.html#credential-caching</a></p>
+<p>I first explored my credentials with the following:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="github.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(gitcreds)</span></span>
+<span id="cb14-2"><a href="github.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb14-3"><a href="github.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gitcreds_set()</span></span></code></pre></div>
+<p>According to the error when I knit this, his only works in interactive sessions, so is commented out.</p>
+<p>This shows off my github password, with the right menu selection, but not the PAT.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="github.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(credentials)</span></code></pre></div>
+<pre><code>## Found git version 2.30.1 (Apple Git-130)</code></pre>
+<pre><code>## Supported HTTPS credential helpers: cache, store</code></pre>
+<pre><code>## Found OpenSSH_8.1p1, LibreSSL 2.7.3</code></pre>
+<pre><code>## Default SSH key: /Users/wliamlaptop/.ssh/id_rsa</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="github.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_github_pat</span>()</span></code></pre></div>
+<p>For Bill’s Drills, I set up this PAT as directed. It’s probably not a great idea to keep it in this document, but I’ll play around with it until I understand the rules and make sure that my Github is still working.
+**************</p>
+<p>Note that this resulted in the revocation of my PAT. Drat! This is readily solved by getting another PAT from GitHub.</p>
+<p>More research is necessary. See:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="github.html#cb21-1" aria-hidden="true" tabindex="-1"></a>?set_github_pat</span></code></pre></div>
+<p>On returning home, I encountered trouble with R. This seems to have been settled by the old copy-and-paste the error into my browser and figure out a workaround that involved a couple different methods. Now I’ve generated another PAT for my home computer, and am hoping that GitHub will be happy with me now.</p>
 
 </div>
 </div>
