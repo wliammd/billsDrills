@@ -35,7 +35,7 @@ error<-p-diamonds$price
 sqrt(mean(error^2))
 ```
 
-Note that the RMSE in this case is $`r sqrt(mean(error^2))`, which is in keeping with what we know about the price of diamonds, which range from $`r range(diamonds$price)[1]` to $`r range(diamonds$price)[2]` and average $`r round(mean(diamonds$price), 2)`.
+Note that the RMSE in this case is $`r round(sqrt(mean(error^2)), 2)`, which is in keeping with what we know about the price of diamonds, which range from $`r range(diamonds$price)[1]` to $`r range(diamonds$price)[2]` and average $`r round(mean(diamonds$price), 2)`.
 
 Within-sample RMSE always overestimates model accuracy--the model only "knows" what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate "validation set" of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper). 
 

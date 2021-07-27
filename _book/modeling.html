@@ -278,6 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.2</b> Multiple preprocessing methods</a></li>
 <li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.3</b> Max Kuhn on reusing a trainControl</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
+<li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -338,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-10"><a href="modeling.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
 <span id="cb17-11"><a href="modeling.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 1129.843</code></pre>
-<p>Note that the RMSE in this case is $1129.8429866, which is in keeping with what we know about the price of diamonds, which range from $326 to $18823 and average $3932.7997219.</p>
+<p>Note that the RMSE in this case is $1129.84, which is in keeping with what we know about the price of diamonds, which range from $326 to $18823 and average $3932.8.</p>
 <p>Within-sample RMSE always overestimates model accuracy–the model only “knows” what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate “validation set” of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper).</p>
 <p>Sample size cannot always grow, however: samples are expensive. <strong>caret</strong> simulates the process of having a validation set and permits the progressive refinement of a model.</p>
 </div>
