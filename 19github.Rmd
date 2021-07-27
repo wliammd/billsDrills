@@ -11,7 +11,6 @@ For creating a personal access token:
 For deploying a personal access token:
 <https://happygitwithr.com/credential-caching.html#credential-caching>
 
-
 I first explored my credentials with the following:
 
 ```{r}
