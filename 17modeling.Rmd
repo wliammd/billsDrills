@@ -39,6 +39,12 @@ Note that the RMSE in this case is $`r round(sqrt(mean(error^2)), 2)`, which is 
 
 Within-sample RMSE always overestimates model accuracy--the model only "knows" what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate "validation set" of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper). 
 
+Zach Mayer states this another way: 
+
+> In-sample validation almost guarantees overfitting.
+
+So in the wide world and blue, this is perhaps the nicest intellectual defense of study abroad, of learning the perspectives, habits, and languages of others in order to avoid overfitting of our mental models to local norms. 
+
 Sample size cannot always grow, however: samples are expensive. **caret** simulates the process of having a validation set and permits the progressive refinement of a model. 
 
 ## Out of sample error example
@@ -76,6 +82,8 @@ error <- p -  test$price
 # Calculate RMSE
 sqrt(mean(error^2))
 ```
+
+So the RMSE for the model of diamond price, as measured by dividing the set this way, is $`r round(sqrt(mean(error^2)), 2)`. 
 
 ## A regression example from the course:
 
