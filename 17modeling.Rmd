@@ -85,7 +85,9 @@ sqrt(mean(error^2))
 
 So the RMSE for the model of diamond price, as measured by dividing the set this way, is $`r round(sqrt(mean(error^2)), 2)`. 
 
-## A regression example from the course:
+## A regression example from the course, this time using **caret**
+
+Note that the `train()` function has the method characteristic that can choose the type of model and that the `trainControl()` function has a method that determines cross validation. The number characteristic refers to the number of folds of cross validation. 10-fold cross validation is common, but takes more time than the use of smaller numbers. 5-fold will be used here to improve the speed of the processing. 
 
 ```{r regression-example, cached = TRUE}
 library(caret)
@@ -96,7 +98,7 @@ model <- train(
   method = "lm",
   trControl = trainControl(
     method = "cv", 
-    number = 10,
+    number = 5,
     verboseIter = TRUE
   )
 )
