@@ -232,7 +232,7 @@ model
 
 ## Random forest with **caret**
 
-For this set, we'll use the white wine quality dataset from UC Irvine. 
+For this set, we'll use the white wine quality data set from UC Irvine. 
 
 ```{r wine-ranger-example, cached = TRUE}
 wine <- read.csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv", sep = ";")
