@@ -149,7 +149,11 @@ model <- train(
 # Print model to console
 model
 
-predict(model, Boston)
+p <- predict(model, Boston)
+
+error <- p - Boston$medv
+
+sqrt(mean(error^2))
 ```
 
 ## Classification
@@ -165,13 +169,20 @@ model <- rpart(
 
 predicted <- predict(model, iris, type = "class")
 predicted
-mean(predicted == iris$Species)
 ```
 
 Study what's going on in **predict()**:
 
 ```{r}
 ?predict.rpart
+```
+
+So **predict()** uses the model to assign a predicted value to Species based on the rest of the iris dataset data. 
+
+The accuracy of this prediction can be tested by comparing this vector to the original Species.
+
+```{r}
+mean(predicted == iris$Species)
 ```
 
 ## From the DataCamp course
