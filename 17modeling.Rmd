@@ -23,7 +23,7 @@ It's worth taking a more careful look at RMSE, and practicing with it, to illust
 glimpse(diamonds)
 
 # Fit lm model: model
-model<-lm(price~.,diamonds)
+model<-lm(price~., diamonds)
 
 # Predict on full data: p
 p<-predict(model, diamonds)
