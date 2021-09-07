@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 17 Modeling | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 17 Modeling | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 17 Modeling | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="knncv.html"/>
 <link rel="next" href="moremodeling.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -58,7 +58,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -263,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
 <li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#out-of-sample-error-example"><i class="fa fa-check"></i><b>17.2</b> Out of sample error example</a></li>
-<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course"><i class="fa fa-check"></i><b>17.3</b> A regression example from the course:</a></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course-this-time-using-caret"><i class="fa fa-check"></i><b>17.3</b> A regression example from the course, this time using <strong>caret</strong></a></li>
 <li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.4</b> Classification</a>
 <ul>
 <li class="chapter" data-level="17.4.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.4.1</b> An <strong>rpart</strong> classification example.</a></li>
@@ -282,6 +281,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
 <li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -332,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…
 ## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="modeling.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model: model</span></span>
-<span id="cb17-2"><a href="modeling.html#cb17-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>.,diamonds)</span>
+<span id="cb17-2"><a href="modeling.html#cb17-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>., diamonds)</span>
 <span id="cb17-3"><a href="modeling.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="modeling.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on full data: p</span></span>
 <span id="cb17-5"><a href="modeling.html#cb17-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">predict</span>(model, diamonds)</span>
@@ -385,10 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-28"><a href="modeling.html#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
 <span id="cb19-29"><a href="modeling.html#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 796.8922</code></pre>
-<p>So the RMSE for the model of diamond price, as measured by dividing the set this way, is $<code>R round(sqrt(mean(error^2)), 2)</code>.</p>
+<p>So the RMSE for the model of diamond price, as measured by dividing the set this way, is $796.89.</p>
 </div>
-<div id="a-regression-example-from-the-course" class="section level2" number="17.3">
-<h2><span class="header-section-number">17.3</span> A regression example from the course:</h2>
+<div id="a-regression-example-from-the-course-this-time-using-caret" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> A regression example from the course, this time using <strong>caret</strong></h2>
+<p>Note that the <code>train()</code> function has the method characteristic that can choose the type of model and that the <code>trainControl()</code> function has a method that determines cross validation. The number characteristic refers to the number of folds of cross validation. 10-fold cross validation is common, but takes more time than the use of smaller numbers. 5-fold will be used here to improve the speed of the processing.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="modeling.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## 
@@ -402,30 +408,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-4"><a href="modeling.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
 <span id="cb25-5"><a href="modeling.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
 <span id="cb25-6"><a href="modeling.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb25-7"><a href="modeling.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb25-7"><a href="modeling.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
 <span id="cb25-8"><a href="modeling.html#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
 <span id="cb25-9"><a href="modeling.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb25-10"><a href="modeling.html#cb25-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## + Fold01: intercept=TRUE 
-## - Fold01: intercept=TRUE 
-## + Fold02: intercept=TRUE 
-## - Fold02: intercept=TRUE 
-## + Fold03: intercept=TRUE 
-## - Fold03: intercept=TRUE 
-## + Fold04: intercept=TRUE 
-## - Fold04: intercept=TRUE 
-## + Fold05: intercept=TRUE 
-## - Fold05: intercept=TRUE 
-## + Fold06: intercept=TRUE 
-## - Fold06: intercept=TRUE 
-## + Fold07: intercept=TRUE 
-## - Fold07: intercept=TRUE 
-## + Fold08: intercept=TRUE 
-## - Fold08: intercept=TRUE 
-## + Fold09: intercept=TRUE 
-## - Fold09: intercept=TRUE 
-## + Fold10: intercept=TRUE 
-## - Fold10: intercept=TRUE 
+<pre><code>## + Fold1: intercept=TRUE 
+## - Fold1: intercept=TRUE 
+## + Fold2: intercept=TRUE 
+## - Fold2: intercept=TRUE 
+## + Fold3: intercept=TRUE 
+## - Fold3: intercept=TRUE 
+## + Fold4: intercept=TRUE 
+## - Fold4: intercept=TRUE 
+## + Fold5: intercept=TRUE 
+## - Fold5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="modeling.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
@@ -436,12 +432,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     9 predictor
 ## 
 ## No pre-processing
-## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 48547, 48546, 48546, 48547, 48545, 48547, ... 
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 43152, 43152, 43152, 43152, 43152 
 ## Resampling results:
 ## 
 ##   RMSE      Rsquared   MAE     
-##   1131.015  0.9196398  740.6117
+##   1137.965  0.9186084  741.3386
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <p>Note that <strong>caret</strong> handles the work of splitting test sets and calculating RMSE.</p>
@@ -484,11 +480,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 405, 405, 406, 403, 405 
+## Summary of sample sizes: 405, 405, 405, 403, 406 
 ## Resampling results:
 ## 
 ##   RMSE      Rsquared   MAE     
-##   4.860247  0.7209221  3.398114
+##   4.811293  0.7238097  3.375276
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <p>Cross validation can <em>itself</em> be repeated. The following is a 5-fold cross validation repeated 5 times.</p>
@@ -565,11 +561,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold, repeated 5 times) 
-## Summary of sample sizes: 405, 406, 405, 403, 405, 405, ... 
+## Summary of sample sizes: 405, 404, 404, 406, 405, 405, ... 
 ## Resampling results:
 ## 
-##   RMSE      Rsquared   MAE     
-##   4.845724  0.7277269  3.402735
+##   RMSE    Rsquared  MAE     
+##   4.8764  0.722424  3.421333
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="modeling.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model, Boston)</span></code></pre></div>
@@ -809,39 +805,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="modeling.html#cb52-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
 <span id="cb52-2"><a href="modeling.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(p)</span></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.000000 0.000000 0.001997 0.493985 1.000000 1.000000</code></pre>
+## 0.000000 0.000000 0.002428 0.438835 1.000000 1.000000</code></pre>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modeling.html#cb54-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
 <span id="cb54-2"><a href="modeling.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="modeling.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>##        
 ## p_class  M  R
-##       M 12 29
-##       R 28 14</code></pre>
+##       M 11 26
+##       R 35 11</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="modeling.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
 ## Prediction  M  R
-##          M 12 29
-##          R 28 14
+##          M 11 26
+##          R 35 11
 ##                                           
-##                Accuracy : 0.3133          
-##                  95% CI : (0.2159, 0.4244)
-##     No Information Rate : 0.5181          
-##     P-Value [Acc &gt; NIR] : 0.9999          
+##                Accuracy : 0.2651          
+##                  95% CI : (0.1742, 0.3734)
+##     No Information Rate : 0.5542          
+##     P-Value [Acc &gt; NIR] : 1.0000          
 ##                                           
-##                   Kappa : -0.3741         
+##                   Kappa : -0.4528         
 ##                                           
-##  Mcnemar&#39;s Test P-Value : 1.0000          
+##  Mcnemar&#39;s Test P-Value : 0.3057          
 ##                                           
-##             Sensitivity : 0.3000          
-##             Specificity : 0.3256          
-##          Pos Pred Value : 0.2927          
-##          Neg Pred Value : 0.3333          
-##              Prevalence : 0.4819          
-##          Detection Rate : 0.1446          
-##    Detection Prevalence : 0.4940          
-##       Balanced Accuracy : 0.3128          
+##             Sensitivity : 0.2391          
+##             Specificity : 0.2973          
+##          Pos Pred Value : 0.2973          
+##          Neg Pred Value : 0.2391          
+##              Prevalence : 0.5542          
+##          Detection Rate : 0.1325          
+##    Detection Prevalence : 0.4458          
+##       Balanced Accuracy : 0.2682          
 ##                                           
 ##        &#39;Positive&#39; Class : M               
 ## </code></pre>
@@ -925,15 +921,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 187, 187, 188, 187, 186, 187, ... 
+## Summary of sample sizes: 187, 187, 186, 188, 188, 187, ... 
 ## Resampling results:
 ## 
-##   ROC        Sens       Spec     
-##   0.7363889  0.7310606  0.7055556</code></pre>
+##   ROC        Sens       Spec
+##   0.7221086  0.7378788  0.67</code></pre>
 </div>
 <div id="random-forest-with-caret" class="section level2" number="17.6">
 <h2><span class="header-section-number">17.6</span> Random forest with <strong>caret</strong></h2>
-<p>For this set, we’ll use the white wine quality dataset from UC Irvine.</p>
+<p>For this set, we’ll use the white wine quality data set from UC Irvine.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modeling.html#cb85-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
 <span id="cb85-2"><a href="modeling.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-3"><a href="modeling.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
@@ -997,12 +993,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 3918, 3918, 3919, 3918, 3919 
+## Summary of sample sizes: 3918, 3918, 3919, 3919, 3918 
 ## Resampling results across tuning parameters:
 ## 
 ##   splitrule   RMSE       Rsquared   MAE      
-##   variance    0.6088784  0.5345764  0.4408249
-##   extratrees  0.6210150  0.5259736  0.4605455
+##   variance    0.6050967  0.5413882  0.4391071
+##   extratrees  0.6153818  0.5364792  0.4578305
 ## 
 ## Tuning parameter &#39;mtry&#39; was held constant at a value of 3
 ## Tuning
@@ -1240,26 +1236,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  splitrule   RMSE       Rsquared   MAE      
-##    2    variance    0.6057204  0.5434891  0.4402250
-##    2    extratrees  0.6225409  0.5313962  0.4652635
-##    3    variance    0.6046126  0.5422199  0.4374184
-##    3    extratrees  0.6158234  0.5354961  0.4564243
-##    4    variance    0.6034676  0.5426562  0.4358454
-##    4    extratrees  0.6130888  0.5362907  0.4519836
-##    5    variance    0.6048032  0.5395454  0.4361404
-##    5    extratrees  0.6112438  0.5370366  0.4492617
-##    6    variance    0.6057024  0.5372313  0.4362111
-##    6    extratrees  0.6109336  0.5355019  0.4476956
-##    7    variance    0.6061353  0.5358889  0.4369985
-##    7    extratrees  0.6099249  0.5359499  0.4457628
-##    8    variance    0.6063708  0.5351282  0.4363110
-##    8    extratrees  0.6095864  0.5356302  0.4452885
-##    9    variance    0.6059328  0.5356964  0.4364586
-##    9    extratrees  0.6099230  0.5343878  0.4444948
-##   10    variance    0.6076286  0.5325974  0.4368646
-##   10    extratrees  0.6092013  0.5347315  0.4433534
-##   11    variance    0.6092080  0.5299952  0.4381026
-##   11    extratrees  0.6083401  0.5357723  0.4424654
+##    2    variance    0.6057267  0.5439626  0.4405916
+##    2    extratrees  0.6236281  0.5298696  0.4653787
+##    3    variance    0.6046583  0.5423307  0.4382451
+##    3    extratrees  0.6156828  0.5361785  0.4564330
+##    4    variance    0.6043205  0.5415035  0.4369536
+##    4    extratrees  0.6121588  0.5385053  0.4515880
+##    5    variance    0.6055318  0.5381417  0.4372017
+##    5    extratrees  0.6105919  0.5382888  0.4489989
+##    6    variance    0.6059000  0.5371010  0.4376776
+##    6    extratrees  0.6100430  0.5376337  0.4473954
+##    7    variance    0.6053503  0.5373499  0.4365124
+##    7    extratrees  0.6103668  0.5356061  0.4465320
+##    8    variance    0.6058807  0.5364227  0.4372000
+##    8    extratrees  0.6088559  0.5371926  0.4442014
+##    9    variance    0.6084825  0.5316505  0.4382170
+##    9    extratrees  0.6090639  0.5360376  0.4442829
+##   10    variance    0.6093909  0.5296893  0.4394500
+##   10    extratrees  0.6095042  0.5344968  0.4435984
+##   11    variance    0.6096074  0.5291148  0.4389384
+##   11    extratrees  0.6088682  0.5352417  0.4435641
 ## 
 ## Tuning parameter &#39;min.node.size&#39; was held constant at a value of 5
 ## RMSE was used to select the optimal model using the smallest value.
@@ -1331,13 +1327,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 3918, 3918, 3918, 3919, 3919 
+## Summary of sample sizes: 3918, 3918, 3919, 3918, 3919 
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  RMSE       Rsquared   MAE      
-##   2     0.6057004  0.5434261  0.4413449
-##   3     0.6035480  0.5436473  0.4378213
-##   7     0.6053933  0.5366925  0.4373623
+##   2     0.6076591  0.5397497  0.4417339
+##   3     0.6056877  0.5399161  0.4378556
+##   7     0.6083201  0.5319077  0.4367244
 ## 
 ## Tuning parameter &#39;splitrule&#39; was held constant at a value of variance
 ## 
@@ -1361,7 +1357,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1401,6 +1396,10 @@ gitbook.start({
 "text": null
 },
 "download": ["test-book.pdf", "test-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

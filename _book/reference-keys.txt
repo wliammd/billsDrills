@@ -114,3 +114,5 @@ a-couple-invaluable-websites
 a-regression-example-from-the-course-this-time-using-caret
 explainingmachinelearning
 machine-learning-for-mds
+supervised-versus-unsuperised-learning
+classification-versus-regression

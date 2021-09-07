@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page not found | Bill’s Drills Book</title>
   <meta name="description" content="Page not found | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Page not found | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -34,6 +34,7 @@
 
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -285,6 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
 <ul>
 <li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -323,7 +325,6 @@ the table of contents to find the page you are looking for.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -364,7 +365,7 @@ gitbook.start({
 },
 "download": ["test-book.pdf", "test-book.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
