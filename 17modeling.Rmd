@@ -168,7 +168,7 @@ model <- rpart(
 )
 
 predicted <- predict(model, iris, type = "class")
-predicted
+head(predicted)
 ```
 
 Study what's going on in **predict()**:
@@ -210,6 +210,7 @@ model <- glm(
 
 p <- predict(model, test, type = "response")
 summary(p)
+plot(p)
 
 p_class <- as.factor(ifelse(p > 0.1, "M", "R"))
 
@@ -218,7 +219,14 @@ table(p_class, test[["Class"]])
 confusionMatrix(p_class, test[["Class"]])
 ```
 
-Receiver operator curves add a new level of complexity and usefulness. According to Zach Mayer in DataCamp, 
+According to Zach Mayer in DataCamp, manually evaluating classification threshholds is hard work and arbitrary: one would need to create dozens or hundreds of confusion matrices and then manually inspect them. Receiver operator curves add a new level of complexity and usefulness. 
+
+To illustrate, we take the predicted probability of each `Class` for each case of the `test` set, and compare it with its actual `Class`:
+
+```{r}
+library(caTools)
+colAUC(p, test[["Class"]], plotROC = TRUE)
+```
 
  `trainControl()` in **caret** can use AUC (instead of accuracy), to tune the parameters of your models. The `twoClassSummary()` convenience function allows you to do this easily.
 
@@ -240,6 +248,8 @@ model<-train(Class~., data=Sonar, method="glm", trControl=myControl)
 # Print model to console
 model
 ```
+
+So `twoClassSummary` to use AUC to tune the parameters for the model generates a much more accurate model than our random assignment for `p`. 
 
 ## Random forest with **caret**
 
@@ -291,9 +301,11 @@ model
 plot(model)
 ```
 
-## Random forest model
+## Random forest model and `tuneGrid()`
 
 Custom tuning of grids can be used in **caret** by using `tuneGrid()`. While it is the most flexible method for fitting **caret** models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time. 
+
+For my uses, most of the time I anticipate using `tuneLength` and the default settings in **caret** to build my random forest models. 
 
 ```{r tunegrid-example-ranger, cached = TRUE}
 tuneGrid <- data.frame(

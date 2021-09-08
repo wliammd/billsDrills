@@ -269,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.5</b> From the DataCamp course</a></li>
 <li class="chapter" data-level="17.6" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.6</b> Random forest with <strong>caret</strong></a></li>
-<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.7</b> Random forest model</a></li>
+<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#random-forest-model-and-tunegrid"><i class="fa fa-check"></i><b>17.7</b> Random forest model and <code>tuneGrid()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="moremodeling.html"><a href="moremodeling.html"><i class="fa fa-check"></i><b>18</b> More modeling</a>
 <ul>
@@ -568,153 +568,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   4.8764  0.722424  3.421333
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="modeling.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model, Boston)</span></code></pre></div>
-<pre><code>##          1          2          3          4          5          6          7 
-## 30.0038434 25.0255624 30.5675967 28.6070365 27.9435242 25.2562845 23.0018083 
-##          8          9         10         11         12         13         14 
-## 19.5359884 11.5236369 18.9202621 18.9994965 21.5867957 20.9065215 19.5529028 
-##         15         16         17         18         19         20         21 
-## 19.2834821 19.2974832 20.5275098 16.9114013 16.1780111 18.4061360 12.5238575 
-##         22         23         24         25         26         27         28 
-## 17.6710367 15.8328813 13.8062853 15.6783383 13.3866856 15.4639765 14.7084743 
-##         29         30         31         32         33         34         35 
-## 19.5473729 20.8764282 11.4551176 18.0592329  8.8110574 14.2827581 13.7067589 
-##         36         37         38         39         40         41         42 
-## 23.8146353 22.3419371 23.1089114 22.9150261 31.3576257 34.2151023 28.0205641 
-##         43         44         45         46         47         48         49 
-## 25.2038663 24.6097927 22.9414918 22.0966982 20.4232003 18.0365509  9.1065538 
-##         50         51         52         53         54         55         56 
-## 17.2060775 21.2815254 23.9722228 27.6558508 24.0490181 15.3618477 31.1526495 
-##         57         58         59         60         61         62         63 
-## 24.8568698 33.1091981 21.7753799 21.0849356 17.8725804 18.5111021 23.9874286 
-##         64         65         66         67         68         69         70 
-## 22.5540887 23.3730864 30.3614836 25.5305651 21.1133856 17.4215379 20.7848363 
-##         71         72         73         74         75         76         77 
-## 25.2014886 21.7426577 24.5574496 24.0429571 25.5049972 23.9669302 22.9454540 
-##         78         79         80         81         82         83         84 
-## 23.3569982 21.2619827 22.4281737 28.4057697 26.9948609 26.0357630 25.0587348 
-##         85         86         87         88         89         90         91 
-## 24.7845667 27.7904920 22.1685342 25.8927642 30.6746183 30.8311062 27.1190194 
-##         92         93         94         95         96         97         98 
-## 27.4126673 28.9412276 29.0810555 27.0397736 28.6245995 24.7274498 35.7815952 
-##         99        100        101        102        103        104        105 
-## 35.1145459 32.2510280 24.5802202 25.5941347 19.7901368 20.3116713 21.4348259 
-##        106        107        108        109        110        111        112 
-## 18.5399401 17.1875599 20.7504903 22.6482911 19.7720367 20.6496586 26.5258674 
-##        113        114        115        116        117        118        119 
-## 20.7732364 20.7154831 25.1720888 20.4302559 23.3772463 23.6904326 20.3357836 
-##        120        121        122        123        124        125        126 
-## 20.7918087 21.9163207 22.4710778 20.5573856 16.3666198 20.5609982 22.4817845 
-##        127        128        129        130        131        132        133 
-## 14.6170663 15.1787668 18.9386859 14.0557329 20.0352740 19.4101340 20.0619157 
-##        134        135        136        137        138        139        140 
-## 15.7580767 13.2564524 17.2627773 15.8784188 19.3616395 13.8148390 16.4488147 
-##        141        142        143        144        145        146        147 
-## 13.5714193  3.9888551 14.5949548 12.1488148  8.7282236 12.0358534 15.8208206 
-##        148        149        150        151        152        153        154 
-##  8.5149902  9.7184414 14.8045137 20.8385815 18.3010117 20.1228256 17.2860189 
-##        155        156        157        158        159        160        161 
-## 22.3660023 20.1037592 13.6212589 33.2598270 29.0301727 25.5675277 32.7082767 
-##        162        163        164        165        166        167        168 
-## 36.7746701 40.5576584 41.8472817 24.7886738 25.3788924 37.2034745 23.0874875 
-##        169        170        171        172        173        174        175 
-## 26.4027396 26.6538211 22.5551466 24.2908281 22.9765722 29.0719431 26.5219434 
-##        176        177        178        179        180        181        182 
-## 30.7220906 25.6166931 29.1374098 31.4357197 32.9223157 34.7244046 27.7655211 
-##        183        184        185        186        187        188        189 
-## 33.8878732 30.9923804 22.7182001 24.7664781 35.8849723 33.4247672 32.4119915 
-##        190        191        192        193        194        195        196 
-## 34.5150995 30.7610949 30.2893414 32.9191871 32.1126077 31.5587100 40.8455572 
-##        197        198        199        200        201        202        203 
-## 36.1277008 32.6692081 34.7046912 30.0934516 30.6439391 29.2871950 37.0714839 
-##        204        205        206        207        208        209        210 
-## 42.0319312 43.1894984 22.6903480 23.6828471 17.8544721 23.4942899 17.0058772 
-##        211        212        213        214        215        216        217 
-## 22.3925110 17.0604275 22.7389292 25.2194255 11.1191674 24.5104915 26.6033477 
-##        218        219        220        221        222        223        224 
-## 28.3551871 24.9152546 29.6865277 33.1841975 23.7745666 32.1405196 29.7458199 
-##        225        226        227        228        229        230        231 
-## 38.3710245 39.8146187 37.5860575 32.3995325 35.4566524 31.2341151 24.4844923 
-##        232        233        234        235        236        237        238 
-## 33.2883729 38.0481048 37.1632863 31.7138352 25.2670557 30.1001074 32.7198716 
-##        239        240        241        242        243        244        245 
-## 28.4271706 28.4294068 27.2937594 23.7426248 24.1200789 27.4020841 16.3285756 
-##        246        247        248        249        250        251        252 
-## 13.3989126 20.0163878 19.8618443 21.2883131 24.0798915 24.2063355 25.0421582 
-##        253        254        255        256        257        258        259 
-## 24.9196401 29.9456337 23.9722832 21.6958089 37.5110924 43.3023904 36.4836142 
-##        260        261        262        263        264        265        266 
-## 34.9898859 34.8121151 37.1663133 40.9892850 34.4463409 35.8339755 28.2457430 
-##        267        268        269        270        271        272        273 
-## 31.2267359 40.8395575 39.3179239 25.7081791 22.3029553 27.2034097 28.5116947 
-##        274        275        276        277        278        279        280 
-## 35.4767660 36.1063916 33.7966827 35.6108586 34.8399338 30.3519266 35.3098070 
-##        281        282        283        284        285        286        287 
-## 38.7975697 34.3312319 40.3396307 44.6730834 31.5968909 27.3565923 20.1017415 
-##        288        289        290        291        292        293        294 
-## 27.0420667 27.2136458 26.9139584 33.4356331 34.4034963 31.8333982 25.8178324 
-##        295        296        297        298        299        300        301 
-## 24.4298235 28.4576434 27.3626700 19.5392876 29.1130984 31.9105461 30.7715945 
-##        302        303        304        305        306        307        308 
-## 28.9427587 28.8819102 32.7988723 33.2090546 30.7683179 35.5622686 32.7090512 
-##        309        310        311        312        313        314        315 
-## 28.6424424 23.5896583 18.5426690 26.8788984 23.2813398 25.5458025 25.4812006 
-##        316        317        318        319        320        321        322 
-## 20.5390990 17.6157257 18.3758169 24.2907028 21.3252904 24.8868224 24.8693728 
-##        323        324        325        326        327        328        329 
-## 22.8695245 19.4512379 25.1178340 24.6678691 23.6807618 19.3408962 21.1741811 
-##        330        331        332        333        334        335        336 
-## 24.2524907 21.5926089 19.9844661 23.3388800 22.1406069 21.5550993 20.6187291 
-##        337        338        339        340        341        342        343 
-## 20.1609718 19.2849039 22.1667232 21.2496577 21.4293931 30.3278880 22.0473498 
-##        344        345        346        347        348        349        350 
-## 27.7064791 28.5479412 16.5450112 14.7835964 25.2738008 27.5420512 22.1483756 
-##        351        352        353        354        355        356        357 
-## 20.4594409 20.5460542 16.8806383 25.4025351 14.3248663 16.5948846 19.6370469 
-##        358        359        360        361        362        363        364 
-## 22.7180661 22.2021889 19.2054806 22.6661611 18.9319262 18.2284680 20.2315081 
-##        365        366        367        368        369        370        371 
-## 37.4944739 14.2819073 15.5428625 10.8316232 23.8007290 32.6440736 34.6068404 
-##        372        373        374        375        376        377        378 
-## 24.9433133 25.9998091  6.1263250  0.7777981 25.3071306 17.7406106 20.2327441 
-##        379        380        381        382        383        384        385 
-## 15.8333130 16.8351259 14.3699483 18.4768283 13.4276828 13.0617751  3.2791812 
-##        386        387        388        389        390        391        392 
-##  8.0602217  6.1284220  5.6186481  6.4519857 14.2076474 17.2122518 17.2988727 
-##        393        394        395        396        397        398        399 
-##  9.8911664 20.2212419 17.9418118 20.3044578 19.2955908 16.3363278  6.5516232 
-##        400        401        402        403        404        405        406 
-## 10.8901678 11.8814587 17.8117451 18.2612659 12.9794878  7.3781636  8.2111586 
-##        407        408        409        410        411        412        413 
-##  8.0662619 19.9829479 13.7075637 19.8526845 15.2230830 16.9607198  1.7185181 
-##        414        415        416        417        418        419        420 
-## 11.8057839 -4.2813107  9.5837674 13.3666081  6.8956236  6.1477985 14.6066179 
-##        421        422        423        424        425        426        427 
-## 19.6000267 18.1242748 18.5217713 13.1752861 14.6261762  9.9237498 16.3459065 
-##        428        429        430        431        432        433        434 
-## 14.0751943 14.2575624 13.0423479 18.1595569 18.6955435 21.5272830 17.0314186 
-##        435        436        437        438        439        440        441 
-## 15.9609044 13.3614161 14.5207938  8.8197601  4.8675110 13.0659131 12.7060970 
-##        442        443        444        445        446        447        448 
-## 17.2955806 18.7404850 18.0590103 11.5147468 11.9740036 17.6834462 18.1269524 
-##        449        450        451        452        453        454        455 
-## 17.5183465 17.2274251 16.5227163 19.4129110 18.5821524 22.4894479 15.2800013 
-##        456        457        458        459        460        461        462 
-## 15.8208934 12.6872558 12.8763379 17.1866853 18.5124761 19.0486053 20.1720893 
-##        463        464        465        466        467        468        469 
-## 19.7740732 22.4294077 20.3191185 17.8861625 14.3747852 16.9477685 16.9840576 
-##        470        471        472        473        474        475        476 
-## 18.5883840 20.1671944 22.9771803 22.4558073 25.5782463 16.3914763 16.1114628 
-##        477        478        479        480        481        482        483 
-## 20.5348160 11.5427274 19.2049630 21.8627639 23.4687887 27.0988732 28.5699430 
-##        484        485        486        487        488        489        490 
-## 21.0839878 19.4551620 22.2222591 19.6559196 21.3253610 11.8558372  8.2238669 
-##        491        492        493        494        495        496        497 
-##  3.6639967 13.7590854 15.9311855 20.6266205 20.6124941 16.8854196 14.0132079 
-##        498        499        500        501        502        503        504 
-## 19.1085414 21.2980517 18.4549884 20.4687085 23.5333405 22.3757189 27.6274261 
-##        505        506 
-## 26.1279668 22.3442123</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="modeling.html#cb40-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, Boston)</span>
+<span id="cb40-2"><a href="modeling.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="modeling.html#cb40-3" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> p <span class="sc">-</span> Boston<span class="sc">$</span>medv</span>
+<span id="cb40-4"><a href="modeling.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="modeling.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 4.679191</code></pre>
 </div>
 <div id="classification" class="section level2" number="17.4">
 <h2><span class="header-section-number">17.4</span> Classification</h2>
@@ -773,10 +632,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##        148        149        150 
 ##  virginica  virginica  virginica 
 ## Levels: setosa versicolor virginica</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="modeling.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
-<pre><code>## [1] 0.96</code></pre>
 <p>Study what’s going on in <strong>predict()</strong>:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modeling.html#cb46-1" aria-hidden="true" tabindex="-1"></a>?predict.rpart</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="modeling.html#cb44-1" aria-hidden="true" tabindex="-1"></a>?predict.rpart</span></code></pre></div>
+<p>So <strong>predict()</strong> uses the model to assign a predicted value to Species based on the rest of the iris dataset data.</p>
+<p>The accuracy of this prediction can be tested by comparing this vector to the original Species.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="modeling.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
+<pre><code>## [1] 0.96</code></pre>
 </div>
 </div>
 <div id="from-the-datacamp-course" class="section level2" number="17.5">
@@ -806,14 +667,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb52-2"><a href="modeling.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(p)</span></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 ## 0.000000 0.000000 0.002428 0.438835 1.000000 1.000000</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modeling.html#cb54-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
-<span id="cb54-2"><a href="modeling.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="modeling.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modeling.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/mlbench-sonar-example-1.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="modeling.html#cb55-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
+<span id="cb55-2"><a href="modeling.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="modeling.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>##        
 ## p_class  M  R
 ##       M 11 26
 ##       R 35 11</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="modeling.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="modeling.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -841,20 +704,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                                           
 ##        &#39;Positive&#39; Class : M               
 ## </code></pre>
-<p>Receiver operator curves add a new level of complexity and usefulness. According to Zach Mayer in DataCamp,</p>
+<p>According to Zach Mayer in DataCamp, manually evaluating classification threshholds is hard work and arbitrary: one would need to create dozens or hundreds of confusion matrices and then manually inspect them. Receiver operator curves add a new level of complexity and usefulness.</p>
+<p>To illustrate, we take the predicted probability of each <code>Class</code> for each case of the <code>test</code> set, and compare it with its actual <code>Class</code>:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modeling.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb59-2"><a href="modeling.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colAUC</span>(p, test[[<span class="st">&quot;Class&quot;</span>]], <span class="at">plotROC =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre><code>##              [,1]
+## M vs. R 0.7532315</code></pre>
 <p><code>trainControl()</code> in <strong>caret</strong> can use AUC (instead of accuracy), to tune the parameters of your models. The <code>twoClassSummary()</code> convenience function allows you to do this easily.</p>
 <p>When using <code>twoClassSummary()</code>, be sure to always include the argument <code>classProbs = TRUE</code> or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modeling.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trainControl object: myControl</span></span>
-<span id="cb58-2"><a href="modeling.html#cb58-2" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
-<span id="cb58-3"><a href="modeling.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
-<span id="cb58-4"><a href="modeling.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
-<span id="cb58-5"><a href="modeling.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> twoClassSummary,</span>
-<span id="cb58-6"><a href="modeling.html#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="co"># IMPORTANT!</span></span>
-<span id="cb58-7"><a href="modeling.html#cb58-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb58-8"><a href="modeling.html#cb58-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb58-9"><a href="modeling.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-10"><a href="modeling.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glm with custom trainControl: model</span></span>
-<span id="cb58-11"><a href="modeling.html#cb58-11" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">train</span>(Class<span class="sc">~</span>., <span class="at">data=</span>Sonar, <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">trControl=</span>myControl)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="modeling.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trainControl object: myControl</span></span>
+<span id="cb61-2"><a href="modeling.html#cb61-2" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
+<span id="cb61-3"><a href="modeling.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb61-4"><a href="modeling.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb61-5"><a href="modeling.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> twoClassSummary,</span>
+<span id="cb61-6"><a href="modeling.html#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="co"># IMPORTANT!</span></span>
+<span id="cb61-7"><a href="modeling.html#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb61-8"><a href="modeling.html#cb61-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-9"><a href="modeling.html#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="modeling.html#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glm with custom trainControl: model</span></span>
+<span id="cb61-11"><a href="modeling.html#cb61-11" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">train</span>(Class<span class="sc">~</span>., <span class="at">data=</span>Sonar, <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">trControl=</span>myControl)</span></code></pre></div>
 <pre><code>## Warning in train.default(x, y, weights = w, ...): The metric &quot;Accuracy&quot; was not
 ## in the result set. ROC will be used instead.</code></pre>
 <pre><code>## + Fold01: parameter=none</code></pre>
@@ -911,8 +780,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Warning: glm.fit: algorithm did not converge
 
 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modeling.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb83-2"><a href="modeling.html#cb83-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="modeling.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb86-2"><a href="modeling.html#cb86-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Generalized Linear Model 
 ## 
 ## 208 samples
@@ -926,13 +795,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##   ROC        Sens       Spec
 ##   0.7221086  0.7378788  0.67</code></pre>
+<p>So <code>twoClassSummary</code> to use AUC to tune the parameters for the model generates a much more accurate model than our random assignment for <code>p</code>.</p>
 </div>
 <div id="random-forest-with-caret" class="section level2" number="17.6">
 <h2><span class="header-section-number">17.6</span> Random forest with <strong>caret</strong></h2>
 <p>For this set, we’ll use the white wine quality data set from UC Irvine.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modeling.html#cb85-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb85-2"><a href="modeling.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="modeling.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modeling.html#cb88-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb88-2"><a href="modeling.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="modeling.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
 <pre><code>## Rows: 4,898
 ## Columns: 12
 ## $ fixed.acidity        &lt;dbl&gt; 7.0, 6.3, 8.1, 7.2, 7.2, 8.1, 6.2, 7.0, 6.3, 8.1,…
@@ -947,20 +817,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ sulphates            &lt;dbl&gt; 0.45, 0.49, 0.44, 0.40, 0.40, 0.44, 0.47, 0.45, 0…
 ## $ alcohol              &lt;dbl&gt; 8.8, 9.5, 10.1, 9.9, 9.9, 10.1, 9.6, 8.8, 9.5, 11…
 ## $ quality              &lt;int&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 7, 5, 7, 6…</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modeling.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that quality is an integer, not a factor. **caret** seems to take this in stride. </span></span>
-<span id="cb87-2"><a href="modeling.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="modeling.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
-<span id="cb87-4"><a href="modeling.html#cb87-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb87-5"><a href="modeling.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
-<span id="cb87-6"><a href="modeling.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">1</span>,</span>
-<span id="cb87-7"><a href="modeling.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb87-8"><a href="modeling.html#cb87-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb87-9"><a href="modeling.html#cb87-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb87-10"><a href="modeling.html#cb87-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb87-11"><a href="modeling.html#cb87-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb87-12"><a href="modeling.html#cb87-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb87-13"><a href="modeling.html#cb87-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb87-14"><a href="modeling.html#cb87-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modeling.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that quality is an integer, not a factor. **caret** seems to take this in stride. </span></span>
+<span id="cb90-2"><a href="modeling.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="modeling.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb90-4"><a href="modeling.html#cb90-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb90-5"><a href="modeling.html#cb90-5" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
+<span id="cb90-6"><a href="modeling.html#cb90-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">1</span>,</span>
+<span id="cb90-7"><a href="modeling.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb90-8"><a href="modeling.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb90-9"><a href="modeling.html#cb90-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb90-10"><a href="modeling.html#cb90-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb90-11"><a href="modeling.html#cb90-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb90-12"><a href="modeling.html#cb90-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb90-13"><a href="modeling.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb90-14"><a href="modeling.html#cb90-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry=3, min.node.size=5, splitrule=variance 
 ## - Fold1: mtry=3, min.node.size=5, splitrule=variance 
 ## + Fold1: mtry=3, min.node.size=5, splitrule=extratrees 
@@ -984,8 +854,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="modeling.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb89-2"><a href="modeling.html#cb89-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modeling.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb92-2"><a href="modeling.html#cb92-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -1006,20 +876,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 3, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="modeling.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modeling.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/wine-ranger-example-1.png" width="672" /></p>
 <p>Let’s try this again with a longer <code>tuneLength</code>. This explores more models and potentially finds a better model.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modeling.html#cb92-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb92-2"><a href="modeling.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
-<span id="cb92-3"><a href="modeling.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">10</span>,</span>
-<span id="cb92-4"><a href="modeling.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb92-5"><a href="modeling.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb92-6"><a href="modeling.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb92-7"><a href="modeling.html#cb92-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb92-8"><a href="modeling.html#cb92-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb92-9"><a href="modeling.html#cb92-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb92-10"><a href="modeling.html#cb92-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb92-11"><a href="modeling.html#cb92-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modeling.html#cb95-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb95-2"><a href="modeling.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
+<span id="cb95-3"><a href="modeling.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">10</span>,</span>
+<span id="cb95-4"><a href="modeling.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb95-5"><a href="modeling.html#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb95-6"><a href="modeling.html#cb95-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb95-7"><a href="modeling.html#cb95-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb95-8"><a href="modeling.html#cb95-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb95-9"><a href="modeling.html#cb95-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb95-10"><a href="modeling.html#cb95-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb95-11"><a href="modeling.html#cb95-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry= 2, min.node.size=5, splitrule=variance 
 ## - Fold1: mtry= 2, min.node.size=5, splitrule=variance 
 ## + Fold1: mtry= 3, min.node.size=5, splitrule=variance 
@@ -1223,8 +1093,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 4, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modeling.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb94-2"><a href="modeling.html#cb94-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modeling.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb97-2"><a href="modeling.html#cb97-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -1261,30 +1131,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 4, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modeling.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modeling.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/wine-tunelength-example-1.png" width="672" /></p>
 </div>
-<div id="random-forest-model" class="section level2" number="17.7">
-<h2><span class="header-section-number">17.7</span> Random forest model</h2>
+<div id="random-forest-model-and-tunegrid" class="section level2" number="17.7">
+<h2><span class="header-section-number">17.7</span> Random forest model and <code>tuneGrid()</code></h2>
 <p>Custom tuning of grids can be used in <strong>caret</strong> by using <code>tuneGrid()</code>. While it is the most flexible method for fitting <strong>caret</strong> models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modeling.html#cb97-1" aria-hidden="true" tabindex="-1"></a>tuneGrid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb97-2"><a href="modeling.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.mtry =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
-<span id="cb97-3"><a href="modeling.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.splitrule =</span> <span class="st">&quot;variance&quot;</span>,</span>
-<span id="cb97-4"><a href="modeling.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">.min.node.size =</span> <span class="dv">5</span></span>
-<span id="cb97-5"><a href="modeling.html#cb97-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb97-6"><a href="modeling.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-7"><a href="modeling.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
-<span id="cb97-8"><a href="modeling.html#cb97-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb97-9"><a href="modeling.html#cb97-9" aria-hidden="true" tabindex="-1"></a>  quality <span class="sc">~</span> .,</span>
-<span id="cb97-10"><a href="modeling.html#cb97-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneGrid =</span> tuneGrid,</span>
-<span id="cb97-11"><a href="modeling.html#cb97-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb97-12"><a href="modeling.html#cb97-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb97-13"><a href="modeling.html#cb97-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb97-14"><a href="modeling.html#cb97-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb97-15"><a href="modeling.html#cb97-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb97-16"><a href="modeling.html#cb97-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb97-17"><a href="modeling.html#cb97-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb97-18"><a href="modeling.html#cb97-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>For my uses, most of the time I anticipate using <code>tuneLength</code> and the default settings in <strong>caret</strong> to build my random forest models.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modeling.html#cb100-1" aria-hidden="true" tabindex="-1"></a>tuneGrid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb100-2"><a href="modeling.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.mtry =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
+<span id="cb100-3"><a href="modeling.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.splitrule =</span> <span class="st">&quot;variance&quot;</span>,</span>
+<span id="cb100-4"><a href="modeling.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">.min.node.size =</span> <span class="dv">5</span></span>
+<span id="cb100-5"><a href="modeling.html#cb100-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb100-6"><a href="modeling.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="modeling.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb100-8"><a href="modeling.html#cb100-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb100-9"><a href="modeling.html#cb100-9" aria-hidden="true" tabindex="-1"></a>  quality <span class="sc">~</span> .,</span>
+<span id="cb100-10"><a href="modeling.html#cb100-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneGrid =</span> tuneGrid,</span>
+<span id="cb100-11"><a href="modeling.html#cb100-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb100-12"><a href="modeling.html#cb100-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb100-13"><a href="modeling.html#cb100-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb100-14"><a href="modeling.html#cb100-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb100-15"><a href="modeling.html#cb100-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb100-16"><a href="modeling.html#cb100-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb100-17"><a href="modeling.html#cb100-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb100-18"><a href="modeling.html#cb100-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry=2, splitrule=variance, min.node.size=5 
 ## - Fold1: mtry=2, splitrule=variance, min.node.size=5 
 ## + Fold1: mtry=3, splitrule=variance, min.node.size=5 
@@ -1318,8 +1189,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modeling.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb99-2"><a href="modeling.html#cb99-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modeling.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb102-2"><a href="modeling.html#cb102-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -1341,8 +1212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 3, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modeling.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot model</span></span>
-<span id="cb101-2"><a href="modeling.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modeling.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot model</span></span>
+<span id="cb104-2"><a href="modeling.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/tunegrid-example-ranger-1.png" width="672" /></p>
 
 </div>
