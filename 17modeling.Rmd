@@ -5,6 +5,20 @@ library(tidyverse)
 library(rpart)
 ```
 
+## Classification: what I'm really interested in
+
+Four types of classification are common in ML. See <https://machinelearningmastery.com/types-of-classification-in-machine-learning/>
+
+## Class imbalance: a critical issue in pituitary adenoma classification
+
+Fundamental to modeling pituitary adenoma classification is the notion of **class imbalance**, which must be acknowledged in the modeling process, even if I choose to simply ignore it. 
+
+Resources for class imbalance:
+
+  * https://www.svds.com/learning-imbalanced-classes/
+  * https://dpmartin42.github.io/posts/r/imbalanced-classes-part-1
+  * https://rstudio-pubs-static.s3.amazonaws.com/607601_57a11284917f4d79933f4c4db3d41713.html
+
 ## Modeling notes
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, too. 
