@@ -30,13 +30,15 @@ For a single value of alpha, `glmnet` fits all values of lambda simultaneously. 
 
 Zach Mayer uses a dataset that I can't seem to locate, so I'll switch the terms somewhat and hazard using iris and a three-class problem, which may be outside of the scope of this code. 
 
+It may be that the example below is too wonky to salvage. See <https://neurospection.netlify.app/post/machine-learning-basics-with-caret/#a-classification-example> for some nice examples of machine learning from readily available datasets.
+
 ### An iris example of `glmnet`
 
 ```{r}
 myControl <- trainControl(
   method = "cv",
   number = 10,
-  summaryFunction = defaultSummary,
+  summaryFunction = multiClassSummary,
   classProbs = TRUE,
   verboseIter = TRUE
 )
