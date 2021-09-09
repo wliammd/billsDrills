@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 18 More modeling | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 18 More modeling | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 18 More modeling | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -31,9 +31,10 @@
   
   
 <link rel="prev" href="modeling.html"/>
-<link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="github.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -143,6 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -260,19 +261,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
-<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#out-of-sample-error-example"><i class="fa fa-check"></i><b>17.2</b> Out of sample error example</a></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course-this-time-using-caret"><i class="fa fa-check"></i><b>17.3</b> A regression example from the course, this time using <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.4</b> Classification</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
+<li class="chapter" data-level="17.4.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.4.1</b> An <strong>rpart</strong> classification example.</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
-<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
-<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.5</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.6" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.6</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#random-forest-model-and-tunegrid"><i class="fa fa-check"></i><b>17.7</b> Random forest model and <code>tuneGrid()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="moremodeling.html"><a href="moremodeling.html"><i class="fa fa-check"></i><b>18</b> More modeling</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="moremodeling.html"><a href="moremodeling.html#split-target-from-predictors"><i class="fa fa-check"></i><b>18.1</b> Split target from predictors</a></li>
-<li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.2</b> Multiple preprocessing methods</a></li>
-<li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.3</b> Max Kuhn on reusing a trainControl</a></li>
+<li class="chapter" data-level="18.1" data-path="moremodeling.html"><a href="moremodeling.html#glmnet-models"><i class="fa fa-check"></i><b>18.1</b> <code>glmnet</code> models</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="moremodeling.html"><a href="moremodeling.html#parameters-for-tuning-glmnet-models"><i class="fa fa-check"></i><b>18.1.1</b> Parameters for tuning <code>glmnet</code> models</a></li>
+<li class="chapter" data-level="18.1.2" data-path="moremodeling.html"><a href="moremodeling.html#an-iris-example-of-glmnet"><i class="fa fa-check"></i><b>18.1.2</b> An iris example of <code>glmnet</code></a></li>
+<li class="chapter" data-level="18.1.3" data-path="moremodeling.html"><a href="moremodeling.html#now-using-a-tuning-grid"><i class="fa fa-check"></i><b>18.1.3</b> Now using a tuning grid</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#imputation-discussion"><i class="fa fa-check"></i><b>18.2</b> Imputation discussion</a></li>
+<li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#split-target-from-predictors"><i class="fa fa-check"></i><b>18.3</b> Split target from predictors</a></li>
+<li class="chapter" data-level="18.4" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.4</b> Multiple preprocessing methods</a></li>
+<li class="chapter" data-level="18.5" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.5</b> Max Kuhn on reusing a trainControl</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
+<li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -305,24 +326,249 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     lift</code></pre>
-<div id="split-target-from-predictors" class="section level2" number="18.1">
-<h2><span class="header-section-number">18.1</span> Split target from predictors</h2>
-<p>This example shows how to generate some missing values, and to use imputation overcome these.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="moremodeling.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
-<span id="cb18-2"><a href="moremodeling.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb18-3"><a href="moremodeling.html#cb18-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars), <span class="dv">10</span>), <span class="st">&quot;hp&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb18-4"><a href="moremodeling.html#cb18-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb18-5"><a href="moremodeling.html#cb18-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb18-6"><a href="moremodeling.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="moremodeling.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># model &lt;- train(X,Y) #This fails, because of the NAs. Try imputation.</span></span>
+<div id="glmnet-models" class="section level2" number="18.1">
+<h2><span class="header-section-number">18.1</span> <code>glmnet</code> models</h2>
+<p><code>glmnet</code> is an extension of glm models with built-in variable selection, which could be really nice for pituitary adenoma classification purposes.</p>
+<p><code>glmnet</code> helps deal with colinearity (correlation between predictors in a model) and small samples, both of which are relevant to my pituitary adenoma data.</p>
+<p><code>glmnet</code> relies on two forms of regression:</p>
+<ul>
+<li>Lasso regression, which penalizes the number of nonzero coefficients</li>
+<li>Ridge regression, which penalizes the absolute magnitude of the coefficients</li>
+<li>Both sorts of regression can be combined</li>
+</ul>
+<p><code>glmnet</code> attempst to find a simple model with few nonzero coefficients or small absolute magnitude of coefficients.</p>
+<p><code>glmnet</code> pairs well with random forest models, since it often yields different results.</p>
+<div id="parameters-for-tuning-glmnet-models" class="section level3" number="18.1.1">
+<h3><span class="header-section-number">18.1.1</span> Parameters for tuning <code>glmnet</code> models</h3>
+<ul>
+<li><code>alpha(0,1)</code>: pure ridge at zero, pure lasso at one</li>
+<li><code>lambda(0,infinity)</code>: size of the penalty</li>
+</ul>
+<p>For a single value of alpha, <code>glmnet</code> fits all values of lambda simultaneously. This is “many models for the price of one.” This is known as the “submodel trick.”</p>
+<p>Zach Mayer uses a dataset that I can’t seem to locate, so I’ll switch the terms somewhat and hazard using iris and a three-class problem, which may be outside of the scope of this code.</p>
+</div>
+<div id="an-iris-example-of-glmnet" class="section level3" number="18.1.2">
+<h3><span class="header-section-number">18.1.2</span> An iris example of <code>glmnet</code></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="moremodeling.html#cb18-1" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
+<span id="cb18-2"><a href="moremodeling.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb18-3"><a href="moremodeling.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb18-4"><a href="moremodeling.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> defaultSummary,</span>
+<span id="cb18-5"><a href="moremodeling.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-6"><a href="moremodeling.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb18-7"><a href="moremodeling.html#cb18-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb18-8"><a href="moremodeling.html#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="moremodeling.html#cb18-9" aria-hidden="true" tabindex="-1"></a>median_model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb18-10"><a href="moremodeling.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  X,</span>
-<span id="cb18-11"><a href="moremodeling.html#cb18-11" aria-hidden="true" tabindex="-1"></a>  Y,</span>
-<span id="cb18-12"><a href="moremodeling.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="st">&quot;medianImpute&quot;</span></span>
-<span id="cb18-13"><a href="moremodeling.html#cb18-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb18-9"><a href="moremodeling.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb18-10"><a href="moremodeling.html#cb18-10" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb18-11"><a href="moremodeling.html#cb18-11" aria-hidden="true" tabindex="-1"></a>  Species <span class="sc">~</span> .,</span>
+<span id="cb18-12"><a href="moremodeling.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  iris,</span>
+<span id="cb18-13"><a href="moremodeling.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
+<span id="cb18-14"><a href="moremodeling.html#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> myControl</span>
+<span id="cb18-15"><a href="moremodeling.html#cb18-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## + Fold01: alpha=0.10, lambda=0.087 
+## - Fold01: alpha=0.10, lambda=0.087 
+## + Fold01: alpha=0.55, lambda=0.087 
+## - Fold01: alpha=0.55, lambda=0.087 
+## + Fold01: alpha=1.00, lambda=0.087 
+## - Fold01: alpha=1.00, lambda=0.087 
+## + Fold02: alpha=0.10, lambda=0.087 
+## - Fold02: alpha=0.10, lambda=0.087 
+## + Fold02: alpha=0.55, lambda=0.087 
+## - Fold02: alpha=0.55, lambda=0.087 
+## + Fold02: alpha=1.00, lambda=0.087 
+## - Fold02: alpha=1.00, lambda=0.087 
+## + Fold03: alpha=0.10, lambda=0.087 
+## - Fold03: alpha=0.10, lambda=0.087 
+## + Fold03: alpha=0.55, lambda=0.087 
+## - Fold03: alpha=0.55, lambda=0.087 
+## + Fold03: alpha=1.00, lambda=0.087 
+## - Fold03: alpha=1.00, lambda=0.087 
+## + Fold04: alpha=0.10, lambda=0.087 
+## - Fold04: alpha=0.10, lambda=0.087 
+## + Fold04: alpha=0.55, lambda=0.087 
+## - Fold04: alpha=0.55, lambda=0.087 
+## + Fold04: alpha=1.00, lambda=0.087 
+## - Fold04: alpha=1.00, lambda=0.087 
+## + Fold05: alpha=0.10, lambda=0.087 
+## - Fold05: alpha=0.10, lambda=0.087 
+## + Fold05: alpha=0.55, lambda=0.087 
+## - Fold05: alpha=0.55, lambda=0.087 
+## + Fold05: alpha=1.00, lambda=0.087 
+## - Fold05: alpha=1.00, lambda=0.087 
+## + Fold06: alpha=0.10, lambda=0.087 
+## - Fold06: alpha=0.10, lambda=0.087 
+## + Fold06: alpha=0.55, lambda=0.087 
+## - Fold06: alpha=0.55, lambda=0.087 
+## + Fold06: alpha=1.00, lambda=0.087 
+## - Fold06: alpha=1.00, lambda=0.087 
+## + Fold07: alpha=0.10, lambda=0.087 
+## - Fold07: alpha=0.10, lambda=0.087 
+## + Fold07: alpha=0.55, lambda=0.087 
+## - Fold07: alpha=0.55, lambda=0.087 
+## + Fold07: alpha=1.00, lambda=0.087 
+## - Fold07: alpha=1.00, lambda=0.087 
+## + Fold08: alpha=0.10, lambda=0.087 
+## - Fold08: alpha=0.10, lambda=0.087 
+## + Fold08: alpha=0.55, lambda=0.087 
+## - Fold08: alpha=0.55, lambda=0.087 
+## + Fold08: alpha=1.00, lambda=0.087 
+## - Fold08: alpha=1.00, lambda=0.087 
+## + Fold09: alpha=0.10, lambda=0.087 
+## - Fold09: alpha=0.10, lambda=0.087 
+## + Fold09: alpha=0.55, lambda=0.087 
+## - Fold09: alpha=0.55, lambda=0.087 
+## + Fold09: alpha=1.00, lambda=0.087 
+## - Fold09: alpha=1.00, lambda=0.087 
+## + Fold10: alpha=0.10, lambda=0.087 
+## - Fold10: alpha=0.10, lambda=0.087 
+## + Fold10: alpha=0.55, lambda=0.087 
+## - Fold10: alpha=0.55, lambda=0.087 
+## + Fold10: alpha=1.00, lambda=0.087 
+## - Fold10: alpha=1.00, lambda=0.087 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting alpha = 0.1, lambda = 0.00087 on full training set</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="moremodeling.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="now-using-a-tuning-grid" class="section level3" number="18.1.3">
+<h3><span class="header-section-number">18.1.3</span> Now using a tuning grid</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="moremodeling.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glmnet with custom trainControl and tuning: model</span></span>
+<span id="cb21-2"><a href="moremodeling.html#cb21-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb21-3"><a href="moremodeling.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  Species<span class="sc">~</span>., </span>
+<span id="cb21-4"><a href="moremodeling.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  iris,</span>
+<span id="cb21-5"><a href="moremodeling.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb21-6"><a href="moremodeling.html#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>,</span>
+<span id="cb21-7"><a href="moremodeling.html#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">lambda=</span><span class="fu">seq</span>(<span class="fl">0.0001</span>, <span class="dv">1</span>, <span class="at">length=</span><span class="dv">20</span>)</span>
+<span id="cb21-8"><a href="moremodeling.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb21-9"><a href="moremodeling.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
+<span id="cb21-10"><a href="moremodeling.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> myControl</span>
+<span id="cb21-11"><a href="moremodeling.html#cb21-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## + Fold01: alpha=0, lambda=1 
+## - Fold01: alpha=0, lambda=1 
+## + Fold01: alpha=1, lambda=1 
+## - Fold01: alpha=1, lambda=1 
+## + Fold02: alpha=0, lambda=1 
+## - Fold02: alpha=0, lambda=1 
+## + Fold02: alpha=1, lambda=1 
+## - Fold02: alpha=1, lambda=1 
+## + Fold03: alpha=0, lambda=1 
+## - Fold03: alpha=0, lambda=1 
+## + Fold03: alpha=1, lambda=1 
+## - Fold03: alpha=1, lambda=1 
+## + Fold04: alpha=0, lambda=1 
+## - Fold04: alpha=0, lambda=1 
+## + Fold04: alpha=1, lambda=1 
+## - Fold04: alpha=1, lambda=1 
+## + Fold05: alpha=0, lambda=1 
+## - Fold05: alpha=0, lambda=1 
+## + Fold05: alpha=1, lambda=1 
+## - Fold05: alpha=1, lambda=1 
+## + Fold06: alpha=0, lambda=1 
+## - Fold06: alpha=0, lambda=1 
+## + Fold06: alpha=1, lambda=1 
+## - Fold06: alpha=1, lambda=1 
+## + Fold07: alpha=0, lambda=1 
+## - Fold07: alpha=0, lambda=1 
+## + Fold07: alpha=1, lambda=1 
+## - Fold07: alpha=1, lambda=1 
+## + Fold08: alpha=0, lambda=1 
+## - Fold08: alpha=0, lambda=1 
+## + Fold08: alpha=1, lambda=1 
+## - Fold08: alpha=1, lambda=1 
+## + Fold09: alpha=0, lambda=1 
+## - Fold09: alpha=0, lambda=1 
+## + Fold09: alpha=1, lambda=1 
+## - Fold09: alpha=1, lambda=1 
+## + Fold10: alpha=0, lambda=1 
+## - Fold10: alpha=0, lambda=1 
+## + Fold10: alpha=1, lambda=1 
+## - Fold10: alpha=1, lambda=1 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting alpha = 1, lambda = 1e-04 on full training set</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="moremodeling.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb23-2"><a href="moremodeling.html#cb23-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<pre><code>## glmnet 
+## 
+## 150 samples
+##   4 predictor
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 135, 135, 135, 135, 135, 135, ... 
+## Resampling results across tuning parameters:
+## 
+##   alpha  lambda      Accuracy   Kappa
+##   0      0.00010000  0.9466667  0.92 
+##   0      0.05272632  0.9400000  0.91 
+##   0      0.10535263  0.9000000  0.85 
+##   0      0.15797895  0.8933333  0.84 
+##   0      0.21060526  0.8800000  0.82 
+##   0      0.26323158  0.8866667  0.83 
+##   0      0.31585789  0.8866667  0.83 
+##   0      0.36848421  0.8866667  0.83 
+##   0      0.42111053  0.8800000  0.82 
+##   0      0.47373684  0.8866667  0.83 
+##   0      0.52636316  0.8866667  0.83 
+##   0      0.57898947  0.8866667  0.83 
+##   0      0.63161579  0.8800000  0.82 
+##   0      0.68424211  0.8733333  0.81 
+##   0      0.73686842  0.8666667  0.80 
+##   0      0.78949474  0.8666667  0.80 
+##   0      0.84212105  0.8666667  0.80 
+##   0      0.89474737  0.8666667  0.80 
+##   0      0.94737368  0.8666667  0.80 
+##   0      1.00000000  0.8666667  0.80 
+##   1      0.00010000  0.9733333  0.96 
+##   1      0.05272632  0.9400000  0.91 
+##   1      0.10535263  0.9466667  0.92 
+##   1      0.15797895  0.9333333  0.90 
+##   1      0.21060526  0.8733333  0.81 
+##   1      0.26323158  0.8333333  0.75 
+##   1      0.31585789  0.7000000  0.55 
+##   1      0.36848421  0.6666667  0.50 
+##   1      0.42111053  0.6666667  0.50 
+##   1      0.47373684  0.3333333  0.00 
+##   1      0.52636316  0.3333333  0.00 
+##   1      0.57898947  0.3333333  0.00 
+##   1      0.63161579  0.3333333  0.00 
+##   1      0.68424211  0.3333333  0.00 
+##   1      0.73686842  0.3333333  0.00 
+##   1      0.78949474  0.3333333  0.00 
+##   1      0.84212105  0.3333333  0.00 
+##   1      0.89474737  0.3333333  0.00 
+##   1      0.94737368  0.3333333  0.00 
+##   1      1.00000000  0.3333333  0.00 
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final values used for the model were alpha = 1 and lambda = 1e-04.</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="moremodeling.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print maximum ROC statistic</span></span>
+<span id="cb25-2"><a href="moremodeling.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># max(model[[&quot;results&quot;]][[&quot;ROC&quot;]])</span></span>
+<span id="cb25-3"><a href="moremodeling.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this doesn&#39;t work with 3 target classes</span></span></code></pre></div>
+</div>
+</div>
+<div id="imputation-discussion" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> Imputation discussion</h2>
+</div>
+<div id="split-target-from-predictors" class="section level2" number="18.3">
+<h2><span class="header-section-number">18.3</span> Split target from predictors</h2>
+<p>This example shows how to generate some missing values, and to use imputation overcome these.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="moremodeling.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb26-2"><a href="moremodeling.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb26-3"><a href="moremodeling.html#cb26-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars), <span class="dv">10</span>), <span class="st">&quot;hp&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb26-4"><a href="moremodeling.html#cb26-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb26-5"><a href="moremodeling.html#cb26-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb26-6"><a href="moremodeling.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="moremodeling.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># model &lt;- train(X,Y) #This fails, because of the NAs. Try imputation.</span></span>
+<span id="cb26-8"><a href="moremodeling.html#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="moremodeling.html#cb26-9" aria-hidden="true" tabindex="-1"></a>median_model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb26-10"><a href="moremodeling.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  X,</span>
+<span id="cb26-11"><a href="moremodeling.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  Y,</span>
+<span id="cb26-12"><a href="moremodeling.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="st">&quot;medianImpute&quot;</span></span>
+<span id="cb26-13"><a href="moremodeling.html#cb26-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## note: only 2 unique complexity parameters in default grid. Truncating the grid to 2 .</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="moremodeling.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(median_model)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="moremodeling.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(median_model)</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 32 samples
@@ -340,8 +586,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final value used for the model was mtry = 3.</code></pre>
 </div>
-<div id="multiple-preprocessing-methods" class="section level2" number="18.2">
-<h2><span class="header-section-number">18.2</span> Multiple preprocessing methods</h2>
+<div id="multiple-preprocessing-methods" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> Multiple preprocessing methods</h2>
 <p>Zach Mayer offers the following cheat sheet for preprocessing:</p>
 <ul>
 <li>Start with median imputation (if you’re using it)</li>
@@ -349,45 +595,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>For linear models (lm, glm, glmnet) always center and scale</li>
 <li>Tree-based models (random forest, gbm) don’t need much preprocessing</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="moremodeling.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
-<span id="cb22-2"><a href="moremodeling.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb22-3"><a href="moremodeling.html#cb22-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars), <span class="dv">10</span>), <span class="st">&quot;hp&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb22-4"><a href="moremodeling.html#cb22-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb22-5"><a href="moremodeling.html#cb22-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="co"># missing at random</span></span>
-<span id="cb22-6"><a href="moremodeling.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="moremodeling.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb22-8"><a href="moremodeling.html#cb22-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb22-9"><a href="moremodeling.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  X,</span>
-<span id="cb22-10"><a href="moremodeling.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  Y,</span>
-<span id="cb22-11"><a href="moremodeling.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
-<span id="cb22-12"><a href="moremodeling.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">&quot;medianImpute&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>)</span>
-<span id="cb22-13"><a href="moremodeling.html#cb22-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-14"><a href="moremodeling.html#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="moremodeling.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">min</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="moremodeling.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb30-2"><a href="moremodeling.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb30-3"><a href="moremodeling.html#cb30-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars), <span class="dv">10</span>), <span class="st">&quot;hp&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb30-4"><a href="moremodeling.html#cb30-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb30-5"><a href="moremodeling.html#cb30-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="co"># missing at random</span></span>
+<span id="cb30-6"><a href="moremodeling.html#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="moremodeling.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb30-8"><a href="moremodeling.html#cb30-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb30-9"><a href="moremodeling.html#cb30-9" aria-hidden="true" tabindex="-1"></a>  X,</span>
+<span id="cb30-10"><a href="moremodeling.html#cb30-10" aria-hidden="true" tabindex="-1"></a>  Y,</span>
+<span id="cb30-11"><a href="moremodeling.html#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb30-12"><a href="moremodeling.html#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">&quot;medianImpute&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>)</span>
+<span id="cb30-13"><a href="moremodeling.html#cb30-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-14"><a href="moremodeling.html#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="moremodeling.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">min</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE))</span></code></pre></div>
 <pre><code>## [1] 3.079732</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="moremodeling.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb24-2"><a href="moremodeling.html#cb24-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb24-3"><a href="moremodeling.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  X,</span>
-<span id="cb24-4"><a href="moremodeling.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  Y,</span>
-<span id="cb24-5"><a href="moremodeling.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
-<span id="cb24-6"><a href="moremodeling.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">&quot;medianImpute&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>)</span>
-<span id="cb24-7"><a href="moremodeling.html#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-8"><a href="moremodeling.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="moremodeling.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">min</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE)) <span class="co"># with pca applied</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="moremodeling.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb32-2"><a href="moremodeling.html#cb32-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb32-3"><a href="moremodeling.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  X,</span>
+<span id="cb32-4"><a href="moremodeling.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  Y,</span>
+<span id="cb32-5"><a href="moremodeling.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb32-6"><a href="moremodeling.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">&quot;medianImpute&quot;</span>, <span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>)</span>
+<span id="cb32-7"><a href="moremodeling.html#cb32-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-8"><a href="moremodeling.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="moremodeling.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">min</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE)) <span class="co"># with pca applied</span></span></code></pre></div>
 <pre><code>## [1] 3.03581</code></pre>
 </div>
-<div id="max-kuhn-on-reusing-a-traincontrol" class="section level2" number="18.3">
-<h2><span class="header-section-number">18.3</span> Max Kuhn on reusing a trainControl</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="moremodeling.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(C50)</span>
-<span id="cb26-2"><a href="moremodeling.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeldata)</span>
-<span id="cb26-3"><a href="moremodeling.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mlc_churn)</span>
-<span id="cb26-4"><a href="moremodeling.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb26-5"><a href="moremodeling.html#cb26-5" aria-hidden="true" tabindex="-1"></a>inTrainingSet <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(mlc_churn<span class="sc">$</span>churn, </span>
-<span id="cb26-6"><a href="moremodeling.html#cb26-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">p =</span> <span class="fl">0.75</span>,</span>
-<span id="cb26-7"><a href="moremodeling.html#cb26-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb26-8"><a href="moremodeling.html#cb26-8" aria-hidden="true" tabindex="-1"></a>churnTrain <span class="ot">&lt;-</span> mlc_churn[inTrainingSet,]</span>
-<span id="cb26-9"><a href="moremodeling.html#cb26-9" aria-hidden="true" tabindex="-1"></a>churnTest <span class="ot">&lt;-</span> mlc_churn[<span class="sc">-</span>inTrainingSet,]</span>
-<span id="cb26-10"><a href="moremodeling.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(churnTrain)</span></code></pre></div>
+<div id="max-kuhn-on-reusing-a-traincontrol" class="section level2" number="18.5">
+<h2><span class="header-section-number">18.5</span> Max Kuhn on reusing a trainControl</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="moremodeling.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(C50)</span>
+<span id="cb34-2"><a href="moremodeling.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeldata)</span>
+<span id="cb34-3"><a href="moremodeling.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mlc_churn)</span>
+<span id="cb34-4"><a href="moremodeling.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb34-5"><a href="moremodeling.html#cb34-5" aria-hidden="true" tabindex="-1"></a>inTrainingSet <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(mlc_churn<span class="sc">$</span>churn, </span>
+<span id="cb34-6"><a href="moremodeling.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">p =</span> <span class="fl">0.75</span>,</span>
+<span id="cb34-7"><a href="moremodeling.html#cb34-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb34-8"><a href="moremodeling.html#cb34-8" aria-hidden="true" tabindex="-1"></a>churnTrain <span class="ot">&lt;-</span> mlc_churn[inTrainingSet,]</span>
+<span id="cb34-9"><a href="moremodeling.html#cb34-9" aria-hidden="true" tabindex="-1"></a>churnTest <span class="ot">&lt;-</span> mlc_churn[<span class="sc">-</span>inTrainingSet,]</span>
+<span id="cb34-10"><a href="moremodeling.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(churnTrain)</span></code></pre></div>
 <pre><code>## Rows: 3,751
 ## Columns: 20
 ## $ state                         &lt;fct&gt; KS, NJ, OH, MA, LA, IN, RI, IA, IA, NY, …
@@ -410,7 +656,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ total_intl_charge             &lt;dbl&gt; 2.70, 3.29, 1.78, 2.03, 2.35, 3.43, 2.46…
 ## $ number_customer_service_calls &lt;int&gt; 1, 0, 2, 3, 1, 4, 0, 1, 4, 4, 1, 3, 1, 0…
 ## $ churn                         &lt;fct&gt; no, no, no, no, no, yes, no, no, no, yes…</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="moremodeling.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(churnTest)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="moremodeling.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(churnTest)</span></code></pre></div>
 <pre><code>## Rows: 1,249
 ## Columns: 20
 ## $ state                         &lt;fct&gt; OH, OK, AL, MO, WV, MT, VA, AZ, SC, WY, …
@@ -433,7 +679,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ total_intl_charge             &lt;dbl&gt; 3.70, 2.73, 1.70, 1.92, 3.02, 3.32, 2.70…
 ## $ number_customer_service_calls &lt;int&gt; 1, 3, 0, 0, 0, 3, 1, 0, 2, 0, 3, 3, 3, 3…
 ## $ churn                         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, …</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="moremodeling.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(churnTrain<span class="sc">$</span>churn<span class="sc">/</span><span class="fu">nrow</span>(churnTrain))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="moremodeling.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(churnTrain<span class="sc">$</span>churn<span class="sc">/</span><span class="fu">nrow</span>(churnTrain))</span></code></pre></div>
 <pre><code>## Warning in Ops.factor(churnTrain$churn, nrow(churnTrain)): &#39;/&#39; not meaningful
 ## for factors</code></pre>
 <pre><code>## &lt; table of extent 0 &gt;</code></pre>
@@ -446,11 +692,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="modeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -490,6 +735,10 @@ gitbook.start({
 "text": null
 },
 "download": ["test-book.pdf", "test-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

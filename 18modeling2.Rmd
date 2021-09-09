@@ -5,6 +5,79 @@ library(tidyverse)
 library(caret)
 ```
 
+## `glmnet` models
+
+`glmnet` is an extension of glm models with built-in variable selection, which could be really nice for pituitary adenoma classification purposes.
+
+`glmnet` helps deal with colinearity (correlation between predictors in a model) and small samples, both of which are relevant to my pituitary adenoma data. 
+
+`glmnet` relies on two forms of regression:
+
+  * Lasso regression, which penalizes the number of nonzero coefficients
+  * Ridge regression, which penalizes the absolute magnitude of the coefficients
+  * Both sorts of regression can be combined
+  
+`glmnet` attempst to find a simple model with few nonzero coefficients or small absolute magnitude of coefficients. 
+
+`glmnet` pairs well with random forest models, since it often yields different results. 
+
+### Parameters for tuning `glmnet` models
+
+  * `alpha(0,1)`: pure ridge at zero, pure lasso at one
+  * `lambda(0,infinity)`: size of the penalty
+  
+For a single value of alpha, `glmnet` fits all values of lambda simultaneously. This is "many models for the price of one." This is known as the "submodel trick."  
+
+Zach Mayer uses a dataset that I can't seem to locate, so I'll switch the terms somewhat and hazard using iris and a three-class problem, which may be outside of the scope of this code. 
+
+### An iris example of `glmnet`
+
+```{r}
+myControl <- trainControl(
+  method = "cv",
+  number = 10,
+  summaryFunction = defaultSummary,
+  classProbs = TRUE,
+  verboseIter = TRUE
+)
+
+set.seed(42)
+model <- train(
+  Species ~ .,
+  iris,
+  method = "glmnet",
+  trControl = myControl
+)
+
+plot(model)
+```
+
+### Now using a tuning grid
+
+```{r}
+# Train glmnet with custom trainControl and tuning: model
+model <- train(
+  Species~., 
+  iris,
+  tuneGrid = expand.grid(
+    alpha=0:1,
+    lambda=seq(0.0001, 1, length=20)
+  ),
+  method = "glmnet",
+  trControl = myControl
+)
+
+# Print model to console
+model
+
+# Print maximum ROC statistic
+# max(model[["results"]][["ROC"]])
+# this doesn't work with 3 target classes
+```
+
+
+## Imputation discussion
+
 ## Split target from predictors
 
 This example shows how to generate some missing values, and to use imputation overcome these.

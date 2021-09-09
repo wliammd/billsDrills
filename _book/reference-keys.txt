@@ -117,3 +117,8 @@ machine-learning-for-mds
 supervised-versus-unsuperised-learning
 classification-versus-regression
 random-forest-model-and-tunegrid
+glmnet-models
+imputation-discussion
+parameters-for-tuning-glmnet-models
+an-iris-example-of-glmnet
+now-using-a-tuning-grid
