@@ -5,13 +5,26 @@ library(tidyverse)
 library(rpart)
 ```
 
+## Resources:
+
+Stefania Ashby has nice observations and comments her code very well at <https://neurospection.netlify.app/post/machine-learning-basics-with-caret>
+
 ## Classification: what I'm really interested in
 
-Four types of classification are common in ML. See <https://machinelearningmastery.com/types-of-classification-in-machine-learning/>
+Four types of classification are common in ML. See <https://machinelearningmastery.com/types-of-classification-in-machine-learning/>. Jason Brownlee's list includes:
+
+  * Binary
+  * Multi-class
+  * Multi-label
+  * Imbalanced
+  
+  I think that binary, multiclass, and multilabel can all be imbalanced or balanced. 
+  
+  While multilabel classification is interesting (see, for example, <https://www.r-bloggers.com/2017/03/multilabel-classification-with-mlr/>), it will not be addressed in these notes. 
 
 ## Class imbalance: a critical issue in pituitary adenoma classification
 
-Fundamental to modeling pituitary adenoma classification is the notion of **class imbalance**, which must be acknowledged in the modeling process, even if I choose to simply ignore it. 
+Fundamental to modeling pituitary adenoma classification is the notion of **class imbalance**, which must be acknowledged in the modeling process, even if my options to address it are limited. 
 
 Resources for class imbalance:
 

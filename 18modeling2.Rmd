@@ -28,59 +28,75 @@ library(caret)
   
 For a single value of alpha, `glmnet` fits all values of lambda simultaneously. This is "many models for the price of one." This is known as the "submodel trick."  
 
-Zach Mayer uses a dataset that I can't seem to locate, so I'll switch the terms somewhat and hazard using iris and a three-class problem, which may be outside of the scope of this code. 
-
-It may be that the example below is too wonky to salvage. See <https://neurospection.netlify.app/post/machine-learning-basics-with-caret/#a-classification-example> for some nice examples of machine learning from readily available datasets.
+Zach Mayer uses a dataset that I can't seem to locate, so I'll switch to the code used by Stefania Ashby, which uses iris:  <https://neurospection.netlify.app/post/machine-learning-basics-with-caret/#a-classification-example>
 
 ### An iris example of `glmnet`
 
-```{r}
-myControl <- trainControl(
-  method = "cv",
-  number = 10,
-  summaryFunction = multiClassSummary,
-  classProbs = TRUE,
-  verboseIter = TRUE
-)
-
-set.seed(42)
-model <- train(
-  Species ~ .,
-  iris,
-  method = "glmnet",
-  trControl = myControl
-)
-
-plot(model)
-```
-
-### Now using a tuning grid
+Ashby terms this use of `glmnet` as an **elastic net**. In keeping with her practice, which splits the dataset in order to have a test group on which to estimate the accuracy of the model, we'll start with that (comments are Ashby's):
 
 ```{r}
-# Train glmnet with custom trainControl and tuning: model
-model <- train(
-  Species~., 
-  iris,
-  tuneGrid = expand.grid(
-    alpha=0:1,
-    lambda=seq(0.0001, 1, length=20)
-  ),
-  method = "glmnet",
-  trControl = myControl
-)
+iris_data <- data.frame(iris)
+set.seed(28) 
 
-# Print model to console
-model
+# Split the original dataset into a training set and a testing set
+# We are using species to partition so that we don't end up with an uneven amount of one species in either training or testing sets.
+partition_data <- createDataPartition(iris_data$Species, times = 1, p = .7, list = FALSE)
 
-# Print maximum ROC statistic
-# max(model[["results"]][["ROC"]])
-# this doesn't work with 3 target classes
+# Assign sets
+training.set <- iris_data[partition_data, ] # Training set
+testing.set <- iris_data[-partition_data, ] # Testing set
+
+# Sanity Check: Is data partitioned appropriately, do we have equal numbers of observations for our outcome variable?
+nrow(training.set)
+
+summary(training.set$Species)
+
+nrow(testing.set)
+
+summary(testing.set$Species)
 ```
 
+Now to build Ashby's model:
+
+```{r}
+# Specify the cross-validation method(s)
+train.control <- trainControl(method = "cv", number = 10, # k-folds CV with k=10
+                              classProbs = TRUE,
+                              savePredictions = TRUE,
+                              summaryFunction = multiClassSummary)# save predictions for ROC
+
+train.control2 <- trainControl(method = "LOOCV",
+                               classProbs = TRUE,
+                               savePredictions = TRUE,
+                               summaryFunction = multiClassSummary) # leave-one-out CV, and save predictions for ROC 
+
+# Example Model Tuning for Elastic Net
+glmnet.info <- getModelInfo("glmnet")
+glmnet.info$glmnet$parameters
+tune.grid <- expand.grid(alpha = 0:1,
+lambda = seq(0.0001, 1, length = 100))
+
+# Use the train function to perform model training
+glmnet.model <- train(Species ~. , 
+                      data = training.set, 
+                      method = "glmnet",
+                      trControl = train.control2, # change this to train.control to try k-fold CV
+                      #tuneGrid = tune.grid,
+                      preProc = c("center")) 
+
+# Look at the results from model training and ROC Curves
+glmnet.model
+
+# Test the predictive ability of the model in the testing set
+glmnet.predict <- predict(glmnet.model, testing.set) # Predict values in the testing set
+postResample(glmnet.predict, testing.set$Species) # the accuracy of the model
+
+confusionMatrix(glmnet.predict, testing.set$Species) # Lets see the breakdown of how well our model worked
+```
+
+Ashby's example helps out a lot and should be used as a model of the workflow for studying `pitadtma`. Imputation will be necessary to work with that dataset, so I'll return to the DataCamp course for that.
 
 ## Imputation discussion
-
-## Split target from predictors
 
 This example shows how to generate some missing values, and to use imputation overcome these.
 
@@ -100,6 +116,35 @@ median_model <- train(
 )
 
 print(median_model)
+
+```
+
+Data that is missing not at random offers special challenges. 
+
+```{r mtcars-knn-imputation-example, cached = TRUE}
+mtcars[mtcars$disp < 140, "hp"] <- NA
+Y <- mtcars$mpg
+X <- mtcars[,2:4]
+
+# Start with median imputation:
+model <- train(
+  X,
+  Y,
+  method = "glm",
+  preProcess = "medianImpute"
+)
+
+print(min(model$results$RMSE))
+
+set.seed(42)
+model <- train(
+  X,
+  Y,
+  method = "glm",
+  preProcess = c("knnImpute")
+)
+
+  print(min(model$results$RMSE))
 
 ```
 
@@ -140,7 +185,13 @@ model <- train(
 print(min(model$results$RMSE)) # with pca applied
 ```
 
+## Handling low-information predictors
+
+Constant or nearly constant values mess up models, or at the very least provide little useful information. They are usually removed, at least when addressing balanced datasets. 
+
 ## Max Kuhn on reusing a trainControl
+
+Note that the outcome (churn/no churn) is binary and that the dataset is somewhat imbalanced. 
 
 ```{r traincontrol-reusing-example, cached = TRUE}
 library(C50)
