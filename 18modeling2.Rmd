@@ -207,7 +207,103 @@ churnTrain <- mlc_churn[inTrainingSet,]
 churnTest <- mlc_churn[-inTrainingSet,]
 glimpse(churnTrain)
 glimpse(churnTest)
-table(churnTrain$churn/nrow(churnTrain))
+table(churnTrain$churn) / nrow(churnTrain)
+table(churnTest$churn) / nrow(churnTest) 
 ```
 
+So the test and training sets have approximately equal proportions of churn. 
+
+Now, in order to reuse trainControl, it's helpful to be certain that the model encounters exactly the same folds in cross validation. 
+
+```{r}
+myFolds <- createFolds(churnTrain$churn, k = 5)
+# Compare class distribution
+
+i <- myFolds$Fold1
+table(churnTrain$churn[i]) / length(i)
+
+myControl <- trainControl(
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, #Important!  
+  verboseIter = TRUE,
+  savePredictions = TRUE,
+  index = myFolds
+)
+```
+
+Now that the folds and trainControl are established, we can go on to make some models.
+
+First a glmnet model:
+
+
+```{r}
+set.seed(42)
+model_glmnet <- train(
+    churn ~ .,
+    churnTrain,
+    metric = "ROC",
+    method = "glmnet",
+    tune.grid = expand.grid(
+      alpha = 0:1,
+      lambda = 0:10 / 10
+    ),
+    trControl = myControl
+)
+
+plot(model_glmnet)
+
+plot(model_glmnet$finalModel)
+```
+
+Let's try a random forest model.
+
+```{r}
+set.seed(42)
+churnTrain$churn <- factor(
+  churnTrain$churn, levels = c("no", "yes")
+)
+
+model_rf <- train(
+    churn ~ .,
+    churnTrain,
+    metric = "ROC",
+    method = "ranger",
+    trControl = myControl
+)
+
+plot(model_rf)
+
+```
+
+## Comparing models
+
+Fundamental to this is making sure that the models were fit on exactly the same data! We select the model with the highest AUC and the lowest standard deviation in AUC. 
+
+The **resamples()** function is very useful.
+
+```{r}
+# First, make a list
+model_list <- list(
+  glmnet = model_glmnet,
+  rf = model_rf
+)
+
+# Collect resamples from the CV folds
+resamps <- resamples(model_list)
+resamps
+
+# Summarize the results
+summary(resamps)
+
+bwplot(resamps)
+
+bwplot(resamps, metric = "ROC")
+
+# The dotplot is the most elegant way to compare the performance of multiple models
+dotplot(resamps, metric = "ROC")
+
+densityplot(resamps, metric = "ROC")
+
+xyplot(resamps, metric = "ROC")
+```
 

@@ -124,3 +124,7 @@ an-iris-example-of-glmnet
 now-using-a-tuning-grid
 classification-what-im-really-intersted-in
 class-imbalance-a-critical-issue-in-pituitary-adenoma-classification
+resources
+classification-what-im-really-interested-in
+handling-low-information-predictors
+comparing-models
