@@ -187,7 +187,9 @@ print(min(model$results$RMSE)) # with pca applied
 
 ## Handling low-information predictors
 
-Constant or nearly constant values mess up models, or at the very least provide little useful information. They are usually removed, at least when addressing balanced datasets. 
+Constant or nearly constant values mess up models, or at the very least provide little useful information. They are usually removed, at least when addressing balanced datasets. For imbalanced datasets, leaving near zero variance predictors in the dataset is probably advised. 
+
+NOTE: using PCA as a preprocessing step can accomplish much the same thing as removing near zero variance predictors, so is worth trying. See above for an example using PCA.
 
 ## Max Kuhn on reusing a trainControl
 
