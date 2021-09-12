@@ -235,7 +235,6 @@ Now that the folds and trainControl are established, we can go on to make some m
 
 First a glmnet model:
 
-
 ```{r}
 set.seed(42)
 model_glmnet <- train(
