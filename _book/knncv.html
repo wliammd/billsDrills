@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 K Nearest Neighbors Revisited: Cross Validation Added Tips for This Document | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,6 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,9 @@
   
 <link rel="prev" href="census.html"/>
 <link rel="next" href="modeling.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,11 +50,10 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -173,6 +172,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -288,14 +288,43 @@ div.csl-indent {
 <li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
 <li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
-<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
+<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#resources"><i class="fa fa-check"></i><b>17.1</b> Resources:</a></li>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification-what-im-really-interested-in"><i class="fa fa-check"></i><b>17.2</b> Classification: what I’m really interested in</a></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#class-imbalance-a-critical-issue-in-pituitary-adenoma-classification"><i class="fa fa-check"></i><b>17.3</b> Class imbalance: a critical issue in pituitary adenoma classification</a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.4</b> Modeling notes</a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#out-of-sample-error-example"><i class="fa fa-check"></i><b>17.5</b> Out of sample error example</a></li>
+<li class="chapter" data-level="17.6" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course-this-time-using-caret"><i class="fa fa-check"></i><b>17.6</b> A regression example from the course, this time using <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.7</b> Classification</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
+<li class="chapter" data-level="17.7.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.7.1</b> An <strong>rpart</strong> classification example.</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
-<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
-<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
+<li class="chapter" data-level="17.8" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.8</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.9" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.9</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.10" data-path="modeling.html"><a href="modeling.html#random-forest-model-and-tunegrid"><i class="fa fa-check"></i><b>17.10</b> Random forest model and <code>tuneGrid()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="moremodeling.html"><a href="moremodeling.html"><i class="fa fa-check"></i><b>18</b> More modeling</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="moremodeling.html"><a href="moremodeling.html#glmnet-models"><i class="fa fa-check"></i><b>18.1</b> <code>glmnet</code> models</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="moremodeling.html"><a href="moremodeling.html#parameters-for-tuning-glmnet-models"><i class="fa fa-check"></i><b>18.1.1</b> Parameters for tuning <code>glmnet</code> models</a></li>
+<li class="chapter" data-level="18.1.2" data-path="moremodeling.html"><a href="moremodeling.html#an-iris-example-of-glmnet"><i class="fa fa-check"></i><b>18.1.2</b> An iris example of <code>glmnet</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#imputation-discussion"><i class="fa fa-check"></i><b>18.2</b> Imputation discussion</a></li>
+<li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.3</b> Multiple preprocessing methods</a></li>
+<li class="chapter" data-level="18.4" data-path="moremodeling.html"><a href="moremodeling.html#handling-low-information-predictors"><i class="fa fa-check"></i><b>18.4</b> Handling low-information predictors</a></li>
+<li class="chapter" data-level="18.5" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.5</b> Max Kuhn on reusing a trainControl</a></li>
+<li class="chapter" data-level="18.6" data-path="moremodeling.html"><a href="moremodeling.html#comparing-models"><i class="fa fa-check"></i><b>18.6</b> Comparing models</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
+<li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -320,24 +349,24 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="knncv" class="section level1" number="16">
 <h1><span class="header-section-number">Chapter 16</span> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</h1>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="knncv.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb616-2"><a href="knncv.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb616-3"><a href="knncv.html#cb616-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb616-4"><a href="knncv.html#cb616-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="knncv.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb617-2"><a href="knncv.html#cb617-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb617-3"><a href="knncv.html#cb617-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb617-4"><a href="knncv.html#cb617-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div>
 <p>Good resource: <a href="https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29" class="uri">https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29</a></p>
 <p>An excellent source for the <strong>caret</strong> is <a href="https://topepo.github.io/caret/index.html" class="uri">https://topepo.github.io/caret/index.html</a></p>
 <p>The following code is from <a href="https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r" class="uri">https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r</a></p>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="knncv.html#cb617-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
-<span id="cb617-2"><a href="knncv.html#cb617-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
-<span id="cb617-3"><a href="knncv.html#cb617-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb617-4"><a href="knncv.html#cb617-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> .,</span>
-<span id="cb617-5"><a href="knncv.html#cb617-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
-<span id="cb617-6"><a href="knncv.html#cb617-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
-<span id="cb617-7"><a href="knncv.html#cb617-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
-<span id="cb617-8"><a href="knncv.html#cb617-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb617-9"><a href="knncv.html#cb617-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> iris)</span>
-<span id="cb617-10"><a href="knncv.html#cb617-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb617-11"><a href="knncv.html#cb617-11" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="knncv.html#cb618-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb618-2"><a href="knncv.html#cb618-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb618-3"><a href="knncv.html#cb618-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb618-4"><a href="knncv.html#cb618-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> .,</span>
+<span id="cb618-5"><a href="knncv.html#cb618-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
+<span id="cb618-6"><a href="knncv.html#cb618-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb618-7"><a href="knncv.html#cb618-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
+<span id="cb618-8"><a href="knncv.html#cb618-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb618-9"><a href="knncv.html#cb618-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> iris)</span>
+<span id="cb618-10"><a href="knncv.html#cb618-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb618-11"><a href="knncv.html#cb618-11" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 150 samples
@@ -363,81 +392,71 @@ div.csl-indent {
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 10.</code></pre>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="knncv.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="knncv.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <p>I’d like to see whether this will help build a model to improve the classification of pituitary neuroendocrine tumors (pituitary adenomas).</p>
 <p>A copy of the patmandx data from PitAdTMA9.0 is already in the test book data directory.</p>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="knncv.html#cb620-1" aria-hidden="true" tabindex="-1"></a>pit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="knncv.html#cb621-1" aria-hidden="true" tabindex="-1"></a>pit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 157 Columns: 36</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (12): Dx, SurgPathNo, CAM5.2Pattern, newDx, finDx, villaDx, villaCode, N...
+## dbl (24): CaseID, Pit1Median, SF1Median, ASUMedian, PRLMedian, GHMedian, ACT...</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   .default = col_double(),
-##   Dx = col_character(),
-##   SurgPathNo = col_character(),
-##   CAM5.2Pattern = col_character(),
-##   newDx = col_character(),
-##   finDx = col_character(),
-##   villaDx = col_character(),
-##   villaCode = col_character(),
-##   Note = col_character(),
-##   manDx = col_character(),
-##   OrigDx = col_character(),
-##   Sex = col_character(),
-##   ClinNotes = col_character()
-## )
-## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="knncv.html#cb622-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pit <span class="sc">%&gt;%</span> <span class="fu">select</span>(SF1Median, Pit1Median, TPITMedian, PRLMedian, </span>
-<span id="cb622-2"><a href="knncv.html#cb622-2" aria-hidden="true" tabindex="-1"></a>    GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, </span>
-<span id="cb622-3"><a href="knncv.html#cb622-3" aria-hidden="true" tabindex="-1"></a>    GATA3Median, manDx) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb622-4"><a href="knncv.html#cb622-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb622-5"><a href="knncv.html#cb622-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="knncv.html#cb625-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pit <span class="sc">%&gt;%</span> <span class="fu">select</span>(SF1Median, Pit1Median, TPITMedian, PRLMedian, </span>
+<span id="cb625-2"><a href="knncv.html#cb625-2" aria-hidden="true" tabindex="-1"></a>    GHMedian, TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian, </span>
+<span id="cb625-3"><a href="knncv.html#cb625-3" aria-hidden="true" tabindex="-1"></a>    GATA3Median, manDx) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb625-4"><a href="knncv.html#cb625-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb625-5"><a href="knncv.html#cb625-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
 <pre><code>## 
 ## ACTH   GH  GON NULL PIT1 PLUR  PRL  UNK 
 ##   23   16   77   10    4    1   15    1</code></pre>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="knncv.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, the trouble with null cell adenoma is that the diagnosis abbreviation &quot;NULL&quot; is mistaken for the NULL value. I&#39;ll need to change this. The following is an ugly way to do this.</span></span>
-<span id="cb624-2"><a href="knncv.html#cb624-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb624-3"><a href="knncv.html#cb624-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">manDx =</span> <span class="fu">case_when</span>(</span>
-<span id="cb624-4"><a href="knncv.html#cb624-4" aria-hidden="true" tabindex="-1"></a>  manDx <span class="sc">==</span> <span class="st">&quot;NULL&quot;</span> <span class="sc">~</span> <span class="st">&quot;Null&quot;</span>,</span>
-<span id="cb624-5"><a href="knncv.html#cb624-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> manDx</span>
-<span id="cb624-6"><a href="knncv.html#cb624-6" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb624-7"><a href="knncv.html#cb624-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb624-8"><a href="knncv.html#cb624-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="knncv.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, the trouble with null cell adenoma is that the diagnosis abbreviation &quot;NULL&quot; is mistaken for the NULL value. I&#39;ll need to change this. The following is an ugly way to do this.</span></span>
+<span id="cb627-2"><a href="knncv.html#cb627-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb627-3"><a href="knncv.html#cb627-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">manDx =</span> <span class="fu">case_when</span>(</span>
+<span id="cb627-4"><a href="knncv.html#cb627-4" aria-hidden="true" tabindex="-1"></a>  manDx <span class="sc">==</span> <span class="st">&quot;NULL&quot;</span> <span class="sc">~</span> <span class="st">&quot;Null&quot;</span>,</span>
+<span id="cb627-5"><a href="knncv.html#cb627-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> manDx</span>
+<span id="cb627-6"><a href="knncv.html#cb627-6" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb627-7"><a href="knncv.html#cb627-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb627-8"><a href="knncv.html#cb627-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
 <pre><code>## 
 ## ACTH   GH  GON Null PIT1 PLUR  PRL  UNK 
 ##   23   16   77   10    4    1   15    1</code></pre>
 <p>Now I’ll ape the code from above and see whether it works.</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="knncv.html#cb626-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
-<span id="cb626-2"><a href="knncv.html#cb626-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
-<span id="cb626-3"><a href="knncv.html#cb626-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb626-4"><a href="knncv.html#cb626-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(manDx <span class="sc">~</span> .,</span>
-<span id="cb626-5"><a href="knncv.html#cb626-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
-<span id="cb626-6"><a href="knncv.html#cb626-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
-<span id="cb626-7"><a href="knncv.html#cb626-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
-<span id="cb626-8"><a href="knncv.html#cb626-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb626-9"><a href="knncv.html#cb626-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> df)</span></code></pre></div>
-<pre><code>## Warning: predictions failed for Fold4: k= 1 Error in dimnames(x) &lt;- dn : 
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="knncv.html#cb629-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method  =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb629-2"><a href="knncv.html#cb629-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number  =</span> <span class="dv">5</span>)</span>
+<span id="cb629-3"><a href="knncv.html#cb629-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb629-4"><a href="knncv.html#cb629-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(manDx <span class="sc">~</span> .,</span>
+<span id="cb629-5"><a href="knncv.html#cb629-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">method     =</span> <span class="st">&quot;knn&quot;</span>,</span>
+<span id="cb629-6"><a href="knncv.html#cb629-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">tuneGrid   =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb629-7"><a href="knncv.html#cb629-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">trControl  =</span> trControl,</span>
+<span id="cb629-8"><a href="knncv.html#cb629-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">metric     =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb629-9"><a href="knncv.html#cb629-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">data       =</span> df)</span></code></pre></div>
+<pre><code>## Warning: predictions failed for Fold3: k= 1 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 2 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 2 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 3 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 3 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 4 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 4 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 5 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 5 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 6 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 6 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 7 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 7 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 8 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 8 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k= 9 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k= 9 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
-<pre><code>## Warning: predictions failed for Fold4: k=10 Error in dimnames(x) &lt;- dn : 
+<pre><code>## Warning: predictions failed for Fold3: k=10 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
 <pre><code>## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
 ## There were missing values in resampled performance measures.</code></pre>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="knncv.html#cb638-1" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="knncv.html#cb641-1" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 147 samples
@@ -446,25 +465,25 @@ div.csl-indent {
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 118, 118, 118, 117, 117 
+## Summary of sample sizes: 118, 118, 116, 119, 117 
 ## Resampling results across tuning parameters:
 ## 
 ##   k   Accuracy   Kappa    
-##    1  0.9316092  0.8992914
-##    2  0.9316092  0.8986531
-##    3  0.9057471  0.8584568
-##    4  0.9313218  0.8969752
-##    5  0.8977011  0.8460848
-##    6  0.9149425  0.8724684
-##    7  0.8890805  0.8331516
-##    8  0.9063218  0.8584112
-##    9  0.8974138  0.8444094
-##   10  0.8977011  0.8463187
+##    1  0.9226806  0.8824466
+##    2  0.8962028  0.8402102
+##    3  0.9131568  0.8665709
+##    4  0.9042282  0.8523781
+##    5  0.9307061  0.8938411
+##    6  0.9482553  0.9210779
+##    7  0.9309934  0.8949336
+##    8  0.9220854  0.8809015
+##    9  0.8881773  0.8288791
+##   10  0.9051314  0.8552866
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
-## The final value used for the model was k = 2.</code></pre>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="knncv.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+## The final value used for the model was k = 6.</code></pre>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="knncv.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>Note that if I run this multiple times, I get multiple different optimal values of k. <strong>set.seed(1234)</strong>* would render a single, reproducible (if not “correct”) value.</p>
 <p>So ostensibly, this works, but I have a couple important items to address:</p>
 <ul>
@@ -483,7 +502,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -523,6 +541,10 @@ gitbook.start({
 "text": null
 },
 "download": ["test-book.pdf", "test-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

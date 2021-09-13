@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 By Any Other Name | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 4 By Any Other Name | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 By Any Other Name | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,6 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,9 @@
   
 <link rel="prev" href="datashape.html"/>
 <link rel="next" href="factorpractice.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,11 +50,10 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -173,6 +172,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -288,14 +288,43 @@ div.csl-indent {
 <li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
 <li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
-<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
+<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#resources"><i class="fa fa-check"></i><b>17.1</b> Resources:</a></li>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification-what-im-really-interested-in"><i class="fa fa-check"></i><b>17.2</b> Classification: what I’m really interested in</a></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#class-imbalance-a-critical-issue-in-pituitary-adenoma-classification"><i class="fa fa-check"></i><b>17.3</b> Class imbalance: a critical issue in pituitary adenoma classification</a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.4</b> Modeling notes</a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#out-of-sample-error-example"><i class="fa fa-check"></i><b>17.5</b> Out of sample error example</a></li>
+<li class="chapter" data-level="17.6" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course-this-time-using-caret"><i class="fa fa-check"></i><b>17.6</b> A regression example from the course, this time using <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.7</b> Classification</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
+<li class="chapter" data-level="17.7.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.7.1</b> An <strong>rpart</strong> classification example.</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
-<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
-<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
+<li class="chapter" data-level="17.8" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.8</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.9" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.9</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.10" data-path="modeling.html"><a href="modeling.html#random-forest-model-and-tunegrid"><i class="fa fa-check"></i><b>17.10</b> Random forest model and <code>tuneGrid()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="moremodeling.html"><a href="moremodeling.html"><i class="fa fa-check"></i><b>18</b> More modeling</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="moremodeling.html"><a href="moremodeling.html#glmnet-models"><i class="fa fa-check"></i><b>18.1</b> <code>glmnet</code> models</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="moremodeling.html"><a href="moremodeling.html#parameters-for-tuning-glmnet-models"><i class="fa fa-check"></i><b>18.1.1</b> Parameters for tuning <code>glmnet</code> models</a></li>
+<li class="chapter" data-level="18.1.2" data-path="moremodeling.html"><a href="moremodeling.html#an-iris-example-of-glmnet"><i class="fa fa-check"></i><b>18.1.2</b> An iris example of <code>glmnet</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#imputation-discussion"><i class="fa fa-check"></i><b>18.2</b> Imputation discussion</a></li>
+<li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.3</b> Multiple preprocessing methods</a></li>
+<li class="chapter" data-level="18.4" data-path="moremodeling.html"><a href="moremodeling.html#handling-low-information-predictors"><i class="fa fa-check"></i><b>18.4</b> Handling low-information predictors</a></li>
+<li class="chapter" data-level="18.5" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.5</b> Max Kuhn on reusing a trainControl</a></li>
+<li class="chapter" data-level="18.6" data-path="moremodeling.html"><a href="moremodeling.html#comparing-models"><i class="fa fa-check"></i><b>18.6</b> Comparing models</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
+<li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -321,70 +350,70 @@ div.csl-indent {
 <div id="changenames" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> By Any Other Name</h1>
 <p>This deceptively simple-seeming idea gets complex quickly. The following YouTube was a nice description of the process: <a href="https://www.youtube.com/watch?v=Okc0IL5uTnA" class="uri">https://www.youtube.com/watch?v=Okc0IL5uTnA</a></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="changenames.html#cb87-1" aria-hidden="true" tabindex="-1"></a>my.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">colOne=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">column2=</span><span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">column_3=</span><span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)</span>
-<span id="cb87-2"><a href="changenames.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ant&quot;</span>, <span class="st">&quot;bee&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
-<span id="cb87-3"><a href="changenames.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="changenames.html#cb86-1" aria-hidden="true" tabindex="-1"></a>my.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">colOne=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">column2=</span><span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">column_3=</span><span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb86-2"><a href="changenames.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ant&quot;</span>, <span class="st">&quot;bee&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span>
+<span id="cb86-3"><a href="changenames.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)</span></code></pre></div>
 <pre><code>## [1] &quot;colOne&quot;   &quot;column2&quot;  &quot;column_3&quot;</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="changenames.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(my.data)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="changenames.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(my.data)</span></code></pre></div>
 <pre><code>## [1] &quot;colOne&quot;   &quot;column2&quot;  &quot;column_3&quot;</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="changenames.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make some changes</span></span>
-<span id="cb91-2"><a href="changenames.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;col_1&quot;</span>, <span class="st">&quot;col_2&quot;</span>, <span class="st">&quot;col_3&quot;</span>)</span>
-<span id="cb91-3"><a href="changenames.html#cb91-3" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="changenames.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make some changes</span></span>
+<span id="cb90-2"><a href="changenames.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;col_1&quot;</span>, <span class="st">&quot;col_2&quot;</span>, <span class="st">&quot;col_3&quot;</span>)</span>
+<span id="cb90-3"><a href="changenames.html#cb90-3" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##     col_1 col_2 col_3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="changenames.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;col.3&quot;</span></span>
-<span id="cb93-2"><a href="changenames.html#cb93-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="changenames.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;col.3&quot;</span></span>
+<span id="cb92-2"><a href="changenames.html#cb92-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##     col_1 col_2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="changenames.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="fu">names</span>(my.data)<span class="sc">==</span><span class="st">&quot;col_2&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="changenames.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="fu">names</span>(my.data)<span class="sc">==</span><span class="st">&quot;col_2&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;col_2&quot;</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="changenames.html#cb97-1" aria-hidden="true" tabindex="-1"></a>my.data[<span class="st">&quot;col_2&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="changenames.html#cb96-1" aria-hidden="true" tabindex="-1"></a>my.data[<span class="st">&quot;col_2&quot;</span>]</span></code></pre></div>
 <pre><code>##     col_2
 ## ant     4
 ## bee     5
 ## cat     6</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="changenames.html#cb99-1" aria-hidden="true" tabindex="-1"></a>my.data<span class="sc">$</span>col_2</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="changenames.html#cb98-1" aria-hidden="true" tabindex="-1"></a>my.data<span class="sc">$</span>col_2</span></code></pre></div>
 <pre><code>## [1] 4 5 6</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="changenames.html#cb101-1" aria-hidden="true" tabindex="-1"></a>my.data[,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="changenames.html#cb100-1" aria-hidden="true" tabindex="-1"></a>my.data[,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 4 5 6</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="changenames.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="fu">names</span>(my.data)<span class="sc">==</span><span class="st">&quot;col_2&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;col.2&quot;</span></span>
-<span id="cb103-2"><a href="changenames.html#cb103-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="changenames.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data)[<span class="fu">names</span>(my.data)<span class="sc">==</span><span class="st">&quot;col_2&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;col.2&quot;</span></span>
+<span id="cb102-2"><a href="changenames.html#cb102-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##     col_1 col.2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="changenames.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="fu">names</span>(my.data))</span>
-<span id="cb105-2"><a href="changenames.html#cb105-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="changenames.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="fu">names</span>(my.data))</span>
+<span id="cb104-2"><a href="changenames.html#cb104-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##     col.1 col.2 col.3
 ## ant     1     4     7
 ## bee     2     5     8
 ## cat     3     6     9</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="changenames.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="changenames.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data)</span></code></pre></div>
 <pre><code>## [1] &quot;ant&quot; &quot;bee&quot; &quot;cat&quot;</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="changenames.html#cb109-1" aria-hidden="true" tabindex="-1"></a>my.data<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">rownames</span>(my.data)</span>
-<span id="cb109-2"><a href="changenames.html#cb109-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="changenames.html#cb108-1" aria-hidden="true" tabindex="-1"></a>my.data<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">rownames</span>(my.data)</span>
+<span id="cb108-2"><a href="changenames.html#cb108-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##     col.1 col.2 col.3 species
 ## ant     1     4     7     ant
 ## bee     2     5     8     bee
 ## cat     3     6     9     cat</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="changenames.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb111-2"><a href="changenames.html#cb111-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="changenames.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my.data) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb110-2"><a href="changenames.html#cb110-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##   col.1 col.2 col.3 species
 ## 1     1     4     7     ant
 ## 2     2     5     8     bee
 ## 3     3     6     9     cat</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="changenames.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;best&quot;</span>, <span class="st">&quot;species&quot;</span>)</span>
-<span id="cb113-2"><a href="changenames.html#cb113-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="changenames.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(my.data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;better&quot;</span>, <span class="st">&quot;best&quot;</span>, <span class="st">&quot;species&quot;</span>)</span>
+<span id="cb112-2"><a href="changenames.html#cb112-2" aria-hidden="true" tabindex="-1"></a>my.data</span></code></pre></div>
 <pre><code>##   good better best species
 ## 1    1      4    7     ant
 ## 2    2      5    8     bee
 ## 3    3      6    9     cat</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="changenames.html#cb115-1" aria-hidden="true" tabindex="-1"></a>keep <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(my.data)</span>
-<span id="cb115-2"><a href="changenames.html#cb115-2" aria-hidden="true" tabindex="-1"></a>my.data[,keep]</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="changenames.html#cb114-1" aria-hidden="true" tabindex="-1"></a>keep <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(my.data)</span>
+<span id="cb114-2"><a href="changenames.html#cb114-2" aria-hidden="true" tabindex="-1"></a>my.data[,keep]</span></code></pre></div>
 <pre><code>##   better best species
 ## 1      4    7     ant
 ## 2      5    8     bee
@@ -392,51 +421,51 @@ div.csl-indent {
 <div id="a-financial-example" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> A financial example</h2>
 <p>Dealing with financial data often means cleaning variable names and getting pesky dollar signs and commas out of downloaded files. Check out this example:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="changenames.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="changenames.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>First, load the <strong>tidyverse</strong></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="changenames.html#cb118-1" aria-hidden="true" tabindex="-1"></a>etf_data <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb118-2"><a href="changenames.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Sign, <span class="sc">~</span><span class="st">&quot;Market Value&quot;</span>,</span>
-<span id="cb118-3"><a href="changenames.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;VTI&quot;</span>, <span class="st">&quot;$172.22&quot;</span>,</span>
-<span id="cb118-4"><a href="changenames.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;VXUS&quot;</span>, <span class="st">&quot;$52.99&quot;</span></span>
-<span id="cb118-5"><a href="changenames.html#cb118-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb118-6"><a href="changenames.html#cb118-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-7"><a href="changenames.html#cb118-7" aria-hidden="true" tabindex="-1"></a>etf_data</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="changenames.html#cb117-1" aria-hidden="true" tabindex="-1"></a>etf_data <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb117-2"><a href="changenames.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Sign, <span class="sc">~</span><span class="st">&quot;Market Value&quot;</span>,</span>
+<span id="cb117-3"><a href="changenames.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;VTI&quot;</span>, <span class="st">&quot;$172.22&quot;</span>,</span>
+<span id="cb117-4"><a href="changenames.html#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;VXUS&quot;</span>, <span class="st">&quot;$52.99&quot;</span></span>
+<span id="cb117-5"><a href="changenames.html#cb117-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb117-6"><a href="changenames.html#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="changenames.html#cb117-7" aria-hidden="true" tabindex="-1"></a>etf_data</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
 ##   Sign  `Market Value`
 ##   &lt;chr&gt; &lt;chr&gt;         
 ## 1 VTI   $172.22       
 ## 2 VXUS  $52.99</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="changenames.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First let&#39;s address the crappy variable names:</span></span>
-<span id="cb120-2"><a href="changenames.html#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-3"><a href="changenames.html#cb120-3" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(etf_data)</span>
-<span id="cb120-4"><a href="changenames.html#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-5"><a href="changenames.html#cb120-5" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="changenames.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First let&#39;s address the crappy variable names:</span></span>
+<span id="cb119-2"><a href="changenames.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="changenames.html#cb119-3" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(etf_data)</span>
+<span id="cb119-4"><a href="changenames.html#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-5"><a href="changenames.html#cb119-5" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
 ##   sign  market_value
 ##   &lt;chr&gt; &lt;chr&gt;       
 ## 1 VTI   $172.22     
 ## 2 VXUS  $52.99</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="changenames.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now remove the offending dollar signs and commas (if present)</span></span>
-<span id="cb122-2"><a href="changenames.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="changenames.html#cb122-3" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK<span class="sc">$</span>market_value <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">$|,&#39;</span>,<span class="st">&#39;&#39;</span>,<span class="fu">as.character</span>(etf_data_namedOK<span class="sc">$</span>market_value)))</span>
-<span id="cb122-4"><a href="changenames.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-5"><a href="changenames.html#cb122-5" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="changenames.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now remove the offending dollar signs and commas (if present)</span></span>
+<span id="cb121-2"><a href="changenames.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="changenames.html#cb121-3" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK<span class="sc">$</span>market_value <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">$|,&#39;</span>,<span class="st">&#39;&#39;</span>,<span class="fu">as.character</span>(etf_data_namedOK<span class="sc">$</span>market_value)))</span>
+<span id="cb121-4"><a href="changenames.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="changenames.html#cb121-5" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
 ##   sign  market_value
 ##   &lt;chr&gt;        &lt;dbl&gt;
 ## 1 VTI          172. 
 ## 2 VXUS          53.0</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="changenames.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t be alarmed by the rounding behavior in the console. You can see that the data is intact. </span></span>
-<span id="cb124-2"><a href="changenames.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(etf_data_namedOK)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="changenames.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t be alarmed by the rounding behavior in the console. You can see that the data is intact. </span></span>
+<span id="cb123-2"><a href="changenames.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(etf_data_namedOK)</span></code></pre></div>
 <pre><code>## tibble [2 × 2] (S3: tbl_df/tbl/data.frame)
 ##  $ sign        : chr [1:2] &quot;VTI&quot; &quot;VXUS&quot;
 ##  $ market_value: num [1:2] 172 53</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="changenames.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(etf_data_namedOK)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="changenames.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(etf_data_namedOK)</span></code></pre></div>
 <pre><code>## Rows: 2
 ## Columns: 2
 ## $ sign         &lt;chr&gt; &quot;VTI&quot;, &quot;VXUS&quot;
 ## $ market_value &lt;dbl&gt; 172.22, 52.99</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="changenames.html#cb128-1" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK<span class="sc">$</span>market_value</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="changenames.html#cb127-1" aria-hidden="true" tabindex="-1"></a>etf_data_namedOK<span class="sc">$</span>market_value</span></code></pre></div>
 <pre><code>## [1] 172.22  52.99</code></pre>
 
 </div>
@@ -451,7 +480,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -491,6 +519,10 @@ gitbook.start({
 "text": null
 },
 "download": ["test-book.pdf", "test-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

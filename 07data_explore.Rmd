@@ -176,3 +176,45 @@ personograph(data_2, colors = list(first = "black", second = "red", third = "#ef
              plot.width = 0.97)
 ```
 
+## Removing duplicates
+
+The following is taken from <https://www.r-bloggers.com/2021/08/how-to-remove-duplicates-in-r-with-example/>.
+
+```{r}
+data <- data.frame(Column1 = c('P1', 'P1', 'P2', 'P3', 'P1', 'P1', 'P3', 'P4', 'P2', 'P4'), Column2 = c(5, 5, 3, 5, 2, 3, 4, 7, 10, 14))
+data
+```
+
+Note the duplication of rows with P1 and 5. The whole row can be removed as follows.
+
+```{r}
+distinct(data)
+```
+
+Reduplicated information in a column can also be removed:
+
+```{r}
+distinct(data, Column2)
+```
+
+To remove duplicates from a column but to keep all the information in Column1:
+
+```{r}
+
+distinct(data, Column2, .keep_all = TRUE)
+```
+
+The **duplicated** function can also be used.
+
+```{r}
+duplicated(data)
+
+data[!duplicated(data),]
+```
+
+Finally, **unique** is also useful:
+
+```{r}
+unique(data)
+```
+

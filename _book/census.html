@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube | Bill’s Drills Book</title>
   <meta name="description" content="Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube | Bill’s Drills Book" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 US_Census_Data_Kyle_Walker_Presentation_YouTube | Bill’s Drills Book" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,6 @@
 <meta name="author" content="William McDonald" />
 
 
-<meta name="date" content="2021-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,9 @@
   
 <link rel="prev" href="regex.html"/>
 <link rel="next" href="knncv.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,11 +50,10 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -173,6 +172,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
 <li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
 <li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -288,14 +288,43 @@ div.csl-indent {
 <li class="chapter" data-level="16" data-path="knncv.html"><a href="knncv.html"><i class="fa fa-check"></i><b>16</b> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</a></li>
 <li class="chapter" data-level="17" data-path="modeling.html"><a href="modeling.html"><i class="fa fa-check"></i><b>17</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.1</b> Modeling notes</a></li>
-<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.2</b> Classification</a>
+<li class="chapter" data-level="17.1" data-path="modeling.html"><a href="modeling.html#resources"><i class="fa fa-check"></i><b>17.1</b> Resources:</a></li>
+<li class="chapter" data-level="17.2" data-path="modeling.html"><a href="modeling.html#classification-what-im-really-interested-in"><i class="fa fa-check"></i><b>17.2</b> Classification: what I’m really interested in</a></li>
+<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#class-imbalance-a-critical-issue-in-pituitary-adenoma-classification"><i class="fa fa-check"></i><b>17.3</b> Class imbalance: a critical issue in pituitary adenoma classification</a></li>
+<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#modeling-notes"><i class="fa fa-check"></i><b>17.4</b> Modeling notes</a></li>
+<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#out-of-sample-error-example"><i class="fa fa-check"></i><b>17.5</b> Out of sample error example</a></li>
+<li class="chapter" data-level="17.6" data-path="modeling.html"><a href="modeling.html#a-regression-example-from-the-course-this-time-using-caret"><i class="fa fa-check"></i><b>17.6</b> A regression example from the course, this time using <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.7" data-path="modeling.html"><a href="modeling.html#classification"><i class="fa fa-check"></i><b>17.7</b> Classification</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.2.1</b> An <strong>rpart</strong> classification example.</a></li>
+<li class="chapter" data-level="17.7.1" data-path="modeling.html"><a href="modeling.html#an-rpart-classification-example."><i class="fa fa-check"></i><b>17.7.1</b> An <strong>rpart</strong> classification example.</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.3</b> From the DataCamp course</a></li>
-<li class="chapter" data-level="17.4" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.4</b> Random forest with <strong>caret</strong></a></li>
-<li class="chapter" data-level="17.5" data-path="modeling.html"><a href="modeling.html#random-forest-model"><i class="fa fa-check"></i><b>17.5</b> Random forest model</a></li>
+<li class="chapter" data-level="17.8" data-path="modeling.html"><a href="modeling.html#from-the-datacamp-course"><i class="fa fa-check"></i><b>17.8</b> From the DataCamp course</a></li>
+<li class="chapter" data-level="17.9" data-path="modeling.html"><a href="modeling.html#random-forest-with-caret"><i class="fa fa-check"></i><b>17.9</b> Random forest with <strong>caret</strong></a></li>
+<li class="chapter" data-level="17.10" data-path="modeling.html"><a href="modeling.html#random-forest-model-and-tunegrid"><i class="fa fa-check"></i><b>17.10</b> Random forest model and <code>tuneGrid()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="moremodeling.html"><a href="moremodeling.html"><i class="fa fa-check"></i><b>18</b> More modeling</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="moremodeling.html"><a href="moremodeling.html#glmnet-models"><i class="fa fa-check"></i><b>18.1</b> <code>glmnet</code> models</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="moremodeling.html"><a href="moremodeling.html#parameters-for-tuning-glmnet-models"><i class="fa fa-check"></i><b>18.1.1</b> Parameters for tuning <code>glmnet</code> models</a></li>
+<li class="chapter" data-level="18.1.2" data-path="moremodeling.html"><a href="moremodeling.html#an-iris-example-of-glmnet"><i class="fa fa-check"></i><b>18.1.2</b> An iris example of <code>glmnet</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="moremodeling.html"><a href="moremodeling.html#imputation-discussion"><i class="fa fa-check"></i><b>18.2</b> Imputation discussion</a></li>
+<li class="chapter" data-level="18.3" data-path="moremodeling.html"><a href="moremodeling.html#multiple-preprocessing-methods"><i class="fa fa-check"></i><b>18.3</b> Multiple preprocessing methods</a></li>
+<li class="chapter" data-level="18.4" data-path="moremodeling.html"><a href="moremodeling.html#handling-low-information-predictors"><i class="fa fa-check"></i><b>18.4</b> Handling low-information predictors</a></li>
+<li class="chapter" data-level="18.5" data-path="moremodeling.html"><a href="moremodeling.html#max-kuhn-on-reusing-a-traincontrol"><i class="fa fa-check"></i><b>18.5</b> Max Kuhn on reusing a trainControl</a></li>
+<li class="chapter" data-level="18.6" data-path="moremodeling.html"><a href="moremodeling.html#comparing-models"><i class="fa fa-check"></i><b>18.6</b> Comparing models</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>19</b> Working with GitHub</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="github.html"><a href="github.html#basic-idea"><i class="fa fa-check"></i><b>19.1</b> Basic idea</a></li>
+<li class="chapter" data-level="19.2" data-path="github.html"><a href="github.html#a-couple-invaluable-websites"><i class="fa fa-check"></i><b>19.2</b> A couple invaluable websites</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html"><i class="fa fa-check"></i><b>20</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#machine-learning-for-mds"><i class="fa fa-check"></i><b>20.1</b> Machine learning for MD’s</a></li>
+<li class="chapter" data-level="20.2" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#supervised-versus-unsuperised-learning"><i class="fa fa-check"></i><b>20.2</b> Supervised versus unsuperised learning</a></li>
+<li class="chapter" data-level="20.3" data-path="explainingmachinelearning.html"><a href="explainingmachinelearning.html#classification-versus-regression"><i class="fa fa-check"></i><b>20.3</b> Classification versus regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -333,7 +362,7 @@ div.csl-indent {
 <pre><code>## Getting data from the 2010 decennial Census</code></pre>
 <pre><code>## Using Census Summary File 1</code></pre>
 <div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="census.html#cb507-1" aria-hidden="true" tabindex="-1"></a>pop10</span></code></pre></div>
-<pre><code>## # A tibble: 52 x 4
+<pre><code>## # A tibble: 52 × 4
 ##    GEOID NAME        variable    value
 ##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
 ##  1 01    Alabama     P001001   4779736
@@ -362,7 +391,7 @@ div.csl-indent {
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <pre><code>## Loading ACS5 variables for 2019 from table B01001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
 <div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="census.html#cb517-1" aria-hidden="true" tabindex="-1"></a>age_table</span></code></pre></div>
-<pre><code>## # A tibble: 2,548 x 5
+<pre><code>## # A tibble: 2,548 × 5
 ##    GEOID NAME    variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 01    Alabama B01001_001  4876250    NA
@@ -383,7 +412,7 @@ div.csl-indent {
 <span id="cb519-4"><a href="census.html#cb519-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span>  <span class="dv">2019</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="census.html#cb521-1" aria-hidden="true" tabindex="-1"></a>wi_income</span></code></pre></div>
-<pre><code>## # A tibble: 72 x 5
+<pre><code>## # A tibble: 72 × 5
 ##    GEOID NAME                       variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                      &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 55001 Adams County, Wisconsin    B19013_001    46369  1834
@@ -404,25 +433,25 @@ div.csl-indent {
 <span id="cb523-4"><a href="census.html#cb523-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">county =</span>  <span class="st">&quot;Dane&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="census.html#cb525-1" aria-hidden="true" tabindex="-1"></a>dane_income</span></code></pre></div>
-<pre><code>## # A tibble: 107 x 5
-##    GEOID       NAME                                     variable  estimate   moe
-##    &lt;chr&gt;       &lt;chr&gt;                                    &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
-##  1 55025000100 Census Tract 1, Dane County, Wisconsin   B19013_0…    72471 12984
-##  2 55025000201 Census Tract 2.01, Dane County, Wiscons… B19013_0…    94821 11860
-##  3 55025000202 Census Tract 2.02, Dane County, Wiscons… B19013_0…    84145  7021
-##  4 55025000204 Census Tract 2.04, Dane County, Wiscons… B19013_0…    79617 11823
-##  5 55025000205 Census Tract 2.05, Dane County, Wiscons… B19013_0…    91326 13453
-##  6 55025000300 Census Tract 3, Dane County, Wisconsin   B19013_0…    53778  7593
-##  7 55025000401 Census Tract 4.01, Dane County, Wiscons… B19013_0…    98178  7330
-##  8 55025000402 Census Tract 4.02, Dane County, Wiscons… B19013_0…   107440  6585
-##  9 55025000405 Census Tract 4.05, Dane County, Wiscons… B19013_0…    68911  4141
-## 10 55025000406 Census Tract 4.06, Dane County, Wiscons… B19013_0…    74489 10451
+<pre><code>## # A tibble: 107 × 5
+##    GEOID       NAME                                      variable estimate   moe
+##    &lt;chr&gt;       &lt;chr&gt;                                     &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 55025000100 Census Tract 1, Dane County, Wisconsin    B19013_…    72471 12984
+##  2 55025000201 Census Tract 2.01, Dane County, Wisconsin B19013_…    94821 11860
+##  3 55025000202 Census Tract 2.02, Dane County, Wisconsin B19013_…    84145  7021
+##  4 55025000204 Census Tract 2.04, Dane County, Wisconsin B19013_…    79617 11823
+##  5 55025000205 Census Tract 2.05, Dane County, Wisconsin B19013_…    91326 13453
+##  6 55025000300 Census Tract 3, Dane County, Wisconsin    B19013_…    53778  7593
+##  7 55025000401 Census Tract 4.01, Dane County, Wisconsin B19013_…    98178  7330
+##  8 55025000402 Census Tract 4.02, Dane County, Wisconsin B19013_…   107440  6585
+##  9 55025000405 Census Tract 4.05, Dane County, Wisconsin B19013_…    68911  4141
+## 10 55025000406 Census Tract 4.06, Dane County, Wisconsin B19013_…    74489 10451
 ## # … with 97 more rows</code></pre>
 <div id="variables" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> Variables</h2>
 <div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="census.html#cb527-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2019</span>, <span class="st">&quot;acs5&quot;</span>)</span>
 <span id="cb527-2"><a href="census.html#cb527-2" aria-hidden="true" tabindex="-1"></a>vars</span></code></pre></div>
-<pre><code>## # A tibble: 27,040 x 3
+<pre><code>## # A tibble: 27,040 × 3
 ##    name       label                                    concept   
 ##    &lt;chr&gt;      &lt;chr&gt;                                    &lt;chr&gt;     
 ##  1 B01001_001 Estimate!!Total:                         SEX BY AGE
@@ -448,7 +477,7 @@ div.csl-indent {
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="census.html#cb533-1" aria-hidden="true" tabindex="-1"></a>  hhinc</span></code></pre></div>
-<pre><code>## # A tibble: 884 x 5
+<pre><code>## # A tibble: 884 × 5
 ##    GEOID NAME    variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 01    Alabama B19001_001  1897576 10370
@@ -488,27 +517,26 @@ div.csl-indent {
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
 <div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="census.html#cb543-1" aria-hidden="true" tabindex="-1"></a>hhinc_wide</span></code></pre></div>
-<pre><code>## # A tibble: 52 x 36
-##    GEOID NAME        B19001_001E B19001_001M B19001_002E B19001_002M B19001_003E
-##    &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-##  1 28    Mississippi     1100229        9887      102072        5891       72195
-##  2 29    Missouri        2458337       10406      155827        6687      111813
-##  3 30    Montana          437651        4637       23489        2194       21550
-##  4 31    Nebraska         771444        4475       37219        2805       30395
-##  5 32    Nevada          1143557        8281       68825        4164       45099
-##  6 33    New Hampsh…      541396        5389       21229        2566       16539
-##  7 34    New Jersey      3286264        9466      154374        7219       95123
-##  8 35    New Mexico       793420        7074       65613        4413       42519
-##  9 36    New York        7446812       13820      497771       10405      329325
-## 10 37    North Caro…     4046348       15467      251158        9332      187653
+<pre><code>## # A tibble: 52 × 36
+##    GEOID NAME           B19001_001E B19001_001M B19001_002E B19001_002M B19001_003E
+##    &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 28    Mississippi        1100229        9887      102072        5891       72195
+##  2 29    Missouri           2458337       10406      155827        6687      111813
+##  3 30    Montana             437651        4637       23489        2194       21550
+##  4 31    Nebraska            771444        4475       37219        2805       30395
+##  5 32    Nevada             1143557        8281       68825        4164       45099
+##  6 33    New Hampshire       541396        5389       21229        2566       16539
+##  7 34    New Jersey         3286264        9466      154374        7219       95123
+##  8 35    New Mexico          793420        7074       65613        4413       42519
+##  9 36    New York           7446812       13820      497771       10405      329325
+## 10 37    North Carolina     4046348       15467      251158        9332      187653
 ## # … with 42 more rows, and 29 more variables: B19001_003M &lt;dbl&gt;,
 ## #   B19001_004E &lt;dbl&gt;, B19001_004M &lt;dbl&gt;, B19001_005E &lt;dbl&gt;, B19001_005M &lt;dbl&gt;,
 ## #   B19001_006E &lt;dbl&gt;, B19001_006M &lt;dbl&gt;, B19001_007E &lt;dbl&gt;, B19001_007M &lt;dbl&gt;,
 ## #   B19001_008E &lt;dbl&gt;, B19001_008M &lt;dbl&gt;, B19001_009E &lt;dbl&gt;, B19001_009M &lt;dbl&gt;,
 ## #   B19001_010E &lt;dbl&gt;, B19001_010M &lt;dbl&gt;, B19001_011E &lt;dbl&gt;, B19001_011M &lt;dbl&gt;,
 ## #   B19001_012E &lt;dbl&gt;, B19001_012M &lt;dbl&gt;, B19001_013E &lt;dbl&gt;, B19001_013M &lt;dbl&gt;,
-## #   B19001_014E &lt;dbl&gt;, B19001_014M &lt;dbl&gt;, B19001_015E &lt;dbl&gt;, B19001_015M &lt;dbl&gt;,
-## #   B19001_016E &lt;dbl&gt;, B19001_016M &lt;dbl&gt;, B19001_017E &lt;dbl&gt;, B19001_017M &lt;dbl&gt;</code></pre>
+## #   B19001_014E &lt;dbl&gt;, B19001_014M &lt;dbl&gt;, B19001_015E &lt;dbl&gt;, …</code></pre>
 <div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="census.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hhinc_wide)</span></code></pre></div>
 <pre><code>## Rows: 52
 ## Columns: 36
@@ -596,19 +624,19 @@ div.csl-indent {
 <span id="cb549-7"><a href="census.html#cb549-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="census.html#cb551-1" aria-hidden="true" tabindex="-1"></a>ga_wide</span></code></pre></div>
-<pre><code>## # A tibble: 159 x 6
-##    GEOID NAME                    median_incE median_incM median_ageE median_ageM
-##    &lt;chr&gt; &lt;chr&gt;                         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-##  1 13005 Bacon County, Georgia         37519        5492        36.7         0.7
-##  2 13025 Brantley County, Georg…       38857        3480        41.1         0.8
-##  3 13017 Ben Hill County, Georg…       32229        3845        39.9         1.1
-##  4 13033 Burke County, Georgia         44151        2438        37.4         0.6
-##  5 13047 Catoosa County, Georgia       56235        2290        40.4         0.4
-##  6 13053 Chattahoochee County, …       47096        5158        24.5         0.5
-##  7 13055 Chattooga County, Geor…       36807        2268        39.4         0.7
-##  8 13073 Columbia County, Georg…       82339        3532        36.9         0.4
-##  9 13087 Decatur County, Georgia       41481        3584        37.8         0.6
-## 10 13115 Floyd County, Georgia         48336        2266        38.3         0.3
+<pre><code>## # A tibble: 159 × 6
+##    GEOID NAME                          median_incE median_incM median_ageE median_ageM
+##    &lt;chr&gt; &lt;chr&gt;                               &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 13005 Bacon County, Georgia               37519        5492        36.7         0.7
+##  2 13025 Brantley County, Georgia            38857        3480        41.1         0.8
+##  3 13017 Ben Hill County, Georgia            32229        3845        39.9         1.1
+##  4 13033 Burke County, Georgia               44151        2438        37.4         0.6
+##  5 13047 Catoosa County, Georgia             56235        2290        40.4         0.4
+##  6 13053 Chattahoochee County, Georgia       47096        5158        24.5         0.5
+##  7 13055 Chattooga County, Georgia           36807        2268        39.4         0.7
+##  8 13073 Columbia County, Georgia            82339        3532        36.9         0.4
+##  9 13087 Decatur County, Georgia             41481        3584        37.8         0.6
+## 10 13115 Floyd County, Georgia               48336        2266        38.3         0.3
 ## # … with 149 more rows</code></pre>
 <p>Let’s try something closer to home:</p>
 <div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="census.html#cb553-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
@@ -619,19 +647,19 @@ div.csl-indent {
 <span id="cb553-6"><a href="census.html#cb553-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="census.html#cb555-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide</span></code></pre></div>
-<pre><code>## # A tibble: 1,338 x 4
-##    GEOID       NAME                                      median_ageE median_ageM
-##    &lt;chr&gt;       &lt;chr&gt;                                           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 27053025401 Census Tract 254.01, Hennepin County, Mi…        37.4         3.8
-##  2 27053025805 Census Tract 258.05, Hennepin County, Mi…        52.2         6  
-##  3 27053026018 Census Tract 260.18, Hennepin County, Mi…        41.9         1.8
-##  4 27053026402 Census Tract 264.02, Hennepin County, Mi…        36.1         2.9
-##  5 27053026404 Census Tract 264.04, Hennepin County, Mi…        50.5         3.7
-##  6 27053026809 Census Tract 268.09, Hennepin County, Mi…        29.1         2.2
-##  7 27053027602 Census Tract 276.02, Hennepin County, Mi…        45.9         3.6
-##  8 27053102000 Census Tract 1020, Hennepin County, Minn…        33.9         3.6
-##  9 27053103600 Census Tract 1036, Hennepin County, Minn…        47.9         5.1
-## 10 27053022902 Census Tract 229.02, Hennepin County, Mi…        40.2         3.1
+<pre><code>## # A tibble: 1,338 × 4
+##    GEOID       NAME                                            median_ageE median_ageM
+##    &lt;chr&gt;       &lt;chr&gt;                                                 &lt;dbl&gt;       &lt;dbl&gt;
+##  1 27053025401 Census Tract 254.01, Hennepin County, Minnesota        37.4         3.8
+##  2 27053025805 Census Tract 258.05, Hennepin County, Minnesota        52.2         6  
+##  3 27053026018 Census Tract 260.18, Hennepin County, Minnesota        41.9         1.8
+##  4 27053026402 Census Tract 264.02, Hennepin County, Minnesota        36.1         2.9
+##  5 27053026404 Census Tract 264.04, Hennepin County, Minnesota        50.5         3.7
+##  6 27053026809 Census Tract 268.09, Hennepin County, Minnesota        29.1         2.2
+##  7 27053027602 Census Tract 276.02, Hennepin County, Minnesota        45.9         3.6
+##  8 27053102000 Census Tract 1020, Hennepin County, Minnesota          33.9         3.6
+##  9 27053103600 Census Tract 1036, Hennepin County, Minnesota          47.9         5.1
+## 10 27053022902 Census Tract 229.02, Hennepin County, Minnesota        40.2         3.1
 ## # … with 1,328 more rows</code></pre>
 <div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="census.html#cb557-1" aria-hidden="true" tabindex="-1"></a>vs15 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2015</span>, <span class="st">&quot;acs5&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb557-2"><a href="census.html#cb557-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -650,7 +678,7 @@ div.csl-indent {
 <span id="cb557-15"><a href="census.html#cb557-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="census.html#cb559-1" aria-hidden="true" tabindex="-1"></a>mn_wide</span></code></pre></div>
-<pre><code>## # A tibble: 87 x 18
+<pre><code>## # A tibble: 87 × 18
 ##    GEOID NAME          total_popE total_popM median_incE median_incM median_ageE
 ##    &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
 ##  1 27093 Meeker Count…      23105         NA       63452        1601        42.2
@@ -675,7 +703,7 @@ div.csl-indent {
 <span id="cb561-4"><a href="census.html#cb561-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="census.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, estimate)</span></code></pre></div>
-<pre><code>## # A tibble: 3,220 x 5
+<pre><code>## # A tibble: 3,220 × 5
 ##    GEOID NAME                          variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                         &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 51678 Lexington city, Virginia      B01002_001     22.3   0.7
@@ -690,7 +718,7 @@ div.csl-indent {
 ## 10 51830 Williamsburg city, Virginia   B01002_001     24.9   0.7
 ## # … with 3,210 more rows</code></pre>
 <div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="census.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, <span class="fu">desc</span>(estimate))</span></code></pre></div>
-<pre><code>## # A tibble: 3,220 x 5
+<pre><code>## # A tibble: 3,220 × 5
 ##    GEOID NAME                            variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                           &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 12119 Sumter County, Florida          B01002_001     67.4   0.2
@@ -723,7 +751,7 @@ div.csl-indent {
 <span id="cb568-15"><a href="census.html#cb568-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="census.html#cb570-1" aria-hidden="true" tabindex="-1"></a>az_race</span></code></pre></div>
-<pre><code>## # A tibble: 90 x 7
+<pre><code>## # A tibble: 90 × 7
 ##    GEOID NAME                    variable estimate   moe summary_est summary_moe
 ##    &lt;chr&gt; &lt;chr&gt;                   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
 ##  1 04001 Apache County, Arizona  white       13022     4       71511          NA
@@ -744,7 +772,7 @@ div.csl-indent {
 <span id="cb572-3"><a href="census.html#cb572-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, variable, percent)</span>
 <span id="cb572-4"><a href="census.html#cb572-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb572-5"><a href="census.html#cb572-5" aria-hidden="true" tabindex="-1"></a>az_race_percent</span></code></pre></div>
-<pre><code>## # A tibble: 90 x 3
+<pre><code>## # A tibble: 90 × 3
 ##    NAME                    variable percent
 ##    &lt;chr&gt;                   &lt;chr&gt;      &lt;dbl&gt;
 ##  1 Apache County, Arizona  white    18.2   
@@ -766,7 +794,7 @@ div.csl-indent {
 <span id="cb574-3"><a href="census.html#cb574-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="fu">max</span>(percent))</span>
 <span id="cb574-4"><a href="census.html#cb574-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb574-5"><a href="census.html#cb574-5" aria-hidden="true" tabindex="-1"></a>largest_group</span></code></pre></div>
-<pre><code>## # A tibble: 15 x 3
+<pre><code>## # A tibble: 15 × 3
 ## # Groups:   NAME [15]
 ##    NAME                       variable percent
 ##    &lt;chr&gt;                      &lt;chr&gt;      &lt;dbl&gt;
@@ -788,7 +816,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="census.html#cb576-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="sc">%&gt;%</span> </span>
 <span id="cb576-2"><a href="census.html#cb576-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
 <span id="cb576-3"><a href="census.html#cb576-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median_pct =</span> <span class="fu">median</span>(percent))</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
+<pre><code>## # A tibble: 6 × 2
 ##   variable median_pct
 ##   &lt;chr&gt;         &lt;dbl&gt;
 ## 1 asian         0.924
@@ -813,7 +841,7 @@ div.csl-indent {
 <span id="cb580-2"><a href="census.html#cb580-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEOID <span class="sc">==</span> <span class="st">&quot;49035100100&quot;</span>)</span>
 <span id="cb580-3"><a href="census.html#cb580-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb580-4"><a href="census.html#cb580-4" aria-hidden="true" tabindex="-1"></a>example_tract <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>NAME)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 4
+<pre><code>## # A tibble: 12 × 4
 ##    GEOID       variable   estimate   moe
 ##    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
 ##  1 49035100100 B01001_020       12    13
@@ -867,7 +895,7 @@ div.csl-indent {
 ## $ summary_moe &lt;dbl&gt; 3340, NA, 1469, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 <div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="census.html#cb598-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> metros, <span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
 <span id="cb598-2"><a href="census.html#cb598-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="census.html#cb599-1" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> metros <span class="sc">%&gt;%</span> </span>
 <span id="cb599-2"><a href="census.html#cb599-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;-.*$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb599-3"><a href="census.html#cb599-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;,.*$&quot;</span>)) <span class="sc">%&gt;%</span></span>
@@ -879,7 +907,7 @@ div.csl-indent {
 <span id="cb599-9"><a href="census.html#cb599-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb599-10"><a href="census.html#cb599-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;acs estimate (percent)&quot;</span>,</span>
 <span id="cb599-11"><a href="census.html#cb599-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">caption =</span> <span class="st">&quot;Nifty caption&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-141-2.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-140-2.png" width="672" /></p>
 </div>
 <div id="visualizing-margins-of-error" class="section level3" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Visualizing margins of error</h3>
@@ -890,7 +918,7 @@ div.csl-indent {
 <span id="cb600-5"><a href="census.html#cb600-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot; County, Maine&quot;</span>))</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="census.html#cb602-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(moe))</span></code></pre></div>
-<pre><code>## # A tibble: 16 x 5
+<pre><code>## # A tibble: 16 × 5
 ##    GEOID NAME         variable estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
 ##  1 23015 Lincoln      hhincome    57720  3240
@@ -918,7 +946,7 @@ div.csl-indent {
 <span id="cb604-7"><a href="census.html#cb604-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;2015-2019 ACS Estimate&quot;</span>,</span>
 <span id="cb604-8"><a href="census.html#cb604-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb604-9"><a href="census.html#cb604-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
 </div>
 <div id="get_estimates-and-how-to-use-them" class="section level3" number="15.2.5">
 <h3><span class="header-section-number">15.2.5</span> <code>get_estimates()</code> and how to use them</h3>
@@ -932,42 +960,42 @@ div.csl-indent {
 <span id="cb605-8"><a href="census.html#cb605-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb605-9"><a href="census.html#cb605-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb605-10"><a href="census.html#cb605-10" aria-hidden="true" tabindex="-1"></a>utah</span></code></pre></div>
-<pre><code>## # A tibble: 96 x 5
+<pre><code>## # A tibble: 96 × 5
 ##    GEOID NAME    value SEX        AGEGROUP          
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;             
 ##  1 49    Utah  3205958 Both sexes All ages          
 ##  2 49    Utah   247803 Both sexes Age 0 to 4 years  
 ##  3 49    Utah   258976 Both sexes Age 5 to 9 years  
-##  4 49    Utah   267985 Both sexes Age 10 to 14 years
-##  5 49    Utah   253847 Both sexes Age 15 to 19 years
-##  6 49    Utah   264652 Both sexes Age 20 to 24 years
-##  7 49    Utah   251376 Both sexes Age 25 to 29 years
-##  8 49    Utah   220430 Both sexes Age 30 to 34 years
-##  9 49    Utah   231242 Both sexes Age 35 to 39 years
-## 10 49    Utah   212211 Both sexes Age 40 to 44 years
+##  4 49    Utah  1614917 Male       All ages          
+##  5 49    Utah   132868 Male       Age 5 to 9 years  
+##  6 49    Utah  1591041 Female     All ages          
+##  7 49    Utah   126108 Female     Age 5 to 9 years  
+##  8 49    Utah    23039 Female     Age 80 to 84 years
+##  9 49    Utah   267985 Both sexes Age 10 to 14 years
+## 10 49    Utah   137940 Male       Age 10 to 14 years
 ## # … with 86 more rows</code></pre>
 <div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="census.html#cb607-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(utah, <span class="fu">str_detect</span>(AGEGROUP, <span class="st">&quot;^Age&quot;</span>),</span>
 <span id="cb607-2"><a href="census.html#cb607-2" aria-hidden="true" tabindex="-1"></a>                        SEX <span class="sc">!=</span> <span class="st">&quot;Both sexes&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb607-3"><a href="census.html#cb607-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">ifelse</span>(SEX <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>, <span class="sc">-</span>value, value))</span>
 <span id="cb607-4"><a href="census.html#cb607-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb607-5"><a href="census.html#cb607-5" aria-hidden="true" tabindex="-1"></a>utah_filtered</span></code></pre></div>
-<pre><code>## # A tibble: 36 x 5
-##    GEOID NAME    value SEX   AGEGROUP          
-##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;fct&gt;             
-##  1 49    Utah  -127060 Male  Age 0 to 4 years  
-##  2 49    Utah  -132868 Male  Age 5 to 9 years  
-##  3 49    Utah  -137940 Male  Age 10 to 14 years
-##  4 49    Utah  -129312 Male  Age 15 to 19 years
-##  5 49    Utah  -135806 Male  Age 20 to 24 years
-##  6 49    Utah  -129179 Male  Age 25 to 29 years
-##  7 49    Utah  -111776 Male  Age 30 to 34 years
-##  8 49    Utah  -117335 Male  Age 35 to 39 years
-##  9 49    Utah  -108090 Male  Age 40 to 44 years
-## 10 49    Utah   -89984 Male  Age 45 to 49 years
+<pre><code>## # A tibble: 36 × 5
+##    GEOID NAME    value SEX    AGEGROUP          
+##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;fct&gt;             
+##  1 49    Utah  -132868 Male   Age 5 to 9 years  
+##  2 49    Utah   126108 Female Age 5 to 9 years  
+##  3 49    Utah    23039 Female Age 80 to 84 years
+##  4 49    Utah  -137940 Male   Age 10 to 14 years
+##  5 49    Utah  -129312 Male   Age 15 to 19 years
+##  6 49    Utah   130045 Female Age 10 to 14 years
+##  7 49    Utah   124535 Female Age 15 to 19 years
+##  8 49    Utah  -135806 Male   Age 20 to 24 years
+##  9 49    Utah   128846 Female Age 20 to 24 years
+## 10 49    Utah  -111776 Male   Age 30 to 34 years
 ## # … with 26 more rows</code></pre>
 <div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="census.html#cb609-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
 <span id="cb609-2"><a href="census.html#cb609-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
 <div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="census.html#cb610-1" aria-hidden="true" tabindex="-1"></a>utah_pyramid <span class="ot">&lt;-</span> utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
 <span id="cb610-2"><a href="census.html#cb610-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>)<span class="sc">+</span></span>
 <span id="cb610-3"><a href="census.html#cb610-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Verdana&quot;</span>) <span class="sc">+</span></span>
@@ -981,10 +1009,10 @@ div.csl-indent {
 <span id="cb610-11"><a href="census.html#cb610-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: US Census Bureau population estimates and tidycensus R package&quot;</span>)</span>
 <span id="cb610-12"><a href="census.html#cb610-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb610-13"><a href="census.html#cb610-13" aria-hidden="true" tabindex="-1"></a>utah_pyramid</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-143-2.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-142-2.png" width="672" /></p>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="census.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(utah_pyramid)</span></code></pre></div>
 <div id="htmlwidget-155dce4377c038838833" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-155dce4377c038838833">{"x":{"data":[{"orientation":"v","width":[120743,126108,130045,124535,128846,122197,108654,113907,104121,86950,75046,78972,75578,64309,49913,35411,23039,22667],"base":[0.525,1.525,2.525,3.525,4.525,5.525,6.525,7.525,8.525,9.525,10.525,11.525,12.525,13.525,14.525,15.525,16.525,17.525],"x":[60371.5,63054,65022.5,62267.5,64423,61098.5,54327,56953.5,52060.5,43475,37523,39486,37789,32154.5,24956.5,17705.5,11519.5,11333.5],"y":[0.95,0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003,0.950000000000003],"text":["value:  120743<br />AGEGROUP: Age 0 to 4 years<br />SEX: Female","value:  126108<br />AGEGROUP: Age 5 to 9 years<br />SEX: Female","value:  130045<br />AGEGROUP: Age 10 to 14 years<br />SEX: Female","value:  124535<br />AGEGROUP: Age 15 to 19 years<br />SEX: Female","value:  128846<br />AGEGROUP: Age 20 to 24 years<br />SEX: Female","value:  122197<br />AGEGROUP: Age 25 to 29 years<br />SEX: Female","value:  108654<br />AGEGROUP: Age 30 to 34 years<br />SEX: Female","value:  113907<br />AGEGROUP: Age 35 to 39 years<br />SEX: Female","value:  104121<br />AGEGROUP: Age 40 to 44 years<br />SEX: Female","value:   86950<br />AGEGROUP: Age 45 to 49 years<br />SEX: Female","value:   75046<br />AGEGROUP: Age 50 to 54 years<br />SEX: Female","value:   78972<br />AGEGROUP: Age 55 to 59 years<br />SEX: Female","value:   75578<br />AGEGROUP: Age 60 to 64 years<br />SEX: Female","value:   64309<br />AGEGROUP: Age 65 to 69 years<br />SEX: Female","value:   49913<br />AGEGROUP: Age 70 to 74 years<br />SEX: Female","value:   35411<br />AGEGROUP: Age 75 to 79 years<br />SEX: Female","value:   23039<br />AGEGROUP: Age 80 to 84 years<br />SEX: Female","value:   22667<br />AGEGROUP: Age 85 years and older<br />SEX: Female"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[127060,132868,137940,129312,135806,129179,111776,117335,108090,89984,76450,76536,72048,59874,45370,30234,19148,15907],"base":[0.525,1.525,2.525,3.525,4.525,5.525,6.525,7.525,8.525,9.525,10.525,11.525,12.525,13.525,14.525,15.525,16.525,17.525],"x":[-63530,-66434,-68970,-64656,-67903,-64589.5,-55888,-58667.5,-54045,-44992,-38225,-38268,-36024,-29937,-22685,-15117,-9574,-7953.5],"y":[0.95,0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003,0.950000000000003],"text":["value: -127060<br />AGEGROUP: Age 0 to 4 years<br />SEX: Male","value: -132868<br />AGEGROUP: Age 5 to 9 years<br />SEX: Male","value: -137940<br />AGEGROUP: Age 10 to 14 years<br />SEX: Male","value: -129312<br />AGEGROUP: Age 15 to 19 years<br />SEX: Male","value: -135806<br />AGEGROUP: Age 20 to 24 years<br />SEX: Male","value: -129179<br />AGEGROUP: Age 25 to 29 years<br />SEX: Male","value: -111776<br />AGEGROUP: Age 30 to 34 years<br />SEX: Male","value: -117335<br />AGEGROUP: Age 35 to 39 years<br />SEX: Male","value: -108090<br />AGEGROUP: Age 40 to 44 years<br />SEX: Male","value:  -89984<br />AGEGROUP: Age 45 to 49 years<br />SEX: Male","value:  -76450<br />AGEGROUP: Age 50 to 54 years<br />SEX: Male","value:  -76536<br />AGEGROUP: Age 55 to 59 years<br />SEX: Male","value:  -72048<br />AGEGROUP: Age 60 to 64 years<br />SEX: Male","value:  -59874<br />AGEGROUP: Age 65 to 69 years<br />SEX: Male","value:  -45370<br />AGEGROUP: Age 70 to 74 years<br />SEX: Male","value:  -30234<br />AGEGROUP: Age 75 to 79 years<br />SEX: Male","value:  -19148<br />AGEGROUP: Age 80 to 84 years<br />SEX: Male","value:  -15907<br />AGEGROUP: Age 85 years and older<br />SEX: Male"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,0,128,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":107.397260273973},"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187},"title":{"text":"Population Structure in Utah","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-151339.25,143444.25],"tickmode":"array","ticktext":["150k","100k","50k","0k","50k","100k"],"tickvals":[-150000,-100000,-50000,0,50000,100000],"categoryorder":"array","categoryarray":["150k","100k","50k","0k","50k","100k"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,18.6],"tickmode":"array","ticktext":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"2019 Census Bureau population estimate","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":11.689497716895},"y":0.913385826771654},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"ea48722d4f73":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"ea48722d4f73","visdat":{"ea48722d4f73":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-155dce4377c038838833">{"x":{"data":[{"orientation":"v","width":[126108,23039,130045,124535,128846,108654,113907,104121,86950,78972,75578,64309,49913,120743,122197,75046,35411,22667],"base":[1.525,16.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,0.525,5.525,10.525,15.525,17.525],"x":[63054,11519.5,65022.5,62267.5,64423,54327,56953.5,52060.5,43475,39486,37789,32154.5,24956.5,60371.5,61098.5,37523,17705.5,11333.5],"y":[0.95,0.950000000000003,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.95,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003],"text":["value:  126108<br />AGEGROUP: Age 5 to 9 years<br />SEX: Female","value:   23039<br />AGEGROUP: Age 80 to 84 years<br />SEX: Female","value:  130045<br />AGEGROUP: Age 10 to 14 years<br />SEX: Female","value:  124535<br />AGEGROUP: Age 15 to 19 years<br />SEX: Female","value:  128846<br />AGEGROUP: Age 20 to 24 years<br />SEX: Female","value:  108654<br />AGEGROUP: Age 30 to 34 years<br />SEX: Female","value:  113907<br />AGEGROUP: Age 35 to 39 years<br />SEX: Female","value:  104121<br />AGEGROUP: Age 40 to 44 years<br />SEX: Female","value:   86950<br />AGEGROUP: Age 45 to 49 years<br />SEX: Female","value:   78972<br />AGEGROUP: Age 55 to 59 years<br />SEX: Female","value:   75578<br />AGEGROUP: Age 60 to 64 years<br />SEX: Female","value:   64309<br />AGEGROUP: Age 65 to 69 years<br />SEX: Female","value:   49913<br />AGEGROUP: Age 70 to 74 years<br />SEX: Female","value:  120743<br />AGEGROUP: Age 0 to 4 years<br />SEX: Female","value:  122197<br />AGEGROUP: Age 25 to 29 years<br />SEX: Female","value:   75046<br />AGEGROUP: Age 50 to 54 years<br />SEX: Female","value:   35411<br />AGEGROUP: Age 75 to 79 years<br />SEX: Female","value:   22667<br />AGEGROUP: Age 85 years and older<br />SEX: Female"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[132868,137940,129312,135806,111776,117335,108090,89984,76536,72048,59874,45370,19148,15907,127060,129179,76450,30234],"base":[1.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,16.525,17.525,0.525,5.525,10.525,15.525],"x":[-66434,-68970,-64656,-67903,-55888,-58667.5,-54045,-44992,-38268,-36024,-29937,-22685,-9574,-7953.5,-63530,-64589.5,-38225,-15117],"y":[0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000003,0.950000000000003,0.95,0.949999999999999,0.949999999999999,0.950000000000001],"text":["value: -132868<br />AGEGROUP: Age 5 to 9 years<br />SEX: Male","value: -137940<br />AGEGROUP: Age 10 to 14 years<br />SEX: Male","value: -129312<br />AGEGROUP: Age 15 to 19 years<br />SEX: Male","value: -135806<br />AGEGROUP: Age 20 to 24 years<br />SEX: Male","value: -111776<br />AGEGROUP: Age 30 to 34 years<br />SEX: Male","value: -117335<br />AGEGROUP: Age 35 to 39 years<br />SEX: Male","value: -108090<br />AGEGROUP: Age 40 to 44 years<br />SEX: Male","value:  -89984<br />AGEGROUP: Age 45 to 49 years<br />SEX: Male","value:  -76536<br />AGEGROUP: Age 55 to 59 years<br />SEX: Male","value:  -72048<br />AGEGROUP: Age 60 to 64 years<br />SEX: Male","value:  -59874<br />AGEGROUP: Age 65 to 69 years<br />SEX: Male","value:  -45370<br />AGEGROUP: Age 70 to 74 years<br />SEX: Male","value:  -19148<br />AGEGROUP: Age 80 to 84 years<br />SEX: Male","value:  -15907<br />AGEGROUP: Age 85 years and older<br />SEX: Male","value: -127060<br />AGEGROUP: Age 0 to 4 years<br />SEX: Male","value: -129179<br />AGEGROUP: Age 25 to 29 years<br />SEX: Male","value:  -76450<br />AGEGROUP: Age 50 to 54 years<br />SEX: Male","value:  -30234<br />AGEGROUP: Age 75 to 79 years<br />SEX: Male"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,0,128,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":107.397260273973},"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187},"title":{"text":"Population Structure in Utah","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-151339.25,143444.25],"tickmode":"array","ticktext":["150k","100k","50k","0k","50k","100k"],"tickvals":[-150000,-100000,-50000,0,50000,100000],"categoryorder":"array","categoryarray":["150k","100k","50k","0k","50k","100k"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,18.6],"tickmode":"array","ticktext":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"2019 Census Bureau population estimate","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":11.689497716895},"y":0.913385826771654},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"89e633378162":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"89e633378162","visdat":{"89e633378162":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="ggbeeswarm-automates-some-jitter-considerations" class="section level3" number="15.2.6">
 <h3><span class="header-section-number">15.2.6</span> <code>ggbeeswarm()</code> automates some jitter considerations</h3>
@@ -1018,7 +1046,9 @@ div.csl-indent {
 <span id="cb614-14"><a href="census.html#cb614-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Census Tracts, Twin Cities Metro Area&quot;</span>,</span>
 <span id="cb614-15"><a href="census.html#cb614-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: 2015-2019 ACS&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 3 rows containing missing values (position_quasirandom).</code></pre>
-<p><img src="test-book_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
+## use `guide = &quot;none&quot;` instead.</code></pre>
+<p><img src="test-book_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -1033,7 +1063,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1073,6 +1102,10 @@ gitbook.start({
 "text": null
 },
 "download": ["test-book.pdf", "test-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
