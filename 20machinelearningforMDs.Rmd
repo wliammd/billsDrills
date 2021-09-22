@@ -17,6 +17,8 @@ But let's back up and ask: what role does DS/ML play? Drew Conway's classic desc
 The Conway venn diagram looks like this: 
 ![Conway on Data Science](otherImages/Drew_Conway_venn.png)
 
+One of the best references for learning about machine learning is Greener et al.
+
 ## Supervised versus unsuperised learning
 
 ## Classification versus regression
