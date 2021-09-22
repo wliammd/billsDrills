@@ -122,3 +122,5 @@ explainingmachinelearning
 machine-learning-for-mds
 supervised-versus-unsuperised-learning
 classification-versus-regression
+improving-legibility-change-the-linetype
+removing-duplicates
