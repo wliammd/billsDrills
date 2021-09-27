@@ -71,6 +71,8 @@ All packages are maintained in `packages.bib`.
 
 In the knitted document, references appear automatically at the end of ~~a chapter~~ the document.  
 
+The **citr** package may not be fully supported anymore, since it's off no longer available directly from CRAN. If need be, look into ***RefMangeR** and **bibtex** at this URL: <https://monashdatafluency.github.io/r-rep-res/citations.html>.
+
 ## Figures.   
 
  **tidverse** and **gglplot2** are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables. 
