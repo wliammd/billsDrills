@@ -32,7 +32,7 @@
   
 <link rel="prev" href="subset.html"/>
 <link rel="next" href="sampling.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -225,6 +225,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+<li class="chapter" data-level="7.7" data-path="dataexploration.html"><a href="dataexploration.html#removing-duplicates"><i class="fa fa-check"></i><b>7.7</b> Removing duplicates</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
 <ul>
@@ -554,6 +555,81 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 <span id="cb229-6"><a href="dataexploration.html#cb229-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">draw.legend =</span> <span class="cn">FALSE</span>, <span class="at">n.icons =</span> n, <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
 <span id="cb229-7"><a href="dataexploration.html#cb229-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+</div>
+<div id="removing-duplicates" class="section level2" number="7.7">
+<h2><span class="header-section-number">7.7</span> Removing duplicates</h2>
+<p>The following is taken from <a href="https://www.r-bloggers.com/2021/08/how-to-remove-duplicates-in-r-with-example/" class="uri">https://www.r-bloggers.com/2021/08/how-to-remove-duplicates-in-r-with-example/</a>.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="dataexploration.html#cb230-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Column1 =</span> <span class="fu">c</span>(<span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P4&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P4&#39;</span>), <span class="at">Column2 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">14</span>))</span>
+<span id="cb230-2"><a href="dataexploration.html#cb230-2" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>##    Column1 Column2
+## 1       P1       5
+## 2       P1       5
+## 3       P2       3
+## 4       P3       5
+## 5       P1       2
+## 6       P1       3
+## 7       P3       4
+## 8       P4       7
+## 9       P2      10
+## 10      P4      14</code></pre>
+<p>Note the duplication of rows with P1 and 5. The whole row can be removed as follows.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="dataexploration.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data)</span></code></pre></div>
+<pre><code>##   Column1 Column2
+## 1      P1       5
+## 2      P2       3
+## 3      P3       5
+## 4      P1       2
+## 5      P1       3
+## 6      P3       4
+## 7      P4       7
+## 8      P2      10
+## 9      P4      14</code></pre>
+<p>Reduplicated information in a column can also be removed:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="dataexploration.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2)</span></code></pre></div>
+<pre><code>##   Column2
+## 1       5
+## 2       3
+## 3       2
+## 4       4
+## 5       7
+## 6      10
+## 7      14</code></pre>
+<p>To remove duplicates from a column but to keep all the information in Column1:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="dataexploration.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##   Column1 Column2
+## 1      P1       5
+## 2      P2       3
+## 3      P1       2
+## 4      P3       4
+## 5      P4       7
+## 6      P2      10
+## 7      P4      14</code></pre>
+<p>The <strong>duplicated</strong> function can also be used.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="dataexploration.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(data)</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="dataexploration.html#cb240-1" aria-hidden="true" tabindex="-1"></a>data[<span class="sc">!</span><span class="fu">duplicated</span>(data),]</span></code></pre></div>
+<pre><code>##    Column1 Column2
+## 1       P1       5
+## 3       P2       3
+## 4       P3       5
+## 5       P1       2
+## 6       P1       3
+## 7       P3       4
+## 8       P4       7
+## 9       P2      10
+## 10      P4      14</code></pre>
+<p>Finally, <strong>unique</strong> is also useful:</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="dataexploration.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(data)</span></code></pre></div>
+<pre><code>##    Column1 Column2
+## 1       P1       5
+## 3       P2       3
+## 4       P3       5
+## 5       P1       2
+## 6       P1       3
+## 7       P3       4
+## 8       P4       7
+## 9       P2      10
+## 10      P4      14</code></pre>
 
 </div>
 </div>

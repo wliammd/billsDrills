@@ -32,7 +32,7 @@
   
 <link rel="prev" href="knncv.html"/>
 <link rel="next" href="moremodeling.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -225,6 +225,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+<li class="chapter" data-level="7.7" data-path="dataexploration.html"><a href="dataexploration.html#removing-duplicates"><i class="fa fa-check"></i><b>7.7</b> Removing duplicates</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
 <ul>
@@ -349,8 +350,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="modeling" class="section level1" number="17">
 <h1><span class="header-section-number">Chapter 17</span> Modeling</h1>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="modeling.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb644-2"><a href="modeling.html#cb644-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="modeling.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb658-2"><a href="modeling.html#cb658-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span></code></pre></div>
 <div id="resources" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> Resources:</h2>
 <p>Stefania Ashby has nice observations and comments her code very well at <a href="https://neurospection.netlify.app/post/machine-learning-basics-with-caret" class="uri">https://neurospection.netlify.app/post/machine-learning-basics-with-caret</a></p>
@@ -387,7 +388,7 @@ div.csl-indent {
 <p>Modeling is a mode of <code>supervised learning</code>, which can be divided into <code>classification</code> and <code>regression</code>.</p>
 <p><strong>Root mean squared error</strong>, <code>RMSE</code>, is an important concept in regression problems. For a review of what is meant by RMSE, see this Wikipedia page: <a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation" class="uri">https://en.wikipedia.org/wiki/Root-mean-square_deviation</a>. The units RMSE are the same as the original data, so it is very interpretable.</p>
 <p>It’s worth taking a more careful look at RMSE, and practicing with it, to illustrate the underlying methods of regression before we get into <strong>caret</strong>.</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="modeling.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(diamonds)</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="modeling.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(diamonds)</span></code></pre></div>
 <pre><code>## Rows: 53,940
 ## Columns: 10
 ## $ carat   &lt;dbl&gt; 0.23, 0.21, 0.23, 0.29, 0.31, 0.24, 0.24, 0.26, 0.22, 0.23, 0.…
@@ -400,17 +401,17 @@ div.csl-indent {
 ## $ x       &lt;dbl&gt; 3.95, 3.89, 4.05, 4.20, 4.34, 3.94, 3.95, 4.07, 3.87, 4.00, 4.…
 ## $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05, 4.…
 ## $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</code></pre>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="modeling.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model: model</span></span>
-<span id="cb647-2"><a href="modeling.html#cb647-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>., diamonds)</span>
-<span id="cb647-3"><a href="modeling.html#cb647-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb647-4"><a href="modeling.html#cb647-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on full data: p</span></span>
-<span id="cb647-5"><a href="modeling.html#cb647-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">predict</span>(model, diamonds)</span>
-<span id="cb647-6"><a href="modeling.html#cb647-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb647-7"><a href="modeling.html#cb647-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute errors: error</span></span>
-<span id="cb647-8"><a href="modeling.html#cb647-8" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span>p<span class="sc">-</span>diamonds<span class="sc">$</span>price</span>
-<span id="cb647-9"><a href="modeling.html#cb647-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb647-10"><a href="modeling.html#cb647-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
-<span id="cb647-11"><a href="modeling.html#cb647-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="modeling.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model: model</span></span>
+<span id="cb661-2"><a href="modeling.html#cb661-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>., diamonds)</span>
+<span id="cb661-3"><a href="modeling.html#cb661-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb661-4"><a href="modeling.html#cb661-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on full data: p</span></span>
+<span id="cb661-5"><a href="modeling.html#cb661-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">predict</span>(model, diamonds)</span>
+<span id="cb661-6"><a href="modeling.html#cb661-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb661-7"><a href="modeling.html#cb661-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute errors: error</span></span>
+<span id="cb661-8"><a href="modeling.html#cb661-8" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span>p<span class="sc">-</span>diamonds<span class="sc">$</span>price</span>
+<span id="cb661-9"><a href="modeling.html#cb661-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb661-10"><a href="modeling.html#cb661-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
+<span id="cb661-11"><a href="modeling.html#cb661-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 1129.843</code></pre>
 <p>Note that the RMSE in this case is $1129.84, which is in keeping with what we know about the price of diamonds, which range from $326 to $18823 and average $3932.8.</p>
 <p>Within-sample RMSE always overestimates model accuracy–the model only “knows” what it has encountered, not what the rest of the universe holds in store. Hence, out-of-sample data is checked with the model by some means. A separate “validation set” of sample points is provided (as we did when we moved from exploration to validation in our first pituitary adenoma paper).</p>
@@ -424,53 +425,53 @@ div.csl-indent {
 <div id="out-of-sample-error-example" class="section level2" number="17.5">
 <h2><span class="header-section-number">17.5</span> Out of sample error example</h2>
 <p>This example from the DataCamp course divides <code>diamonds</code> into test and training sets. Note the assumptions that get built into the process: the use of 80% train/20% test, for instance. How does one arrive at this figure?</p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="modeling.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
-<span id="cb649-2"><a href="modeling.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb649-3"><a href="modeling.html#cb649-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-4"><a href="modeling.html#cb649-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle row indices in case the data set is inhomogeneous: rows</span></span>
-<span id="cb649-5"><a href="modeling.html#cb649-5" aria-hidden="true" tabindex="-1"></a>rows<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="fu">nrow</span>(diamonds))</span>
-<span id="cb649-6"><a href="modeling.html#cb649-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-7"><a href="modeling.html#cb649-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly order data</span></span>
-<span id="cb649-8"><a href="modeling.html#cb649-8" aria-hidden="true" tabindex="-1"></a>shuffled_diamonds<span class="ot">&lt;-</span>diamonds[rows,]</span>
-<span id="cb649-9"><a href="modeling.html#cb649-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-10"><a href="modeling.html#cb649-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine row to split on: split</span></span>
-<span id="cb649-11"><a href="modeling.html#cb649-11" aria-hidden="true" tabindex="-1"></a>split<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">nrow</span>(diamonds)<span class="sc">*</span><span class="fl">0.80</span>)</span>
-<span id="cb649-12"><a href="modeling.html#cb649-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-13"><a href="modeling.html#cb649-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create train</span></span>
-<span id="cb649-14"><a href="modeling.html#cb649-14" aria-hidden="true" tabindex="-1"></a>train<span class="ot">&lt;-</span>diamonds[<span class="dv">1</span><span class="sc">:</span>split,]</span>
-<span id="cb649-15"><a href="modeling.html#cb649-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-16"><a href="modeling.html#cb649-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test</span></span>
-<span id="cb649-17"><a href="modeling.html#cb649-17" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>diamonds[(split<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(diamonds),]</span>
-<span id="cb649-18"><a href="modeling.html#cb649-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-19"><a href="modeling.html#cb649-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model on train: model</span></span>
-<span id="cb649-20"><a href="modeling.html#cb649-20" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>., train)</span>
-<span id="cb649-21"><a href="modeling.html#cb649-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-22"><a href="modeling.html#cb649-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on test: p</span></span>
-<span id="cb649-23"><a href="modeling.html#cb649-23" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">predict</span>(model, test)</span>
-<span id="cb649-24"><a href="modeling.html#cb649-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-25"><a href="modeling.html#cb649-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute errors: error</span></span>
-<span id="cb649-26"><a href="modeling.html#cb649-26" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> p <span class="sc">-</span>  test<span class="sc">$</span>price</span>
-<span id="cb649-27"><a href="modeling.html#cb649-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb649-28"><a href="modeling.html#cb649-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
-<span id="cb649-29"><a href="modeling.html#cb649-29" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="modeling.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb663-2"><a href="modeling.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb663-3"><a href="modeling.html#cb663-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-4"><a href="modeling.html#cb663-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle row indices in case the data set is inhomogeneous: rows</span></span>
+<span id="cb663-5"><a href="modeling.html#cb663-5" aria-hidden="true" tabindex="-1"></a>rows<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="fu">nrow</span>(diamonds))</span>
+<span id="cb663-6"><a href="modeling.html#cb663-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-7"><a href="modeling.html#cb663-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly order data</span></span>
+<span id="cb663-8"><a href="modeling.html#cb663-8" aria-hidden="true" tabindex="-1"></a>shuffled_diamonds<span class="ot">&lt;-</span>diamonds[rows,]</span>
+<span id="cb663-9"><a href="modeling.html#cb663-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-10"><a href="modeling.html#cb663-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine row to split on: split</span></span>
+<span id="cb663-11"><a href="modeling.html#cb663-11" aria-hidden="true" tabindex="-1"></a>split<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">nrow</span>(diamonds)<span class="sc">*</span><span class="fl">0.80</span>)</span>
+<span id="cb663-12"><a href="modeling.html#cb663-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-13"><a href="modeling.html#cb663-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create train</span></span>
+<span id="cb663-14"><a href="modeling.html#cb663-14" aria-hidden="true" tabindex="-1"></a>train<span class="ot">&lt;-</span>diamonds[<span class="dv">1</span><span class="sc">:</span>split,]</span>
+<span id="cb663-15"><a href="modeling.html#cb663-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-16"><a href="modeling.html#cb663-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test</span></span>
+<span id="cb663-17"><a href="modeling.html#cb663-17" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>diamonds[(split<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(diamonds),]</span>
+<span id="cb663-18"><a href="modeling.html#cb663-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-19"><a href="modeling.html#cb663-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model on train: model</span></span>
+<span id="cb663-20"><a href="modeling.html#cb663-20" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(price<span class="sc">~</span>., train)</span>
+<span id="cb663-21"><a href="modeling.html#cb663-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-22"><a href="modeling.html#cb663-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on test: p</span></span>
+<span id="cb663-23"><a href="modeling.html#cb663-23" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">predict</span>(model, test)</span>
+<span id="cb663-24"><a href="modeling.html#cb663-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-25"><a href="modeling.html#cb663-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute errors: error</span></span>
+<span id="cb663-26"><a href="modeling.html#cb663-26" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> p <span class="sc">-</span>  test<span class="sc">$</span>price</span>
+<span id="cb663-27"><a href="modeling.html#cb663-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb663-28"><a href="modeling.html#cb663-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate RMSE</span></span>
+<span id="cb663-29"><a href="modeling.html#cb663-29" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 796.8922</code></pre>
 <p>So the RMSE for the model of diamond price, as measured by dividing the set this way, is $796.89.</p>
 </div>
 <div id="a-regression-example-from-the-course-this-time-using-caret" class="section level2" number="17.6">
 <h2><span class="header-section-number">17.6</span> A regression example from the course, this time using <strong>caret</strong></h2>
 <p>Note that the <code>train()</code> function has the method characteristic that can choose the type of model and that the <code>trainControl()</code> function has a method that determines cross validation. The number characteristic refers to the number of folds of cross validation. 10-fold cross validation is common, but takes more time than the use of smaller numbers. 5-fold will be used here to improve the speed of the processing.</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="modeling.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb651-2"><a href="modeling.html#cb651-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb651-3"><a href="modeling.html#cb651-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb651-4"><a href="modeling.html#cb651-4" aria-hidden="true" tabindex="-1"></a>  price<span class="sc">~</span>., </span>
-<span id="cb651-5"><a href="modeling.html#cb651-5" aria-hidden="true" tabindex="-1"></a>  diamonds,</span>
-<span id="cb651-6"><a href="modeling.html#cb651-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb651-7"><a href="modeling.html#cb651-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb651-8"><a href="modeling.html#cb651-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb651-9"><a href="modeling.html#cb651-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
-<span id="cb651-10"><a href="modeling.html#cb651-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb651-11"><a href="modeling.html#cb651-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb651-12"><a href="modeling.html#cb651-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="modeling.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb665-2"><a href="modeling.html#cb665-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb665-3"><a href="modeling.html#cb665-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb665-4"><a href="modeling.html#cb665-4" aria-hidden="true" tabindex="-1"></a>  price<span class="sc">~</span>., </span>
+<span id="cb665-5"><a href="modeling.html#cb665-5" aria-hidden="true" tabindex="-1"></a>  diamonds,</span>
+<span id="cb665-6"><a href="modeling.html#cb665-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb665-7"><a href="modeling.html#cb665-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb665-8"><a href="modeling.html#cb665-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb665-9"><a href="modeling.html#cb665-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
+<span id="cb665-10"><a href="modeling.html#cb665-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb665-11"><a href="modeling.html#cb665-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb665-12"><a href="modeling.html#cb665-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: intercept=TRUE 
 ## - Fold1: intercept=TRUE 
 ## + Fold2: intercept=TRUE 
@@ -483,8 +484,8 @@ div.csl-indent {
 ## - Fold5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="modeling.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb653-2"><a href="modeling.html#cb653-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="modeling.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb667-2"><a href="modeling.html#cb667-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 53940 samples
@@ -501,7 +502,7 @@ div.csl-indent {
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <p>Note that <strong>caret</strong> handles the work of splitting test sets and calculating RMSE.</p>
 <p>Another example from the DataCamp course.</p>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="modeling.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="modeling.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;MASS&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:plotly&#39;:
@@ -510,17 +511,17 @@ div.csl-indent {
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="modeling.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5-fold CV: model</span></span>
-<span id="cb659-2"><a href="modeling.html#cb659-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb659-3"><a href="modeling.html#cb659-3" aria-hidden="true" tabindex="-1"></a>  medv<span class="sc">~</span>., </span>
-<span id="cb659-4"><a href="modeling.html#cb659-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
-<span id="cb659-5"><a href="modeling.html#cb659-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb659-6"><a href="modeling.html#cb659-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb659-7"><a href="modeling.html#cb659-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb659-8"><a href="modeling.html#cb659-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
-<span id="cb659-9"><a href="modeling.html#cb659-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb659-10"><a href="modeling.html#cb659-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb659-11"><a href="modeling.html#cb659-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="modeling.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5-fold CV: model</span></span>
+<span id="cb673-2"><a href="modeling.html#cb673-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb673-3"><a href="modeling.html#cb673-3" aria-hidden="true" tabindex="-1"></a>  medv<span class="sc">~</span>., </span>
+<span id="cb673-4"><a href="modeling.html#cb673-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
+<span id="cb673-5"><a href="modeling.html#cb673-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb673-6"><a href="modeling.html#cb673-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb673-7"><a href="modeling.html#cb673-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb673-8"><a href="modeling.html#cb673-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
+<span id="cb673-9"><a href="modeling.html#cb673-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb673-10"><a href="modeling.html#cb673-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb673-11"><a href="modeling.html#cb673-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: intercept=TRUE 
 ## - Fold1: intercept=TRUE 
 ## + Fold2: intercept=TRUE 
@@ -533,8 +534,8 @@ div.csl-indent {
 ## - Fold5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="modeling.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb661-2"><a href="modeling.html#cb661-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="modeling.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb675-2"><a href="modeling.html#cb675-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 506 samples
@@ -550,18 +551,18 @@ div.csl-indent {
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
 <p>Cross validation can <em>itself</em> be repeated. The following is a 5-fold cross validation repeated 5 times.</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="modeling.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5 x 5-fold CV: model</span></span>
-<span id="cb663-2"><a href="modeling.html#cb663-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb663-3"><a href="modeling.html#cb663-3" aria-hidden="true" tabindex="-1"></a>  medv <span class="sc">~</span> ., </span>
-<span id="cb663-4"><a href="modeling.html#cb663-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
-<span id="cb663-5"><a href="modeling.html#cb663-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb663-6"><a href="modeling.html#cb663-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb663-7"><a href="modeling.html#cb663-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, </span>
-<span id="cb663-8"><a href="modeling.html#cb663-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
-<span id="cb663-9"><a href="modeling.html#cb663-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">repeats =</span> <span class="dv">5</span>, </span>
-<span id="cb663-10"><a href="modeling.html#cb663-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb663-11"><a href="modeling.html#cb663-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb663-12"><a href="modeling.html#cb663-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="modeling.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit lm model using 5 x 5-fold CV: model</span></span>
+<span id="cb677-2"><a href="modeling.html#cb677-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb677-3"><a href="modeling.html#cb677-3" aria-hidden="true" tabindex="-1"></a>  medv <span class="sc">~</span> ., </span>
+<span id="cb677-4"><a href="modeling.html#cb677-4" aria-hidden="true" tabindex="-1"></a>  Boston,</span>
+<span id="cb677-5"><a href="modeling.html#cb677-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb677-6"><a href="modeling.html#cb677-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb677-7"><a href="modeling.html#cb677-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, </span>
+<span id="cb677-8"><a href="modeling.html#cb677-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
+<span id="cb677-9"><a href="modeling.html#cb677-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">repeats =</span> <span class="dv">5</span>, </span>
+<span id="cb677-10"><a href="modeling.html#cb677-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb677-11"><a href="modeling.html#cb677-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb677-12"><a href="modeling.html#cb677-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1.Rep1: intercept=TRUE 
 ## - Fold1.Rep1: intercept=TRUE 
 ## + Fold2.Rep1: intercept=TRUE 
@@ -614,8 +615,8 @@ div.csl-indent {
 ## - Fold5.Rep5: intercept=TRUE 
 ## Aggregating results
 ## Fitting final model on full training set</code></pre>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="modeling.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb665-2"><a href="modeling.html#cb665-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="modeling.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb679-2"><a href="modeling.html#cb679-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Linear Regression 
 ## 
 ## 506 samples
@@ -630,73 +631,73 @@ div.csl-indent {
 ##   4.8764  0.722424  3.421333
 ## 
 ## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="modeling.html#cb667-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, Boston)</span>
-<span id="cb667-2"><a href="modeling.html#cb667-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-3"><a href="modeling.html#cb667-3" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> p <span class="sc">-</span> Boston<span class="sc">$</span>medv</span>
-<span id="cb667-4"><a href="modeling.html#cb667-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-5"><a href="modeling.html#cb667-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="modeling.html#cb681-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, Boston)</span>
+<span id="cb681-2"><a href="modeling.html#cb681-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb681-3"><a href="modeling.html#cb681-3" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> p <span class="sc">-</span> Boston<span class="sc">$</span>medv</span>
+<span id="cb681-4"><a href="modeling.html#cb681-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb681-5"><a href="modeling.html#cb681-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(error<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 4.679191</code></pre>
 </div>
 <div id="classification" class="section level2" number="17.7">
 <h2><span class="header-section-number">17.7</span> Classification</h2>
 <div id="an-rpart-classification-example." class="section level3" number="17.7.1">
 <h3><span class="header-section-number">17.7.1</span> An <strong>rpart</strong> classification example.</h3>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="modeling.html#cb669-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
-<span id="cb669-2"><a href="modeling.html#cb669-2" aria-hidden="true" tabindex="-1"></a>  Species <span class="sc">~</span> .,</span>
-<span id="cb669-3"><a href="modeling.html#cb669-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
-<span id="cb669-4"><a href="modeling.html#cb669-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;class&quot;</span></span>
-<span id="cb669-5"><a href="modeling.html#cb669-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb669-6"><a href="modeling.html#cb669-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb669-7"><a href="modeling.html#cb669-7" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, iris, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
-<span id="cb669-8"><a href="modeling.html#cb669-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicted)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="modeling.html#cb683-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb683-2"><a href="modeling.html#cb683-2" aria-hidden="true" tabindex="-1"></a>  Species <span class="sc">~</span> .,</span>
+<span id="cb683-3"><a href="modeling.html#cb683-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
+<span id="cb683-4"><a href="modeling.html#cb683-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;class&quot;</span></span>
+<span id="cb683-5"><a href="modeling.html#cb683-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb683-6"><a href="modeling.html#cb683-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-7"><a href="modeling.html#cb683-7" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, iris, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb683-8"><a href="modeling.html#cb683-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicted)</span></code></pre></div>
 <pre><code>##      1      2      3      4      5      6 
 ## setosa setosa setosa setosa setosa setosa 
 ## Levels: setosa versicolor virginica</code></pre>
 <p>Study what’s going on in <strong>predict()</strong>:</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="modeling.html#cb671-1" aria-hidden="true" tabindex="-1"></a>?predict.rpart</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="modeling.html#cb685-1" aria-hidden="true" tabindex="-1"></a>?predict.rpart</span></code></pre></div>
 <p>So <strong>predict()</strong> uses the model to assign a predicted value to Species based on the rest of the iris dataset data.</p>
 <p>The accuracy of this prediction can be tested by comparing this vector to the original Species.</p>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="modeling.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="modeling.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(predicted <span class="sc">==</span> iris<span class="sc">$</span>Species)</span></code></pre></div>
 <pre><code>## [1] 0.96</code></pre>
 </div>
 </div>
 <div id="from-the-datacamp-course" class="section level2" number="17.8">
 <h2><span class="header-section-number">17.8</span> From the DataCamp course</h2>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="modeling.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb674-2"><a href="modeling.html#cb674-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Sonar&quot;</span>)</span>
-<span id="cb674-3"><a href="modeling.html#cb674-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb674-4"><a href="modeling.html#cb674-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomize the dataset.</span></span>
-<span id="cb674-5"><a href="modeling.html#cb674-5" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(Sonar))</span>
-<span id="cb674-6"><a href="modeling.html#cb674-6" aria-hidden="true" tabindex="-1"></a>Sonar <span class="ot">&lt;-</span> Sonar[rows,]</span>
-<span id="cb674-7"><a href="modeling.html#cb674-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb674-8"><a href="modeling.html#cb674-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The split it into testing and training sets. </span></span>
-<span id="cb674-9"><a href="modeling.html#cb674-9" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">nrow</span>(Sonar)<span class="sc">*</span><span class="fl">0.60</span>)</span>
-<span id="cb674-10"><a href="modeling.html#cb674-10" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> Sonar[<span class="dv">1</span><span class="sc">:</span>split,]</span>
-<span id="cb674-11"><a href="modeling.html#cb674-11" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Sonar[(split<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(Sonar),]</span>
-<span id="cb674-12"><a href="modeling.html#cb674-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb674-13"><a href="modeling.html#cb674-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train)<span class="sc">/</span><span class="fu">nrow</span>(Sonar)</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="modeling.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb688-2"><a href="modeling.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Sonar&quot;</span>)</span>
+<span id="cb688-3"><a href="modeling.html#cb688-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-4"><a href="modeling.html#cb688-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomize the dataset.</span></span>
+<span id="cb688-5"><a href="modeling.html#cb688-5" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(Sonar))</span>
+<span id="cb688-6"><a href="modeling.html#cb688-6" aria-hidden="true" tabindex="-1"></a>Sonar <span class="ot">&lt;-</span> Sonar[rows,]</span>
+<span id="cb688-7"><a href="modeling.html#cb688-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-8"><a href="modeling.html#cb688-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The split it into testing and training sets. </span></span>
+<span id="cb688-9"><a href="modeling.html#cb688-9" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">nrow</span>(Sonar)<span class="sc">*</span><span class="fl">0.60</span>)</span>
+<span id="cb688-10"><a href="modeling.html#cb688-10" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> Sonar[<span class="dv">1</span><span class="sc">:</span>split,]</span>
+<span id="cb688-11"><a href="modeling.html#cb688-11" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Sonar[(split<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(Sonar),]</span>
+<span id="cb688-12"><a href="modeling.html#cb688-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-13"><a href="modeling.html#cb688-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train)<span class="sc">/</span><span class="fu">nrow</span>(Sonar)</span></code></pre></div>
 <pre><code>## [1] 0.6009615</code></pre>
-<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="modeling.html#cb676-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
-<span id="cb676-2"><a href="modeling.html#cb676-2" aria-hidden="true" tabindex="-1"></a>  Class <span class="sc">~</span> .,</span>
-<span id="cb676-3"><a href="modeling.html#cb676-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>),</span>
-<span id="cb676-4"><a href="modeling.html#cb676-4" aria-hidden="true" tabindex="-1"></a>  train</span>
-<span id="cb676-5"><a href="modeling.html#cb676-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="modeling.html#cb690-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb690-2"><a href="modeling.html#cb690-2" aria-hidden="true" tabindex="-1"></a>  Class <span class="sc">~</span> .,</span>
+<span id="cb690-3"><a href="modeling.html#cb690-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb690-4"><a href="modeling.html#cb690-4" aria-hidden="true" tabindex="-1"></a>  train</span>
+<span id="cb690-5"><a href="modeling.html#cb690-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="modeling.html#cb679-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb679-2"><a href="modeling.html#cb679-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="modeling.html#cb693-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb693-2"><a href="modeling.html#cb693-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(p)</span></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 ## 0.000000 0.000000 0.002428 0.438835 1.000000 1.000000</code></pre>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="modeling.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="modeling.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/mlbench-sonar-example-1.png" width="672" /></p>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="modeling.html#cb682-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
-<span id="cb682-2"><a href="modeling.html#cb682-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb682-3"><a href="modeling.html#cb682-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="modeling.html#cb696-1" aria-hidden="true" tabindex="-1"></a>p_class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(p <span class="sc">&gt;</span> <span class="fl">0.1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;R&quot;</span>))</span>
+<span id="cb696-2"><a href="modeling.html#cb696-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb696-3"><a href="modeling.html#cb696-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>##        
 ## p_class  M  R
 ##       M 11 26
 ##       R 35 11</code></pre>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="modeling.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="modeling.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(p_class, test[[<span class="st">&quot;Class&quot;</span>]])</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -726,24 +727,24 @@ div.csl-indent {
 ## </code></pre>
 <p>According to Zach Mayer in DataCamp, manually evaluating classification threshholds is hard work and arbitrary: one would need to create dozens or hundreds of confusion matrices and then manually inspect them. Receiver operator curves add a new level of complexity and usefulness.</p>
 <p>To illustrate, we take the predicted probability of each <code>Class</code> for each case of the <code>test</code> set, and compare it with its actual <code>Class</code>:</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="modeling.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
-<span id="cb686-2"><a href="modeling.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colAUC</span>(p, test[[<span class="st">&quot;Class&quot;</span>]], <span class="at">plotROC =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="modeling.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb700-2"><a href="modeling.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colAUC</span>(p, test[[<span class="st">&quot;Class&quot;</span>]], <span class="at">plotROC =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <pre><code>##              [,1]
 ## M vs. R 0.7532315</code></pre>
 <p><code>trainControl()</code> in <strong>caret</strong> can use AUC (instead of accuracy), to tune the parameters of your models. The <code>twoClassSummary()</code> convenience function allows you to do this easily.</p>
 <p>When using <code>twoClassSummary()</code>, be sure to always include the argument <code>classProbs = TRUE</code> or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)</p>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="modeling.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trainControl object: myControl</span></span>
-<span id="cb688-2"><a href="modeling.html#cb688-2" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
-<span id="cb688-3"><a href="modeling.html#cb688-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
-<span id="cb688-4"><a href="modeling.html#cb688-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
-<span id="cb688-5"><a href="modeling.html#cb688-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> twoClassSummary,</span>
-<span id="cb688-6"><a href="modeling.html#cb688-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="co"># IMPORTANT!</span></span>
-<span id="cb688-7"><a href="modeling.html#cb688-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb688-8"><a href="modeling.html#cb688-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb688-9"><a href="modeling.html#cb688-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb688-10"><a href="modeling.html#cb688-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glm with custom trainControl: model</span></span>
-<span id="cb688-11"><a href="modeling.html#cb688-11" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">train</span>(Class<span class="sc">~</span>., <span class="at">data=</span>Sonar, <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">trControl=</span>myControl)</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="modeling.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trainControl object: myControl</span></span>
+<span id="cb702-2"><a href="modeling.html#cb702-2" aria-hidden="true" tabindex="-1"></a>myControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(</span>
+<span id="cb702-3"><a href="modeling.html#cb702-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
+<span id="cb702-4"><a href="modeling.html#cb702-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb702-5"><a href="modeling.html#cb702-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">summaryFunction =</span> twoClassSummary,</span>
+<span id="cb702-6"><a href="modeling.html#cb702-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="co"># IMPORTANT!</span></span>
+<span id="cb702-7"><a href="modeling.html#cb702-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb702-8"><a href="modeling.html#cb702-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb702-9"><a href="modeling.html#cb702-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb702-10"><a href="modeling.html#cb702-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Train glm with custom trainControl: model</span></span>
+<span id="cb702-11"><a href="modeling.html#cb702-11" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">train</span>(Class<span class="sc">~</span>., <span class="at">data=</span>Sonar, <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, <span class="at">trControl=</span>myControl)</span></code></pre></div>
 <pre><code>## Warning in train.default(x, y, weights = w, ...): The metric &quot;Accuracy&quot; was not
 ## in the result set. ROC will be used instead.</code></pre>
 <pre><code>## + Fold01: parameter=none</code></pre>
@@ -800,8 +801,8 @@ div.csl-indent {
 <pre><code>## Warning: glm.fit: algorithm did not converge
 
 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="modeling.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb713-2"><a href="modeling.html#cb713-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="modeling.html#cb727-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb727-2"><a href="modeling.html#cb727-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Generalized Linear Model 
 ## 
 ## 208 samples
@@ -820,9 +821,9 @@ div.csl-indent {
 <div id="random-forest-with-caret" class="section level2" number="17.9">
 <h2><span class="header-section-number">17.9</span> Random forest with <strong>caret</strong></h2>
 <p>For this set, we’ll use the white wine quality data set from UC Irvine.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="modeling.html#cb715-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb715-2"><a href="modeling.html#cb715-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb715-3"><a href="modeling.html#cb715-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="modeling.html#cb729-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb729-2"><a href="modeling.html#cb729-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb729-3"><a href="modeling.html#cb729-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(wine)</span></code></pre></div>
 <pre><code>## Rows: 4,898
 ## Columns: 12
 ## $ fixed.acidity        &lt;dbl&gt; 7.0, 6.3, 8.1, 7.2, 7.2, 8.1, 6.2, 7.0, 6.3, 8.1,…
@@ -837,20 +838,20 @@ div.csl-indent {
 ## $ sulphates            &lt;dbl&gt; 0.45, 0.49, 0.44, 0.40, 0.40, 0.44, 0.47, 0.45, 0…
 ## $ alcohol              &lt;dbl&gt; 8.8, 9.5, 10.1, 9.9, 9.9, 10.1, 9.6, 8.8, 9.5, 11…
 ## $ quality              &lt;int&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 7, 5, 7, 6…</code></pre>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="modeling.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that quality is an integer, not a factor. **caret** seems to take this in stride. </span></span>
-<span id="cb717-2"><a href="modeling.html#cb717-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb717-3"><a href="modeling.html#cb717-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
-<span id="cb717-4"><a href="modeling.html#cb717-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb717-5"><a href="modeling.html#cb717-5" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
-<span id="cb717-6"><a href="modeling.html#cb717-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">1</span>,</span>
-<span id="cb717-7"><a href="modeling.html#cb717-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb717-8"><a href="modeling.html#cb717-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb717-9"><a href="modeling.html#cb717-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb717-10"><a href="modeling.html#cb717-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb717-11"><a href="modeling.html#cb717-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb717-12"><a href="modeling.html#cb717-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb717-13"><a href="modeling.html#cb717-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb717-14"><a href="modeling.html#cb717-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="modeling.html#cb731-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that quality is an integer, not a factor. **caret** seems to take this in stride. </span></span>
+<span id="cb731-2"><a href="modeling.html#cb731-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb731-3"><a href="modeling.html#cb731-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb731-4"><a href="modeling.html#cb731-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb731-5"><a href="modeling.html#cb731-5" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
+<span id="cb731-6"><a href="modeling.html#cb731-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">1</span>,</span>
+<span id="cb731-7"><a href="modeling.html#cb731-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb731-8"><a href="modeling.html#cb731-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb731-9"><a href="modeling.html#cb731-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb731-10"><a href="modeling.html#cb731-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb731-11"><a href="modeling.html#cb731-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb731-12"><a href="modeling.html#cb731-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb731-13"><a href="modeling.html#cb731-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb731-14"><a href="modeling.html#cb731-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry=3, min.node.size=5, splitrule=variance 
 ## - Fold1: mtry=3, min.node.size=5, splitrule=variance 
 ## + Fold1: mtry=3, min.node.size=5, splitrule=extratrees 
@@ -874,8 +875,8 @@ div.csl-indent {
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="modeling.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb719-2"><a href="modeling.html#cb719-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="modeling.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb733-2"><a href="modeling.html#cb733-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -896,20 +897,20 @@ div.csl-indent {
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 3, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="modeling.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="modeling.html#cb735-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/wine-ranger-example-1.png" width="672" /></p>
 <p>Let’s try this again with a longer <code>tuneLength</code>. This explores more models and potentially finds a better model.</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="modeling.html#cb722-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb722-2"><a href="modeling.html#cb722-2" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
-<span id="cb722-3"><a href="modeling.html#cb722-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">10</span>,</span>
-<span id="cb722-4"><a href="modeling.html#cb722-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb722-5"><a href="modeling.html#cb722-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb722-6"><a href="modeling.html#cb722-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb722-7"><a href="modeling.html#cb722-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb722-8"><a href="modeling.html#cb722-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb722-9"><a href="modeling.html#cb722-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb722-10"><a href="modeling.html#cb722-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb722-11"><a href="modeling.html#cb722-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="modeling.html#cb736-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb736-2"><a href="modeling.html#cb736-2" aria-hidden="true" tabindex="-1"></a>  quality<span class="sc">~</span>.,</span>
+<span id="cb736-3"><a href="modeling.html#cb736-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">10</span>,</span>
+<span id="cb736-4"><a href="modeling.html#cb736-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb736-5"><a href="modeling.html#cb736-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb736-6"><a href="modeling.html#cb736-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb736-7"><a href="modeling.html#cb736-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb736-8"><a href="modeling.html#cb736-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb736-9"><a href="modeling.html#cb736-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb736-10"><a href="modeling.html#cb736-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb736-11"><a href="modeling.html#cb736-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry= 2, min.node.size=5, splitrule=variance 
 ## - Fold1: mtry= 2, min.node.size=5, splitrule=variance 
 ## + Fold1: mtry= 3, min.node.size=5, splitrule=variance 
@@ -1113,8 +1114,8 @@ div.csl-indent {
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 4, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="modeling.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb724-2"><a href="modeling.html#cb724-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="modeling.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb738-2"><a href="modeling.html#cb738-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -1151,31 +1152,31 @@ div.csl-indent {
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 4, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="modeling.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="modeling.html#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/wine-tunelength-example-1.png" width="672" /></p>
 </div>
 <div id="random-forest-model-and-tunegrid" class="section level2" number="17.10">
 <h2><span class="header-section-number">17.10</span> Random forest model and <code>tuneGrid()</code></h2>
 <p>Custom tuning of grids can be used in <strong>caret</strong> by using <code>tuneGrid()</code>. While it is the most flexible method for fitting <strong>caret</strong> models and allows complete control over how the model is fit, it requires significant knowledge of the model and dramatically increases run time.</p>
 <p>For my uses, most of the time I anticipate using <code>tuneLength</code> and the default settings in <strong>caret</strong> to build my random forest models.</p>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="modeling.html#cb727-1" aria-hidden="true" tabindex="-1"></a>tuneGrid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb727-2"><a href="modeling.html#cb727-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.mtry =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
-<span id="cb727-3"><a href="modeling.html#cb727-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.splitrule =</span> <span class="st">&quot;variance&quot;</span>,</span>
-<span id="cb727-4"><a href="modeling.html#cb727-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">.min.node.size =</span> <span class="dv">5</span></span>
-<span id="cb727-5"><a href="modeling.html#cb727-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb727-6"><a href="modeling.html#cb727-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb727-7"><a href="modeling.html#cb727-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
-<span id="cb727-8"><a href="modeling.html#cb727-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb727-9"><a href="modeling.html#cb727-9" aria-hidden="true" tabindex="-1"></a>  quality <span class="sc">~</span> .,</span>
-<span id="cb727-10"><a href="modeling.html#cb727-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneGrid =</span> tuneGrid,</span>
-<span id="cb727-11"><a href="modeling.html#cb727-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
-<span id="cb727-12"><a href="modeling.html#cb727-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
-<span id="cb727-13"><a href="modeling.html#cb727-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
-<span id="cb727-14"><a href="modeling.html#cb727-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb727-15"><a href="modeling.html#cb727-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
-<span id="cb727-16"><a href="modeling.html#cb727-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
-<span id="cb727-17"><a href="modeling.html#cb727-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb727-18"><a href="modeling.html#cb727-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="modeling.html#cb741-1" aria-hidden="true" tabindex="-1"></a>tuneGrid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb741-2"><a href="modeling.html#cb741-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.mtry =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
+<span id="cb741-3"><a href="modeling.html#cb741-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.splitrule =</span> <span class="st">&quot;variance&quot;</span>,</span>
+<span id="cb741-4"><a href="modeling.html#cb741-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">.min.node.size =</span> <span class="dv">5</span></span>
+<span id="cb741-5"><a href="modeling.html#cb741-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb741-6"><a href="modeling.html#cb741-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb741-7"><a href="modeling.html#cb741-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit random forest: model</span></span>
+<span id="cb741-8"><a href="modeling.html#cb741-8" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb741-9"><a href="modeling.html#cb741-9" aria-hidden="true" tabindex="-1"></a>  quality <span class="sc">~</span> .,</span>
+<span id="cb741-10"><a href="modeling.html#cb741-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneGrid =</span> tuneGrid,</span>
+<span id="cb741-11"><a href="modeling.html#cb741-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wine, </span>
+<span id="cb741-12"><a href="modeling.html#cb741-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;ranger&quot;</span>,</span>
+<span id="cb741-13"><a href="modeling.html#cb741-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb741-14"><a href="modeling.html#cb741-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb741-15"><a href="modeling.html#cb741-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>, </span>
+<span id="cb741-16"><a href="modeling.html#cb741-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">verboseIter =</span> <span class="cn">TRUE</span></span>
+<span id="cb741-17"><a href="modeling.html#cb741-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb741-18"><a href="modeling.html#cb741-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## + Fold1: mtry=2, splitrule=variance, min.node.size=5 
 ## - Fold1: mtry=2, splitrule=variance, min.node.size=5 
 ## + Fold1: mtry=3, splitrule=variance, min.node.size=5 
@@ -1209,8 +1210,8 @@ div.csl-indent {
 ## Aggregating results
 ## Selecting tuning parameters
 ## Fitting mtry = 3, splitrule = variance, min.node.size = 5 on full training set</code></pre>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="modeling.html#cb729-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
-<span id="cb729-2"><a href="modeling.html#cb729-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="modeling.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model to console</span></span>
+<span id="cb743-2"><a href="modeling.html#cb743-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div>
 <pre><code>## Random Forest 
 ## 
 ## 4898 samples
@@ -1232,8 +1233,8 @@ div.csl-indent {
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final values used for the model were mtry = 3, splitrule = variance
 ##  and min.node.size = 5.</code></pre>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="modeling.html#cb731-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot model</span></span>
-<span id="cb731-2"><a href="modeling.html#cb731-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="modeling.html#cb745-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot model</span></span>
+<span id="cb745-2"><a href="modeling.html#cb745-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/tunegrid-example-ranger-1.png" width="672" /></p>
 
 </div>

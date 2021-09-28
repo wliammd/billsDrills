@@ -50,6 +50,7 @@ summarize-is-another-very-useful-function
 graphical-displays
 joyplots
 relative-versus-absolute-risk
+removing-duplicates
 sampling
 think-about-throwing-a-bunch-of-dice.
 a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components.
@@ -122,5 +123,3 @@ explainingmachinelearning
 machine-learning-for-mds
 supervised-versus-unsuperised-learning
 classification-versus-regression
-improving-legibility-change-the-linetype
-removing-duplicates

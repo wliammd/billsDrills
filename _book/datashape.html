@@ -32,7 +32,7 @@
   
 <link rel="prev" href="bookdownplan.html"/>
 <link rel="next" href="changenames.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -225,6 +225,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+<li class="chapter" data-level="7.7" data-path="dataexploration.html"><a href="dataexploration.html#removing-duplicates"><i class="fa fa-check"></i><b>7.7</b> Removing duplicates</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
 <ul>
@@ -839,18 +840,18 @@ div.csl-indent {
 <span id="cb80-6"><a href="datashape.html#cb80-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb80-7"><a href="datashape.html#cb80-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-8"><a href="datashape.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(df, mean)</span></code></pre></div>
-<pre><code>##         a         b         c         d 
-## 0.6163752 0.5000000 6.3340341 0.7656832</code></pre>
+<pre><code>##          a          b          c          d 
+## -0.1367806  0.5000000  5.6462561  0.8646219</code></pre>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="datashape.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(df, mean)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 4
-##       a     b     c     d
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.616   0.5  6.33 0.766</code></pre>
+##        a     b     c     d
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.137   0.5  5.65 0.865</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="datashape.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(df, mean)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 4
-##       a     b     c     d
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.616   0.5  6.33 0.766</code></pre>
+##        a     b     c     d
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.137   0.5  5.65 0.865</code></pre>
 
 </div>
 </div>

@@ -32,7 +32,7 @@
   
 <link rel="prev" href="dataexploration.html"/>
 <link rel="next" href="simulating.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -225,6 +225,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5.1" data-path="dataexploration.html"><a href="dataexploration.html#joyplots"><i class="fa fa-check"></i><b>7.5.1</b> Joyplots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="dataexploration.html"><a href="dataexploration.html#relative-versus-absolute-risk"><i class="fa fa-check"></i><b>7.6</b> Relative versus absolute risk</a></li>
+<li class="chapter" data-level="7.7" data-path="dataexploration.html"><a href="dataexploration.html#removing-duplicates"><i class="fa fa-check"></i><b>7.7</b> Removing duplicates</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>8</b> Sampling</a>
 <ul>
@@ -351,26 +352,26 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 8</span> Sampling</h1>
 <div id="think-about-throwing-a-bunch-of-dice." class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Think about throwing a bunch of dice.</h2>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="sampling.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="sampling.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) </span></code></pre></div>
 <pre><code>##   [1] 5 4 6 1 5 4 1 4 5 4 6 2 1 1 5 2 3 3 3 1 5 2 6 5 2 3 3 4 3 1 4 3 5 4 5 4 5
 ##  [38] 1 5 4 3 3 2 2 6 1 5 6 3 2 4 3 1 2 6 4 2 2 3 5 3 4 1 3 3 6 1 4 4 1 3 2 3 4
 ##  [75] 3 4 3 4 4 5 1 5 4 4 6 1 4 4 5 2 5 3 5 2 1 4 5 1 1 1</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="sampling.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="sampling.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
 <pre><code>## .
 ##  1  2  3  4  5  6 
 ## 15 18 25 15 10 17</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="sampling.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">table</span>() <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="sampling.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">table</span>() <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span></code></pre></div>
 <pre><code>## .
 ##    1    2    3    4    5    6 
 ## 0.09 0.15 0.13 0.20 0.20 0.23</code></pre>
 </div>
 <div id="a-keen-way-to-divide-up-a-dataset-into-testing-and-training-components." class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> A keen way to divide up a dataset into testing and training components.</h2>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="sampling.html#cb236-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb236-2"><a href="sampling.html#cb236-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">30</span></span>
-<span id="cb236-3"><a href="sampling.html#cb236-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb236-4"><a href="sampling.html#cb236-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x,y)</span>
-<span id="cb236-5"><a href="sampling.html#cb236-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="sampling.html#cb250-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb250-2"><a href="sampling.html#cb250-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">30</span></span>
+<span id="cb250-3"><a href="sampling.html#cb250-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-4"><a href="sampling.html#cb250-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x,y)</span>
+<span id="cb250-5"><a href="sampling.html#cb250-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##     x  y
 ## 1   1 11
 ## 2   2 12
@@ -392,13 +393,13 @@ div.csl-indent {
 ## 18  8 28
 ## 19  9 29
 ## 20 10 30</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="sampling.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb238-2"><a href="sampling.html#cb238-2" aria-hidden="true" tabindex="-1"></a>train_indexes <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), .<span class="dv">7</span> <span class="sc">*</span> <span class="fu">nrow</span>(df))</span>
-<span id="cb238-3"><a href="sampling.html#cb238-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-4"><a href="sampling.html#cb238-4" aria-hidden="true" tabindex="-1"></a>train_set <span class="ot">&lt;-</span> df[train_indexes,]</span>
-<span id="cb238-5"><a href="sampling.html#cb238-5" aria-hidden="true" tabindex="-1"></a>test_set <span class="ot">&lt;-</span> df[<span class="sc">-</span>train_indexes,]</span>
-<span id="cb238-6"><a href="sampling.html#cb238-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-7"><a href="sampling.html#cb238-7" aria-hidden="true" tabindex="-1"></a>train_set</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="sampling.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb252-2"><a href="sampling.html#cb252-2" aria-hidden="true" tabindex="-1"></a>train_indexes <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), .<span class="dv">7</span> <span class="sc">*</span> <span class="fu">nrow</span>(df))</span>
+<span id="cb252-3"><a href="sampling.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="sampling.html#cb252-4" aria-hidden="true" tabindex="-1"></a>train_set <span class="ot">&lt;-</span> df[train_indexes,]</span>
+<span id="cb252-5"><a href="sampling.html#cb252-5" aria-hidden="true" tabindex="-1"></a>test_set <span class="ot">&lt;-</span> df[<span class="sc">-</span>train_indexes,]</span>
+<span id="cb252-6"><a href="sampling.html#cb252-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-7"><a href="sampling.html#cb252-7" aria-hidden="true" tabindex="-1"></a>train_set</span></code></pre></div>
 <pre><code>##    x  y
 ## 14 4 24
 ## 4  4 14
@@ -414,7 +415,7 @@ div.csl-indent {
 ## 17 7 27
 ## 5  5 15
 ## 8  8 18</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="sampling.html#cb240-1" aria-hidden="true" tabindex="-1"></a>test_set</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="sampling.html#cb254-1" aria-hidden="true" tabindex="-1"></a>test_set</span></code></pre></div>
 <pre><code>##     x  y
 ## 6   6 16
 ## 9   9 19
