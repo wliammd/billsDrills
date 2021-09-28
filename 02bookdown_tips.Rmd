@@ -56,22 +56,26 @@ Note that the `{#label}` uses a single run-together word. It does not tolerate s
 
 ## Referencing citations:
 
-In order to insert citations, one needs a .bib file in the project. I've included one in this project as `book.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
+In order to insert citations, one needs a `.bib` file in the project. I've included one in this project as `book.bib` and other for packages as `packages.bib`. The yml header in Chapter \@ref(intro) needs to have a $bibliography:$ and $biblio-style:$ line added. 
 
-To insert a citation, use the **citr** Addin from RStudio. **bookdown**, for instance, is cited thusly ``[@R-bookdown]`` [@R-bookdown]. I enjoy the convenience of EndNote in MS Word, so I populate the `book.bib` and packages.bib files carefully, with .txt files generated in EndNote.
+I use EndNote extensively in my writing and research. I enjoy the convenience of EndNote in MS Word, so I populate the `book.bib` and `packages.bib` files carefully, with .txt files generated in EndNote. 
 
-For instance, a recent dump of my EndNote library is in `bookFromEndnote.txt`. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. For instance, if I have a breast pathology paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib`. Generally speaking, I maintain all references in EndNote, and manually generate a .txt file to update my references. 
+A recent dump of my EndNote library is in `bookFromEndnote.txt`. This can be opened in RStudio, and I can copy-and-paste references from the .txt file to my book.bib. Alternately, individual references can be copied as `BibTex Export` in the EndNote summary interface. These can be added to the `book.bib` file. 
+
+Then, for instance, if I have a breast pathology paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib`. Generally speaking, I maintain all references in EndNote, and manually generate a .txt file to update my references. 
+
 Of note, Yihui Xie includes a nifty bit of code to automatically generate a bib database for all the R packages that I'd like to cite:
 
 ```{r}
-knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'caret'), 'packages.bib')
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'caret', 'citr'), 'packages.bib')
 ```
 
-All packages are maintained in `packages.bib`. 
+All packages are maintained in `packages.bib`. **bookdown**, for instance, is cited thusly ``[@R-bookdown]`` [@R-bookdown]. 
+
+Multiple references can be strung together with semicolons [@RN5924; @R-bookdown; @R-base].
 
 In the knitted document, references appear automatically at the end of ~~a chapter~~ the document.  
 
-The **citr** package may not be fully supported anymore, since it's off no longer available directly from CRAN. If need be, look into ***RefMangeR** and **bibtex** at this URL: <https://monashdatafluency.github.io/r-rep-res/citations.html>.
 
 ## Figures.   
 
