@@ -15,6 +15,8 @@ Some good websites:
 
 Also, remember that R packages have a lot of great data.
 
+For a quick and well-written overview of the `for` loop, see <https://www.r-bloggers.com/2021/09/r-for-loop/>.
+
 ```{r}
 data()
 ```
