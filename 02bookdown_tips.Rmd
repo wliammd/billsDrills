@@ -75,7 +75,6 @@ Reference styles are altered by dropping a line in the `yml` header, for example
 
 In the knitted document, references appear automatically at the end of ~~a chapter~~ the document.  
 
-
 ## Figures.   
 
  **tidverse** and **gglplot2** are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables. 
