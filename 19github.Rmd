@@ -29,11 +29,6 @@ library(credentials)
 set_github_pat()
 ```
 
-For Bill's Drills, I set up this PAT as directed. It's probably not a great idea to keep it in this document, but I'll play around with it until I understand the rules and make sure that my Github is still working. 
-**************
-
-Note that this resulted in the revocation of my PAT. Drat! This is readily solved by getting another PAT from GitHub. 
-
 More research is necessary. See:
 
 ```{r}
