@@ -1,7 +1,7 @@
 # **bookdown** Tips for This Document {#bookdownplan}
 
 ## Basic conventions 
-  * I am deeply indepted to Yihui Xie and his tireless efforts to improve open source publishing via **bookdown**. The basic structure of this book is taken directly from Xie's `bookdown-demo` [@R-bookdown]. 
+  * I am deeply indepted to Yihui Xie and his efforts to improve open source publishing via **bookdown**. The basic structure of this book is taken directly from Xie's `bookdown-demo` [@R-bookdown]. 
   * The `_bookdown.yml` file contains a snippet that is important to inserting the word "Chapter" before the chapter number in each of the Rmd files. 
   * `_output.yml` is modified from that used by Xie in his `bookdown-demo` [@R-bookdown]; it evokes `style.css`, `toc.css`, `preamble.tex`, which are also borrowed from Xie. 
   * Packages are indicated in bold, like **dplyr**
@@ -14,7 +14,7 @@
     + Option-Command-i (code chunk)
     + Shift-Control-m (pipe)
   
-When building PDF's with bookdown, the following will prevent source code from running off the page:
+Knitting the document to HTML is generally best, since it's fast and robust during the drafting phase of book writing. PDF construction can is finicky and time-consuming and should be reserved for near the end of the process. When building PDF's with bookdown, the following will prevent source code from running off the page:
 
 ```{r}
 library(knitr)
