@@ -62,7 +62,7 @@ I use EndNote extensively in my writing and research and enjoy the convenience o
 
 One can also generate a large number of references in `.txt` files generated in EndNote. For instance, A dump of my EndNote library is in `bookFromEndnote.txt`. This can be opened in RStudio, and I can copy-and-paste references from the `.txt` file to my `book.bib`. 
 
-An example: to cite a breast pathology paper that I want to cite here [@RN2750], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib` or grab the `BibTex Export` from EndNote directly. 
+An example: to cite a pituitary pathology paper that I want to cite here [@RN5748], I'd copy-and-paste the reference from `bookFromEndnote.txt` to `book.bib` or grab the `BibTex Export` from EndNote directly. 
 
 `citr`, a plugin for RStudio, has become somewhat harder to use. When attempting to install the package, a warning is generated that states that "package ‘citr’ is not available for this version of R." A version can still be obtained from GitHub repository, but this is probably more trouble than it's worth, at least in my workflow. 
 
@@ -72,9 +72,19 @@ Of note, Yihui Xie includes a nifty bit of code to automatically generate a `.bi
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'caret', 'citr'), 'packages.bib')
 ```
 
-All packages are maintained in `packages.bib`. **bookdown**, for instance, is cited thusly ``[@R-bookdown]`` [@R-bookdown]. Individual references can be strung together with semicolons [@R-bookdown; @R-base; @RN5924].
+The citation for a package can also be called with `citation("packagename")`. For instance:
 
-Reference styles are altered by dropping a line in the `yml` header, for example, `csl: vancouver.csl`. Some nice details can be found at <https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html>. Different styles can be found at <https://www.zotero.org/styles>.
+```{r}
+citation("tidyverse")
+```
+
+All packages are maintained in `packages.bib`. **caret**, for instance, is cited thusly ``[@R-caret]`` [@R-caret]. 
+
+Individual references can be strung together with semicolons [@RN5924; @R-tidyverse]. 
+
+Sometimes references can be buggy. Citing base R [@R-base] alone works, but citing it in a list with other references does not necessarily work [@R-base, @R-caret, @R-tidyverse].
+
+Reference styles are altered by dropping a line in the `yml` header, for example, `csl: american-medical-association.csl`. Some nice details can be found at <https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html>. Different styles can be found at <https://www.zotero.org/styles>.
 
 In the knitted document, references appear automatically at the end of ~~a chapter~~ the document.  
 

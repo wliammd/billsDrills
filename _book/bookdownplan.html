@@ -348,9 +348,9 @@ div.csl-indent {
 <div id="basic-conventions" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Basic conventions</h2>
 <ul>
-<li>I am deeply indepted to Yihui Xie and his efforts to improve open source publishing via <strong>bookdown</strong>. The basic structure of this book is taken directly from Xie’s <code>bookdown-demo</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">1</a>)</span>.</li>
+<li>I am deeply indepted to Yihui Xie and his efforts to improve open source publishing via <strong>bookdown</strong>. The basic structure of this book is taken directly from Xie’s <code>bookdown-demo</code>.<span class="citation"><sup><a href="#ref-R-bookdown" role="doc-biblioref">1</a></sup></span></li>
 <li>The <code>_bookdown.yml</code> file contains a snippet that is important to inserting the word “Chapter” before the chapter number in each of the Rmd files.</li>
-<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">1</a>)</span>; it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
+<li><code>_output.yml</code> is modified from that used by Xie in his <code>bookdown-demo</code>;<span class="citation"><sup><a href="#ref-R-bookdown" role="doc-biblioref">1</a></sup></span> it evokes <code>style.css</code>, <code>toc.css</code>, <code>preamble.tex</code>, which are also borrowed from Xie.</li>
 <li>Packages are indicated in bold, like <strong>dplyr</strong></li>
 <li>Programs, like RStudio or MS Word, are in regular typeface</li>
 <li>Inline code, functions, and file names are indicated in typewriter face using backticks, like <code>_bookdown.yml</code>. Functions are generally written with parentheses, like <code>mean()</code>.</li>
@@ -399,32 +399,50 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <p>In order to insert citations, one needs a <code>.bib</code> file in the project. I’ve included one in this project as <code>book.bib</code> and another for packages as <code>packages.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span>.</p>
 <p>I use EndNote extensively in my writing and research and enjoy the convenience of EndNote in MS Word, so I populate the <code>book.bib</code> and <code>packages.bib</code> files carefully, usually by adding individual references copied as <code>BibTex Export</code> in the EndNote summary interface to the <code>book.bib</code> file.</p>
 <p>One can also generate a large number of references in <code>.txt</code> files generated in EndNote. For instance, A dump of my EndNote library is in <code>bookFromEndnote.txt</code>. This can be opened in RStudio, and I can copy-and-paste references from the <code>.txt</code> file to my <code>book.bib</code>.</p>
-<p>An example: to cite a breast pathology paper that I want to cite here <span class="citation">(<a href="#ref-RN2750" role="doc-biblioref">2</a>)</span>, I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code> or grab the <code>BibTex Export</code> from EndNote directly.</p>
+<p>An example: to cite a pituitary pathology paper that I want to cite here,<span class="citation"><sup><a href="#ref-RN5748" role="doc-biblioref">2</a></sup></span> I’d copy-and-paste the reference from <code>bookFromEndnote.txt</code> to <code>book.bib</code> or grab the <code>BibTex Export</code> from EndNote directly.</p>
 <p><code>citr</code>, a plugin for RStudio, has become somewhat harder to use. When attempting to install the package, a warning is generated that states that “package ‘citr’ is not available for this version of R.” A version can still be obtained from GitHub repository, but this is probably more trouble than it’s worth, at least in my workflow.</p>
 <p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a <code>.bib</code> database for all the R packages that I’d like to cite:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bookdownplan.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;caret&#39;</span>, <span class="st">&#39;citr&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
-<pre><code>## Warning in knitr::write_bib(c(.packages(), &quot;bookdown&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, :
-## package(s) citr not found</code></pre>
-<p>All packages are maintained in <code>packages.bib</code>. <strong>bookdown</strong>, for instance, is cited thusly <code>[@R-bookdown]</code> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">1</a>)</span>. Individual references can be strung together with semicolons <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">1</a>,<a href="#ref-R-base" role="doc-biblioref">3</a>,<a href="#ref-RN5924" role="doc-biblioref">4</a>)</span>.</p>
-<p>Reference styles are altered by dropping a line in the <code>yml</code> header, for example, <code>csl: vancouver.csl</code>. Some nice details can be found at <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html</a>. Different styles can be found at <a href="https://www.zotero.org/styles" class="uri">https://www.zotero.org/styles</a>.</p>
+<p>The citation for a package can also be called with <code>citation("packagename")</code>. For instance:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
+##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Article{,
+##     title = {Welcome to the {tidyverse}},
+##     author = {Hadley Wickham and Mara Averick and Jennifer Bryan and Winston Chang and Lucy D&#39;Agostino McGowan and Romain François and Garrett Grolemund and Alex Hayes and Lionel Henry and Jim Hester and Max Kuhn and Thomas Lin Pedersen and Evan Miller and Stephan Milton Bache and Kirill Müller and Jeroen Ooms and David Robinson and Dana Paige Seidel and Vitalie Spinu and Kohske Takahashi and Davis Vaughan and Claus Wilke and Kara Woo and Hiroaki Yutani},
+##     year = {2019},
+##     journal = {Journal of Open Source Software},
+##     volume = {4},
+##     number = {43},
+##     pages = {1686},
+##     doi = {10.21105/joss.01686},
+##   }</code></pre>
+<p>All packages are maintained in <code>packages.bib</code>. <strong>caret</strong>, for instance, is cited thusly <code>[@R-caret]</code>.<span class="citation"><sup><a href="#ref-R-caret" role="doc-biblioref">3</a></sup></span></p>
+<p>Individual references can be strung together with semicolons.<span class="citation"><sup><a href="#ref-RN5924" role="doc-biblioref">4</a>,<a href="#ref-R-tidyverse" role="doc-biblioref">5</a></sup></span></p>
+<p>Sometimes references can be buggy. Citing base R<span class="citation"><sup><a href="#ref-R-base" role="doc-biblioref">6</a></sup></span> alone works, but citing it in a list with other references does not necessarily work.<span class="citation"><sup><a href="#ref-R-tidyverse" role="doc-biblioref">5</a></sup></span></p>
+<p>Reference styles are altered by dropping a line in the <code>yml</code> header, for example, <code>csl: american-medical-association.csl</code>. Some nice details can be found at <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html</a>. Different styles can be found at <a href="https://www.zotero.org/styles" class="uri">https://www.zotero.org/styles</a>.</p>
 <p>In the knitted document, references appear automatically at the end of <del>a chapter</del> the document.</p>
 </div>
 <div id="figures." class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Figures.</h2>
 <p><strong>tidyverse</strong> and <strong>gglplot2</strong> are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="bookdownplan.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>To generate the following figure, the code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="bookdownplan.html#cb5-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="bookdownplan.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="bookdownplan.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="bookdownplan.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb5-5"><a href="bookdownplan.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="bookdownplan.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-7"><a href="bookdownplan.html#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Nifty Starwars Figure&quot;</span>,</span>
-<span id="cb5-8"><a href="bookdownplan.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Species&quot;</span>,</span>
-<span id="cb5-9"><a href="bookdownplan.html#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
-<span id="cb5-10"><a href="bookdownplan.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-11"><a href="bookdownplan.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="bookdownplan.html#cb6-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="bookdownplan.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="bookdownplan.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="bookdownplan.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="bookdownplan.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="bookdownplan.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-7"><a href="bookdownplan.html#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Nifty Starwars Figure&quot;</span>,</span>
+<span id="cb6-8"><a href="bookdownplan.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Species&quot;</span>,</span>
+<span id="cb6-9"><a href="bookdownplan.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb6-10"><a href="bookdownplan.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="bookdownplan.html#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-1"></span>
 <img src="test-book_files/figure-html/starfig-1-1.png" alt="Starwars Figure 1" width="672" />
 <p class="caption">
@@ -443,17 +461,23 @@ Figure 2.1: Starwars Figure 1
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body">
 <div id="ref-R-bookdown" class="csl-entry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Xie Y. Bookdown: Authoring books and technical documents with r markdown [Internet]. 2021. Available from: <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a></div>
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Xie Y. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>.; 2021. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a></div>
 </div>
-<div id="ref-RN2750" class="csl-entry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Stevens TM, Parekh V. Mammary analogue secretory carcinoma. Arch Pathol Lab Med. 2016;140(9):997-1001. doi: 10.5858/arpa.2015-0075-RS. </div>
+<div id="ref-RN5748" class="csl-entry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">McDonald WC, McDonald KN, Helmer JA, Ho B, Wang A, Banerji N. The role of t-box transcription factor in a pituitary adenoma diagnostic algorithm. <em>Arch Pathol Lab Med</em>. 2021;145(5):592-598. doi:<a href="https://doi.org/10.5858/arpa.2020-0091-OA">10.5858/arpa.2020-0091-OA</a></div>
 </div>
-<div id="ref-R-base" class="csl-entry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">R Core Team. R: A language and environment for statistical computing [Internet]. Vienna, Austria: R Foundation for Statistical Computing; 2021. Available from: <a href="https://www.R-project.org/">https://www.R-project.org/</a></div>
+<div id="ref-R-caret" class="csl-entry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Kuhn M. <em>Caret: Classification and Regression Training</em>.; 2021. <a href="https://github.com/topepo/caret/">https://github.com/topepo/caret/</a></div>
 </div>
 <div id="ref-RN5924" class="csl-entry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Greener JG, Kandathil SM, Moffat L, Jones DT. A guide to machine learning for biologists. Nat Rev Mol Cell Biol [Internet]. 2021; Available from: <a href="https://www.ncbi.nlm.nih.gov/pubmed/34518686
-https://www.nature.com/articles/s41580-021-00407-0">https://www.ncbi.nlm.nih.gov/pubmed/34518686
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Greener JG, Kandathil SM, Moffat L, Jones DT. A guide to machine learning for biologists. <em>Nat Rev Mol Cell Biol</em>. Published online 2021. doi:<a href="https://doi.org/10.1038/s41580-021-00407-0">10.1038/s41580-021-00407-0</a></div>
+</div>
+<div id="ref-R-tidyverse" class="csl-entry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Wickham H. <em>Tidyverse: Easily Install and Load the Tidyverse</em>.; 2021. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a></div>
+</div>
+<div id="ref-R-base" class="csl-entry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">R Core Team. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing; 2021. <a href="https://www.R-project.org/">https://www.R-project.org/</a></div>
+</div>
 </div>
             </section>
 
