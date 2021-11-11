@@ -86,6 +86,8 @@ Sometimes references can be buggy. Citing base R [@R-base] alone works, but citi
 
 Reference styles are altered by dropping a line in the `yml` header, for example, `csl: american-medical-association.csl`. Some nice details can be found at <https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html>. Different styles can be found at <https://www.zotero.org/styles>.
 
+This page has a nice discussion of citing R packages: <https://www.r-bloggers.com/2021/11/how-to-cite-r-and-r-packages/?utm_source=phpList&utm_medium=email&utm_campaign=R-bloggers-daily&utm_content=HTML>
+
 In the knitted document, references appear automatically at the end of ~~a chapter~~ the document.  
 
 ## Figures.   
