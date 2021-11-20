@@ -53,12 +53,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -354,11 +354,11 @@ div.csl-indent {
 <p>The page by Rohan Joseph does a really nice job illustrative hierarchical clustering:</p>
 <p><a href="https://medium.com/@rohanjoseph_91119/learn-with-an-example-hierarchical-clustering-873b5b50890c" class="uri">https://medium.com/@rohanjoseph_91119/learn-with-an-example-hierarchical-clustering-873b5b50890c</a></p>
 <p>Joseph uses a one dimensional dataset to show the difference between types of hierarchical clustering. Joseph’s hand-drawn calculations actually make the distinctionb between single and complete linkage very well.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="clustering.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="clustering.html#cb478-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">28</span>,<span class="dv">35</span>) <span class="co">#Joseph&#39;s 1D dataset</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="clustering.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="clustering.html#cb480-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">28</span>,<span class="dv">35</span>) <span class="co">#Joseph&#39;s 1D dataset</span></span></code></pre></div>
 <p>The first step is to make a distance matrix between the elements of the dataset. In one dimension, this is accomplished by subtraction.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="clustering.html#cb479-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(x)</span>
-<span id="cb479-2"><a href="clustering.html#cb479-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="clustering.html#cb481-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(x)</span>
+<span id="cb481-2"><a href="clustering.html#cb481-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>##    1  2  3  4
 ## 2  3         
 ## 3 13 10      
@@ -369,7 +369,7 @@ div.csl-indent {
 <li>Single Linkage : merge in each step the two clusters, whose two closest members have the smallest distance.</li>
 <li>Complete Linkage : merge the members of the clusters in each step which provide the smallest maximum pairwise distance.</li>
 </ul>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="clustering.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hclust</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="clustering.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hclust</span>(d)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## hclust(d = d)
@@ -377,10 +377,10 @@ div.csl-indent {
 ## Cluster method   : complete 
 ## Distance         : euclidean 
 ## Number of objects: 5</code></pre>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="clustering.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hclust</span>(d))</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="clustering.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hclust</span>(d))</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <p>Note that the default method is complete.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="clustering.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;single&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="clustering.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;single&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## hclust(d = d, method = &quot;single&quot;)
@@ -388,8 +388,8 @@ div.csl-indent {
 ## Cluster method   : single 
 ## Distance         : euclidean 
 ## Number of objects: 5</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="clustering.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;single&quot;</span>))</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="clustering.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;single&quot;</span>))</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 
 </div>
             </section>

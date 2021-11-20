@@ -1,5 +1,5 @@
 fig:starfig-1
-tab:unnamed-chunk-38
+tab:unnamed-chunk-39
 fig:starfig-1a
 fig:starfig-2
 fig:starfig-3
@@ -123,4 +123,3 @@ explainingmachinelearning
 machine-learning-for-mds
 supervised-versus-unsuperised-learning
 classification-versus-regression
-improving-legibility-change-the-linetype

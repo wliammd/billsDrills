@@ -53,12 +53,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -362,22 +362,19 @@ div.csl-indent {
 <p>For deploying a personal access token:
 <a href="https://happygitwithr.com/credential-caching.html#credential-caching" class="uri">https://happygitwithr.com/credential-caching.html#credential-caching</a></p>
 <p>I first explored my credentials with the following:</p>
-<div class="sourceCode" id="cb802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb802-1"><a href="github.html#cb802-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(gitcreds)</span></span>
-<span id="cb802-2"><a href="github.html#cb802-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb802-3"><a href="github.html#cb802-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gitcreds_set()</span></span></code></pre></div>
+<div class="sourceCode" id="cb804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb804-1"><a href="github.html#cb804-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(gitcreds)</span></span>
+<span id="cb804-2"><a href="github.html#cb804-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb804-3"><a href="github.html#cb804-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gitcreds_set()</span></span></code></pre></div>
 <p>According to the error when I knit this, his only works in interactive sessions, so is commented out.</p>
 <p>This shows off my github password, with the right menu selection, but not the PAT.</p>
-<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="github.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(credentials)</span></code></pre></div>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="github.html#cb805-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(credentials)</span></code></pre></div>
 <pre><code>## Found git version 2.30.1 (Apple Git-130)</code></pre>
 <pre><code>## Supported HTTPS credential helpers: cache, store</code></pre>
 <pre><code>## Found OpenSSH_8.1p1, LibreSSL 2.7.3</code></pre>
 <pre><code>## Default SSH key: /Users/wliamlaptop/.ssh/id_rsa</code></pre>
-<div class="sourceCode" id="cb808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb808-1"><a href="github.html#cb808-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_github_pat</span>()</span></code></pre></div>
-<p>For Bill’s Drills, I set up this PAT as directed. It’s probably not a great idea to keep it in this document, but I’ll play around with it until I understand the rules and make sure that my Github is still working.
-**************</p>
-<p>Note that this resulted in the revocation of my PAT. Drat! This is readily solved by getting another PAT from GitHub.</p>
+<div class="sourceCode" id="cb810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb810-1"><a href="github.html#cb810-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_github_pat</span>()</span></code></pre></div>
 <p>More research is necessary. See:</p>
-<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="github.html#cb809-1" aria-hidden="true" tabindex="-1"></a>?set_github_pat</span></code></pre></div>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="github.html#cb811-1" aria-hidden="true" tabindex="-1"></a>?set_github_pat</span></code></pre></div>
 <p>On returning home, I encountered trouble with R. This seems to have been settled by the old copy-and-paste the error into my browser and figure out a workaround that involved a couple different methods. Now I’ve generated another PAT for my home computer, and am hoping that GitHub will be happy with me now.</p>
 
 </div>

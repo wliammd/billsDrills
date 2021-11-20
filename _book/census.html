@@ -53,12 +53,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -352,18 +352,18 @@ div.csl-indent {
 <div id="census" class="section level1" number="15">
 <h1><span class="header-section-number">Chapter 15</span> US_Census_Data_Kyle_Walker_Presentation_YouTube</h1>
 <p>These are notes from a course taught by Kyle Walker, PhD and posted to YouTube by John DeWitt at the following YouTube <a href="https://www.youtube.com/watch?v=PnFJfuJ83NI" class="uri">https://www.youtube.com/watch?v=PnFJfuJ83NI</a></p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="census.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb517-2"><a href="census.html#cb517-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
-<span id="cb517-3"><a href="census.html#cb517-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb517-4"><a href="census.html#cb517-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb517-5"><a href="census.html#cb517-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install a new API key if necessary by obtaining a new key and installing it with the following</span></span>
-<span id="cb517-6"><a href="census.html#cb517-6" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key(&quot;aec016261a3b069f2318c77075e5224445517668&quot;, install = TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="census.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb519-2"><a href="census.html#cb519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb519-3"><a href="census.html#cb519-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb519-4"><a href="census.html#cb519-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb519-5"><a href="census.html#cb519-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install a new API key if necessary by obtaining a new key and installing it with the following</span></span>
+<span id="cb519-6"><a href="census.html#cb519-6" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key(&quot;aec016261a3b069f2318c77075e5224445517668&quot;, install = TRUE)</span></span></code></pre></div>
 <p>Let’s see if this will connect me with the census data with a few simple queries. <code>get_decennial()</code> defaults to the latest 10-year, simple survey performed by the Census Bureau. The 10-year survey renders numbers.</p>
 <p><code>get_acs()</code> contains much more information, and is based on the latest American Community Survey. ACS variables are rendered as estimates with a margin of error (MOE).</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="census.html#cb518-1" aria-hidden="true" tabindex="-1"></a>pop10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;P001001&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="census.html#cb520-1" aria-hidden="true" tabindex="-1"></a>pop10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;P001001&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2010 decennial Census</code></pre>
 <pre><code>## Using Census Summary File 1</code></pre>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="census.html#cb521-1" aria-hidden="true" tabindex="-1"></a>pop10</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="census.html#cb523-1" aria-hidden="true" tabindex="-1"></a>pop10</span></code></pre></div>
 <pre><code>## # A tibble: 52 × 4
 ##    GEOID NAME        variable    value
 ##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
@@ -378,21 +378,21 @@ div.csl-indent {
 ##  9 09    Connecticut P001001   3574097
 ## 10 10    Delaware    P001001    897934
 ## # … with 42 more rows</code></pre>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="census.html#cb523-1" aria-hidden="true" tabindex="-1"></a>income_15to19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb523-2"><a href="census.html#cb523-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="census.html#cb525-1" aria-hidden="true" tabindex="-1"></a>income_15to19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb525-2"><a href="census.html#cb525-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="census.html#cb525-1" aria-hidden="true" tabindex="-1"></a>income_19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb525-2"><a href="census.html#cb525-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
-<span id="cb525-3"><a href="census.html#cb525-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="census.html#cb527-1" aria-hidden="true" tabindex="-1"></a>income_19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb527-2"><a href="census.html#cb527-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb527-3"><a href="census.html#cb527-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>)</span></code></pre></div>
 <pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <p>That looks great, but would be very labor intensive to assemble piecemeal.</p>
 <p>Luckily, common tables of variables are available.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="census.html#cb528-1" aria-hidden="true" tabindex="-1"></a>age_table<span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb528-2"><a href="census.html#cb528-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">table =</span> <span class="st">&quot;B01001&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="census.html#cb530-1" aria-hidden="true" tabindex="-1"></a>age_table<span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb530-2"><a href="census.html#cb530-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">table =</span> <span class="st">&quot;B01001&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <pre><code>## Loading ACS5 variables for 2019 from table B01001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="census.html#cb531-1" aria-hidden="true" tabindex="-1"></a>age_table</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="census.html#cb533-1" aria-hidden="true" tabindex="-1"></a>age_table</span></code></pre></div>
 <pre><code>## # A tibble: 2,548 × 5
 ##    GEOID NAME    variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -408,12 +408,12 @@ div.csl-indent {
 ## 10 01    Alabama B01001_010    95065  1916
 ## # … with 2,538 more rows</code></pre>
 <p>That’s great, but the variables are still encoded in the long form of the table. We’ll need to solve that at some point.</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="census.html#cb533-1" aria-hidden="true" tabindex="-1"></a>wi_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb533-2"><a href="census.html#cb533-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
-<span id="cb533-3"><a href="census.html#cb533-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
-<span id="cb533-4"><a href="census.html#cb533-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span>  <span class="dv">2019</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="census.html#cb535-1" aria-hidden="true" tabindex="-1"></a>wi_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb535-2"><a href="census.html#cb535-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb535-3"><a href="census.html#cb535-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
+<span id="cb535-4"><a href="census.html#cb535-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span>  <span class="dv">2019</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="census.html#cb535-1" aria-hidden="true" tabindex="-1"></a>wi_income</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="census.html#cb537-1" aria-hidden="true" tabindex="-1"></a>wi_income</span></code></pre></div>
 <pre><code>## # A tibble: 72 × 5
 ##    GEOID NAME                       variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                      &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -429,12 +429,12 @@ div.csl-indent {
 ## 10 55019 Clark County, Wisconsin    B19013_001    54012  1223
 ## # … with 62 more rows</code></pre>
 <p>Querying by census tract is also possible. Census tracts are loosely analogous to neighborhoods and contain about 4000 people.</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="census.html#cb537-1" aria-hidden="true" tabindex="-1"></a>dane_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
-<span id="cb537-2"><a href="census.html#cb537-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
-<span id="cb537-3"><a href="census.html#cb537-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
-<span id="cb537-4"><a href="census.html#cb537-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">county =</span>  <span class="st">&quot;Dane&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="census.html#cb539-1" aria-hidden="true" tabindex="-1"></a>dane_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb539-2"><a href="census.html#cb539-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">variables =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb539-3"><a href="census.html#cb539-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state =</span> <span class="st">&quot;WI&quot;</span>,</span>
+<span id="cb539-4"><a href="census.html#cb539-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">county =</span>  <span class="st">&quot;Dane&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="census.html#cb539-1" aria-hidden="true" tabindex="-1"></a>dane_income</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="census.html#cb541-1" aria-hidden="true" tabindex="-1"></a>dane_income</span></code></pre></div>
 <pre><code>## # A tibble: 107 × 5
 ##    GEOID       NAME                                      variable estimate   moe
 ##    &lt;chr&gt;       &lt;chr&gt;                                     &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -451,8 +451,8 @@ div.csl-indent {
 ## # … with 97 more rows</code></pre>
 <div id="variables" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> Variables</h2>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="census.html#cb541-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2019</span>, <span class="st">&quot;acs5&quot;</span>)</span>
-<span id="cb541-2"><a href="census.html#cb541-2" aria-hidden="true" tabindex="-1"></a>vars</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="census.html#cb543-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2019</span>, <span class="st">&quot;acs5&quot;</span>)</span>
+<span id="cb543-2"><a href="census.html#cb543-2" aria-hidden="true" tabindex="-1"></a>vars</span></code></pre></div>
 <pre><code>## # A tibble: 27,040 × 3
 ##    name       label                                    concept   
 ##    &lt;chr&gt;      &lt;chr&gt;                                    &lt;chr&gt;     
@@ -470,15 +470,15 @@ div.csl-indent {
 <p>This can be searched using RStudio’s <code>View()</code> function, but it’s still a mess. De Witt uses Census Reporter a lot–search online for this. Try <a href="https://censusreporter.org/" class="uri">https://censusreporter.org/</a>, especially the <strong>Explore</strong> search field, which is a good way to identify good variables. One useful trick is to find the table identifier in Census Reporter and then use that to explore variables loaded using <code>load_variables()</code>.</p>
 <p>Another invaluable resource is <a href="https://rconsortium.github.io/censusguide/" class="uri">https://rconsortium.github.io/censusguide/</a>.</p>
 <p>The census.gov tools are also extensive. See for instance <a href="https://www.census.gov/data/academy/data-gems/2021/how-to-visualize-your-data-using-thematic-maps-on-data-census-gov.html" class="uri">https://www.census.gov/data/academy/data-gems/2021/how-to-visualize-your-data-using-thematic-maps-on-data-census-gov.html</a>.</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="census.html#cb543-1" aria-hidden="true" tabindex="-1"></a>  hhinc <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb543-2"><a href="census.html#cb543-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb543-3"><a href="census.html#cb543-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
-<span id="cb543-4"><a href="census.html#cb543-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
-<span id="cb543-5"><a href="census.html#cb543-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="census.html#cb545-1" aria-hidden="true" tabindex="-1"></a>  hhinc <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb545-2"><a href="census.html#cb545-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb545-3"><a href="census.html#cb545-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
+<span id="cb545-4"><a href="census.html#cb545-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
+<span id="cb545-5"><a href="census.html#cb545-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="census.html#cb547-1" aria-hidden="true" tabindex="-1"></a>  hhinc</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="census.html#cb549-1" aria-hidden="true" tabindex="-1"></a>  hhinc</span></code></pre></div>
 <pre><code>## # A tibble: 884 × 5
 ##    GEOID NAME    variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -493,7 +493,7 @@ div.csl-indent {
 ##  9 01    Alabama B19001_009    87118  5163
 ## 10 01    Alabama B19001_010    82323  4231
 ## # … with 874 more rows</code></pre>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="census.html#cb549-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>(hhinc)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="census.html#cb551-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>(hhinc)</span></code></pre></div>
 <pre><code>## Rows: 884
 ## Columns: 5
 ## $ GEOID    &lt;chr&gt; &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;…
@@ -501,7 +501,7 @@ div.csl-indent {
 ## $ variable &lt;chr&gt; &quot;B19001_001&quot;, &quot;B19001_002&quot;, &quot;B19001_003&quot;, &quot;B19001_004&quot;, &quot;B190…
 ## $ estimate &lt;dbl&gt; 1897576, 154558, 103653, 108500, 98706, 90916, 105146, 85014,…
 ## $ moe      &lt;dbl&gt; 10370, 5883, 6001, 5926, 6491, 5859, 4149, 5417, 5163, 4231, …</code></pre>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="census.html#cb551-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(hhinc)</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="census.html#cb553-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(hhinc)</span></code></pre></div>
 <pre><code>## tibble [884 × 5] (S3: tbl_df/tbl/data.frame)
 ##  $ GEOID   : chr [1:884] &quot;01&quot; &quot;01&quot; &quot;01&quot; &quot;01&quot; ...
 ##  $ NAME    : chr [1:884] &quot;Alabama&quot; &quot;Alabama&quot; &quot;Alabama&quot; &quot;Alabama&quot; ...
@@ -509,16 +509,16 @@ div.csl-indent {
 ##  $ estimate: num [1:884] 1897576 154558 103653 108500 98706 ...
 ##  $ moe     : num [1:884] 10370 5883 6001 5926 6491 ...</code></pre>
 <p>This is pretty tough to read. A wide form is easier and can be had without using <code>pivot_wider()</code>.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="census.html#cb553-1" aria-hidden="true" tabindex="-1"></a>  hhinc_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb553-2"><a href="census.html#cb553-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb553-3"><a href="census.html#cb553-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
-<span id="cb553-4"><a href="census.html#cb553-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>,</span>
-<span id="cb553-5"><a href="census.html#cb553-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
-<span id="cb553-6"><a href="census.html#cb553-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="census.html#cb555-1" aria-hidden="true" tabindex="-1"></a>  hhinc_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb555-2"><a href="census.html#cb555-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb555-3"><a href="census.html#cb555-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">table =</span> <span class="st">&quot;B19001&quot;</span>,</span>
+<span id="cb555-4"><a href="census.html#cb555-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span>,</span>
+<span id="cb555-5"><a href="census.html#cb555-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb555-6"><a href="census.html#cb555-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <pre><code>## Loading ACS1 variables for 2019 from table B19001. To cache this dataset for faster access to ACS tables in the future, run this function with `cache_table = TRUE`. You only need to do this once per ACS dataset.</code></pre>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="census.html#cb557-1" aria-hidden="true" tabindex="-1"></a>hhinc_wide</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="census.html#cb559-1" aria-hidden="true" tabindex="-1"></a>hhinc_wide</span></code></pre></div>
 <pre><code>## # A tibble: 52 × 36
 ##    GEOID NAME      B19001_001E B19001_001M B19001_002E B19001_002M B19001_003E
 ##    &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -539,7 +539,7 @@ div.csl-indent {
 ## #   B19001_010E &lt;dbl&gt;, B19001_010M &lt;dbl&gt;, B19001_011E &lt;dbl&gt;, B19001_011M &lt;dbl&gt;,
 ## #   B19001_012E &lt;dbl&gt;, B19001_012M &lt;dbl&gt;, B19001_013E &lt;dbl&gt;, B19001_013M &lt;dbl&gt;,
 ## #   B19001_014E &lt;dbl&gt;, B19001_014M &lt;dbl&gt;, B19001_015E &lt;dbl&gt;, …</code></pre>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="census.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hhinc_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="census.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hhinc_wide)</span></code></pre></div>
 <pre><code>## Rows: 52
 ## Columns: 36
 ## $ GEOID       &lt;chr&gt; &quot;17&quot;, &quot;13&quot;, &quot;16&quot;, &quot;15&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, &quot;21&quot;, &quot;22&quot;, &quot;23&quot;…
@@ -578,7 +578,7 @@ div.csl-indent {
 ## $ B19001_016M &lt;dbl&gt; 8588, 7657, 3485, 3352, 5495, 3654, 3704, 4722, 4979, 2540…
 ## $ B19001_017E &lt;dbl&gt; 439052, 281732, 32599, 50655, 122070, 63859, 67173, 71788,…
 ## $ B19001_017M &lt;dbl&gt; 8929, 8944, 2923, 3266, 5142, 3712, 3598, 3720, 5284, 2666…</code></pre>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="census.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hhinc_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="census.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hhinc_wide)</span></code></pre></div>
 <pre><code>## tibble [52 × 36] (S3: tbl_df/tbl/data.frame)
 ##  $ GEOID      : chr [1:52] &quot;17&quot; &quot;13&quot; &quot;16&quot; &quot;15&quot; ...
 ##  $ NAME       : chr [1:52] &quot;Illinois&quot; &quot;Georgia&quot; &quot;Idaho&quot; &quot;Hawaii&quot; ...
@@ -617,69 +617,69 @@ div.csl-indent {
 ##  $ B19001_017E: num [1:52] 439052 281732 32599 50655 122070 ...
 ##  $ B19001_017M: num [1:52] 8929 8944 2923 3266 5142 ...</code></pre>
 <p>We still aren’t transparent with respect to vectors. I will never remember them. Named vectors can be used:</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="census.html#cb563-1" aria-hidden="true" tabindex="-1"></a>ga_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb563-2"><a href="census.html#cb563-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb563-3"><a href="census.html#cb563-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;GA&quot;</span>,</span>
-<span id="cb563-4"><a href="census.html#cb563-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
-<span id="cb563-5"><a href="census.html#cb563-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
-<span id="cb563-6"><a href="census.html#cb563-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
-<span id="cb563-7"><a href="census.html#cb563-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="census.html#cb565-1" aria-hidden="true" tabindex="-1"></a>ga_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb565-2"><a href="census.html#cb565-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb565-3"><a href="census.html#cb565-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;GA&quot;</span>,</span>
+<span id="cb565-4"><a href="census.html#cb565-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb565-5"><a href="census.html#cb565-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
+<span id="cb565-6"><a href="census.html#cb565-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb565-7"><a href="census.html#cb565-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="census.html#cb565-1" aria-hidden="true" tabindex="-1"></a>ga_wide</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="census.html#cb567-1" aria-hidden="true" tabindex="-1"></a>ga_wide</span></code></pre></div>
 <pre><code>## # A tibble: 159 × 6
-##    GEOID NAME                          median_incE median_incM median_ageE median_ageM
-##    &lt;chr&gt; &lt;chr&gt;                               &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-##  1 13005 Bacon County, Georgia               37519        5492        36.7         0.7
-##  2 13025 Brantley County, Georgia            38857        3480        41.1         0.8
-##  3 13017 Ben Hill County, Georgia            32229        3845        39.9         1.1
-##  4 13033 Burke County, Georgia               44151        2438        37.4         0.6
-##  5 13047 Catoosa County, Georgia             56235        2290        40.4         0.4
-##  6 13053 Chattahoochee County, Georgia       47096        5158        24.5         0.5
-##  7 13055 Chattooga County, Georgia           36807        2268        39.4         0.7
-##  8 13073 Columbia County, Georgia            82339        3532        36.9         0.4
-##  9 13087 Decatur County, Georgia             41481        3584        37.8         0.6
-## 10 13115 Floyd County, Georgia               48336        2266        38.3         0.3
+##    GEOID NAME                    median_incE median_incM median_ageE median_ageM
+##    &lt;chr&gt; &lt;chr&gt;                         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 13005 Bacon County, Georgia         37519        5492        36.7         0.7
+##  2 13025 Brantley County, Georg…       38857        3480        41.1         0.8
+##  3 13017 Ben Hill County, Georg…       32229        3845        39.9         1.1
+##  4 13033 Burke County, Georgia         44151        2438        37.4         0.6
+##  5 13047 Catoosa County, Georgia       56235        2290        40.4         0.4
+##  6 13053 Chattahoochee County, …       47096        5158        24.5         0.5
+##  7 13055 Chattooga County, Geor…       36807        2268        39.4         0.7
+##  8 13073 Columbia County, Georg…       82339        3532        36.9         0.4
+##  9 13087 Decatur County, Georgia       41481        3584        37.8         0.6
+## 10 13115 Floyd County, Georgia         48336        2266        38.3         0.3
 ## # … with 149 more rows</code></pre>
 <p>Let’s try something closer to home:</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="census.html#cb567-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb567-2"><a href="census.html#cb567-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
-<span id="cb567-3"><a href="census.html#cb567-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
-<span id="cb567-4"><a href="census.html#cb567-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
-<span id="cb567-5"><a href="census.html#cb567-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
-<span id="cb567-6"><a href="census.html#cb567-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="census.html#cb569-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb569-2"><a href="census.html#cb569-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb569-3"><a href="census.html#cb569-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb569-4"><a href="census.html#cb569-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>),</span>
+<span id="cb569-5"><a href="census.html#cb569-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb569-6"><a href="census.html#cb569-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="census.html#cb569-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="census.html#cb571-1" aria-hidden="true" tabindex="-1"></a>med_age_Hennepin_wide</span></code></pre></div>
 <pre><code>## # A tibble: 1,338 × 4
-##    GEOID       NAME                                            median_ageE median_ageM
-##    &lt;chr&gt;       &lt;chr&gt;                                                 &lt;dbl&gt;       &lt;dbl&gt;
-##  1 27053025401 Census Tract 254.01, Hennepin County, Minnesota        37.4         3.8
-##  2 27053025805 Census Tract 258.05, Hennepin County, Minnesota        52.2         6  
-##  3 27053026018 Census Tract 260.18, Hennepin County, Minnesota        41.9         1.8
-##  4 27053026402 Census Tract 264.02, Hennepin County, Minnesota        36.1         2.9
-##  5 27053026404 Census Tract 264.04, Hennepin County, Minnesota        50.5         3.7
-##  6 27053026809 Census Tract 268.09, Hennepin County, Minnesota        29.1         2.2
-##  7 27053027602 Census Tract 276.02, Hennepin County, Minnesota        45.9         3.6
-##  8 27053102000 Census Tract 1020, Hennepin County, Minnesota          33.9         3.6
-##  9 27053103600 Census Tract 1036, Hennepin County, Minnesota          47.9         5.1
-## 10 27053022902 Census Tract 229.02, Hennepin County, Minnesota        40.2         3.1
+##    GEOID       NAME                                      median_ageE median_ageM
+##    &lt;chr&gt;       &lt;chr&gt;                                           &lt;dbl&gt;       &lt;dbl&gt;
+##  1 27053025401 Census Tract 254.01, Hennepin County, Mi…        37.4         3.8
+##  2 27053025805 Census Tract 258.05, Hennepin County, Mi…        52.2         6  
+##  3 27053026018 Census Tract 260.18, Hennepin County, Mi…        41.9         1.8
+##  4 27053026402 Census Tract 264.02, Hennepin County, Mi…        36.1         2.9
+##  5 27053026404 Census Tract 264.04, Hennepin County, Mi…        50.5         3.7
+##  6 27053026809 Census Tract 268.09, Hennepin County, Mi…        29.1         2.2
+##  7 27053027602 Census Tract 276.02, Hennepin County, Mi…        45.9         3.6
+##  8 27053102000 Census Tract 1020, Hennepin County, Minn…        33.9         3.6
+##  9 27053103600 Census Tract 1036, Hennepin County, Minn…        47.9         5.1
+## 10 27053022902 Census Tract 229.02, Hennepin County, Mi…        40.2         3.1
 ## # … with 1,328 more rows</code></pre>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="census.html#cb571-1" aria-hidden="true" tabindex="-1"></a>vs15 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2015</span>, <span class="st">&quot;acs5&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb571-2"><a href="census.html#cb571-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb571-3"><a href="census.html#cb571-3" aria-hidden="true" tabindex="-1"></a>mn_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb571-4"><a href="census.html#cb571-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb571-5"><a href="census.html#cb571-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
-<span id="cb571-6"><a href="census.html#cb571-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">total_pop =</span> <span class="st">&quot;B01003_001&quot;</span>, </span>
-<span id="cb571-7"><a href="census.html#cb571-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
-<span id="cb571-8"><a href="census.html#cb571-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>,</span>
-<span id="cb571-9"><a href="census.html#cb571-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">white =</span> <span class="st">&quot;B02001_002&quot;</span>,</span>
-<span id="cb571-10"><a href="census.html#cb571-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">black =</span> <span class="st">&quot;B02001_003&quot;</span>,</span>
-<span id="cb571-11"><a href="census.html#cb571-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">native_am =</span> <span class="st">&quot;B02001_004&quot;</span>,</span>
-<span id="cb571-12"><a href="census.html#cb571-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">asian =</span> <span class="st">&quot;B02001_005&quot;</span>,</span>
-<span id="cb571-13"><a href="census.html#cb571-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">doctor =</span> <span class="st">&quot;B15003_025&quot;</span>),</span>
-<span id="cb571-14"><a href="census.html#cb571-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
-<span id="cb571-15"><a href="census.html#cb571-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="census.html#cb573-1" aria-hidden="true" tabindex="-1"></a>vs15 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2015</span>, <span class="st">&quot;acs5&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb573-2"><a href="census.html#cb573-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb573-3"><a href="census.html#cb573-3" aria-hidden="true" tabindex="-1"></a>mn_wide <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb573-4"><a href="census.html#cb573-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb573-5"><a href="census.html#cb573-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb573-6"><a href="census.html#cb573-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">total_pop =</span> <span class="st">&quot;B01003_001&quot;</span>, </span>
+<span id="cb573-7"><a href="census.html#cb573-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_inc =</span> <span class="st">&quot;B19013_001&quot;</span>,</span>
+<span id="cb573-8"><a href="census.html#cb573-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">median_age =</span> <span class="st">&quot;B01002_001&quot;</span>,</span>
+<span id="cb573-9"><a href="census.html#cb573-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">white =</span> <span class="st">&quot;B02001_002&quot;</span>,</span>
+<span id="cb573-10"><a href="census.html#cb573-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">black =</span> <span class="st">&quot;B02001_003&quot;</span>,</span>
+<span id="cb573-11"><a href="census.html#cb573-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">native_am =</span> <span class="st">&quot;B02001_004&quot;</span>,</span>
+<span id="cb573-12"><a href="census.html#cb573-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">asian =</span> <span class="st">&quot;B02001_005&quot;</span>,</span>
+<span id="cb573-13"><a href="census.html#cb573-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">doctor =</span> <span class="st">&quot;B15003_025&quot;</span>),</span>
+<span id="cb573-14"><a href="census.html#cb573-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">&quot;wide&quot;</span></span>
+<span id="cb573-15"><a href="census.html#cb573-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="census.html#cb573-1" aria-hidden="true" tabindex="-1"></a>mn_wide</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="census.html#cb575-1" aria-hidden="true" tabindex="-1"></a>mn_wide</span></code></pre></div>
 <pre><code>## # A tibble: 87 × 18
 ##    GEOID NAME          total_popE total_popM median_incE median_incM median_ageE
 ##    &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -699,12 +699,12 @@ div.csl-indent {
 </div>
 <div id="part-2-wrangling-census-data-with-tidyverse-tools" class="section level2" number="15.2">
 <h2><span class="header-section-number">15.2</span> Part 2: Wrangling Census Data with <strong>tidyverse</strong> Tools</h2>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="census.html#cb575-1" aria-hidden="true" tabindex="-1"></a>median_age <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb575-2"><a href="census.html#cb575-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb575-3"><a href="census.html#cb575-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;B01002_001&quot;</span></span>
-<span id="cb575-4"><a href="census.html#cb575-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="census.html#cb577-1" aria-hidden="true" tabindex="-1"></a>median_age <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb577-2"><a href="census.html#cb577-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb577-3"><a href="census.html#cb577-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;B01002_001&quot;</span></span>
+<span id="cb577-4"><a href="census.html#cb577-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="census.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, estimate)</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="census.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, estimate)</span></code></pre></div>
 <pre><code>## # A tibble: 3,220 × 5
 ##    GEOID NAME                          variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                         &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -719,7 +719,7 @@ div.csl-indent {
 ##  9 46027 Clay County, South Dakota     B01002_001     24.9   0.4
 ## 10 51830 Williamsburg city, Virginia   B01002_001     24.9   0.7
 ## # … with 3,210 more rows</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="census.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, <span class="fu">desc</span>(estimate))</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="census.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(median_age, <span class="fu">desc</span>(estimate))</span></code></pre></div>
 <pre><code>## # A tibble: 3,220 × 5
 ##    GEOID NAME                            variable   estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                           &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -734,25 +734,25 @@ div.csl-indent {
 ##  9 53031 Jefferson County, Washington    B01002_001     58.3   0.7
 ## 10 26001 Alcona County, Michigan         B01002_001     58.2   0.3
 ## # … with 3,210 more rows</code></pre>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="census.html#cb581-1" aria-hidden="true" tabindex="-1"></a>above50 <span class="ot">&lt;-</span> <span class="fu">filter</span>(median_age, estimate <span class="sc">&gt;=</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="census.html#cb583-1" aria-hidden="true" tabindex="-1"></a>above50 <span class="ot">&lt;-</span> <span class="fu">filter</span>(median_age, estimate <span class="sc">&gt;=</span><span class="dv">50</span>)</span></code></pre></div>
 <p>Note how DeWitt assembles the following race/ethnicity groups, and then applies a summary variable:</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="census.html#cb582-1" aria-hidden="true" tabindex="-1"></a>race_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb582-2"><a href="census.html#cb582-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">white =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
-<span id="cb582-3"><a href="census.html#cb582-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
-<span id="cb582-4"><a href="census.html#cb582-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">native =</span> <span class="st">&quot;B03002_005&quot;</span>,</span>
-<span id="cb582-5"><a href="census.html#cb582-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
-<span id="cb582-6"><a href="census.html#cb582-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">HIPI =</span> <span class="st">&quot;B03002_007&quot;</span>,</span>
-<span id="cb582-7"><a href="census.html#cb582-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hispanic =</span> <span class="st">&quot;B03002_012&quot;</span></span>
-<span id="cb582-8"><a href="census.html#cb582-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb582-9"><a href="census.html#cb582-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb582-10"><a href="census.html#cb582-10" aria-hidden="true" tabindex="-1"></a>az_race <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb582-11"><a href="census.html#cb582-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb582-12"><a href="census.html#cb582-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;AZ&quot;</span>,</span>
-<span id="cb582-13"><a href="census.html#cb582-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> race_vars,</span>
-<span id="cb582-14"><a href="census.html#cb582-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B03002_001&quot;</span></span>
-<span id="cb582-15"><a href="census.html#cb582-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="census.html#cb584-1" aria-hidden="true" tabindex="-1"></a>race_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb584-2"><a href="census.html#cb584-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">white =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
+<span id="cb584-3"><a href="census.html#cb584-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
+<span id="cb584-4"><a href="census.html#cb584-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">native =</span> <span class="st">&quot;B03002_005&quot;</span>,</span>
+<span id="cb584-5"><a href="census.html#cb584-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
+<span id="cb584-6"><a href="census.html#cb584-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">HIPI =</span> <span class="st">&quot;B03002_007&quot;</span>,</span>
+<span id="cb584-7"><a href="census.html#cb584-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hispanic =</span> <span class="st">&quot;B03002_012&quot;</span></span>
+<span id="cb584-8"><a href="census.html#cb584-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb584-9"><a href="census.html#cb584-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb584-10"><a href="census.html#cb584-10" aria-hidden="true" tabindex="-1"></a>az_race <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb584-11"><a href="census.html#cb584-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb584-12"><a href="census.html#cb584-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;AZ&quot;</span>,</span>
+<span id="cb584-13"><a href="census.html#cb584-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> race_vars,</span>
+<span id="cb584-14"><a href="census.html#cb584-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B03002_001&quot;</span></span>
+<span id="cb584-15"><a href="census.html#cb584-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="census.html#cb584-1" aria-hidden="true" tabindex="-1"></a>az_race</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="census.html#cb586-1" aria-hidden="true" tabindex="-1"></a>az_race</span></code></pre></div>
 <pre><code>## # A tibble: 90 × 7
 ##    GEOID NAME                    variable estimate   moe summary_est summary_moe
 ##    &lt;chr&gt; &lt;chr&gt;                   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -769,11 +769,11 @@ div.csl-indent {
 ## # … with 80 more rows</code></pre>
 <div id="normalizing-the-data-with-mutate." class="section level3" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Normalizing the data with <code>mutate()</code>.</h3>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="census.html#cb586-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="ot">&lt;-</span>  az_race <span class="sc">%&gt;%</span> </span>
-<span id="cb586-2"><a href="census.html#cb586-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="dv">100</span><span class="sc">*</span>(estimate<span class="sc">/</span>summary_est)) <span class="sc">%&gt;%</span> </span>
-<span id="cb586-3"><a href="census.html#cb586-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, variable, percent)</span>
-<span id="cb586-4"><a href="census.html#cb586-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb586-5"><a href="census.html#cb586-5" aria-hidden="true" tabindex="-1"></a>az_race_percent</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="census.html#cb588-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="ot">&lt;-</span>  az_race <span class="sc">%&gt;%</span> </span>
+<span id="cb588-2"><a href="census.html#cb588-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="dv">100</span><span class="sc">*</span>(estimate<span class="sc">/</span>summary_est)) <span class="sc">%&gt;%</span> </span>
+<span id="cb588-3"><a href="census.html#cb588-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, variable, percent)</span>
+<span id="cb588-4"><a href="census.html#cb588-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb588-5"><a href="census.html#cb588-5" aria-hidden="true" tabindex="-1"></a>az_race_percent</span></code></pre></div>
 <pre><code>## # A tibble: 90 × 3
 ##    NAME                    variable percent
 ##    &lt;chr&gt;                   &lt;chr&gt;      &lt;dbl&gt;
@@ -791,11 +791,11 @@ div.csl-indent {
 </div>
 <div id="group_by-and-summarize-in-census-analysis" class="section level3" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> <code>group_by()</code> and <code>summarize()</code> in census analysis</h3>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="census.html#cb588-1" aria-hidden="true" tabindex="-1"></a>largest_group <span class="ot">&lt;-</span> az_race_percent <span class="sc">%&gt;%</span> </span>
-<span id="cb588-2"><a href="census.html#cb588-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(NAME) <span class="sc">%&gt;%</span> </span>
-<span id="cb588-3"><a href="census.html#cb588-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="fu">max</span>(percent))</span>
-<span id="cb588-4"><a href="census.html#cb588-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb588-5"><a href="census.html#cb588-5" aria-hidden="true" tabindex="-1"></a>largest_group</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="census.html#cb590-1" aria-hidden="true" tabindex="-1"></a>largest_group <span class="ot">&lt;-</span> az_race_percent <span class="sc">%&gt;%</span> </span>
+<span id="cb590-2"><a href="census.html#cb590-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(NAME) <span class="sc">%&gt;%</span> </span>
+<span id="cb590-3"><a href="census.html#cb590-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="fu">max</span>(percent))</span>
+<span id="cb590-4"><a href="census.html#cb590-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb590-5"><a href="census.html#cb590-5" aria-hidden="true" tabindex="-1"></a>largest_group</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 3
 ## # Groups:   NAME [15]
 ##    NAME                       variable percent
@@ -815,9 +815,9 @@ div.csl-indent {
 ## 13 Santa Cruz County, Arizona hispanic    83.5
 ## 14 Yavapai County, Arizona    white       80.5
 ## 15 Yuma County, Arizona       hispanic    63.8</code></pre>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="census.html#cb590-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="sc">%&gt;%</span> </span>
-<span id="cb590-2"><a href="census.html#cb590-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
-<span id="cb590-3"><a href="census.html#cb590-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median_pct =</span> <span class="fu">median</span>(percent))</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="census.html#cb592-1" aria-hidden="true" tabindex="-1"></a>az_race_percent <span class="sc">%&gt;%</span> </span>
+<span id="cb592-2"><a href="census.html#cb592-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb592-3"><a href="census.html#cb592-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median_pct =</span> <span class="fu">median</span>(percent))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##   variable median_pct
 ##   &lt;chr&gt;         &lt;dbl&gt;
@@ -830,19 +830,19 @@ div.csl-indent {
 </div>
 <div id="margin-of-error-considerations" class="section level3" number="15.2.3">
 <h3><span class="header-section-number">15.2.3</span> Margin of error considerations</h3>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="census.html#cb592-1" aria-hidden="true" tabindex="-1"></a>vars1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;B01001_0&quot;</span>, <span class="fu">c</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">44</span><span class="sc">:</span><span class="dv">49</span>))</span>
-<span id="cb592-2"><a href="census.html#cb592-2" aria-hidden="true" tabindex="-1"></a>salt_lake <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb592-3"><a href="census.html#cb592-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
-<span id="cb592-4"><a href="census.html#cb592-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> vars1,</span>
-<span id="cb592-5"><a href="census.html#cb592-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Utah&quot;</span>,</span>
-<span id="cb592-6"><a href="census.html#cb592-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="st">&quot;Salt Lake&quot;</span>,</span>
-<span id="cb592-7"><a href="census.html#cb592-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
-<span id="cb592-8"><a href="census.html#cb592-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="census.html#cb594-1" aria-hidden="true" tabindex="-1"></a>vars1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;B01001_0&quot;</span>, <span class="fu">c</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">25</span>, <span class="dv">44</span><span class="sc">:</span><span class="dv">49</span>))</span>
+<span id="cb594-2"><a href="census.html#cb594-2" aria-hidden="true" tabindex="-1"></a>salt_lake <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb594-3"><a href="census.html#cb594-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb594-4"><a href="census.html#cb594-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> vars1,</span>
+<span id="cb594-5"><a href="census.html#cb594-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Utah&quot;</span>,</span>
+<span id="cb594-6"><a href="census.html#cb594-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="st">&quot;Salt Lake&quot;</span>,</span>
+<span id="cb594-7"><a href="census.html#cb594-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
+<span id="cb594-8"><a href="census.html#cb594-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="census.html#cb594-1" aria-hidden="true" tabindex="-1"></a>example_tract <span class="ot">&lt;-</span> salt_lake <span class="sc">%&gt;%</span> </span>
-<span id="cb594-2"><a href="census.html#cb594-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEOID <span class="sc">==</span> <span class="st">&quot;49035100100&quot;</span>)</span>
-<span id="cb594-3"><a href="census.html#cb594-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb594-4"><a href="census.html#cb594-4" aria-hidden="true" tabindex="-1"></a>example_tract <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>NAME)</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="census.html#cb596-1" aria-hidden="true" tabindex="-1"></a>example_tract <span class="ot">&lt;-</span> salt_lake <span class="sc">%&gt;%</span> </span>
+<span id="cb596-2"><a href="census.html#cb596-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEOID <span class="sc">==</span> <span class="st">&quot;49035100100&quot;</span>)</span>
+<span id="cb596-3"><a href="census.html#cb596-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb596-4"><a href="census.html#cb596-4" aria-hidden="true" tabindex="-1"></a>example_tract <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>NAME)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 4
 ##    GEOID       variable   estimate   moe
 ##    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;
@@ -860,32 +860,32 @@ div.csl-indent {
 ## 12 49035100100 B01001_049        0    11</code></pre>
 <p><strong>tidycensus</strong> has multiple functions already built to make margin of error calculations more straigtforward when you are assembling calculated values from multiple variables each with their own margin of error.</p>
 <p>One of these functions is <code>mod_prop()</code>. Check out the help documentation to understand the following example:</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="census.html#cb596-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_prop</span>(<span class="dv">25</span>,<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="census.html#cb598-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moe_prop</span>(<span class="dv">25</span>,<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0494343</code></pre>
 <p>At 1 hour 52 minutes in the YouTube, a nice example to reduce margin of error by grouping small bins of data into larger bins is introduced. I do not take it up here.</p>
 <p>Exercises for 2nd break:</p>
-<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="census.html#cb598-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb598-2"><a href="census.html#cb598-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb598-3"><a href="census.html#cb598-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
-<span id="cb598-4"><a href="census.html#cb598-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;DP02_0068P&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="census.html#cb600-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb600-2"><a href="census.html#cb600-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb600-3"><a href="census.html#cb600-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb600-4"><a href="census.html#cb600-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="st">&quot;DP02_0068P&quot;</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <pre><code>## Using the ACS Data Profile</code></pre>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="census.html#cb601-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up<span class="sc">$</span>estimate <span class="sc">%&gt;%</span> <span class="fu">median</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="census.html#cb603-1" aria-hidden="true" tabindex="-1"></a>mn_bachelors_and_up<span class="sc">$</span>estimate <span class="sc">%&gt;%</span> <span class="fu">median</span>()</span></code></pre></div>
 <pre><code>## [1] 22.2</code></pre>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="census.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mn_bachelors_and_up<span class="sc">$</span>estimate)</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="census.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mn_bachelors_and_up<span class="sc">$</span>estimate)</span></code></pre></div>
 <pre><code>## [1] 22.2</code></pre>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="census.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mn_bachelors_and_up %&gt;% median()</span></span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="census.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mn_bachelors_and_up %&gt;% median()</span></span></code></pre></div>
 <p>New goal: find the percentage of commuters taking public transit to work in the 20 most populous metropolitan areas.</p>
-<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="census.html#cb606-1" aria-hidden="true" tabindex="-1"></a>  metros <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb606-2"><a href="census.html#cb606-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;cbsa&quot;</span>,</span>
-<span id="cb606-3"><a href="census.html#cb606-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">variables =</span> <span class="st">&quot;DP03_0021P&quot;</span>,</span>
-<span id="cb606-4"><a href="census.html#cb606-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">summary_var =</span> <span class="st">&quot;B01003_001&quot;</span>,</span>
-<span id="cb606-5"><a href="census.html#cb606-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
-<span id="cb606-6"><a href="census.html#cb606-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(summary_est)) <span class="sc">&lt;</span><span class="dv">21</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="census.html#cb608-1" aria-hidden="true" tabindex="-1"></a>  metros <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb608-2"><a href="census.html#cb608-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;cbsa&quot;</span>,</span>
+<span id="cb608-3"><a href="census.html#cb608-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">variables =</span> <span class="st">&quot;DP03_0021P&quot;</span>,</span>
+<span id="cb608-4"><a href="census.html#cb608-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">summary_var =</span> <span class="st">&quot;B01003_001&quot;</span>,</span>
+<span id="cb608-5"><a href="census.html#cb608-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey =</span> <span class="st">&quot;acs1&quot;</span></span>
+<span id="cb608-6"><a href="census.html#cb608-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(summary_est)) <span class="sc">&lt;</span><span class="dv">21</span>)</span></code></pre></div>
 <pre><code>## The 1-year ACS provides data for geographies with populations of 65,000 and greater.</code></pre>
 <pre><code>## Getting data from the 2019 1-year ACS</code></pre>
 <pre><code>## Using the ACS Data Profile</code></pre>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="census.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(metros)</span></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="census.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(metros)</span></code></pre></div>
 <pre><code>## Rows: 20
 ## Columns: 7
 ## $ GEOID       &lt;chr&gt; &quot;12060&quot;, &quot;14460&quot;, &quot;16980&quot;, &quot;19100&quot;, &quot;19740&quot;, &quot;19820&quot;, &quot;264…
@@ -895,31 +895,31 @@ div.csl-indent {
 ## $ moe         &lt;dbl&gt; 0.2, 0.4, 0.3, 0.1, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.2, 0.3…
 ## $ summary_est &lt;dbl&gt; 6018744, 4873019, 9457867, 7573136, 2967239, 4319629, 7066…
 ## $ summary_moe &lt;dbl&gt; 3340, NA, 1469, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="census.html#cb612-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> metros, <span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb612-2"><a href="census.html#cb612-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="census.html#cb613-1" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> metros <span class="sc">%&gt;%</span> </span>
-<span id="cb613-2"><a href="census.html#cb613-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;-.*$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb613-3"><a href="census.html#cb613-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;,.*$&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb613-4"><a href="census.html#cb613-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate), <span class="at">x =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb613-5"><a href="census.html#cb613-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span>
-<span id="cb613-6"><a href="census.html#cb613-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb613-7"><a href="census.html#cb613-7" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb613-8"><a href="census.html#cb613-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Nifty title&quot;</span>,</span>
-<span id="cb613-9"><a href="census.html#cb613-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb613-10"><a href="census.html#cb613-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;acs estimate (percent)&quot;</span>,</span>
-<span id="cb613-11"><a href="census.html#cb613-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">caption =</span> <span class="st">&quot;Nifty caption&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-146-2.png" width="672" /></p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="census.html#cb614-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> metros, <span class="fu">aes</span>(<span class="at">x =</span> NAME, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb614-2"><a href="census.html#cb614-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="census.html#cb615-1" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> metros <span class="sc">%&gt;%</span> </span>
+<span id="cb615-2"><a href="census.html#cb615-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;-.*$&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb615-3"><a href="census.html#cb615-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot;,.*$&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb615-4"><a href="census.html#cb615-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate), <span class="at">x =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb615-5"><a href="census.html#cb615-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>()</span>
+<span id="cb615-6"><a href="census.html#cb615-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb615-7"><a href="census.html#cb615-7" aria-hidden="true" tabindex="-1"></a>  p <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb615-8"><a href="census.html#cb615-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Nifty title&quot;</span>,</span>
+<span id="cb615-9"><a href="census.html#cb615-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb615-10"><a href="census.html#cb615-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;acs estimate (percent)&quot;</span>,</span>
+<span id="cb615-11"><a href="census.html#cb615-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">caption =</span> <span class="st">&quot;Nifty caption&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-147-2.png" width="672" /></p>
 </div>
 <div id="visualizing-margins-of-error" class="section level3" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Visualizing margins of error</h3>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="census.html#cb614-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb614-2"><a href="census.html#cb614-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Maine&quot;</span>,</span>
-<span id="cb614-3"><a href="census.html#cb614-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
-<span id="cb614-4"><a href="census.html#cb614-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">hhincome =</span> <span class="st">&quot;B19013_001&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb614-5"><a href="census.html#cb614-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot; County, Maine&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="census.html#cb616-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb616-2"><a href="census.html#cb616-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;Maine&quot;</span>,</span>
+<span id="cb616-3"><a href="census.html#cb616-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb616-4"><a href="census.html#cb616-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">hhincome =</span> <span class="st">&quot;B19013_001&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb616-5"><a href="census.html#cb616-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_remove</span>(NAME, <span class="st">&quot; County, Maine&quot;</span>))</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="census.html#cb616-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(moe))</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="census.html#cb618-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(moe))</span></code></pre></div>
 <pre><code>## # A tibble: 16 × 5
 ##    GEOID NAME         variable estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -939,55 +939,55 @@ div.csl-indent {
 ## 14 23005 Cumberland   hhincome    73072  1427
 ## 15 23003 Aroostook    hhincome    41123  1381
 ## 16 23019 Penobscot    hhincome    50808  1326</code></pre>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="census.html#cb618-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(</span>
-<span id="cb618-2"><a href="census.html#cb618-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
-<span id="cb618-3"><a href="census.html#cb618-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate<span class="sc">-</span>moe, <span class="at">xmax =</span> estimate<span class="sc">+</span>moe)) <span class="sc">+</span></span>
-<span id="cb618-4"><a href="census.html#cb618-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb618-5"><a href="census.html#cb618-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Spiffy title&quot;</span>,</span>
-<span id="cb618-6"><a href="census.html#cb618-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">&quot;Counites of Maine&quot;</span>,</span>
-<span id="cb618-7"><a href="census.html#cb618-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;2015-2019 ACS Estimate&quot;</span>,</span>
-<span id="cb618-8"><a href="census.html#cb618-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb618-9"><a href="census.html#cb618-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="census.html#cb620-1" aria-hidden="true" tabindex="-1"></a>maine_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(</span>
+<span id="cb620-2"><a href="census.html#cb620-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
+<span id="cb620-3"><a href="census.html#cb620-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate<span class="sc">-</span>moe, <span class="at">xmax =</span> estimate<span class="sc">+</span>moe)) <span class="sc">+</span></span>
+<span id="cb620-4"><a href="census.html#cb620-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb620-5"><a href="census.html#cb620-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Spiffy title&quot;</span>,</span>
+<span id="cb620-6"><a href="census.html#cb620-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">&quot;Counites of Maine&quot;</span>,</span>
+<span id="cb620-7"><a href="census.html#cb620-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;2015-2019 ACS Estimate&quot;</span>,</span>
+<span id="cb620-8"><a href="census.html#cb620-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb620-9"><a href="census.html#cb620-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 </div>
 <div id="get_estimates-and-how-to-use-them" class="section level3" number="15.2.5">
 <h3><span class="header-section-number">15.2.5</span> <code>get_estimates()</code> and how to use them</h3>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="census.html#cb619-1" aria-hidden="true" tabindex="-1"></a>utah <span class="ot">&lt;-</span> <span class="fu">get_estimates</span>(</span>
-<span id="cb619-2"><a href="census.html#cb619-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
-<span id="cb619-3"><a href="census.html#cb619-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;UT&quot;</span>,</span>
-<span id="cb619-4"><a href="census.html#cb619-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">product =</span> <span class="st">&quot;characteristics&quot;</span>,</span>
-<span id="cb619-5"><a href="census.html#cb619-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown =</span> <span class="fu">c</span>(<span class="st">&quot;SEX&quot;</span>, <span class="st">&quot;AGEGROUP&quot;</span>),</span>
-<span id="cb619-6"><a href="census.html#cb619-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown_labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb619-7"><a href="census.html#cb619-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
-<span id="cb619-8"><a href="census.html#cb619-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb619-9"><a href="census.html#cb619-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb619-10"><a href="census.html#cb619-10" aria-hidden="true" tabindex="-1"></a>utah</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="census.html#cb621-1" aria-hidden="true" tabindex="-1"></a>utah <span class="ot">&lt;-</span> <span class="fu">get_estimates</span>(</span>
+<span id="cb621-2"><a href="census.html#cb621-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;state&quot;</span>,</span>
+<span id="cb621-3"><a href="census.html#cb621-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;UT&quot;</span>,</span>
+<span id="cb621-4"><a href="census.html#cb621-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">product =</span> <span class="st">&quot;characteristics&quot;</span>,</span>
+<span id="cb621-5"><a href="census.html#cb621-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown =</span> <span class="fu">c</span>(<span class="st">&quot;SEX&quot;</span>, <span class="st">&quot;AGEGROUP&quot;</span>),</span>
+<span id="cb621-6"><a href="census.html#cb621-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">breakdown_labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb621-7"><a href="census.html#cb621-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2019</span></span>
+<span id="cb621-8"><a href="census.html#cb621-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb621-9"><a href="census.html#cb621-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb621-10"><a href="census.html#cb621-10" aria-hidden="true" tabindex="-1"></a>utah</span></code></pre></div>
 <pre><code>## # A tibble: 96 × 5
 ##    GEOID NAME    value SEX        AGEGROUP          
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;             
 ##  1 49    Utah  3205958 Both sexes All ages          
 ##  2 49    Utah   247803 Both sexes Age 0 to 4 years  
 ##  3 49    Utah   258976 Both sexes Age 5 to 9 years  
-##  4 49    Utah  1614917 Male       All ages          
-##  5 49    Utah   132868 Male       Age 5 to 9 years  
-##  6 49    Utah  1591041 Female     All ages          
-##  7 49    Utah   126108 Female     Age 5 to 9 years  
-##  8 49    Utah    23039 Female     Age 80 to 84 years
-##  9 49    Utah   267985 Both sexes Age 10 to 14 years
-## 10 49    Utah   137940 Male       Age 10 to 14 years
+##  4 49    Utah   267985 Both sexes Age 10 to 14 years
+##  5 49    Utah  1614917 Male       All ages          
+##  6 49    Utah   132868 Male       Age 5 to 9 years  
+##  7 49    Utah   137940 Male       Age 10 to 14 years
+##  8 49    Utah  1591041 Female     All ages          
+##  9 49    Utah   126108 Female     Age 5 to 9 years  
+## 10 49    Utah    23039 Female     Age 80 to 84 years
 ## # … with 86 more rows</code></pre>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="census.html#cb621-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(utah, <span class="fu">str_detect</span>(AGEGROUP, <span class="st">&quot;^Age&quot;</span>),</span>
-<span id="cb621-2"><a href="census.html#cb621-2" aria-hidden="true" tabindex="-1"></a>                        SEX <span class="sc">!=</span> <span class="st">&quot;Both sexes&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb621-3"><a href="census.html#cb621-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">ifelse</span>(SEX <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>, <span class="sc">-</span>value, value))</span>
-<span id="cb621-4"><a href="census.html#cb621-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb621-5"><a href="census.html#cb621-5" aria-hidden="true" tabindex="-1"></a>utah_filtered</span></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="census.html#cb623-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(utah, <span class="fu">str_detect</span>(AGEGROUP, <span class="st">&quot;^Age&quot;</span>),</span>
+<span id="cb623-2"><a href="census.html#cb623-2" aria-hidden="true" tabindex="-1"></a>                        SEX <span class="sc">!=</span> <span class="st">&quot;Both sexes&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb623-3"><a href="census.html#cb623-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">ifelse</span>(SEX <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>, <span class="sc">-</span>value, value))</span>
+<span id="cb623-4"><a href="census.html#cb623-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb623-5"><a href="census.html#cb623-5" aria-hidden="true" tabindex="-1"></a>utah_filtered</span></code></pre></div>
 <pre><code>## # A tibble: 36 × 5
 ##    GEOID NAME    value SEX    AGEGROUP          
 ##    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;fct&gt;             
 ##  1 49    Utah  -132868 Male   Age 5 to 9 years  
-##  2 49    Utah   126108 Female Age 5 to 9 years  
-##  3 49    Utah    23039 Female Age 80 to 84 years
-##  4 49    Utah  -137940 Male   Age 10 to 14 years
+##  2 49    Utah  -137940 Male   Age 10 to 14 years
+##  3 49    Utah   126108 Female Age 5 to 9 years  
+##  4 49    Utah    23039 Female Age 80 to 84 years
 ##  5 49    Utah  -129312 Male   Age 15 to 19 years
 ##  6 49    Utah   130045 Female Age 10 to 14 years
 ##  7 49    Utah   124535 Female Age 15 to 19 years
@@ -995,62 +995,62 @@ div.csl-indent {
 ##  9 49    Utah   128846 Female Age 20 to 24 years
 ## 10 49    Utah  -111776 Male   Age 30 to 34 years
 ## # … with 26 more rows</code></pre>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="census.html#cb623-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
-<span id="cb623-2"><a href="census.html#cb623-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="census.html#cb624-1" aria-hidden="true" tabindex="-1"></a>utah_pyramid <span class="ot">&lt;-</span> utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
-<span id="cb624-2"><a href="census.html#cb624-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>)<span class="sc">+</span></span>
-<span id="cb624-3"><a href="census.html#cb624-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Verdana&quot;</span>) <span class="sc">+</span></span>
-<span id="cb624-4"><a href="census.html#cb624-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(y)<span class="fu">paste0</span>(<span class="fu">abs</span>(y<span class="sc">/</span><span class="dv">1000</span>), <span class="st">&quot;k&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb624-5"><a href="census.html#cb624-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x)<span class="fu">gsub</span>(<span class="st">&quot;Age|years&quot;</span>, <span class="st">&quot;&quot;</span>, x)) <span class="sc">+</span></span>
-<span id="cb624-6"><a href="census.html#cb624-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb624-7"><a href="census.html#cb624-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb624-8"><a href="census.html#cb624-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;2019 Census Bureau population estimate&quot;</span>,</span>
-<span id="cb624-9"><a href="census.html#cb624-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population Structure in Utah&quot;</span>,</span>
-<span id="cb624-10"><a href="census.html#cb624-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb624-11"><a href="census.html#cb624-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: US Census Bureau population estimates and tidycensus R package&quot;</span>)</span>
-<span id="cb624-12"><a href="census.html#cb624-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb624-13"><a href="census.html#cb624-13" aria-hidden="true" tabindex="-1"></a>utah_pyramid</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-148-2.png" width="672" /></p>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="census.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(utah_pyramid)</span></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="census.html#cb625-1" aria-hidden="true" tabindex="-1"></a>utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
+<span id="cb625-2"><a href="census.html#cb625-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="census.html#cb626-1" aria-hidden="true" tabindex="-1"></a>utah_pyramid <span class="ot">&lt;-</span> utah_filtered <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> AGEGROUP, <span class="at">fill =</span> SEX)) <span class="sc">+</span></span>
+<span id="cb626-2"><a href="census.html#cb626-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.95</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>)<span class="sc">+</span></span>
+<span id="cb626-3"><a href="census.html#cb626-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Verdana&quot;</span>) <span class="sc">+</span></span>
+<span id="cb626-4"><a href="census.html#cb626-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="cf">function</span>(y)<span class="fu">paste0</span>(<span class="fu">abs</span>(y<span class="sc">/</span><span class="dv">1000</span>), <span class="st">&quot;k&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb626-5"><a href="census.html#cb626-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x)<span class="fu">gsub</span>(<span class="st">&quot;Age|years&quot;</span>, <span class="st">&quot;&quot;</span>, x)) <span class="sc">+</span></span>
+<span id="cb626-6"><a href="census.html#cb626-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb626-7"><a href="census.html#cb626-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb626-8"><a href="census.html#cb626-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;2019 Census Bureau population estimate&quot;</span>,</span>
+<span id="cb626-9"><a href="census.html#cb626-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population Structure in Utah&quot;</span>,</span>
+<span id="cb626-10"><a href="census.html#cb626-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb626-11"><a href="census.html#cb626-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: US Census Bureau population estimates and tidycensus R package&quot;</span>)</span>
+<span id="cb626-12"><a href="census.html#cb626-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb626-13"><a href="census.html#cb626-13" aria-hidden="true" tabindex="-1"></a>utah_pyramid</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-149-2.png" width="672" /></p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="census.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(utah_pyramid)</span></code></pre></div>
 <div id="htmlwidget-155dce4377c038838833" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-155dce4377c038838833">{"x":{"data":[{"orientation":"v","width":[126108,23039,130045,124535,128846,108654,113907,104121,86950,78972,75578,64309,49913,120743,122197,75046,35411,22667],"base":[1.525,16.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,0.525,5.525,10.525,15.525,17.525],"x":[63054,11519.5,65022.5,62267.5,64423,54327,56953.5,52060.5,43475,39486,37789,32154.5,24956.5,60371.5,61098.5,37523,17705.5,11333.5],"y":[0.95,0.950000000000003,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.95,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003],"text":["value:  126108<br />AGEGROUP: Age 5 to 9 years<br />SEX: Female","value:   23039<br />AGEGROUP: Age 80 to 84 years<br />SEX: Female","value:  130045<br />AGEGROUP: Age 10 to 14 years<br />SEX: Female","value:  124535<br />AGEGROUP: Age 15 to 19 years<br />SEX: Female","value:  128846<br />AGEGROUP: Age 20 to 24 years<br />SEX: Female","value:  108654<br />AGEGROUP: Age 30 to 34 years<br />SEX: Female","value:  113907<br />AGEGROUP: Age 35 to 39 years<br />SEX: Female","value:  104121<br />AGEGROUP: Age 40 to 44 years<br />SEX: Female","value:   86950<br />AGEGROUP: Age 45 to 49 years<br />SEX: Female","value:   78972<br />AGEGROUP: Age 55 to 59 years<br />SEX: Female","value:   75578<br />AGEGROUP: Age 60 to 64 years<br />SEX: Female","value:   64309<br />AGEGROUP: Age 65 to 69 years<br />SEX: Female","value:   49913<br />AGEGROUP: Age 70 to 74 years<br />SEX: Female","value:  120743<br />AGEGROUP: Age 0 to 4 years<br />SEX: Female","value:  122197<br />AGEGROUP: Age 25 to 29 years<br />SEX: Female","value:   75046<br />AGEGROUP: Age 50 to 54 years<br />SEX: Female","value:   35411<br />AGEGROUP: Age 75 to 79 years<br />SEX: Female","value:   22667<br />AGEGROUP: Age 85 years and older<br />SEX: Female"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[132868,137940,129312,135806,111776,117335,108090,89984,76536,72048,59874,45370,19148,15907,127060,129179,76450,30234],"base":[1.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,16.525,17.525,0.525,5.525,10.525,15.525],"x":[-66434,-68970,-64656,-67903,-55888,-58667.5,-54045,-44992,-38268,-36024,-29937,-22685,-9574,-7953.5,-63530,-64589.5,-38225,-15117],"y":[0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000003,0.950000000000003,0.95,0.949999999999999,0.949999999999999,0.950000000000001],"text":["value: -132868<br />AGEGROUP: Age 5 to 9 years<br />SEX: Male","value: -137940<br />AGEGROUP: Age 10 to 14 years<br />SEX: Male","value: -129312<br />AGEGROUP: Age 15 to 19 years<br />SEX: Male","value: -135806<br />AGEGROUP: Age 20 to 24 years<br />SEX: Male","value: -111776<br />AGEGROUP: Age 30 to 34 years<br />SEX: Male","value: -117335<br />AGEGROUP: Age 35 to 39 years<br />SEX: Male","value: -108090<br />AGEGROUP: Age 40 to 44 years<br />SEX: Male","value:  -89984<br />AGEGROUP: Age 45 to 49 years<br />SEX: Male","value:  -76536<br />AGEGROUP: Age 55 to 59 years<br />SEX: Male","value:  -72048<br />AGEGROUP: Age 60 to 64 years<br />SEX: Male","value:  -59874<br />AGEGROUP: Age 65 to 69 years<br />SEX: Male","value:  -45370<br />AGEGROUP: Age 70 to 74 years<br />SEX: Male","value:  -19148<br />AGEGROUP: Age 80 to 84 years<br />SEX: Male","value:  -15907<br />AGEGROUP: Age 85 years and older<br />SEX: Male","value: -127060<br />AGEGROUP: Age 0 to 4 years<br />SEX: Male","value: -129179<br />AGEGROUP: Age 25 to 29 years<br />SEX: Male","value:  -76450<br />AGEGROUP: Age 50 to 54 years<br />SEX: Male","value:  -30234<br />AGEGROUP: Age 75 to 79 years<br />SEX: Male"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,0,128,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":107.397260273973},"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187},"title":{"text":"Population Structure in Utah","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-151339.25,143444.25],"tickmode":"array","ticktext":["150k","100k","50k","0k","50k","100k"],"tickvals":[-150000,-100000,-50000,0,50000,100000],"categoryorder":"array","categoryarray":["150k","100k","50k","0k","50k","100k"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,18.6],"tickmode":"array","ticktext":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"2019 Census Bureau population estimate","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":11.689497716895},"y":0.913385826771654},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"d0b2d8bd33d":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"d0b2d8bd33d","visdat":{"d0b2d8bd33d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-155dce4377c038838833">{"x":{"data":[{"orientation":"v","width":[126108,23039,130045,124535,128846,108654,113907,104121,86950,78972,75578,64309,49913,120743,122197,75046,35411,22667],"base":[1.525,16.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,0.525,5.525,10.525,15.525,17.525],"x":[63054,11519.5,65022.5,62267.5,64423,54327,56953.5,52060.5,43475,39486,37789,32154.5,24956.5,60371.5,61098.5,37523,17705.5,11333.5],"y":[0.95,0.950000000000003,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.95,0.949999999999999,0.949999999999999,0.950000000000001,0.950000000000003],"text":["value:  126108<br />AGEGROUP: Age 5 to 9 years<br />SEX: Female","value:   23039<br />AGEGROUP: Age 80 to 84 years<br />SEX: Female","value:  130045<br />AGEGROUP: Age 10 to 14 years<br />SEX: Female","value:  124535<br />AGEGROUP: Age 15 to 19 years<br />SEX: Female","value:  128846<br />AGEGROUP: Age 20 to 24 years<br />SEX: Female","value:  108654<br />AGEGROUP: Age 30 to 34 years<br />SEX: Female","value:  113907<br />AGEGROUP: Age 35 to 39 years<br />SEX: Female","value:  104121<br />AGEGROUP: Age 40 to 44 years<br />SEX: Female","value:   86950<br />AGEGROUP: Age 45 to 49 years<br />SEX: Female","value:   78972<br />AGEGROUP: Age 55 to 59 years<br />SEX: Female","value:   75578<br />AGEGROUP: Age 60 to 64 years<br />SEX: Female","value:   64309<br />AGEGROUP: Age 65 to 69 years<br />SEX: Female","value:   49913<br />AGEGROUP: Age 70 to 74 years<br />SEX: Female","value:  120743<br />AGEGROUP: Age 0 to 4 years<br />SEX: Female","value:  122197<br />AGEGROUP: Age 25 to 29 years<br />SEX: Female","value:   75046<br />AGEGROUP: Age 50 to 54 years<br />SEX: Female","value:   35411<br />AGEGROUP: Age 75 to 79 years<br />SEX: Female","value:   22667<br />AGEGROUP: Age 85 years and older<br />SEX: Female"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[132868,137940,129312,135806,111776,117335,108090,89984,76536,72048,59874,45370,19148,15907,127060,129179,76450,30234],"base":[1.525,2.525,3.525,4.525,6.525,7.525,8.525,9.525,11.525,12.525,13.525,14.525,16.525,17.525,0.525,5.525,10.525,15.525],"x":[-66434,-68970,-64656,-67903,-55888,-58667.5,-54045,-44992,-38268,-36024,-29937,-22685,-9574,-7953.5,-63530,-64589.5,-38225,-15117],"y":[0.95,0.95,0.95,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.949999999999999,0.950000000000003,0.950000000000003,0.95,0.949999999999999,0.949999999999999,0.950000000000001],"text":["value: -132868<br />AGEGROUP: Age 5 to 9 years<br />SEX: Male","value: -137940<br />AGEGROUP: Age 10 to 14 years<br />SEX: Male","value: -129312<br />AGEGROUP: Age 15 to 19 years<br />SEX: Male","value: -135806<br />AGEGROUP: Age 20 to 24 years<br />SEX: Male","value: -111776<br />AGEGROUP: Age 30 to 34 years<br />SEX: Male","value: -117335<br />AGEGROUP: Age 35 to 39 years<br />SEX: Male","value: -108090<br />AGEGROUP: Age 40 to 44 years<br />SEX: Male","value:  -89984<br />AGEGROUP: Age 45 to 49 years<br />SEX: Male","value:  -76536<br />AGEGROUP: Age 55 to 59 years<br />SEX: Male","value:  -72048<br />AGEGROUP: Age 60 to 64 years<br />SEX: Male","value:  -59874<br />AGEGROUP: Age 65 to 69 years<br />SEX: Male","value:  -45370<br />AGEGROUP: Age 70 to 74 years<br />SEX: Male","value:  -19148<br />AGEGROUP: Age 80 to 84 years<br />SEX: Male","value:  -15907<br />AGEGROUP: Age 85 years and older<br />SEX: Male","value: -127060<br />AGEGROUP: Age 0 to 4 years<br />SEX: Male","value: -129179<br />AGEGROUP: Age 25 to 29 years<br />SEX: Male","value:  -76450<br />AGEGROUP: Age 50 to 54 years<br />SEX: Male","value:  -30234<br />AGEGROUP: Age 75 to 79 years<br />SEX: Male"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,0,128,0.75)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":107.397260273973},"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187},"title":{"text":"Population Structure in Utah","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-151339.25,143444.25],"tickmode":"array","ticktext":["150k","100k","50k","0k","50k","100k"],"tickvals":[-150000,-100000,-50000,0,50000,100000],"categoryorder":"array","categoryarray":["150k","100k","50k","0k","50k","100k"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,18.6],"tickmode":"array","ticktext":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":[" 0 to 4 "," 5 to 9 "," 10 to 14 "," 15 to 19 "," 20 to 24 "," 25 to 29 "," 30 to 34 "," 35 to 39 "," 40 to 44 "," 45 to 49 "," 50 to 54 "," 55 to 59 "," 60 to 64 "," 65 to 69 "," 70 to 74 "," 75 to 79 "," 80 to 84 "," 85  and older"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Verdana","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"2019 Census Bureau population estimate","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":11.689497716895},"title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"Verdana","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"b80937b41640":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"b80937b41640","visdat":{"b80937b41640":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="ggbeeswarm-automates-some-jitter-considerations" class="section level3" number="15.2.6">
 <h3><span class="header-section-number">15.2.6</span> <code>ggbeeswarm()</code> automates some jitter considerations</h3>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="census.html#cb626-1" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb626-2"><a href="census.html#cb626-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
-<span id="cb626-3"><a href="census.html#cb626-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
-<span id="cb626-4"><a href="census.html#cb626-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="fu">c</span>(<span class="st">&quot;Hennepin&quot;</span>, <span class="st">&quot;Ramsey&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Carver&quot;</span>, <span class="st">&quot;Dakota&quot;</span>, <span class="st">&quot;Anoka&quot;</span>, <span class="st">&quot;Wright&quot;</span>, <span class="st">&quot;Scott&quot;</span>),</span>
-<span id="cb626-5"><a href="census.html#cb626-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">White =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
-<span id="cb626-6"><a href="census.html#cb626-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
-<span id="cb626-7"><a href="census.html#cb626-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">Asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
-<span id="cb626-8"><a href="census.html#cb626-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">Hispanic =</span> <span class="st">&quot;B03002_012&quot;</span>),</span>
-<span id="cb626-9"><a href="census.html#cb626-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B19013_001&quot;</span></span>
-<span id="cb626-10"><a href="census.html#cb626-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(GEOID) <span class="sc">%&gt;%</span> </span>
-<span id="cb626-11"><a href="census.html#cb626-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">==</span> <span class="fu">max</span>(estimate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb626-12"><a href="census.html#cb626-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb626-13"><a href="census.html#cb626-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="census.html#cb628-1" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb628-2"><a href="census.html#cb628-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>,</span>
+<span id="cb628-3"><a href="census.html#cb628-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;MN&quot;</span>,</span>
+<span id="cb628-4"><a href="census.html#cb628-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> <span class="fu">c</span>(<span class="st">&quot;Hennepin&quot;</span>, <span class="st">&quot;Ramsey&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Carver&quot;</span>, <span class="st">&quot;Dakota&quot;</span>, <span class="st">&quot;Anoka&quot;</span>, <span class="st">&quot;Wright&quot;</span>, <span class="st">&quot;Scott&quot;</span>),</span>
+<span id="cb628-5"><a href="census.html#cb628-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">White =</span> <span class="st">&quot;B03002_003&quot;</span>,</span>
+<span id="cb628-6"><a href="census.html#cb628-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Black =</span> <span class="st">&quot;B03002_004&quot;</span>,</span>
+<span id="cb628-7"><a href="census.html#cb628-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">Asian =</span> <span class="st">&quot;B03002_006&quot;</span>,</span>
+<span id="cb628-8"><a href="census.html#cb628-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">Hispanic =</span> <span class="st">&quot;B03002_012&quot;</span>),</span>
+<span id="cb628-9"><a href="census.html#cb628-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">summary_var =</span> <span class="st">&quot;B19013_001&quot;</span></span>
+<span id="cb628-10"><a href="census.html#cb628-10" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(GEOID) <span class="sc">%&gt;%</span> </span>
+<span id="cb628-11"><a href="census.html#cb628-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">==</span> <span class="fu">max</span>(estimate, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb628-12"><a href="census.html#cb628-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb628-13"><a href="census.html#cb628-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
-<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="census.html#cb628-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb628-2"><a href="census.html#cb628-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb628-3"><a href="census.html#cb628-3" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, </span>
-<span id="cb628-4"><a href="census.html#cb628-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> summary_est, </span>
-<span id="cb628-5"><a href="census.html#cb628-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">color =</span> summary_est)) <span class="sc">+</span></span>
-<span id="cb628-6"><a href="census.html#cb628-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quasirandom</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb628-7"><a href="census.html#cb628-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb628-8"><a href="census.html#cb628-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb628-9"><a href="census.html#cb628-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb628-10"><a href="census.html#cb628-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
-<span id="cb628-11"><a href="census.html#cb628-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Largest Group in Census Tract&quot;</span>,</span>
-<span id="cb628-12"><a href="census.html#cb628-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Median Household Income&quot;</span>,</span>
-<span id="cb628-13"><a href="census.html#cb628-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Household Income By Largest Race/Ethnic Group&quot;</span>,</span>
-<span id="cb628-14"><a href="census.html#cb628-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Census Tracts, Twin Cities Metro Area&quot;</span>,</span>
-<span id="cb628-15"><a href="census.html#cb628-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: 2015-2019 ACS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="census.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb630-2"><a href="census.html#cb630-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb630-3"><a href="census.html#cb630-3" aria-hidden="true" tabindex="-1"></a>mn_race_income <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, </span>
+<span id="cb630-4"><a href="census.html#cb630-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> summary_est, </span>
+<span id="cb630-5"><a href="census.html#cb630-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">color =</span> summary_est)) <span class="sc">+</span></span>
+<span id="cb630-6"><a href="census.html#cb630-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quasirandom</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb630-7"><a href="census.html#cb630-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb630-8"><a href="census.html#cb630-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb630-9"><a href="census.html#cb630-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb630-10"><a href="census.html#cb630-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
+<span id="cb630-11"><a href="census.html#cb630-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Largest Group in Census Tract&quot;</span>,</span>
+<span id="cb630-12"><a href="census.html#cb630-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Median Household Income&quot;</span>,</span>
+<span id="cb630-13"><a href="census.html#cb630-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Household Income By Largest Race/Ethnic Group&quot;</span>,</span>
+<span id="cb630-14"><a href="census.html#cb630-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Census Tracts, Twin Cities Metro Area&quot;</span>,</span>
+<span id="cb630-15"><a href="census.html#cb630-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Data source: 2015-2019 ACS&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 3 rows containing missing values (position_quasirandom).</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = &quot;none&quot;` instead.</code></pre>
-<p><img src="test-book_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 
 </div>
 </div>

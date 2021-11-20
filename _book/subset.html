@@ -53,12 +53,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -353,11 +353,11 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 6</span> Subsetting</h1>
 <p>From <a href="https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/" class="uri">https://www.r-bloggers.com/5-ways-to-subset-a-data-frame-in-r/</a></p>
 <p>Note: since this is down for maintenance, I will turn off evaluation on these chunks:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="subset.html#cb193-1" aria-hidden="true" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/robustbase/education.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb193-2"><a href="subset.html#cb193-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb193-3"><a href="subset.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(education) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Region&quot;</span>,<span class="st">&quot;Urban.Population&quot;</span>,<span class="st">&quot;Per.Capita.Income&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)</span>
-<span id="cb193-4"><a href="subset.html#cb193-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb193-5"><a href="subset.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(education)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="subset.html#cb195-1" aria-hidden="true" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/robustbase/education.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb195-2"><a href="subset.html#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="subset.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(education) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Region&quot;</span>,<span class="st">&quot;Urban.Population&quot;</span>,<span class="st">&quot;Per.Capita.Income&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)</span>
+<span id="cb195-4"><a href="subset.html#cb195-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-5"><a href="subset.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(education)</span></code></pre></div>
 <pre><code>## Rows: 50
 ## Columns: 7
 ## $ X                      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, …
@@ -369,7 +369,7 @@ div.csl-indent {
 ## $ Education.Expenditures &lt;int&gt; 235, 231, 270, 261, 300, 317, 387, 285, 300, 22…</code></pre>
 <div id="subsetting-using-brackets" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Subsetting using brackets</h2>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="subset.html#cb195-1" aria-hidden="true" tabindex="-1"></a>education[<span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">21</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="subset.html#cb197-1" aria-hidden="true" tabindex="-1"></a>education[<span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">21</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -386,7 +386,7 @@ div.csl-indent {
 </div>
 <div id="subset-using-brackets-by-omitting-the-rows-and-columns-we-dont-want" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Subset using brackets by omitting the rows and columns we don’t want</h2>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="subset.html#cb197-1" aria-hidden="true" tabindex="-1"></a>education[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="sc">:</span><span class="dv">50</span>),<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="subset.html#cb199-1" aria-hidden="true" tabindex="-1"></a>education[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">22</span><span class="sc">:</span><span class="dv">50</span>),<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -403,7 +403,7 @@ div.csl-indent {
 </div>
 <div id="subset-using-brackets-in-combination-with-the-which-function-and-the-in-operator" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Subset using brackets in combination with the which() function and the %in% operator</h2>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="subset.html#cb199-1" aria-hidden="true" tabindex="-1"></a>education[<span class="fu">which</span>(education<span class="sc">$</span>Region <span class="sc">==</span> <span class="dv">2</span>),<span class="fu">names</span>(education) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="subset.html#cb201-1" aria-hidden="true" tabindex="-1"></a>education[<span class="fu">which</span>(education<span class="sc">$</span>Region <span class="sc">==</span> <span class="dv">2</span>),<span class="fu">names</span>(education) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>)]</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -420,7 +420,7 @@ div.csl-indent {
 </div>
 <div id="subset-using-the-subset-function" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Subset using the subset() function</h2>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="subset.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(education, Region <span class="sc">==</span> <span class="dv">2</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="subset.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(education, Region <span class="sc">==</span> <span class="dv">2</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Minor.Population&quot;</span>,<span class="st">&quot;Education.Expenditures&quot;</span>))</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 10    OH              324                    221
 ## 11    IN              329                    264
@@ -437,7 +437,7 @@ div.csl-indent {
 </div>
 <div id="subset-using-dyplyrs-filter-and-select" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Subset using dyplyr’s filter() and select()</h2>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="subset.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">filter</span>(education, Region <span class="sc">==</span> <span class="dv">2</span>),<span class="fu">c</span>(State,Minor.Population<span class="sc">:</span>Education.Expenditures))</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="subset.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">filter</span>(education, Region <span class="sc">==</span> <span class="dv">2</span>),<span class="fu">c</span>(State,Minor.Population<span class="sc">:</span>Education.Expenditures))</span></code></pre></div>
 <pre><code>##    State Minor.Population Education.Expenditures
 ## 1     OH              324                    221
 ## 2     IN              329                    264

@@ -52,6 +52,13 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -197,8 +204,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
-<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -403,10 +409,8 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <p><code>citr</code>, a plugin for RStudio, has become somewhat harder to use. When attempting to install the package, a warning is generated that states that “package ‘citr’ is not available for this version of R.” A version can still be obtained from GitHub repository, but this is probably more trouble than it’s worth, at least in my workflow.</p>
 <p>Of note, Yihui Xie includes a nifty bit of code to automatically generate a <code>.bib</code> database for all the R packages that I’d like to cite:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bookdownplan.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;caret&#39;</span>, <span class="st">&#39;citr&#39;</span>), <span class="st">&#39;packages.bib&#39;</span>)</span></code></pre></div>
-<pre><code>## Warning in knitr::write_bib(c(.packages(), &quot;bookdown&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, :
-## package(s) citr not found</code></pre>
 <p>The citation for a package can also be called with <code>citation("packagename")</code>. For instance:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="bookdownplan.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="bookdownplan.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
 ##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
@@ -433,19 +437,19 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <div id="figures." class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Figures.</h2>
 <p><strong>tidyverse</strong> and <strong>gglplot2</strong> are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="bookdownplan.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="bookdownplan.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>To generate the following figure, the code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="bookdownplan.html#cb7-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="bookdownplan.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="bookdownplan.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="bookdownplan.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="bookdownplan.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="bookdownplan.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-7"><a href="bookdownplan.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Nifty Starwars Figure&quot;</span>,</span>
-<span id="cb7-8"><a href="bookdownplan.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Species&quot;</span>,</span>
-<span id="cb7-9"><a href="bookdownplan.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
-<span id="cb7-10"><a href="bookdownplan.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="bookdownplan.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="bookdownplan.html#cb6-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="bookdownplan.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="bookdownplan.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="bookdownplan.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="bookdownplan.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="bookdownplan.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-7"><a href="bookdownplan.html#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Nifty Starwars Figure&quot;</span>,</span>
+<span id="cb6-8"><a href="bookdownplan.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Species&quot;</span>,</span>
+<span id="cb6-9"><a href="bookdownplan.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb6-10"><a href="bookdownplan.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="bookdownplan.html#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-1"></span>
 <img src="test-book_files/figure-html/starfig-1-1.png" alt="Starwars Figure 1" width="672" />
 <p class="caption">
