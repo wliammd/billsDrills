@@ -31,6 +31,8 @@ Resources for class imbalance:
   * <https://www.svds.com/learning-imbalanced-classes/>
   * <https://dpmartin42.github.io/posts/r/imbalanced-classes-part-1>
   * <https://rstudio-pubs-static.s3.amazonaws.com/607601_57a11284917f4d79933f4c4db3d41713.html>
+  
+  One of the cleanest approaches to datasets with marked class imbalances is seen in the DKFZ approach to DNA methylation profile classes. Their extensive use of dimension reduction, especially t-SNE plots, seems to graphically address the problem. A small cloud, remote from other clouds in a t-SNE plot, makes a pretty compelling argument for the existence of a separate class. 
 
 ## Modeling notes
 
