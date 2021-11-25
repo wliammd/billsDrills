@@ -52,13 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -169,11 +162,12 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> <strong>bookdown</strong> Tips for This Document</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
-<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.2</b> Inserting pictures</a></li>
-<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
-<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
-<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
-<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#rstudio-tip-preview-in-viewer-pane"><i class="fa fa-check"></i><b>2.2</b> RStudio Tip: Preview in Viewer Pane</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.4</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.5</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.6</b> Figures.</a></li>
+<li class="chapter" data-level="2.7" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.7</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -204,7 +198,8 @@ div.csl-indent {
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
+<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -373,8 +368,12 @@ div.csl-indent {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="bookdownplan.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-2"><a href="bookdownplan.html#cb1-2" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">width.cutoff=</span><span class="dv">60</span>),<span class="at">tidy=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
-<div id="inserting-pictures" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Inserting pictures</h2>
+<div id="rstudio-tip-preview-in-viewer-pane" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> RStudio Tip: Preview in Viewer Pane</h2>
+<p>Note that RStudio offers a “Preview in Viewer Pane” option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. When you have the luxery of working with a large monitor, this is the best way to watch your code unfold into an Rmarkdown document.</p>
+</div>
+<div id="inserting-pictures" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Inserting pictures</h2>
 <p>Pictures can be included in the <code>pathologyImages</code> subdirectory and referenced with a descriptive title in brackets followed by the file path in parentheses, like this: <code>![Pithy title. Figure A. Figure B](filepath/image_name.jpg)</code></p>
 <p>Note that I had to use double backticks around the above code in order to display the “Pithy title” figure reference.</p>
 <p>Here’s an example with a real image (code hidden in the final document):</p>
@@ -391,8 +390,8 @@ div.csl-indent {
 <p class="caption">Tpit immunohistochemical stain. Figure A silent corticotroph. Figure B gonadotroph</p>
 </div>
 </div>
-<div id="referencing-other-parts-of-the-document" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Referencing other parts of the document</h2>
+<div id="referencing-other-parts-of-the-document" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Referencing other parts of the document</h2>
 <p>Say that I want to refer the reader to a figure. I accomplish this with by inserting a reference with a snippet like this: <code>\@ref(fig:example_figure-1)</code></p>
 <p>Now for a real reference. See Figure <a href="bookdownplan.html#fig:starfig-1">2.1</a>.</p>
 <p>I can reference other pages in a similar fashion, for instance, <code>\@ref(bookdownplan)</code>. Note that this works by referencing a <code>{#label}</code> placed in the chapter title.</p>
@@ -400,8 +399,8 @@ div.csl-indent {
 See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <p>Note that the <code>{#label}</code> uses a single run-together word. It does not tolerate spaces and this cannot be overcome by ‘quoting’ it.</p>
 </div>
-<div id="referencing-citations" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Referencing citations:</h2>
+<div id="referencing-citations" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Referencing citations:</h2>
 <p>In order to insert citations, one needs a <code>.bib</code> file in the project. I’ve included one in this project as <code>book.bib</code> and another for packages as <code>packages.bib</code>. The yml header in Chapter <a href="index.html#intro">1</a> needs to have a <span class="math inline">\(bibliography:\)</span>.</p>
 <p>I use EndNote extensively in my writing and research and enjoy the convenience of EndNote in MS Word, so I populate the <code>book.bib</code> and <code>packages.bib</code> files carefully, usually by adding individual references copied as <code>BibTex Export</code> in the EndNote summary interface to the <code>book.bib</code> file.</p>
 <p>One can also generate a large number of references in <code>.txt</code> files generated in EndNote. For instance, A dump of my EndNote library is in <code>bookFromEndnote.txt</code>. This can be opened in RStudio, and I can copy-and-paste references from the <code>.txt</code> file to my <code>book.bib</code>.</p>
@@ -434,8 +433,8 @@ See Chapter <a href="bookdownplan.html#bookdownplan">2</a>.</p>
 <p>This page has a nice discussion of citing R packages: <a href="https://www.r-bloggers.com/2021/11/how-to-cite-r-and-r-packages/?utm_source=phpList&amp;utm_medium=email&amp;utm_campaign=R-bloggers-daily&amp;utm_content=HTML" class="uri">https://www.r-bloggers.com/2021/11/how-to-cite-r-and-r-packages/?utm_source=phpList&amp;utm_medium=email&amp;utm_campaign=R-bloggers-daily&amp;utm_content=HTML</a></p>
 <p>In the knitted document, references appear automatically at the end of <del>a chapter</del> the document.</p>
 </div>
-<div id="figures." class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Figures.</h2>
+<div id="figures." class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Figures.</h2>
 <p><strong>tidyverse</strong> and <strong>gglplot2</strong> are used extensively in this book. The most powerful arguments that can be brought to these analyses are made with graphs and tables.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="bookdownplan.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>To generate the following figure, the code chunk contains the following: <code>{r starfig-1, fig.cap='Starwars Figure 1'}</code>. This labels the figure with a short name, <em>starfig-1</em>, and gives it the caption <em>Starwars Figure 1</em>.</p>
@@ -457,8 +456,8 @@ Figure 2.1: Starwars Figure 1
 </p>
 </div>
 </div>
-<div id="working-with-github" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Working with Github</h2>
+<div id="working-with-github" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Working with Github</h2>
 <p>Document control is important. Using the terminal, one can maintain a Github repository for a project.</p>
 <p>Recent changes at require the use of a <strong>personal access token</strong> rather than a password in order to update the repo from the terminal. Instructions can be found at <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token" class="uri">https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token</a>.</p>
 <p>The <strong>personal access token</strong> replaces the password in the Apple keychain. Following the above link explains this, and offers a further link to illustrate the process of changing the keychain.</p>

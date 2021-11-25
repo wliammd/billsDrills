@@ -21,9 +21,9 @@ library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 ```
 
-## RStudio tip: Preview in Viewer Pane
+## RStudio Tip: Preview in Viewer Pane
 
-Note that RStudio offers a "Preview in Viewer Pane" option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. 
+Note that RStudio offers a "Preview in Viewer Pane" option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. When you have the luxery of working with a large monitor, this is the best way to watch your code unfold into an Rmarkdown document. 
 
 ## Inserting pictures
 
