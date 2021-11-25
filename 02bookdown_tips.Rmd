@@ -21,6 +21,10 @@ library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 ```
 
+## RStudio tip: Preview in Viewer Pane
+
+Note that RStudio offers a "Preview in Viewer Pane" option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. 
+
 ## Inserting pictures
 
 Pictures can be included in the `pathologyImages` subdirectory and referenced with a descriptive title in brackets followed by the file path in parentheses, like this: ``![Pithy title. Figure A. Figure B](filepath/image_name.jpg)``
