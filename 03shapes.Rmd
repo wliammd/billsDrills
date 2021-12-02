@@ -33,6 +33,7 @@ One reference to help prepare MS Word document tables for publication is <https:
 
 A simpler resource is provided by Little Miss Data at <https://www.littlemissdata.com/blog/prettytables>. 
 
+Another resource: <https://www.r-bloggers.com/2021/11/custom-formats-in-gt-tables/?utm_source=phpList&utm_medium=email&utm_campaign=R-bloggers-daily&utm_content=HTML>.
 
 
 ## Gather, spread, pivoting in the tidyverse
