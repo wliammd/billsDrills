@@ -52,13 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -169,11 +162,12 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="bookdownplan.html"><a href="bookdownplan.html"><i class="fa fa-check"></i><b>2</b> <strong>bookdown</strong> Tips for This Document</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="bookdownplan.html"><a href="bookdownplan.html#basic-conventions"><i class="fa fa-check"></i><b>2.1</b> Basic conventions</a></li>
-<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.2</b> Inserting pictures</a></li>
-<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.3</b> Referencing other parts of the document</a></li>
-<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.4</b> Referencing citations:</a></li>
-<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.5</b> Figures.</a></li>
-<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.6</b> Working with Github</a></li>
+<li class="chapter" data-level="2.2" data-path="bookdownplan.html"><a href="bookdownplan.html#rstudio-tip-preview-in-viewer-pane"><i class="fa fa-check"></i><b>2.2</b> RStudio Tip: Preview in Viewer Pane</a></li>
+<li class="chapter" data-level="2.3" data-path="bookdownplan.html"><a href="bookdownplan.html#inserting-pictures"><i class="fa fa-check"></i><b>2.3</b> Inserting pictures</a></li>
+<li class="chapter" data-level="2.4" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-other-parts-of-the-document"><i class="fa fa-check"></i><b>2.4</b> Referencing other parts of the document</a></li>
+<li class="chapter" data-level="2.5" data-path="bookdownplan.html"><a href="bookdownplan.html#referencing-citations"><i class="fa fa-check"></i><b>2.5</b> Referencing citations:</a></li>
+<li class="chapter" data-level="2.6" data-path="bookdownplan.html"><a href="bookdownplan.html#figures."><i class="fa fa-check"></i><b>2.6</b> Figures.</a></li>
+<li class="chapter" data-level="2.7" data-path="bookdownplan.html"><a href="bookdownplan.html#working-with-github"><i class="fa fa-check"></i><b>2.7</b> Working with Github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="datashape.html"><a href="datashape.html"><i class="fa fa-check"></i><b>3</b> Shape of Data</a>
 <ul>
@@ -204,7 +198,8 @@ div.csl-indent {
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
+<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -353,15 +348,15 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 7</span> Data Exploration</h1>
 <p>Data exploration is one of the most important aspects of data science and forms the cornerstone of my drills. Nonetheless, I have lots of room for improvement.</p>
 <p>I like Hadley Wickham’s writing and find his approach exceptionally clear. Therefore, I’ll use the <strong>tidyverse</strong>.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="dataexploration.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dataexploration.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="counting-things.-the-naming-of-parts." class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Counting things. The naming of parts.</h2>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="dataexploration.html#cb208-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb208-2"><a href="dataexploration.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-3"><a href="dataexploration.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-4"><a href="dataexploration.html#cb208-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-5"><a href="dataexploration.html#cb208-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n)) <span class="sc">+</span> </span>
-<span id="cb208-6"><a href="dataexploration.html#cb208-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dataexploration.html#cb2-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="dataexploration.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="dataexploration.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="dataexploration.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="dataexploration.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n)) <span class="sc">+</span> </span>
+<span id="cb2-6"><a href="dataexploration.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-1a"></span>
 <img src="test-book_files/figure-html/starfig-1a-1.png" alt="Starwars Figure 1" width="672" />
 <p class="caption">
@@ -369,12 +364,12 @@ Figure 7.1: Starwars Figure 1
 </p>
 </div>
 <p>I like stacked bars for their economy, but it’s easy to over do it. Supperimposing gender onto the columns seems easy…</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="dataexploration.html#cb209-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb209-2"><a href="dataexploration.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb209-3"><a href="dataexploration.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">gender =</span> <span class="fu">fct_lump</span>(gender, <span class="dv">2</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb209-4"><a href="dataexploration.html#cb209-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb209-5"><a href="dataexploration.html#cb209-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
-<span id="cb209-6"><a href="dataexploration.html#cb209-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dataexploration.html#cb3-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="dataexploration.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="dataexploration.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">gender =</span> <span class="fu">fct_lump</span>(gender, <span class="dv">2</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="dataexploration.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="dataexploration.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
+<span id="cb3-6"><a href="dataexploration.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-2"></span>
 <img src="test-book_files/figure-html/starfig-2-1.png" alt="Starwars Figure 2" width="672" />
 <p class="caption">
@@ -383,13 +378,13 @@ Figure 7.2: Starwars Figure 2
 </div>
 <p>But note that I’ve got a problem: the Droids, which outnumber the Gungans, are now reordered to <em>after</em> the Gungans. This happens because the <span class="math inline">\(n\)</span> that we’re counting comprises subcategories of species <em>and</em> gender. Only three Gungan males exist (and no females), but that is enough to tie the Droid NA category. The Droid NA category come after the Gungan category, presumably because <em>male</em> comes before <em>NA</em>, or because NA comes last (more likely).</p>
 <p>Exploring this, I see that I’m getting warning messages about the implicit NA’s in gender. Note that the following renders a slightly different plot. I <em>still</em> have not fixed the order of the species.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="dataexploration.html#cb210-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb210-2"><a href="dataexploration.html#cb210-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb210-3"><a href="dataexploration.html#cb210-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">gender =</span> <span class="fu">fct_lump</span>(gender, <span class="dv">2</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb210-4"><a href="dataexploration.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">fct_explicit_na</span>(gender),</span>
-<span id="cb210-5"><a href="dataexploration.html#cb210-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb210-6"><a href="dataexploration.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
-<span id="cb210-7"><a href="dataexploration.html#cb210-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dataexploration.html#cb4-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="dataexploration.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="dataexploration.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>), <span class="at">gender =</span> <span class="fu">fct_lump</span>(gender, <span class="dv">2</span>), <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="dataexploration.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">fct_explicit_na</span>(gender),</span>
+<span id="cb4-5"><a href="dataexploration.html#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">fct_reorder</span>(species, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="dataexploration.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, n, <span class="at">fill =</span> gender)) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="dataexploration.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-3"></span>
 <img src="test-book_files/figure-html/starfig-3-1.png" alt="Starwars Figure 3" width="672" />
 <p class="caption">
@@ -397,15 +392,15 @@ Figure 7.3: Starwars Figure 3
 </p>
 </div>
 <p>The trick here is to use <code>group_by()</code> and <code>ungroup()</code> wisely.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="dataexploration.html#cb211-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-2"><a href="dataexploration.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-3"><a href="dataexploration.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-4"><a href="dataexploration.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">typeCount =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-5"><a href="dataexploration.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb211-6"><a href="dataexploration.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, typeCount)) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-7"><a href="dataexploration.html#cb211-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb211-8"><a href="dataexploration.html#cb211-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
-<span id="cb211-9"><a href="dataexploration.html#cb211-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dataexploration.html#cb5-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="dataexploration.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="dataexploration.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="dataexploration.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">typeCount =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="dataexploration.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="dataexploration.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_reorder</span>(species, typeCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-7"><a href="dataexploration.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-8"><a href="dataexploration.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
+<span id="cb5-9"><a href="dataexploration.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-4"></span>
 <img src="test-book_files/figure-html/starfig-4-1.png" alt="Starwars Figure 4" width="672" />
 <p class="caption">
@@ -417,12 +412,12 @@ Figure 7.4: Starwars Figure 4
 <div id="fct_infreq" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> fct_infreq</h2>
 <p>As expected, Hadley Wickham and Garrett Grolemund solve this more simply in <strong>R4DS</strong>:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="dataexploration.html#cb212-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb212-2"><a href="dataexploration.html#cb212-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb212-3"><a href="dataexploration.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb212-4"><a href="dataexploration.html#cb212-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb212-5"><a href="dataexploration.html#cb212-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
-<span id="cb212-6"><a href="dataexploration.html#cb212-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dataexploration.html#cb6-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="dataexploration.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="dataexploration.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> species <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="dataexploration.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb6-5"><a href="dataexploration.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
+<span id="cb6-6"><a href="dataexploration.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-5"></span>
 <img src="test-book_files/figure-html/starfig-5-1.png" alt="Starwars Figure 5. Serial mutates are used." width="672" />
 <p class="caption">
@@ -430,11 +425,11 @@ Figure 7.5: Starwars Figure 5. Serial mutates are used.
 </p>
 </div>
 <p>Note that a single <code>mutate()</code> suffices to both lump factors, organize by frequency and reverse the order, as follows.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="dataexploration.html#cb213-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
-<span id="cb213-2"><a href="dataexploration.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb213-3"><a href="dataexploration.html#cb213-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb213-4"><a href="dataexploration.html#cb213-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
-<span id="cb213-5"><a href="dataexploration.html#cb213-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dataexploration.html#cb7-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="dataexploration.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="dataexploration.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb7-4"><a href="dataexploration.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> gender))<span class="sc">+</span></span>
+<span id="cb7-5"><a href="dataexploration.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:starfig-6"></span>
 <img src="test-book_files/figure-html/starfig-6-1.png" alt="Starwars Figure 6. A single mutate is used." width="672" />
 <p class="caption">
@@ -445,12 +440,12 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 <div id="weight-weight-dont-tell-me" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Weight weight, don’t tell me!</h2>
 <p>One feature of <code>count()</code> is difficult for me to remember, mostly because it is <em>not</em> a count–it is a sum.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="dataexploration.html#cb214-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb214-2"><a href="dataexploration.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>),</span>
-<span id="cb214-3"><a href="dataexploration.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb214-4"><a href="dataexploration.html#cb214-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb214-5"><a href="dataexploration.html#cb214-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb214-6"><a href="dataexploration.html#cb214-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Symbol, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="dataexploration.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-2"><a href="dataexploration.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Symbol =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>),</span>
+<span id="cb8-3"><a href="dataexploration.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb8-4"><a href="dataexploration.html#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="dataexploration.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="dataexploration.html#cb8-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Symbol, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   Symbol     n
 ##   &lt;chr&gt;  &lt;int&gt;
@@ -459,7 +454,7 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 3 b          1
 ## 4 d          1
 ## 5 e          1</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="dataexploration.html#cb216-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Symbol, <span class="at">wt =</span> Value, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dataexploration.html#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Symbol, <span class="at">wt =</span> Value, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   Symbol     n
 ##   &lt;chr&gt;  &lt;int&gt;
@@ -472,11 +467,11 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 </div>
 <div id="summarize-is-another-very-useful-function" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Summarize is another very useful function:</h2>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="dataexploration.html#cb218-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb218-2"><a href="dataexploration.html#cb218-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">is.na</span>(species))) <span class="sc">%&gt;%</span> </span>
-<span id="cb218-3"><a href="dataexploration.html#cb218-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb218-4"><a href="dataexploration.html#cb218-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb218-5"><a href="dataexploration.html#cb218-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="dataexploration.html#cb12-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="dataexploration.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">is.na</span>(species))) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="dataexploration.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="dataexploration.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="dataexploration.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 37 × 3
 ##    species      n  mean
 ##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt;
@@ -498,9 +493,9 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 <div id="joyplots" class="section level3" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Joyplots</h3>
 <p>Joyplots are a little hokey but can be visually satisfying.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="dataexploration.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dataexploration.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code></pre></div>
 <p>The following display is from data taken from <strong>The Cancer Genome Atlas</strong> in 2017. It combines glioblastoma with lower grade infiltrating gliomas. Since I’m only interested in diagnosis and patient age, that’s all that I’ve assembled in the <code>CSV</code>.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="dataexploration.html#cb221-1" aria-hidden="true" tabindex="-1"></a>DiffuseGlioma <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tcga9.11.17.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dataexploration.html#cb15-1" aria-hidden="true" tabindex="-1"></a>DiffuseGlioma <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tcga9.11.17.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 1122 Columns: 2</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -509,9 +504,9 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="dataexploration.html#cb225-1" aria-hidden="true" tabindex="-1"></a>DiffuseGlioma <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(DiffuseGlioma) <span class="co">#gets rid of the NA&#39;s</span></span>
-<span id="cb225-2"><a href="dataexploration.html#cb225-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-3"><a href="dataexploration.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DiffuseGlioma)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dataexploration.html#cb19-1" aria-hidden="true" tabindex="-1"></a>DiffuseGlioma <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(DiffuseGlioma) <span class="co">#gets rid of the NA&#39;s</span></span>
+<span id="cb19-2"><a href="dataexploration.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="dataexploration.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DiffuseGlioma)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##   HISTOLOGY           AGE
 ##   &lt;chr&gt;             &lt;dbl&gt;
@@ -521,13 +516,13 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 4 astrocytoma          37
 ## 5 astrocytoma          50
 ## 6 oligodendroglioma    47</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="dataexploration.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DiffuseGlioma,<span class="fu">aes</span>(<span class="at">x=</span>AGE,<span class="at">y=</span>HISTOLOGY)) <span class="sc">+</span></span>
-<span id="cb227-2"><a href="dataexploration.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>) <span class="sc">+</span>  <span class="co"># removes tails</span></span>
-<span id="cb227-3"><a href="dataexploration.html#cb227-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># removes cutoff top</span></span>
-<span id="cb227-4"><a href="dataexploration.html#cb227-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;age (y)&quot;</span>,<span class="at">y=</span><span class="st">&quot;number&quot;</span>) <span class="sc">+</span></span>
-<span id="cb227-5"><a href="dataexploration.html#cb227-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="dataexploration.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DiffuseGlioma,<span class="fu">aes</span>(<span class="at">x=</span>AGE,<span class="at">y=</span>HISTOLOGY)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="dataexploration.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">rel_min_height =</span> <span class="fl">0.01</span>) <span class="sc">+</span>  <span class="co"># removes tails</span></span>
+<span id="cb21-3"><a href="dataexploration.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># removes cutoff top</span></span>
+<span id="cb21-4"><a href="dataexploration.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;age (y)&quot;</span>,<span class="at">y=</span><span class="st">&quot;number&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="dataexploration.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <pre><code>## Picking joint bandwidth of 4.16</code></pre>
-<p><img src="test-book_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="test-book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 <div id="relative-versus-absolute-risk" class="section level2" number="7.6">
@@ -535,33 +530,33 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 <p>Relative risk is often used in medical literature to emphasize the importance of a finding–it often makes a result sound more impressive. However, when one considers absolute risk, the effect is obviously much smaller.</p>
 <p>The following is adopted from <a href="https://www.r-bloggers.com/lying-with-statistics-one-beer-a-day-will-kill-you/" class="uri">https://www.r-bloggers.com/lying-with-statistics-one-beer-a-day-will-kill-you/</a></p>
 <p><strong>personograph</strong> allows for cute displays of individuals in big groups</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="dataexploration.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dataexploration.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span></code></pre></div>
 <p>Start with 2000 people. Some of them will have problems without alcohol exposure, about 18, in fact. The blogger choses 2000 people to start with because <span class="math inline">\(0.7*18=1\)</span></p>
 <p>Note that this <strong>doesn’t</strong> stratify for any other health problems, age, socio-economic status, etc.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="dataexploration.html#cb230-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb230-2"><a href="dataexploration.html#cb230-2" aria-hidden="true" tabindex="-1"></a>probl_wo_alc <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">/</span> n</span>
-<span id="cb230-3"><a href="dataexploration.html#cb230-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb230-4"><a href="dataexploration.html#cb230-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">first =</span> probl_wo_alc, <span class="at">second =</span> <span class="dv">1</span><span class="sc">-</span>probl_wo_alc)</span>
-<span id="cb230-5"><a href="dataexploration.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data,  <span class="at">colors =</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="st">&quot;black&quot;</span>, <span class="at">second =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
-<span id="cb230-6"><a href="dataexploration.html#cb230-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="st">&quot;18 of 2000 people with health problems&quot;</span>,</span>
-<span id="cb230-7"><a href="dataexploration.html#cb230-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">draw.legend =</span> <span class="cn">FALSE</span>, <span class="at">n.icons =</span> n, <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>), </span>
-<span id="cb230-8"><a href="dataexploration.html#cb230-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="dataexploration.html#cb24-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb24-2"><a href="dataexploration.html#cb24-2" aria-hidden="true" tabindex="-1"></a>probl_wo_alc <span class="ot">&lt;-</span> <span class="dv">18</span> <span class="sc">/</span> n</span>
+<span id="cb24-3"><a href="dataexploration.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="dataexploration.html#cb24-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">first =</span> probl_wo_alc, <span class="at">second =</span> <span class="dv">1</span><span class="sc">-</span>probl_wo_alc)</span>
+<span id="cb24-5"><a href="dataexploration.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data,  <span class="at">colors =</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="st">&quot;black&quot;</span>, <span class="at">second =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
+<span id="cb24-6"><a href="dataexploration.html#cb24-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="st">&quot;18 of 2000 people with health problems&quot;</span>,</span>
+<span id="cb24-7"><a href="dataexploration.html#cb24-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">draw.legend =</span> <span class="cn">FALSE</span>, <span class="at">n.icons =</span> n, <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>), </span>
+<span id="cb24-8"><a href="dataexploration.html#cb24-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Now we illustrate the affect of 500 mL of alcohol per day. According to the Lancet article, the relative risk of serious illness following consumption of about 25 mL ethanol (500 mL beer at 5% ABV) increases by about 7%.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="dataexploration.html#cb231-1" aria-hidden="true" tabindex="-1"></a>probl_w_alc <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> n</span>
-<span id="cb231-2"><a href="dataexploration.html#cb231-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb231-3"><a href="dataexploration.html#cb231-3" aria-hidden="true" tabindex="-1"></a>data_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">first =</span> probl_wo_alc, <span class="at">second =</span> probl_w_alc, <span class="at">third =</span> <span class="dv">1</span><span class="sc">-</span>(probl_wo_alc<span class="sc">+</span>probl_w_alc))</span>
-<span id="cb231-4"><a href="dataexploration.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data_2, <span class="at">colors =</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="st">&quot;black&quot;</span>, <span class="at">second =</span> <span class="st">&quot;red&quot;</span>, <span class="at">third =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
-<span id="cb231-5"><a href="dataexploration.html#cb231-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="st">&quot;About 1 additional case with half a litre of beer per day&quot;</span>,</span>
-<span id="cb231-6"><a href="dataexploration.html#cb231-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">draw.legend =</span> <span class="cn">FALSE</span>, <span class="at">n.icons =</span> n, <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
-<span id="cb231-7"><a href="dataexploration.html#cb231-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dataexploration.html#cb25-1" aria-hidden="true" tabindex="-1"></a>probl_w_alc <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> n</span>
+<span id="cb25-2"><a href="dataexploration.html#cb25-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb25-3"><a href="dataexploration.html#cb25-3" aria-hidden="true" tabindex="-1"></a>data_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">first =</span> probl_wo_alc, <span class="at">second =</span> probl_w_alc, <span class="at">third =</span> <span class="dv">1</span><span class="sc">-</span>(probl_wo_alc<span class="sc">+</span>probl_w_alc))</span>
+<span id="cb25-4"><a href="dataexploration.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data_2, <span class="at">colors =</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="st">&quot;black&quot;</span>, <span class="at">second =</span> <span class="st">&quot;red&quot;</span>, <span class="at">third =</span> <span class="st">&quot;#efefef&quot;</span>),</span>
+<span id="cb25-5"><a href="dataexploration.html#cb25-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="st">&quot;About 1 additional case with half a litre of beer per day&quot;</span>,</span>
+<span id="cb25-6"><a href="dataexploration.html#cb25-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">draw.legend =</span> <span class="cn">FALSE</span>, <span class="at">n.icons =</span> n, <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>),</span>
+<span id="cb25-7"><a href="dataexploration.html#cb25-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">plot.width =</span> <span class="fl">0.97</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="removing-duplicates" class="section level2" number="7.7">
 <h2><span class="header-section-number">7.7</span> Removing duplicates</h2>
 <p>The following is taken from <a href="https://www.r-bloggers.com/2021/08/how-to-remove-duplicates-in-r-with-example/" class="uri">https://www.r-bloggers.com/2021/08/how-to-remove-duplicates-in-r-with-example/</a>.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="dataexploration.html#cb232-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Column1 =</span> <span class="fu">c</span>(<span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P4&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P4&#39;</span>), <span class="at">Column2 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">14</span>))</span>
-<span id="cb232-2"><a href="dataexploration.html#cb232-2" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="dataexploration.html#cb26-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Column1 =</span> <span class="fu">c</span>(<span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P1&#39;</span>, <span class="st">&#39;P3&#39;</span>, <span class="st">&#39;P4&#39;</span>, <span class="st">&#39;P2&#39;</span>, <span class="st">&#39;P4&#39;</span>), <span class="at">Column2 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">14</span>))</span>
+<span id="cb26-2"><a href="dataexploration.html#cb26-2" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
 <pre><code>##    Column1 Column2
 ## 1       P1       5
 ## 2       P1       5
@@ -574,7 +569,7 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 9       P2      10
 ## 10      P4      14</code></pre>
 <p>Note the duplication of rows with P1 and 5. The whole row can be removed as follows.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="dataexploration.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="dataexploration.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data)</span></code></pre></div>
 <pre><code>##   Column1 Column2
 ## 1      P1       5
 ## 2      P2       3
@@ -586,7 +581,7 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 8      P2      10
 ## 9      P4      14</code></pre>
 <p>Reduplicated information in a column can also be removed:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="dataexploration.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="dataexploration.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2)</span></code></pre></div>
 <pre><code>##   Column2
 ## 1       5
 ## 2       3
@@ -596,7 +591,7 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 6      10
 ## 7      14</code></pre>
 <p>To remove duplicates from a column but to keep all the information in Column1:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="dataexploration.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="dataexploration.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(data, Column2, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##   Column1 Column2
 ## 1      P1       5
 ## 2      P2       3
@@ -606,9 +601,9 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 6      P2      10
 ## 7      P4      14</code></pre>
 <p>The <strong>duplicated</strong> function can also be used.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="dataexploration.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="dataexploration.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(data)</span></code></pre></div>
 <pre><code>##  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="dataexploration.html#cb242-1" aria-hidden="true" tabindex="-1"></a>data[<span class="sc">!</span><span class="fu">duplicated</span>(data),]</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dataexploration.html#cb36-1" aria-hidden="true" tabindex="-1"></a>data[<span class="sc">!</span><span class="fu">duplicated</span>(data),]</span></code></pre></div>
 <pre><code>##    Column1 Column2
 ## 1       P1       5
 ## 3       P2       3
@@ -620,7 +615,7 @@ Figure 7.6: Starwars Figure 6. A single mutate is used.
 ## 9       P2      10
 ## 10      P4      14</code></pre>
 <p>Finally, <strong>unique</strong> is also useful:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="dataexploration.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dataexploration.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(data)</span></code></pre></div>
 <pre><code>##    Column1 Column2
 ## 1       P1       5
 ## 3       P2       3

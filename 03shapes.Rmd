@@ -25,6 +25,15 @@ DF2
 DFmerge <- rbind(DF1,DF2)
 DFmerge
 ```
+## The humble table
+
+Sometimes the best way to show off data is simply by displaying it in a table. Other times, we're required to deliver a table for an academic paper. Most of this time this means creating a MS Word document, when Rmarkdown would do. 
+
+One reference to help prepare MS Word document tables for publication is <https://www.r-bloggers.com/2021/11/publication-ready-tables-with-flextable-and-own-theme-in-r/?utm_source=phpList&utm_medium=email&utm_campaign=R-bloggers-daily&utm_content=HTML>, but this is pretty involved. 
+
+A simpler resource is provided by Little Miss Data at <https://www.littlemissdata.com/blog/prettytables>. 
+
+
 
 ## Gather, spread, pivoting in the tidyverse
 
