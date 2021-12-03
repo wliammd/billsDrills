@@ -128,7 +128,9 @@ The **personal access token** replaces the password in the Apple keychain. Follo
 
 ## Working with a lot of packages
 
-It it sometimes difficult to keep track of all the packages used in a large bookdown project. A package by Desi Quintans may help: **librarian** may be just the thing that I need. Desi Quintans describes it in this post on CRAN <https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html>.
+It it sometimes difficult to keep track of all the packages used in a large bookdown project. The following blog post is a good place to start <https://statsandr.com/blog/an-efficient-way-to-install-and-load-r-packages/>.
+
+A package by Desi Quintans may help: **librarian** may be just the thing that I need. Desi Quintans describes it in this post on CRAN <https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html>.
 
 I think that I'll wait a while and see how well **librarian** is supported. Meanwhile, a bit of code can assemble the packages that I use throughout this work, assembled by hand:
 
