@@ -1,5 +1,5 @@
 fig:starfig-1
-tab:unnamed-chunk-39
+tab:unnamed-chunk-40
 fig:starfig-1a
 fig:starfig-2
 fig:starfig-3
@@ -9,13 +9,16 @@ fig:starfig-6
 intro
 bookdownplan
 basic-conventions
+rstudio-tip-preview-in-viewer-pane
 inserting-pictures
 referencing-other-parts-of-the-document
 referencing-citations
 figures.
 working-with-github
+working-with-a-lot-of-packages
 datashape
 making-data-frames
+the-humble-table
 gather-spread-pivoting-in-the-tidyverse
 gathering-steam
 spread-your-wings
@@ -123,5 +126,3 @@ explainingmachinelearning
 machine-learning-for-mds
 supervised-versus-unsuperised-learning
 classification-versus-regression
-improving-legibility-change-the-linetype
-rstudio-tip-preview-in-viewer-pane

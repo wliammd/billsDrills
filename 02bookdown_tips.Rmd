@@ -125,3 +125,21 @@ Document control is important. Using the terminal, one can maintain a Github rep
 Recent changes at require the use of a **personal access token** rather than a password in order to update the repo from the terminal. Instructions can be found at <https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token>. 
 
 The **personal access token** replaces the password in the Apple keychain. Following the above link explains this, and offers a further link to illustrate the process of changing the keychain. 
+
+## Working with a lot of packages
+
+It it sometimes difficult to keep track of all the packages used in a large bookdown project. A package by Desi Quintans may help: **librarian** may be just the thing that I need. Desi Quintans describes it in this post on CRAN <https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html>.
+
+I think that I'll wait a while and see how well **librarian** is supported. Meanwhile, a bit of code can assemble the packages that I use throughout this work, assembled by hand:
+
+```{r}
+# Package names
+packages <- c("tidyverse", "knitr", "formatR", "bookdown")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+```
+
