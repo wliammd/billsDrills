@@ -1,6 +1,11 @@
 # By Any Other Name {#changenames}
 
-This deceptively simple-seeming idea gets complex quickly. The following YouTube was a nice description of the process: <https://www.youtube.com/watch?v=Okc0IL5uTnA>
+> A rose by any other name would smell as sweet.
+> `r tufte::quote_footer('--- Bill Shakespeare')`
+
+The names we're talking about here are column names. As opposed to row names, which are better accomplished as a separate column of categorical data, column names are encouraged, and vital. ISLR refers to these as output and input variables (also known as predictors, independent variables, features). Data basing thinks in terms of fields. 
+
+This deceptively simple-seeming idea of changing column names gets complex quickly. The following YouTube by Richard Webster offers a nice description of the process: <https://www.youtube.com/watch?v=Okc0IL5uTnA>
 
 ```{r}
 my.data <- data.frame(colOne=1:3, column2=4:6, column_3=7:9)
@@ -45,7 +50,6 @@ library(tidyverse)
 ```
 
 First, load the **tidyverse**
-
 
 
 ```{r}

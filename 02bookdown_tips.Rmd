@@ -136,7 +136,7 @@ I think that I'll wait a while and see how well **librarian** is supported. Mean
 
 ```{r}
 # Package names
-packages <- c("tidyverse", "knitr", "formatR", "bookdown")
+packages <- c("tidyverse", "knitr", "formatR", "bookdown", "tufte", "forcats", "gapminder", "skimr")
 
 # Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())

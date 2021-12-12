@@ -52,13 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -357,18 +350,18 @@ div.csl-indent {
 <div id="the-basic-structure" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> The basic structure</h2>
 <p>Let’s say that you have 100 cups of sizes small, medium, or large.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="factorpractice.html#cb132-1" aria-hidden="true" tabindex="-1"></a>cups <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
-<span id="cb132-2"><a href="factorpractice.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2020</span>)</span>
-<span id="cb132-3"><a href="factorpractice.html#cb132-3" aria-hidden="true" tabindex="-1"></a>manyCups <span class="ot">&lt;-</span> <span class="fu">sample</span>(cups, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb132-4"><a href="factorpractice.html#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(manyCups)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="factorpractice.html#cb1-1" aria-hidden="true" tabindex="-1"></a>cups <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>)</span>
+<span id="cb1-2"><a href="factorpractice.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2020</span>)</span>
+<span id="cb1-3"><a href="factorpractice.html#cb1-3" aria-hidden="true" tabindex="-1"></a>manyCups <span class="ot">&lt;-</span> <span class="fu">sample</span>(cups, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="factorpractice.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(manyCups)</span></code></pre></div>
 <pre><code>## manyCups
 ##  large medium  small 
 ##     25     39     36</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="factorpractice.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(manyCups)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="factorpractice.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(manyCups)</span></code></pre></div>
 <pre><code>##  chr [1:100] &quot;large&quot; &quot;medium&quot; &quot;small&quot; &quot;small&quot; &quot;medium&quot; &quot;medium&quot; &quot;small&quot; ...</code></pre>
 <p>Note that <code>table()</code> renders these in alphabetical order. It’s usually more useful to render them in order of magnitude by setting levels.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="factorpractice.html#cb136-1" aria-hidden="true" tabindex="-1"></a>sizesCups <span class="ot">&lt;-</span> <span class="fu">factor</span>(manyCups, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
-<span id="cb136-2"><a href="factorpractice.html#cb136-2" aria-hidden="true" tabindex="-1"></a>sizesCups</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="factorpractice.html#cb5-1" aria-hidden="true" tabindex="-1"></a>sizesCups <span class="ot">&lt;-</span> <span class="fu">factor</span>(manyCups, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))</span>
+<span id="cb5-2"><a href="factorpractice.html#cb5-2" aria-hidden="true" tabindex="-1"></a>sizesCups</span></code></pre></div>
 <pre><code>##   [1] large  medium small  small  medium medium small  small  medium medium
 ##  [11] medium small  medium large  medium small  medium medium medium large 
 ##  [21] medium large  medium small  large  medium medium medium large  medium
@@ -380,19 +373,19 @@ div.csl-indent {
 ##  [81] large  medium medium small  small  medium small  small  medium small 
 ##  [91] large  small  large  small  small  large  large  large  medium small 
 ## Levels: small medium large</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="factorpractice.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sizesCups)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="factorpractice.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sizesCups)</span></code></pre></div>
 <pre><code>## sizesCups
 ##  small medium  large 
 ##     36     39     25</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="factorpractice.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sizesCups)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="factorpractice.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sizesCups)</span></code></pre></div>
 <pre><code>## [1] &quot;small&quot;  &quot;medium&quot; &quot;large&quot;</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="factorpractice.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(manyCups)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="factorpractice.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(manyCups)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>The <strong>forcats</strong> package is designed to work with factors. Although I use it frequently, I haven’t generalized the ideas, or internalized them. That’s a mistake. The RStudio cheat sheet is a nice place to begin with this: <a href="https://rstudio.com/resources/cheatsheets/" class="uri">https://rstudio.com/resources/cheatsheets/</a>.</p>
 <p>Let’s use my favorite <strong>starwars</strong> illustration to help illustrate some of <strong>forcats</strong>’s usefulness.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="factorpractice.html#cb144-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb144-2"><a href="factorpractice.html#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span></span>
-<span id="cb144-3"><a href="factorpractice.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="factorpractice.html#cb13-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="factorpractice.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="factorpractice.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 37 × 2
 ##    species      n
 ##    &lt;chr&gt;    &lt;int&gt;
@@ -413,17 +406,17 @@ div.csl-indent {
 <h2><span class="header-section-number">5.2</span> Not all nominal data is a factor</h2>
 <p>Note that many categorical variables are not encoded as factors. This has certain advantages, since levels can sometimes be seen as complicating ballast that is dragged around by the variable.</p>
 <p>See, so instance, that the <code>species</code> variable is not encoded as a factor:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="factorpractice.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(starwars<span class="sc">$</span>species)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="factorpractice.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(starwars<span class="sc">$</span>species)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>See? <code>species</code> is character, not factor, class.</p>
 </div>
 <div id="making-variables-into-factors" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Making variables into factors</h2>
 <p>The <code>factor()</code> function (or the <code>as_factor()</code> function) make a variable into a factor and allow the assignation of levels.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="factorpractice.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="factorpractice.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>The <code>levels()</code> function is useful for returning these levels:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="factorpractice.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="factorpractice.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
 <pre><code>##  [1] &quot;Aleena&quot;         &quot;Besalisk&quot;       &quot;Cerean&quot;         &quot;Chagrian&quot;      
 ##  [5] &quot;Clawdite&quot;       &quot;Droid&quot;          &quot;Dug&quot;            &quot;Ewok&quot;          
 ##  [9] &quot;Geonosian&quot;      &quot;Gungan&quot;         &quot;Human&quot;          &quot;Hutt&quot;          
@@ -436,7 +429,7 @@ div.csl-indent {
 ## [37] &quot;Zabrak&quot;</code></pre>
 <p><code>levels()</code> can also be used to set the levels.</p>
 <p>And additional structure can be observed with <code>unclass()</code>. Note that the default level order in <code>species</code> is alphabetical.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="factorpractice.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="factorpractice.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
 <pre><code>##  [1] 11  6  6 11 11 11 11  6 11 11 11 11 34 11 24 12 11 11 36 11 11  6 31 11 11
 ## [26] 18 11 11  8 26 11 21 11 10 10 10 NA 30  7 NA 11 37 32 32 33 35 29 11  3 20
 ## [51] 37 27 13 23 16  4 11 11 11  9 17 17 11 11 11 11  5  2 15 15 11  1  6 25 19
@@ -456,7 +449,7 @@ div.csl-indent {
 <div id="inspecting-factors" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Inspecting factors</h2>
 <p>We see that there are a ton of unique species in this list.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="factorpractice.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(starwars<span class="sc">$</span>species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="factorpractice.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(starwars<span class="sc">$</span>species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 38 × 2
 ##    f            n
 ##    &lt;fct&gt;    &lt;int&gt;
@@ -471,7 +464,7 @@ div.csl-indent {
 ##  9 Zabrak       2
 ## 10 Aleena       1
 ## # … with 28 more rows</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="factorpractice.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unique</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="factorpractice.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_unique</span>(<span class="fu">factor</span>(starwars<span class="sc">$</span>species))</span></code></pre></div>
 <pre><code>##  [1] Aleena         Besalisk       Cerean         Chagrian       Clawdite      
 ##  [6] Droid          Dug            Ewok           Geonosian      Gungan        
 ## [11] Human          Hutt           Iktotchi       Kaleesh        Kaminoan      
@@ -485,10 +478,9 @@ div.csl-indent {
 <div id="fct_lump" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> fct_lump()</h2>
 <p>We often don’t want to see all of the rare outcomes for a nominal variable, and are content to <em>lump</em> the uncommon ones together in an <code>other</code> category.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="factorpractice.html#cb158-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
-<span id="cb158-2"><a href="factorpractice.html#cb158-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span></span>
-<span id="cb158-3"><a href="factorpractice.html#cb158-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb158-4"><a href="factorpractice.html#cb158-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="factorpractice.html#cb27-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="factorpractice.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">fct_lump</span>(species, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="factorpractice.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 2
 ##   species      n
 ##   &lt;fct&gt;    &lt;int&gt;
@@ -505,15 +497,15 @@ div.csl-indent {
 </div>
 <div id="fct_infreq-and-fct_rev" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> fct_infreq() and fct_rev()</h2>
-<p>These are very important in plotting. See Figure <a href="dataexploration.html#fig:starfig-5">7.5</a> for a good example.</p>
+<p>These are very important in plotting. See Figure <a href="#fig:starfig-5"><strong>??</strong></a> for a good example.</p>
 </div>
 <div id="additional-practice" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> Additional practice</h2>
 <p>The following is based on code and materials from <a href="http://stat545.com/block029_factors.html" class="uri">http://stat545.com/block029_factors.html</a> with some running commentary by me.</p>
 <p>Get to know the factors by assaying the <strong>gapminder</strong> dataset, particularly the factor “continent.”</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="factorpractice.html#cb160-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="factorpractice.html#cb29-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(gapminder)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-40">Table 5.1: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-11">Table 5.1: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
@@ -669,7 +661,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="factorpractice.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="factorpractice.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gapminder)</span></code></pre></div>
 <pre><code>## Rows: 1,704
 ## Columns: 6
 ## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
@@ -678,7 +670,7 @@ div.csl-indent {
 ## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
 ## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
 ## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="factorpractice.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="factorpractice.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gapminder)</span></code></pre></div>
 <pre><code>## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -686,15 +678,15 @@ div.csl-indent {
 ##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
 ##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
 ##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="factorpractice.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="factorpractice.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
 <pre><code>## [1] &quot;Africa&quot;   &quot;Americas&quot; &quot;Asia&quot;     &quot;Europe&quot;   &quot;Oceania&quot;</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="factorpractice.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="factorpractice.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="factorpractice.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="factorpractice.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(gapminder<span class="sc">$</span>continent)</span></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>Now to study the <code>continent</code> a little more carefully.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="factorpractice.html#cb171-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb171-2"><a href="factorpractice.html#cb171-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="factorpractice.html#cb40-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="factorpractice.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   continent     n
 ##   &lt;fct&gt;     &lt;int&gt;
@@ -703,7 +695,7 @@ div.csl-indent {
 ## 3 Europe      360
 ## 4 Americas    300
 ## 5 Oceania      24</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="factorpractice.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(gapminder<span class="sc">$</span>continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="factorpractice.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_count</span>(gapminder<span class="sc">$</span>continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   f            n
 ##   &lt;fct&gt;    &lt;int&gt;
@@ -713,16 +705,16 @@ div.csl-indent {
 ## 4 Americas   300
 ## 5 Oceania     24</code></pre>
 <p>However, R keeps levels even when you filter out values. It drags them around like invisible dead weight. See, for instance:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="factorpractice.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(gapminder<span class="sc">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="factorpractice.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(gapminder<span class="sc">$</span>country)</span></code></pre></div>
 <pre><code>## [1] 142</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="factorpractice.html#cb177-1" aria-hidden="true" tabindex="-1"></a>h_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Egypt&quot;</span>, <span class="st">&quot;Haiti&quot;</span>, <span class="st">&quot;Romania&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>)</span>
-<span id="cb177-2"><a href="factorpractice.html#cb177-2" aria-hidden="true" tabindex="-1"></a>h_gap <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb177-3"><a href="factorpractice.html#cb177-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(country <span class="sc">%in%</span> h_countries)</span>
-<span id="cb177-4"><a href="factorpractice.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(h_gap<span class="sc">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="factorpractice.html#cb46-1" aria-hidden="true" tabindex="-1"></a>h_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Egypt&quot;</span>, <span class="st">&quot;Haiti&quot;</span>, <span class="st">&quot;Romania&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>)</span>
+<span id="cb46-2"><a href="factorpractice.html#cb46-2" aria-hidden="true" tabindex="-1"></a>h_gap <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="factorpractice.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> h_countries)</span>
+<span id="cb46-4"><a href="factorpractice.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(h_gap<span class="sc">$</span>country)</span></code></pre></div>
 <pre><code>## [1] 142</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="factorpractice.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap<span class="sc">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="factorpractice.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap<span class="sc">$</span>country)</span></code></pre></div>
 <pre><code>##  Factor w/ 142 levels &quot;Afghanistan&quot;,..: 39 39 39 39 39 39 39 39 39 39 ...</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="factorpractice.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="factorpractice.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap)</span></code></pre></div>
 <pre><code>## tibble [60 × 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 39 39 39 39 39 39 39 39 39 39 ...
 ##  $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -732,12 +724,12 @@ div.csl-indent {
 ##  $ gdpPercap: num [1:60] 1419 1459 1693 1815 2024 ...</code></pre>
 <p>So h_gap has only 60 records from only 5 countries, but it retains 142 country levels.</p>
 <p>There are 2 easy solutions that drop these levels: <code>droplevels()</code> from base R and <code>forcats::fct_drop()</code>.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="factorpractice.html#cb183-1" aria-hidden="true" tabindex="-1"></a>h_gap_dropped <span class="ot">&lt;-</span> h_gap <span class="sc">%&gt;%</span></span>
-<span id="cb183-2"><a href="factorpractice.html#cb183-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">droplevels</span>()</span>
-<span id="cb183-3"><a href="factorpractice.html#cb183-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-4"><a href="factorpractice.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(h_gap_dropped<span class="sc">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="factorpractice.html#cb52-1" aria-hidden="true" tabindex="-1"></a>h_gap_dropped <span class="ot">&lt;-</span> h_gap <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="factorpractice.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb52-3"><a href="factorpractice.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="factorpractice.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(h_gap_dropped<span class="sc">$</span>country)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="factorpractice.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap_dropped)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="factorpractice.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(h_gap_dropped)</span></code></pre></div>
 <pre><code>## tibble [60 × 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 5 levels &quot;Egypt&quot;,&quot;Haiti&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ continent: Factor w/ 4 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -747,49 +739,55 @@ div.csl-indent {
 ##  $ gdpPercap: num [1:60] 1419 1459 1693 1815 2024 ...</code></pre>
 <p>Now we can see that h_gap_dropped has only 5 country levels, as one would expect. It still retains all 60 rows.</p>
 <p><code>fct_drop()</code> is the other way to do this:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="factorpractice.html#cb187-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(h_gap<span class="sc">$</span>country)</span>
-<span id="cb187-2"><a href="factorpractice.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="factorpractice.html#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(h_gap<span class="sc">$</span>country)</span>
+<span id="cb56-2"><a href="factorpractice.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;Egypt&quot;     &quot;Haiti&quot;     &quot;Romania&quot;   &quot;Thailand&quot;  &quot;Venezuela&quot;</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="factorpractice.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="factorpractice.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(x)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 </div>
 <div id="reordering-factors" class="section level2" number="5.8">
 <h2><span class="header-section-number">5.8</span> Reordering Factors</h2>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="factorpractice.html#cb191-1" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb191-2"><a href="factorpractice.html#cb191-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, continent <span class="sc">==</span> <span class="st">&quot;Asia&quot;</span>)</span>
-<span id="cb191-3"><a href="factorpractice.html#cb191-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-4"><a href="factorpractice.html#cb191-4" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="sc">%&gt;%</span></span>
-<span id="cb191-5"><a href="factorpractice.html#cb191-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> country)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="factorpractice.html#cb60-1" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, continent <span class="sc">==</span> <span class="st">&quot;Asia&quot;</span>)</span>
+<span id="cb60-2"><a href="factorpractice.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="factorpractice.html#cb60-3" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> country)) <span class="sc">+</span> </span>
+<span id="cb60-4"><a href="factorpractice.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>This is helter skelter. Much better is an reordered display, based upon life expectancy.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="factorpractice.html#cb192-1" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="sc">%&gt;%</span></span>
-<span id="cb192-2"><a href="factorpractice.html#cb192-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> <span class="fu">fct_reorder</span>(country, lifeExp))) <span class="sc">+</span></span>
-<span id="cb192-3"><a href="factorpractice.html#cb192-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="factorpractice.html#cb61-1" aria-hidden="true" tabindex="-1"></a>gap_asia_2007 <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="factorpractice.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> <span class="fu">fct_reorder</span>(country, lifeExp))) <span class="sc">+</span></span>
+<span id="cb61-3"><a href="factorpractice.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 ### Improving legibility: change the linetype</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="factorpractice.html#cb193-1" aria-hidden="true" tabindex="-1"></a>h_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Egypt&quot;</span>, <span class="st">&quot;Haiti&quot;</span>, <span class="st">&quot;Romania&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>)</span>
-<span id="cb193-2"><a href="factorpractice.html#cb193-2" aria-hidden="true" tabindex="-1"></a>h_gap <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb193-3"><a href="factorpractice.html#cb193-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(country <span class="sc">%in%</span> h_countries) <span class="sc">%&gt;%</span></span>
-<span id="cb193-4"><a href="factorpractice.html#cb193-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">droplevels</span>()</span>
-<span id="cb193-5"><a href="factorpractice.html#cb193-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb193-6"><a href="factorpractice.html#cb193-6" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span></span>
-<span id="cb193-7"><a href="factorpractice.html#cb193-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> country, <span class="at">linetype =</span> country)) <span class="sc">+</span></span>
-<span id="cb193-8"><a href="factorpractice.html#cb193-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="factorpractice.html#cb62-1" aria-hidden="true" tabindex="-1"></a>h_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Egypt&quot;</span>, <span class="st">&quot;Haiti&quot;</span>, <span class="st">&quot;Romania&quot;</span>, <span class="st">&quot;Thailand&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>)</span>
+<span id="cb62-2"><a href="factorpractice.html#cb62-2" aria-hidden="true" tabindex="-1"></a>h_gap <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="factorpractice.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> h_countries) <span class="sc">%&gt;%</span> </span>
+<span id="cb62-4"><a href="factorpractice.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb62-5"><a href="factorpractice.html#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="factorpractice.html#cb62-6" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span> </span>
+<span id="cb62-7"><a href="factorpractice.html#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb62-8"><a href="factorpractice.html#cb62-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> lifeExp, </span>
+<span id="cb62-9"><a href="factorpractice.html#cb62-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> country, </span>
+<span id="cb62-10"><a href="factorpractice.html#cb62-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> country)) <span class="sc">+</span></span>
+<span id="cb62-11"><a href="factorpractice.html#cb62-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div id="fct_reorder2-another-way-to-improve-legibility" class="section level3" number="5.8.1">
 <h3><span class="header-section-number">5.8.1</span> fct_reorder2(): another way to improve legibility</h3>
 <p>Use fct_reorder2() when you have a <em>line chart</em> of a quantitative x against another quantitative y and your factor provides the color. The legend appears in some order as the data.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="factorpractice.html#cb194-1" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span></span>
-<span id="cb194-2"><a href="factorpractice.html#cb194-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> <span class="fu">fct_reorder2</span>(country,</span>
-<span id="cb194-3"><a href="factorpractice.html#cb194-3" aria-hidden="true" tabindex="-1"></a>        year, lifeExp))) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;country&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="factorpractice.html#cb63-1" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb63-2"><a href="factorpractice.html#cb63-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> lifeExp,</span>
+<span id="cb63-3"><a href="factorpractice.html#cb63-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="fu">fct_reorder2</span>(country, year, lifeExp))) <span class="sc">+</span></span>
+<span id="cb63-4"><a href="factorpractice.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb63-5"><a href="factorpractice.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;country&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Now work on combining the two elements. Note in the following that the color and linetype are treated separately in both the <code>aes()</code> and the <code>labs()</code>. The “Spiffy Title” has to be named explicitly–and they must be exactly the same–for both aesthetic values or two legends will be generated.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="factorpractice.html#cb195-1" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span></span>
-<span id="cb195-2"><a href="factorpractice.html#cb195-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> <span class="fu">fct_reorder2</span>(country,</span>
-<span id="cb195-3"><a href="factorpractice.html#cb195-3" aria-hidden="true" tabindex="-1"></a>        year, lifeExp), <span class="at">linetype =</span> <span class="fu">fct_reorder2</span>(country, year,</span>
-<span id="cb195-4"><a href="factorpractice.html#cb195-4" aria-hidden="true" tabindex="-1"></a>        lifeExp))) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Spiffy Title&quot;</span>,</span>
-<span id="cb195-5"><a href="factorpractice.html#cb195-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">&quot;Spiffy Title&quot;</span>)</span></code></pre></div>
-<p><img src="test-book_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="factorpractice.html#cb64-1" aria-hidden="true" tabindex="-1"></a>h_gap <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb64-2"><a href="factorpractice.html#cb64-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> lifeExp,</span>
+<span id="cb64-3"><a href="factorpractice.html#cb64-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="fu">fct_reorder2</span>(country, year, lifeExp),</span>
+<span id="cb64-4"><a href="factorpractice.html#cb64-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">linetype =</span> <span class="fu">fct_reorder2</span>(country, year, lifeExp))) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="factorpractice.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb64-6"><a href="factorpractice.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Spiffy Title&quot;</span>,</span>
+<span id="cb64-7"><a href="factorpractice.html#cb64-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">linetype =</span> <span class="st">&quot;Spiffy Title&quot;</span>)</span></code></pre></div>
+<p><img src="test-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -854,20 +852,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
