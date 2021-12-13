@@ -46,6 +46,3 @@ subset(education, Region == 2, select = c("State","Minor.Population","Education.
 ```{r}
 select(filter(education, Region == 2),c(State,Minor.Population:Education.Expenditures))
 ```
-
-
-

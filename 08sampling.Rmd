@@ -3,6 +3,8 @@
 ## Think about throwing a bunch of dice.
 
 ```{r}
+library(tidyverse)
+
 sample(1:6, size=100, replace=TRUE) 
 sample(1:6, size=100, replace=TRUE) %>% table()
 sample(1:6, size=100, replace=TRUE) %>% table() %>% prop.table()
