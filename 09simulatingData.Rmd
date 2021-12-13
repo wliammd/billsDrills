@@ -56,7 +56,10 @@ table(sample(state.abb, size = 1000, replace = TRUE))
 prop.table(table(sample(state.abb, size = 1000, replace = TRUE)))
 
 # using the forward-pipe operator: %>% 
-library(magrittr)
+# library(magrittr)
+
+# note that the pipe is evoked uniformly in the tidyverse, so magrittr need not be evoked separately
+
 sample(1:6, size=100, replace=TRUE) %>% table() %>% prop.table()
 
 # Or simulate rolling two dice and summing the total:
@@ -70,6 +73,8 @@ sample(2:12, size=100, replace=TRUE)
 
 # proportion of "snake-eyes" in 1000 rolls
 mean(sample(2:12, size = 1000, replace = TRUE) == 2)
+
+# Clayford's examples are great, but this is not the right way to simulate 2 dice rolles 100 x... 
 ```
 
 ## replicate()
