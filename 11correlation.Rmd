@@ -4,6 +4,8 @@
 library(tidyverse)
 ```
 
+Correlation plots can display multiple positive and negative relationships very elegantly, but they take a little adjusting to make a crisp, legible display.
+
 
 ```{r}
 head(iris)
