@@ -250,7 +250,6 @@ median(mn_bachelors_and_up$estimate)
 
 # mn_bachelors_and_up %>% median()
 
-
 ```
 
 New goal: find the percentage of commuters taking public transit to work in the 20 most populous metropolitan areas.
