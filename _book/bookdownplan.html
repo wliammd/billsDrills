@@ -52,13 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -207,7 +200,8 @@ div.csl-indent {
 <li class="chapter" data-level="5.7" data-path="factorpractice.html"><a href="factorpractice.html#additional-practice"><i class="fa fa-check"></i><b>5.7</b> Additional practice</a></li>
 <li class="chapter" data-level="5.8" data-path="factorpractice.html"><a href="factorpractice.html#reordering-factors"><i class="fa fa-check"></i><b>5.8</b> Reordering Factors</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.1</b> fct_reorder2(): another way to improve legibility</a></li>
+<li class="chapter" data-level="5.8.1" data-path="factorpractice.html"><a href="factorpractice.html#improving-legibility-change-the-linetype"><i class="fa fa-check"></i><b>5.8.1</b> Improving legibility: change the linetype</a></li>
+<li class="chapter" data-level="5.8.2" data-path="factorpractice.html"><a href="factorpractice.html#fct_reorder2-another-way-to-improve-legibility"><i class="fa fa-check"></i><b>5.8.2</b> fct_reorder2(): another way to improve legibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="subset.html"><a href="subset.html"><i class="fa fa-check"></i><b>6</b> Subsetting</a>
@@ -470,16 +464,21 @@ Figure 2.1: Starwars Figure 1
 </div>
 <div id="working-with-a-lot-of-packages" class="section level2" number="2.8">
 <h2><span class="header-section-number">2.8</span> Working with a lot of packages</h2>
-<p>It it sometimes difficult to keep track of all the packages used in a large bookdown project. A package by Desi Quintans may help: <strong>librarian</strong> may be just the thing that I need. Desi Quintans describes it in this post on CRAN <a href="https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html" class="uri">https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html</a>.</p>
+<p>It it sometimes difficult to keep track of all the packages used in a large bookdown project. The following blog post is a good place to start <a href="https://statsandr.com/blog/an-efficient-way-to-install-and-load-r-packages/" class="uri">https://statsandr.com/blog/an-efficient-way-to-install-and-load-r-packages/</a>.</p>
+<p>A package by Desi Quintans may help: <strong>librarian</strong> may be just the thing that I need. Desi Quintans describes it in this post on CRAN <a href="https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html" class="uri">https://cran.r-project.org/web/packages/librarian/vignettes/intro-to-librarian.html</a>.</p>
 <p>I think that I’ll wait a while and see how well <strong>librarian</strong> is supported. Meanwhile, a bit of code can assemble the packages that I use throughout this work, assembled by hand:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="bookdownplan.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Package names</span></span>
-<span id="cb7-2"><a href="bookdownplan.html#cb7-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;formatR&quot;</span>, <span class="st">&quot;bookdown&quot;</span>)</span>
-<span id="cb7-3"><a href="bookdownplan.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="bookdownplan.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages not yet installed</span></span>
-<span id="cb7-5"><a href="bookdownplan.html#cb7-5" aria-hidden="true" tabindex="-1"></a>installed_packages <span class="ot">&lt;-</span> packages <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())</span>
-<span id="cb7-6"><a href="bookdownplan.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(installed_packages <span class="sc">==</span> <span class="cn">FALSE</span>)) {</span>
-<span id="cb7-7"><a href="bookdownplan.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(packages[<span class="sc">!</span>installed_packages])</span>
-<span id="cb7-8"><a href="bookdownplan.html#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb7-2"><a href="bookdownplan.html#cb7-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;formatR&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;tufte&quot;</span>,</span>
+<span id="cb7-3"><a href="bookdownplan.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;forcats&quot;</span>, <span class="st">&quot;gapminder&quot;</span>, <span class="st">&quot;skimr&quot;</span>, <span class="st">&quot;ggridges&quot;</span>, <span class="st">&quot;personograph&quot;</span>,</span>
+<span id="cb7-4"><a href="bookdownplan.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;assertive&quot;</span>, <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;ggfortify&quot;</span>, <span class="st">&quot;Rtsne&quot;</span>, <span class="st">&quot;tidycensus&quot;</span>,</span>
+<span id="cb7-5"><a href="bookdownplan.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;rpart&quot;</span>, <span class="st">&quot;MASS&quot;</span>, <span class="st">&quot;caTools&quot;</span>, <span class="st">&quot;C50&quot;</span>, <span class="st">&quot;modeldata&quot;</span>,</span>
+<span id="cb7-6"><a href="bookdownplan.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;credentials&quot;</span>)</span>
+<span id="cb7-7"><a href="bookdownplan.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="bookdownplan.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages not yet installed</span></span>
+<span id="cb7-9"><a href="bookdownplan.html#cb7-9" aria-hidden="true" tabindex="-1"></a>installed_packages <span class="ot">&lt;-</span> packages <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())</span>
+<span id="cb7-10"><a href="bookdownplan.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(installed_packages <span class="sc">==</span> <span class="cn">FALSE</span>)) {</span>
+<span id="cb7-11"><a href="bookdownplan.html#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(packages[<span class="sc">!</span>installed_packages])</span>
+<span id="cb7-12"><a href="bookdownplan.html#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
