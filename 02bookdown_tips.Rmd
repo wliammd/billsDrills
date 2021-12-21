@@ -23,7 +23,7 @@ opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 
 ## RStudio Tip: Preview in Viewer Pane
 
-Note that RStudio offers a "Preview in Viewer Pane" option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. When you have the luxery of working with a large monitor, this is the best way to watch your code unfold into an Rmarkdown document. 
+Note that RStudio offers a "Preview in Viewer Pane" option, which is vastly faster and more convenient (although smaller) than previewing your beautiful file in a standalone window. When you have the luxery of working with a large monitor, this is the best way to watch your code unfold into an Rmarkdown document. This is found under the Preferences menu, R Markdown submenu. 
 
 ## Inserting pictures
 
@@ -136,7 +136,7 @@ I think that I'll wait a while and see how well **librarian** is supported. Mean
 
 ```{r}
 # Package names
-packages <- c("tidyverse", "knitr", "formatR", "bookdown", "tufte", "forcats", "gapminder", "skimr", "ggridges", "personograph", "assertive", "plotly", "ggfortify", "Rtsne", "tidycensus", "caret", "rpart", "MASS", "caTools", "C50", "modeldata", "credentials")
+packages <- c("tidyverse", "knitr", "formatR", "bookdown", "tufte", "forcats", "gapminder", "skimr", "ggridges", "personograph", "assertive", "plotly", "ggfortify", "Rtsne", "tidycensus", "caret", "rpart", "MASS", "caTools", "C50", "modeldata", "credentials", "MLmetrics", "randomForest")
 
 # Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())
