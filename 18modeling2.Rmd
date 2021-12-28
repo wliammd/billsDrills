@@ -100,7 +100,7 @@ Ashby's example helps out a lot and should be used as a model of the workflow fo
 
 This example shows how to generate some missing values, and to use imputation overcome these.
 
-```{r mtcars-median-imputation-example, cached = TRUE}
+```{r mtcars-median-imputation-example, cache=TRUE}
 data("mtcars")
 set.seed(42)
 mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
@@ -121,7 +121,7 @@ print(median_model)
 
 Data that is missing not at random offers special challenges. 
 
-```{r mtcars-knn-imputation-example, cached = TRUE}
+```{r mtcars-knn-imputation-example, cache=TRUE}
 mtcars[mtcars$disp < 140, "hp"] <- NA
 Y <- mtcars$mpg
 X <- mtcars[,2:4]
@@ -136,15 +136,15 @@ model <- train(
 
 print(min(model$results$RMSE))
 
-set.seed(42)
-model <- train(
-  X,
-  Y,
-  method = "glm",
-  preProcess = c("knnImpute")
-)
-
-  print(min(model$results$RMSE))
+# set.seed(42)
+# model <- train(
+#   X,
+#   Y,
+#   method = "glm",
+#   preProcess = c("knnImpute")
+# )
+# 
+#   print(min(model$results$RMSE))
 
 ```
 
@@ -157,7 +157,7 @@ Zach Mayer offers the following cheat sheet for preprocessing:
 * For linear models (lm, glm, glmnet) always center and scale
 * Tree-based models (random forest, gbm) don't need much preprocessing
 
-```{r mtcars-multiple-preprocessing-example, cached = TRUE}
+```{r mtcars-multiple-preprocessing-example, cache=TRUE}
 data("mtcars")
 set.seed(42)
 mtcars[sample(1:nrow(mtcars), 10), "hp"] <- NA
@@ -195,7 +195,7 @@ NOTE: using PCA as a preprocessing step can accomplish much the same thing as re
 
 Note that the outcome (churn/no churn) is binary and that the dataset is somewhat imbalanced. 
 
-```{r traincontrol-reusing-example, cached = TRUE}
+```{r traincontrol-reusing-example, cache=TRUE}
 library(C50)
 library(modeldata)
 data(mlc_churn)

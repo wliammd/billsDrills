@@ -354,19 +354,19 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="knncv" class="section level1" number="16">
 <h1><span class="header-section-number">Chapter 16</span> <strong>K Nearest Neighbors Revisited: Cross Validation Added</strong> Tips for This Document</h1>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="knncv.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb634-2"><a href="knncv.html#cb634-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb634-3"><a href="knncv.html#cb634-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb634-4"><a href="knncv.html#cb634-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="knncv.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb632-2"><a href="knncv.html#cb632-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb632-3"><a href="knncv.html#cb632-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb632-4"><a href="knncv.html#cb632-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div>
 <p>Good resource: <a href="https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29" class="uri">https://www.r-bloggers.com/2021/04/knn-algorithm-machine-learning/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+RBloggers+%28R+bloggers%29</a></p>
 <p>An excellent source for the <strong>caret</strong> is <a href="https://topepo.github.io/caret/index.html" class="uri">https://topepo.github.io/caret/index.html</a></p>
 <p>The following code is from <a href="https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r" class="uri">https://stats.stackexchange.com/questions/318968/knn-and-k-folding-in-r</a></p>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="knncv.html#cb635-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
-<span id="cb635-2"><a href="knncv.html#cb635-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb635-3"><a href="knncv.html#cb635-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;knn&quot;</span>, <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
-<span id="cb635-4"><a href="knncv.html#cb635-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> trControl, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>, <span class="at">data =</span> iris)</span>
-<span id="cb635-5"><a href="knncv.html#cb635-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb635-6"><a href="knncv.html#cb635-6" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="knncv.html#cb633-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
+<span id="cb633-2"><a href="knncv.html#cb633-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb633-3"><a href="knncv.html#cb633-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;knn&quot;</span>, <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb633-4"><a href="knncv.html#cb633-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> trControl, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>, <span class="at">data =</span> iris)</span>
+<span id="cb633-5"><a href="knncv.html#cb633-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb633-6"><a href="knncv.html#cb633-6" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 150 samples
@@ -392,11 +392,11 @@ div.csl-indent {
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 10.</code></pre>
-<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="knncv.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="knncv.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <p>I’d like to see whether this will help build a model to improve the classification of pituitary neuroendocrine tumors (pituitary adenomas).</p>
 <p>A copy of the patmandx data from PitAdTMA9.0 is already in the test book data directory.</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="knncv.html#cb638-1" aria-hidden="true" tabindex="-1"></a>pit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="knncv.html#cb636-1" aria-hidden="true" tabindex="-1"></a>pit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/patmanDx.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 157 Columns: 36</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -405,34 +405,34 @@ div.csl-indent {
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="knncv.html#cb642-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pit <span class="sc">%&gt;%</span></span>
-<span id="cb642-2"><a href="knncv.html#cb642-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian,</span>
-<span id="cb642-3"><a href="knncv.html#cb642-3" aria-hidden="true" tabindex="-1"></a>        TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian,</span>
-<span id="cb642-4"><a href="knncv.html#cb642-4" aria-hidden="true" tabindex="-1"></a>        GATA3Median, manDx) <span class="sc">%&gt;%</span></span>
-<span id="cb642-5"><a href="knncv.html#cb642-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>()</span>
-<span id="cb642-6"><a href="knncv.html#cb642-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb642-7"><a href="knncv.html#cb642-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="knncv.html#cb640-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pit <span class="sc">%&gt;%</span></span>
+<span id="cb640-2"><a href="knncv.html#cb640-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(SF1Median, Pit1Median, TPITMedian, PRLMedian, GHMedian,</span>
+<span id="cb640-3"><a href="knncv.html#cb640-3" aria-hidden="true" tabindex="-1"></a>        TSHMedian, LHMedian, FSHMedian, ACTHMedian, ASUMedian,</span>
+<span id="cb640-4"><a href="knncv.html#cb640-4" aria-hidden="true" tabindex="-1"></a>        GATA3Median, manDx) <span class="sc">%&gt;%</span></span>
+<span id="cb640-5"><a href="knncv.html#cb640-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>()</span>
+<span id="cb640-6"><a href="knncv.html#cb640-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb640-7"><a href="knncv.html#cb640-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
 <pre><code>## 
 ## ACTH   GH  GON NULL PIT1 PLUR  PRL  UNK 
 ##   23   16   77   10    4    1   15    1</code></pre>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="knncv.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, the trouble with null cell adenoma is that the</span></span>
-<span id="cb644-2"><a href="knncv.html#cb644-2" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnosis abbreviation &#39;NULL&#39; is mistaken for the NULL</span></span>
-<span id="cb644-3"><a href="knncv.html#cb644-3" aria-hidden="true" tabindex="-1"></a><span class="co"># value. I&#39;ll need to change this. The following is an ugly</span></span>
-<span id="cb644-4"><a href="knncv.html#cb644-4" aria-hidden="true" tabindex="-1"></a><span class="co"># way to do this.</span></span>
-<span id="cb644-5"><a href="knncv.html#cb644-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb644-6"><a href="knncv.html#cb644-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb644-7"><a href="knncv.html#cb644-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">manDx =</span> <span class="fu">case_when</span>(manDx <span class="sc">==</span> <span class="st">&quot;NULL&quot;</span> <span class="sc">~</span> <span class="st">&quot;Null&quot;</span>, <span class="cn">TRUE</span> <span class="sc">~</span></span>
-<span id="cb644-8"><a href="knncv.html#cb644-8" aria-hidden="true" tabindex="-1"></a>        manDx))</span>
-<span id="cb644-9"><a href="knncv.html#cb644-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb644-10"><a href="knncv.html#cb644-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="knncv.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, the trouble with null cell adenoma is that the</span></span>
+<span id="cb642-2"><a href="knncv.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnosis abbreviation &#39;NULL&#39; is mistaken for the NULL</span></span>
+<span id="cb642-3"><a href="knncv.html#cb642-3" aria-hidden="true" tabindex="-1"></a><span class="co"># value. I&#39;ll need to change this. The following is an ugly</span></span>
+<span id="cb642-4"><a href="knncv.html#cb642-4" aria-hidden="true" tabindex="-1"></a><span class="co"># way to do this.</span></span>
+<span id="cb642-5"><a href="knncv.html#cb642-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb642-6"><a href="knncv.html#cb642-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb642-7"><a href="knncv.html#cb642-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">manDx =</span> <span class="fu">case_when</span>(manDx <span class="sc">==</span> <span class="st">&quot;NULL&quot;</span> <span class="sc">~</span> <span class="st">&quot;Null&quot;</span>, <span class="cn">TRUE</span> <span class="sc">~</span></span>
+<span id="cb642-8"><a href="knncv.html#cb642-8" aria-hidden="true" tabindex="-1"></a>        manDx))</span>
+<span id="cb642-9"><a href="knncv.html#cb642-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb642-10"><a href="knncv.html#cb642-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>manDx)</span></code></pre></div>
 <pre><code>## 
 ## ACTH   GH  GON Null PIT1 PLUR  PRL  UNK 
 ##   23   16   77   10    4    1   15    1</code></pre>
 <p>Now I’ll ape the code from above and see whether it works.</p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="knncv.html#cb646-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
-<span id="cb646-2"><a href="knncv.html#cb646-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb646-3"><a href="knncv.html#cb646-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(manDx <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;knn&quot;</span>, <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
-<span id="cb646-4"><a href="knncv.html#cb646-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> trControl, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>, <span class="at">data =</span> df)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="knncv.html#cb644-1" aria-hidden="true" tabindex="-1"></a>trControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
+<span id="cb644-2"><a href="knncv.html#cb644-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb644-3"><a href="knncv.html#cb644-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">train</span>(manDx <span class="sc">~</span> ., <span class="at">method =</span> <span class="st">&quot;knn&quot;</span>, <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb644-4"><a href="knncv.html#cb644-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> trControl, <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>, <span class="at">data =</span> df)</span></code></pre></div>
 <pre><code>## Warning: predictions failed for Fold3: k= 1 Error in dimnames(x) &lt;- dn : 
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
 <pre><code>## Warning: predictions failed for Fold3: k= 2 Error in dimnames(x) &lt;- dn : 
@@ -455,7 +455,7 @@ div.csl-indent {
 ##   length of &#39;dimnames&#39; [2] not equal to array extent</code></pre>
 <pre><code>## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
 ## There were missing values in resampled performance measures.</code></pre>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="knncv.html#cb658-1" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="knncv.html#cb656-1" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
 <pre><code>## k-Nearest Neighbors 
 ## 
 ## 147 samples
@@ -481,7 +481,7 @@ div.csl-indent {
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was k = 6.</code></pre>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="knncv.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="knncv.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span></code></pre></div>
 <p><img src="test-book_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <p>Note that if I run this multiple times, I get multiple different optimal values of k. <strong>set.seed(1234)</strong>* would render a single, reproducible (if not “correct”) value.</p>
 <p>So ostensibly, this works, but I have a couple important items to address:</p>

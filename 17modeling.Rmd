@@ -118,7 +118,7 @@ So the RMSE for the model of diamond price, as measured by dividing the set this
 
 Note that the `train()` function has the method characteristic that can choose the type of model and that the `trainControl()` function has a method that determines cross validation. The number characteristic refers to the number of folds of cross validation. 10-fold cross validation is common, but takes more time than the use of smaller numbers. 5-fold will be used here to improve the speed of the processing. 
 
-```{r regression-example, cached = TRUE}
+```{r regression-example, cache=TRUE}
 library(caret)
 
 model <- train(
@@ -140,7 +140,7 @@ Note that **caret** handles the work of splitting test sets and calculating RMSE
 
 Another example from the DataCamp course.
 
-```{r lm-example-5fcv, cached = TRUE}
+```{r lm-example-5fcv, cache=TRUE}
 library(MASS)
 
 # Fit lm model using 5-fold CV: model
@@ -161,7 +161,7 @@ model
 
 Cross validation can *itself* be repeated. The following is a 5-fold cross validation repeated 5 times.
 
-```{r lm-example-5x5fold-cv, cached = TRUE}
+```{r lm-example-5x5fold-cv, cache=TRUE}
 # Fit lm model using 5 x 5-fold CV: model
 model <- train(
   medv ~ ., 
@@ -189,7 +189,7 @@ sqrt(mean(error^2))
 
 ### An **rpart** classification example.
 
-```{r rpart-classification-example, cached = TRUE}
+```{r rpart-classification-example, cache=TRUE}
 model <- rpart(
   Species ~ .,
   data = iris,
@@ -203,7 +203,7 @@ head(predicted)
 Study what's going on in **predict()**:
 
 ```{r}
-?predict.rpart
+# ?predict.rpart
 ```
 
 So **predict()** uses the model to assign a predicted value to Species based on the rest of the iris dataset data. 
@@ -216,7 +216,7 @@ mean(predicted == iris$Species)
 
 ## From the DataCamp course
 
-```{r mlbench-sonar-example, cached = TRUE}
+```{r mlbench-sonar-example, cache=TRUE}
 library(mlbench)
 data("Sonar")
 
@@ -261,7 +261,7 @@ colAUC(p, test[["Class"]], plotROC = TRUE)
 
 When using `twoClassSummary()`, be sure to always include the argument `classProbs = TRUE` or your model will throw an error! (You cannot calculate AUC with just class predictions. You need to have class probabilities as well.)
 
-```{r glm-traincontrol-example, cached = TRUE}
+```{r glm-traincontrol-example, cache=TRUE}
 # Create trainControl object: myControl
 myControl <- trainControl(
   method = "cv",
@@ -284,7 +284,7 @@ So `twoClassSummary` to use AUC to tune the parameters for the model generates a
 
 For this set, we'll use the white wine quality data set from UC Irvine. 
 
-```{r wine-ranger-example, cached = TRUE}
+```{r wine-ranger-example, cache=TRUE}
 wine <- read.csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv", sep = ";")
 
 glimpse(wine)
@@ -311,7 +311,7 @@ plot(model)
 
 Let's try this again with a longer `tuneLength`. This explores more models and potentially finds a better model.
 
-```{r wine-tunelength-example, cached = TRUE}
+```{r wine-tunelength-example, cache=TRUE}
 model <- train(
   quality~.,
   tuneLength = 10,
@@ -336,7 +336,7 @@ Custom tuning of grids can be used in **caret** by using `tuneGrid()`. While it 
 
 For my uses, most of the time I anticipate using `tuneLength` and the default settings in **caret** to build my random forest models. 
 
-```{r tunegrid-example-ranger, cached = TRUE}
+```{r tunegrid-example-ranger, cache=TRUE}
 tuneGrid <- data.frame(
   .mtry = c(2, 3, 7),
   .splitrule = "variance",

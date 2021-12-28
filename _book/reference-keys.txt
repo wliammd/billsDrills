@@ -1,4 +1,11 @@
 fig:starfig-1
+tab:unnamed-chunk-40
+fig:starfig-1a
+fig:starfig-2
+fig:starfig-3
+fig:starfig-4
+fig:starfig-5
+fig:starfig-6
 intro
 bookdownplan
 basic-conventions
@@ -31,7 +38,6 @@ fct_lump
 fct_infreq-and-fct_rev
 additional-practice
 reordering-factors
-improving-legibility-change-the-linetype
 fct_reorder2-another-way-to-improve-legibility
 subset
 subsetting-using-brackets

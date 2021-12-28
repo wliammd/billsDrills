@@ -365,17 +365,17 @@ div.csl-indent {
 <p>For deploying a personal access token:
 <a href="https://happygitwithr.com/credential-caching.html#credential-caching" class="uri">https://happygitwithr.com/credential-caching.html#credential-caching</a></p>
 <p>I first explored my credentials with the following:</p>
-<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="github.html#cb805-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(gitcreds) gitcreds_set()</span></span></code></pre></div>
+<div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="github.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(gitcreds) gitcreds_set()</span></span></code></pre></div>
 <p>According to the error when I knit this, his only works in interactive sessions, so is commented out.</p>
 <p>This shows off my github password, with the right menu selection, but not the PAT.</p>
-<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="github.html#cb806-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(credentials)</span></code></pre></div>
-<pre><code>## Found git version 2.30.1 (Apple Git-130)</code></pre>
-<pre><code>## Supported HTTPS credential helpers: cache, store</code></pre>
-<pre><code>## Found OpenSSH_8.1p1, LibreSSL 2.7.3</code></pre>
-<pre><code>## Default SSH key: /Users/wliamlaptop/.ssh/id_rsa</code></pre>
-<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="github.html#cb811-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_github_pat</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="github.html#cb799-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(credentials)</span></code></pre></div>
+<pre><code>## Found git version 2.17.2 (Apple Git-113)</code></pre>
+<pre><code>## Supported HTTPS credential helpers: cache, cache--daemon, osxkeychain, store</code></pre>
+<pre><code>## Found OpenSSH_7.8p1, LibreSSL 2.6.2</code></pre>
+<pre><code>## No key found. Use ssh_keygen() to generate one!</code></pre>
+<div class="sourceCode" id="cb804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb804-1"><a href="github.html#cb804-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_github_pat</span>()</span></code></pre></div>
 <p>More research is necessary. See:</p>
-<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="github.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(set_github_pat)</span></code></pre></div>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="github.html#cb805-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(set_github_pat)</span></code></pre></div>
 <p>On returning home, I encountered trouble with R. This seems to have been settled by the old copy-and-paste the error into my browser and figure out a workaround that involved a couple different methods. Now I’ve generated another PAT for my home computer, and am hoping that GitHub will be happy with me now.</p>
 
 </div>
