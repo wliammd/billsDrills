@@ -38,9 +38,10 @@ Resources for class imbalance:
 
 Notes on/inspired by the Machine Learning with caret in R DataCamp course. I'd like to better understand machine learning, especially as it pertains to classification problems. Most discussions begin with regression examples, so these will also be addressed in order to build a better foundation. This is the general approach of James, Witten, Hastie and Tibshirani in An Introduction to Statistical Learning with Applications in R, 2nd edition [@RN5383] too. 
 
-But let's back up and consider the whole rationale behind modeling: according to Haley Wickham in `R4DS`,
+But let's back up and consider the whole rationale behind modeling: according to Hadley Wickham in `R4DS`,
 
 > The goal of a model is to provide a simple low-dimensional summary of a dataset.
+`r tufte::quote_footer('--- Hadley Wickham')`
 
 Modeling is a mode of `supervised learning`, which can be divided into `classification` and `regression`. 
 
